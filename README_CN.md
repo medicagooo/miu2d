@@ -330,21 +330,21 @@ pnpm monorepo 中的 11 个包，总计约 **176,000 行**代码：
 git clone https://github.com/nicologies/miu2d.git
 cd miu2d
 pnpm install
-pnpm dev            # → http://localhost:5173
+pnpm dev            # → http://localhost:5274
 ```
 
 ### 全栈启动（含后端 + 数据库）
 
 ```bash
-make init           # Docker: PostgreSQL + MinIO, 迁移, 种子数据
-make dev            # 同时启动 web + server + db studio
+make init           # Docker: PostgreSQL + MinIO，创建 bucket 并执行迁移
+make dev            # 同时启动 web + server
 ```
 
 ### 常用命令
 
 | 命令 | 用途 |
 |------|------|
-| `pnpm dev` | 前端开发服务器（端口 5173） |
+| `pnpm dev` | 前端开发服务器（端口 5274） |
 | `make dev` | 全栈开发（web + server + db） |
 | `make tsc` | 全包类型检查 |
 | `pnpm lint` | Biome 代码检查 |
@@ -387,6 +387,10 @@ make dev            # 同时启动 web + server + db studio
 | **全栈** | Docker Compose — PostgreSQL + MinIO + Hono + Nginx |
 
 详见 [deploy/](deploy/) 目录中的生产 Docker 配置。
+
+本地完整部署使用 `docker compose --profile production up -d --build --wait`，默认访问
+`http://localhost:8080`。首次启动会幂等创建 MinIO bucket 并执行数据库迁移；仓库不包含
+三款示例游戏的数据库记录和资源文件，需要另行导入合法持有的数据。
 
 ---
 

@@ -1,4 +1,6 @@
 # Miu2D Engine - Makefile
+# AI-TRACE: WSL/Linux 开发入口；Docker 生命周期统一委托给 docker-compose.yml，
+# 由 minio-init 创建 bucket、由 production profile 的 migrate 服务执行迁移。
 
 .PHONY: init dev dev-web dev-server build install db-migrate db-seed db-studio db-up db-down docker tsc test lint format help convert convert-verify
 
@@ -31,7 +33,7 @@ help: ## 显示帮助信息
 	@printf "  $(YELLOW)make convert-verify$(NC) - 验证无损转换\n"
 	@printf "$(BLUE)═══════════════════════════════════════$(NC)\n"
 
-init: ## 首次初始化项目（清理+安装+生成 Prisma Client+迁移+种子）
+init: ## 首次初始化项目（清理+安装+生成 Prisma Client+迁移）
 	@printf "$(BLUE)═══════════════════════════════════════$(NC)\n"
 	@printf "$(GREEN)  🚀 项目初始化$(NC)\n"
 	@printf "$(BLUE)═══════════════════════════════════════$(NC)\n"
@@ -61,10 +63,10 @@ init: ## 首次初始化项目（清理+安装+生成 Prisma Client+迁移+种�
 		printf "$(GREEN)✓ packages/server/.env 文件已存在$(NC)\n"; \
 	fi
 	@printf "\n$(YELLOW)🛑 [2/9] 停止现有容器...$(NC)\n"
-	@docker-compose down -v 2>/dev/null || true
+	@docker compose down -v 2>/dev/null || true
 	@printf "$(GREEN)✓ 容器已停止$(NC)\n"
 	@printf "\n$(YELLOW)🗑️  [3/9] 清理数据目录...$(NC)\n"
-	@sudo rm -rf .data/postgres .data/minio
+	@rm -rf .data/postgres .data/minio
 	@printf "$(GREEN)✓ 数据目录已清理$(NC)\n"
 	@printf "\n$(YELLOW)📁 [4/9] 创建数据目录...$(NC)\n"
 	@mkdir -p .data/postgres .data/minio
@@ -76,11 +78,11 @@ init: ## 首次初始化项目（清理+安装+生成 Prisma Client+迁移+种�
 	@pnpm --filter @miu2d/server db:generate
 	@printf "$(GREEN)✓ Prisma Client 已生成$(NC)\n"
 	@printf "\n$(YELLOW)🐳 [7/9] 启动数据库和存储容器...$(NC)\n"
-	@docker-compose up -d db minio
+	@docker compose up -d --wait db minio minio-init
 	@printf "$(GREEN)✓ 容器已启动$(NC)\n"
 	@printf "\n$(YELLOW)⏳ [8/9] 等待数据库就绪...$(NC)\n"
 	@sleep 5
-	@docker-compose exec -T db pg_isready -U postgres > /dev/null 2>&1 || sleep 3
+	@docker compose exec -T db pg_isready -U postgres > /dev/null 2>&1 || sleep 3
 	@printf "$(GREEN)✓ 数据库就绪$(NC)\n"
 	@printf "\n$(YELLOW)🗃️  [9/9] 执行数据库迁移...$(NC)\n"
 	@pnpm db:migrate
@@ -97,15 +99,11 @@ install:
 
 # 启动数据库和存储
 db-up:
-	docker-compose up -d db minio
-	@echo "等待 MinIO 启动..."
-	@sleep 3
-	@docker exec miu2d-minio mc alias set local http://localhost:9100 minio minio123 2>/dev/null || true
-	@docker exec miu2d-minio mc mb local/miu2d --ignore-existing 2>/dev/null || true
+	docker compose up -d --wait db minio minio-init
 
 # 停止数据库和存储
 db-down:
-	docker-compose down
+	docker compose down
 
 # 同时运行 web 和 server
 dev: db-up

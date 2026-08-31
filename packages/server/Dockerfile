@@ -1,8 +1,9 @@
 # 构建阶段
 FROM node:22-alpine AS builder
 
-# 启用 corepack 以使用 pnpm
-RUN corepack enable && corepack prepare pnpm@10.15.1 --activate
+# AI-TRACE: builder 与 runner 必须使用根 package.json 声明的同一 pnpm 版本，
+# 否则 workspace 安装策略和 native dependency 构建结果可能不一致。
+RUN corepack enable && corepack prepare pnpm@10.16.1 --activate
 
 WORKDIR /app
 
@@ -51,7 +52,7 @@ RUN pnpm build
 FROM node:22-alpine AS runner
 
 # 启用 corepack
-RUN corepack enable && corepack prepare pnpm@10.15.1 --activate
+RUN corepack enable && corepack prepare pnpm@10.16.1 --activate
 
 WORKDIR /app
 

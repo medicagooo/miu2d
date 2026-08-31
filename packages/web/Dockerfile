@@ -1,8 +1,9 @@
 # 构建阶段
 FROM node:22-alpine AS builder
 
-# 启用 corepack 以使用 pnpm
-RUN corepack enable && corepack prepare pnpm@10.15.1 --activate
+# AI-TRACE: Web 镜像与 server 镜像共享 lockfile/workspace，必须使用根
+# package.json 声明的 pnpm 版本以保持可复现安装。
+RUN corepack enable && corepack prepare pnpm@10.16.1 --activate
 
 WORKDIR /app
 

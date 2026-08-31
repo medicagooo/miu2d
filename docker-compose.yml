@@ -1,4 +1,7 @@
 services:
+  # AI-TRACE: 本文件是本地全栈部署的编排入口。db/minio 提供持久化依赖，
+  # minio-init/migrate 负责幂等初始化，server 只在二者成功后启动，web 再代理
+  # /trpc、/game 和 /s3；环境变量名称必须与 packages/server/src/env.ts 保持一致。
   # PostgreSQL 数据库
   db:
     image: postgres:16
@@ -40,6 +43,45 @@ services:
       timeout: 5s
       retries: 5
 
+  # 幂等创建服务端依赖的 bucket；一次性任务成功退出后 server 才会启动。
+  minio-init:
+    image: minio/mc:latest
+    container_name: miu2d-minio-init
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-minio}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-minio123}
+      MINIO_BUCKET: ${MINIO_BUCKET:-miu2d}
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - >-
+        mc alias set local http://minio:9000 "$${MINIO_ROOT_USER}" "$${MINIO_ROOT_PASSWORD}" &&
+        mc mb --ignore-existing "local/$${MINIO_BUCKET}"
+    depends_on:
+      minio:
+        condition: service_healthy
+    networks:
+      - app-network
+    restart: "no"
+
+  # 使用生产镜像内置的 SQL runner 执行幂等迁移，避免运行时依赖 Prisma CLI。
+  migrate:
+    image: miu2d-server:latest
+    container_name: miu2d-migrate
+    build:
+      context: .
+      dockerfile: packages/server/Dockerfile
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@db:5432/${POSTGRES_DB:-miu2d_db}
+    command: ["node", "dist/db/migrate.js"]
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - app-network
+    restart: "no"
+    profiles:
+      - production
+
   # 后端服务 (生产环境用)
   server:
     image: miu2d-server:latest
@@ -51,11 +93,15 @@ services:
       DATABASE_URL: postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@db:5432/${POSTGRES_DB:-miu2d_db}
       NODE_ENV: production
       PORT: 4000
-      MINIO_ENDPOINT: minio
-      MINIO_PORT: 9100
-      MINIO_ACCESS_KEY: ${MINIO_ROOT_USER:-minio}
-      MINIO_SECRET_KEY: ${MINIO_ROOT_PASSWORD:-minio123}
+      S3_ENDPOINT: http://minio:9000
+      S3_REGION: ${S3_REGION:-us-east-1}
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-minio}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-minio123}
       MINIO_BUCKET: ${MINIO_BUCKET:-miu2d}
+      S3_PUBLIC_ENDPOINT: ${S3_PUBLIC_ENDPOINT:-http://localhost:8080/s3}
+      APP_URL: ${APP_URL:-http://localhost:8080}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:8080}
+      SESSION_COOKIE_SECURE: ${SESSION_COOKIE_SECURE:-false}
     ports:
       - "4100:4000"
     depends_on:
@@ -63,9 +109,24 @@ services:
         condition: service_healthy
       minio:
         condition: service_healthy
+      minio-init:
+        condition: service_completed_successfully
+      migrate:
+        condition: service_completed_successfully
     networks:
       - app-network
     restart: unless-stopped
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://localhost:4000/health').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
     profiles:
       - production
 
@@ -76,10 +137,14 @@ services:
     build:
       context: .
       dockerfile: packages/web/Dockerfile
+      args:
+        VITE_DEMO_RESOURCES_DOMAIN: ${VITE_DEMO_RESOURCES_DOMAIN:-}
+        VITE_S3_BASE_URL: ${VITE_S3_BASE_URL:-/s3/miu2d}
     ports:
       - "8080:80"
     depends_on:
-      - server
+      server:
+        condition: service_healthy
     networks:
       - app-network
     restart: unless-stopped
