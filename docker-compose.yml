@@ -23,6 +23,7 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    restart: unless-stopped
 
   # MinIO 文件存储 (S3 兼容)
   minio:
@@ -44,6 +45,7 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    restart: unless-stopped
 
   # 幂等创建服务端依赖的 bucket；一次性任务成功退出后 server 才会启动。
   minio-init:
@@ -143,7 +145,9 @@ services:
         VITE_DEMO_RESOURCES_DOMAIN: ${VITE_DEMO_RESOURCES_DOMAIN:-}
         VITE_S3_BASE_URL: ${VITE_S3_BASE_URL:-/s3/miu2d}
     ports:
-      - "127.0.0.1:8080:80"
+      # AI-TRACE: WEB_HOST_PORT 默认保持跨平台的 8080；WSL mirrored/native Docker
+      # 使用 deploy/wsl/compose.env 改到 18080，再由原生 systemd socket 暴露 8080。
+      - "127.0.0.1:${WEB_HOST_PORT:-8080}:80"
     depends_on:
       server:
         condition: service_healthy

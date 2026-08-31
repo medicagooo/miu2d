@@ -392,6 +392,11 @@ make dev            # 同时启动 web + server
 `http://localhost:8080`。首次启动会幂等创建 MinIO bucket 并执行数据库迁移；仓库不包含
 三款示例游戏的数据库记录和资源文件，需要另行导入合法持有的数据。
 
+Debian WSL2 使用 mirrored networking 且运行原生 Docker 时，使用
+`deploy/wsl/compose.env` 将容器内 Nginx 发布到 WSL 回环端口 18080，并安装
+`deploy/wsl/miu2d-web-proxy.socket` 与 `deploy/wsl/miu2d-web-proxy.service`。该原生
+systemd socket 将 Windows 的 `http://localhost:8080` 转发到容器，不向局域网暴露服务。
+
 ---
 
 ## 参与贡献

@@ -36,6 +36,8 @@ dev-dist
 /JXQY-all-in-one
 /Sword2
 /deploy/*
+!/deploy/wsl/
+!/deploy/wsl/**
 .env
 vfx-demo
 # Docker data
