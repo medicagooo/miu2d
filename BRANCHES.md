@@ -11,3 +11,4 @@
 - 是否已合并到 main：否
 - 操作记录：
   - 2026-09-01：拟从本地 `main`（`9a87940c3649e8b2989a2e139af9eaa3db58cc76`）创建分支 `0901-fix-docker-wsl-deploy`，在当前工作区 `D:\proj\miu2d` 实施 Docker/WSL 本地部署修复；不创建远程分支、不推送。
+  - 2026-09-01：拟将本分支新增的 server runner workspace 产物修复，从 Windows 工作区 `D:\proj\miu2d` 快进同步至 Debian WSL 部署副本 `/home/medic/projects/miu2d`，用于重建并验证本地镜像；不推送远程。

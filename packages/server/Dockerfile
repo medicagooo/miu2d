@@ -65,6 +65,11 @@ COPY packages/server/package.json ./packages/server/
 # 从构建阶段复制构建产物
 COPY --from=builder /app/packages/server/dist ./packages/server/dist
 
+# AI-TRACE: rolldown 的 server 产物仍以运行时 ESM import 加载 @miu2d/types；
+# pnpm --prod 只创建 workspace 链接，不会生成 types/dist，因此必须把 builder 中
+# 已由 packages/types 的 prebuild/build 入口生成的完整 dist 一并带入 runner。
+COPY --from=builder /app/packages/types/dist ./packages/types/dist
+
 # 复制 prisma schema 和迁移文件
 COPY --from=builder /app/packages/server/prisma ./packages/server/prisma
 
