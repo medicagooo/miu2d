@@ -6,8 +6,8 @@
  * AI trace:
  * - `SceneService` 将 MMF 二进制以 base64 存入 `scenes.mmfData`，API 使用
  *   `MiuMapDataDto` 传输结构化地图；Dashboard 场景编辑器是主要写入调用方。
- * - `resolveSceneMsfPath` 同时供引擎地图加载器和服务端资源清单使用，保证普通
- *   `file.msf` 与编辑器生成的共享图块引用 `source-map/file.msf` 采用同一规则。
+ * - `resolveSceneMsfPath` 同时供引擎地图加载器和服务端资源清单使用；旧 MMF 的
+ *   相对子路径仍落在当前地图目录，编辑器生成的 `@miu2d-root/` 引用才从资源根解析。
  * - DTO 约束对应 MMF1 的 uint8/uint16 字段和固定 tile blob 布局，避免序列化时
  *   发生索引截断、数组补零或未知扩展块丢失。
  */
@@ -157,37 +157,64 @@ export function getMmfMapPixelSize(
   };
 }
 
+const SHARED_MSF_ENTRY_PREFIX = "@miu2d-root/";
+
+function decodePathSegmentForValidation(segment: string): string {
+  try {
+    return decodeURIComponent(segment);
+  } catch {
+    // A lone percent sign is a valid legacy filename character. URL construction below
+    // encodes it as `%25`, so it cannot become a path delimiter or traversal token.
+    return segment;
+  }
+}
+
 /**
- * 规范化 MMF 中的 MSF 引用。允许单文件名或相对 `msf/map` 根的安全子路径，
- * 禁止绝对路径和 `..`，避免新场景共享图块时逃逸资源根目录。
+ * 规范化 MMF 中的 MSF 引用。允许单文件名和安全相对子路径；禁止绝对路径、
+ * `..` 以及百分号编码的目录分隔/遍历 token。URL 输出会再逐段编码。
  */
 export function normalizeMsfEntryName(entryName: string): string | null {
   const normalized = entryName.trim().replace(/\\/g, "/");
   if (!normalized || normalized.startsWith("/") || /^[A-Za-z]:/.test(normalized)) return null;
   const segments = normalized.split("/");
-  if (segments.some((segment) => !segment || segment === "." || segment === "..")) return null;
+  if (
+    segments.some((segment) => {
+      if (!segment || segment === "." || segment === "..") return true;
+      const decoded = decodePathSegmentForValidation(segment);
+      return decoded === "." || decoded === ".." || decoded.includes("/") || decoded.includes("\\");
+    })
+  ) {
+    return null;
+  }
   return segments.join("/");
 }
 
 /**
- * 将模板场景的普通 MSF 文件名转换成可复用的共享引用。
- * 已经带安全目录的引用保持不变，避免连续复制场景时重复添加目录。
+ * 将模板场景的当前地图相对引用转换成显式资源根引用。
+ * 已经带 marker 的共享引用保持不变，避免连续复制场景时重复添加源目录。
  */
 export function scopeMsfEntryName(sourceMapName: string, entryName: string): string | null {
   const normalizedEntry = normalizeMsfEntryName(entryName);
   const normalizedSource = normalizeMsfEntryName(sourceMapName);
   if (!normalizedEntry || !normalizedSource || normalizedSource.includes("/")) return null;
-  return normalizedEntry.includes("/") ? normalizedEntry : `${normalizedSource}/${normalizedEntry}`;
+  if (normalizedEntry.startsWith(SHARED_MSF_ENTRY_PREFIX)) return normalizedEntry;
+  return `${SHARED_MSF_ENTRY_PREFIX}${normalizedSource}/${normalizedEntry}`;
 }
 
-/** 返回相对资源根的统一 MSF 路径；普通引用仍落在当前地图目录。 */
+function encodeMsfPath(path: string): string {
+  return path.split("/").map(encodeURIComponent).join("/");
+}
+
+/** 返回安全编码的资源 URL 路径；只有显式 marker 引用跳出当前地图目录。 */
 export function resolveSceneMsfPath(mapName: string, entryName: string): string | null {
   const normalizedEntry = normalizeMsfEntryName(entryName);
   const normalizedMap = normalizeMsfEntryName(mapName);
   if (!normalizedEntry || !normalizedMap || normalizedMap.includes("/")) return null;
-  return normalizedEntry.includes("/")
-    ? `msf/map/${normalizedEntry}`
-    : `msf/map/${normalizedMap}/${normalizedEntry}`;
+  const relativeEntry = normalizedEntry.startsWith(SHARED_MSF_ENTRY_PREFIX)
+    ? normalizedEntry.slice(SHARED_MSF_ENTRY_PREFIX.length)
+    : `${normalizedMap}/${normalizedEntry}`;
+  const normalizedRelativeEntry = normalizeMsfEntryName(relativeEntry);
+  return normalizedRelativeEntry ? `msf/map/${encodeMsfPath(normalizedRelativeEntry)}` : null;
 }
 
 /**

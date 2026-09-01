@@ -50,16 +50,36 @@ describe("MMF editor DTO contract", () => {
     expect(restored.extensions?.[0]?.data).toEqual(new Uint8Array([2, 4, 8]));
   });
 
-  it("resolves normal and shared template MSF references without traversal", () => {
+  it("preserves legacy subpaths and resolves explicit shared template references", () => {
     expect(resolveSceneMsfPath("new-map", "ground.msf")).toBe(
       "msf/map/new-map/ground.msf"
     );
-    expect(scopeMsfEntryName("source-map", "ground.msf")).toBe("source-map/ground.msf");
-    expect(resolveSceneMsfPath("new-map", "source-map/ground.msf")).toBe(
-      "msf/map/source-map/ground.msf"
+    expect(resolveSceneMsfPath("new-map", "terrain/ground.msf")).toBe(
+      "msf/map/new-map/terrain/ground.msf"
     );
-    expect(scopeMsfEntryName("copied-map", "source-map/ground.msf")).toBe(
-      "source-map/ground.msf"
+    expect(scopeMsfEntryName("source-map", "terrain/ground.msf")).toBe(
+      "@miu2d-root/source-map/terrain/ground.msf"
+    );
+    expect(resolveSceneMsfPath("new-map", "@miu2d-root/source-map/terrain/ground.msf")).toBe(
+      "msf/map/source-map/terrain/ground.msf"
+    );
+    expect(scopeMsfEntryName("copied-map", "@miu2d-root/source-map/ground.msf")).toBe(
+      "@miu2d-root/source-map/ground.msf"
+    );
+    expect(resolveSceneMsfPath("new-map", "source-map/ground.msf")).toBe(
+      "msf/map/new-map/source-map/ground.msf"
+    );
+    expect(resolveSceneMsfPath("new-map", "空间/地面 1.msf")).toBe(
+      "msf/map/new-map/%E7%A9%BA%E9%97%B4/%E5%9C%B0%E9%9D%A2%201.msf"
+    );
+    expect(resolveSceneMsfPath("new-map", "100%.msf")).toBe(
+      "msf/map/new-map/100%25.msf"
+    );
+    expect(resolveSceneMsfPath("new-map", "%2e%2e/secret.msf")).toBeNull();
+    expect(resolveSceneMsfPath("new-map", "tiles%2fsecret.msf")).toBeNull();
+    expect(resolveSceneMsfPath("new-map", "@miu2d-root/%2e%2e/secret.msf")).toBeNull();
+    expect(resolveSceneMsfPath("new-map", "@miu2d-root/source-map/ground.msf")).toBe(
+      "msf/map/source-map/ground.msf"
     );
     expect(scopeMsfEntryName("source-map", "../secret.msf")).toBeNull();
     expect(resolveSceneMsfPath("new-map", "/absolute.msf")).toBeNull();

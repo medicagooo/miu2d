@@ -3,14 +3,15 @@
  *
  * AI trace:
  * - `ScenesHomePage` opens this dialog with the current game's scene list.
- * - A template scene supplies only its MSF table; `scopeMsfEntryName` makes those resources
- *   reusable while `createBlankMiuMapData` creates independent empty tile/property arrays.
+ * - A template scene supplies only its MSF table; `scopeMsfEntryName` emits explicit
+ *   `@miu2d-root/` references (including legacy subdirectories) while
+ *   `createBlankMiuMapData` creates independent empty tile/property arrays.
  * - `SceneService.create(mapParsed)` serializes the draft to `scenes.mmfData`, after which
  *   `SceneDetailPage` becomes the sole editing/persistence owner.
  */
 import { createBlankMiuMapData, miuMapDataToDto } from "@miu2d/engine/resource/format/mmf-dto";
 import { trpc, useToast } from "@miu2d/shared";
-import { scopeMsfEntryName, type SceneListItem } from "@miu2d/types";
+import { type SceneListItem, scopeMsfEntryName } from "@miu2d/types";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 

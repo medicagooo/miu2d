@@ -6,11 +6,15 @@
  *   commands into this presentational component.
  * - `MapViewer.onTileResourcesLoaded` supplies already-decoded MSF atlas canvases; this panel
  *   only crops frame previews and returns the one-based `{msfIndex, frame}` selection.
+ * - MMF stores `frame` in one byte, so the palette exposes at most frames `0..255` even when
+ *   an MSF atlas contains more frames; the decoder may still retain those extra frames.
  * - Pointer painting itself remains in `MapViewer` so screen/world/tile conversion has one
  *   authoritative implementation.
  */
 import type { MapTileResource } from "@miu2d/viewer";
 import { useEffect, useMemo, useRef, useState } from "react";
+
+const MAX_MMF_TILE_FRAMES = 0x100;
 
 export type MapTileLayer = "layer1" | "layer2" | "layer3";
 export type MapTileTool = "pan" | "brush" | "eraser" | "eyedropper";
@@ -197,14 +201,15 @@ export function MapTileEditorPanel({ controls }: { controls: MapTileEditorContro
           >
             {controls.resources.map((entry, index) => (
               <option key={`${entry.msfIndex}-${entry.name}`} value={index}>
-                [{entry.msfIndex}] {entry.name} ({entry.frames.length}帧)
+                [{entry.msfIndex}] {entry.name} (
+                {Math.min(entry.frames.length, MAX_MMF_TILE_FRAMES)}帧可绘制)
               </option>
             ))}
           </select>
 
           {resource ? (
             <div className="grid max-h-52 grid-cols-4 gap-1 overflow-y-auto pr-1">
-              {resource.frames.map((_, frame) => {
+              {resource.frames.slice(0, MAX_MMF_TILE_FRAMES).map((_, frame) => {
                 const selected =
                   controls.selectedTile?.msfIndex === resource.msfIndex &&
                   controls.selectedTile.frame === frame;

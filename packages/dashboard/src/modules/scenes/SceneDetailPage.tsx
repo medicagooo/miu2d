@@ -7,6 +7,8 @@
  * AI trace:
  * - `scene.get.mapParsed` 是地图基线；本页拥有 MMF dirty/history/stroke 状态，并通过
  *   `scene.update({mapParsed})` 显式保存，独立于 SceneEntriesContext 的文本/实体保存。
+ * - 每次地图编辑递增本地 revision；保存响应只在 revision 未变化时替换当前草稿，
+ *   否则仅推进已保存基线并保留请求期间产生的笔画与撤销历史。
  * - `MapViewer` 负责权威坐标换算和 atlas 加载，本页只修改活动图层的两字节引用。
  * - `MapDataPanel`/`MapTileEditorPanel` 是控制面板，游戏 `MapRenderer` 是最终预览路径。
  */
@@ -140,6 +142,7 @@ function SceneDetailContent() {
   const [mapDirty, setMapDirty] = useState(false);
   const mapDirtyRef = useRef(false);
   mapDirtyRef.current = mapDirty;
+  const mapEditRevisionRef = useRef(0);
   const [mapSaving, setMapSaving] = useState(false);
   const [mapSaveMessage, setMapSaveMessage] = useState("");
   const [tileResources, setTileResources] = useState<readonly MapTileResource[]>([]);
@@ -197,6 +200,7 @@ function SceneDetailContent() {
     setMapLoading(false);
     setMapDirty(false);
     mapDirtyRef.current = false;
+    mapEditRevisionRef.current = 0;
     setMapSaving(false);
     setMapSaveMessage("");
     setTileResources([]);
@@ -278,6 +282,7 @@ function SceneDetailContent() {
         setMapData(data);
         mapDataRef.current = data;
         savedMapRef.current = cloneMapData(data);
+        mapEditRevisionRef.current = 0;
         setMapDirty(false);
         setUndoStack([]);
         setRedoStack([]);
@@ -293,6 +298,7 @@ function SceneDetailContent() {
   }, [scene?.mapFileName, scene?.mapParsed]);
 
   const commitMapData = useCallback((next: MiuMapData) => {
+    mapEditRevisionRef.current += 1;
     mapDataRef.current = next;
     setMapData(next);
     mapDirtyRef.current = true;
@@ -334,6 +340,7 @@ function SceneDetailContent() {
   const handleSaveMap = useCallback(async () => {
     const current = mapDataRef.current;
     if (!current || !gameId || !sceneId || !mapDirty) return;
+    const revisionAtRequest = mapEditRevisionRef.current;
     setMapSaving(true);
     setMapSaveMessage("");
     try {
@@ -344,15 +351,20 @@ function SceneDetailContent() {
       });
       const persisted = saved.mapParsed ? dtoToMiuMapData(saved.mapParsed) : cloneMapData(current);
       savedMapRef.current = cloneMapData(persisted);
-      mapDataRef.current = persisted;
-      setMapData(persisted);
-      mapDirtyRef.current = false;
-      setMapDirty(false);
-      setUndoStack([]);
-      setRedoStack([]);
-      activeTileStrokeRef.current = null;
-      setMapSaveMessage("地图已保存");
-      toast.success("地图已保存");
+      if (mapEditRevisionRef.current === revisionAtRequest) {
+        mapDataRef.current = persisted;
+        setMapData(persisted);
+        mapDirtyRef.current = false;
+        setMapDirty(false);
+        setUndoStack([]);
+        setRedoStack([]);
+        activeTileStrokeRef.current = null;
+        setMapSaveMessage("地图已保存");
+        toast.success("地图已保存");
+      } else {
+        setMapSaveMessage("保存请求已完成，仍有新的未保存修改");
+        toast.success("地图已保存，已保留保存期间的新修改");
+      }
       void refetchScene();
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
@@ -451,6 +463,7 @@ function SceneDetailContent() {
           target,
           changes: new Map(),
         };
+        mapEditRevisionRef.current += 1;
         activeTileStrokeRef.current = stroke;
         mapDataRef.current = next;
         setMapData(next);
