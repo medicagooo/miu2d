@@ -7,6 +7,10 @@
  * - 点击映射弹出选择脚本文件弹窗
  * - 两种删除：删除映射（仅移除 trapTable 条目） / 删除陷阱（清除 trapTable + 瓦片）
  * - 所有修改仅更新本地状态，不自动保存
+ *
+ * AI trace: `SceneDetailPage` owns persistence and passes `tileEditor`; this panel combines
+ * the painter controls with trap/MSF metadata. Every map mutation must call
+ * `onMapDataChanged` so the parent marks the complete MMF DTO dirty.
  */
 import type { MiuMapData } from "@miu2d/engine/map/types";
 import type { SceneData } from "@miu2d/types";
@@ -14,6 +18,7 @@ import { useCallback, useMemo, useState } from "react";
 import { FileSelectDialog } from "../../components/common/ResourceFilePicker/FileSelectDialog";
 import { ScriptPreviewTooltip } from "../../components/common/ResourceFilePicker/ScriptPreviewTooltip";
 import { ConfirmDialog } from "../fileTree/Dialogs";
+import { MapTileEditorPanel, type MapTileEditorControls } from "./MapTileEditorPanel";
 
 interface MapDataPanelProps {
   mapData: MiuMapData | null;
@@ -22,6 +27,7 @@ interface MapDataPanelProps {
   onTrapSelect: (trapIndex: number) => void;
   gameId: string;
   gameSlug: string;
+  tileEditor?: MapTileEditorControls;
 }
 
 export function MapDataPanel({
@@ -31,6 +37,7 @@ export function MapDataPanel({
   onTrapSelect,
   gameId,
   gameSlug,
+  tileEditor,
 }: MapDataPanelProps) {
   // ── 脚本选择器弹窗 ──
   const [scriptPickerIdx, setScriptPickerIdx] = useState<number | null>(null);
@@ -191,6 +198,8 @@ export function MapDataPanel({
 
   return (
     <div className="flex flex-col gap-3 p-3 text-sm overflow-auto">
+      {tileEditor ? <MapTileEditorPanel controls={tileEditor} /> : null}
+
       {/* 地图基本信息 */}
       <div className="flex flex-col gap-1 text-zinc-400 text-xs">
         <div>

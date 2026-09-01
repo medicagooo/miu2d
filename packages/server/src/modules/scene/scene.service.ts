@@ -4,8 +4,12 @@
  * MMF 地图二进制数据存储在 scenes.mmfData (base64)
  * 解析后的 mapParsed (MiuMapDataDto) 在 API 响应中按需计算
  * 其他数据（脚本/陷阱/NPC/OBJ）解析为 JSON 存储在 scene.data 字段
+ * AI trace: Dashboard 新建场景通过 `create(mapParsed)` 一次建立可绘制 MMF，后续
+ * 地图保存走 `update(mapParsed)`；二者必须共用 `serializeDtoToMmf`。资源清单使用
+ * `resolveSceneMsfPath`，与引擎加载共享图块引用的规则保持一致。
  */
 
+import { resolveSceneMsfPath } from "@miu2d/types";
 import type {
   ClearAllScenesInput,
   ClearAllScenesResult,
@@ -115,6 +119,7 @@ export class SceneService {
         key: input.key,
         name: input.name,
         mapFileName: input.mapFileName,
+        mmfData: input.mapParsed ? serializeDtoToMmf(input.mapParsed) : null,
         data: (input.data ?? Prisma.JsonNull) as Prisma.InputJsonValue,
       },
     });
@@ -375,7 +380,8 @@ export class SceneService {
       if (dto) {
         const mapName = row.mapFileName.replace(/\.(mmf|map)$/i, "");
         for (const entry of dto.msfEntries) {
-          tiles.push(`msf/map/${mapName}/${entry.name}`);
+          const tilePath = resolveSceneMsfPath(mapName, entry.name);
+          if (tilePath) tiles.push(tilePath);
         }
       }
     }

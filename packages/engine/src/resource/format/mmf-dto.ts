@@ -4,13 +4,17 @@
  * Converts between MiuMapData (engine runtime, Uint8Array fields)
  * and MiuMapDataDto (JSON-safe, base64-encoded string fields).
  *
- * Used by:
- * - Server: parseMMF → miuMapDataToDto → store as JSONB / return in API
- * - Frontend: receive mapParsed → dtoToMiuMapData → pass to MapViewer
+ * AI trace:
+ * - Server API writes use `miuMapDataToDto`/the mirrored server codec; Dashboard reads use
+ *   `dtoToMiuMapData`, and its new-scene wizard uses `createBlankMiuMapData`.
+ * - Tile arrays, trap metadata and unknown MMF extension chunks must move together so a
+ *   visual edit never turns into a lossy binary rewrite.
  */
 
-import type { MiuMapDataDto } from "@miu2d/types";
+import { getMmfMapPixelSize, type MiuMapDataDto, type MsfEntryDto } from "@miu2d/types";
 import type { MiuMapData } from "../../map/types";
+
+const MAX_EDITOR_TILE_COUNT = 1_000_000;
 
 // ============= Base64 helpers (works in both Node.js and browser) =============
 
@@ -62,6 +66,10 @@ export function miuMapDataToDto(data: MiuMapData): MiuMapDataDto {
     layer3: uint8ArrayToBase64(data.layer3),
     barriers: uint8ArrayToBase64(data.barriers),
     traps: uint8ArrayToBase64(data.traps),
+    extensions: data.extensions?.map((extension) => ({
+      id: extension.id,
+      data: uint8ArrayToBase64(extension.data),
+    })),
   };
 }
 
@@ -83,5 +91,49 @@ export function dtoToMiuMapData(dto: MiuMapDataDto): MiuMapData {
     layer3: base64ToUint8Array(dto.layer3),
     barriers: base64ToUint8Array(dto.barriers),
     traps: base64ToUint8Array(dto.traps),
+    extensions: dto.extensions?.map((extension) => ({
+      id: extension.id,
+      data: base64ToUint8Array(extension.data),
+    })),
+  };
+}
+
+/**
+ * Create an empty, immediately renderable MMF map using an existing MSF resource table.
+ * The arrays follow the exact MMF1 layout; callers paint `{msfIndex, frame}` pairs later.
+ */
+export function createBlankMiuMapData(
+  columns: number,
+  rows: number,
+  msfEntries: readonly MsfEntryDto[]
+): MiuMapData {
+  if (!Number.isInteger(columns) || columns < 2 || columns > 0xffff) {
+    throw new RangeError("MMF columns must be an integer between 2 and 65535");
+  }
+  if (!Number.isInteger(rows) || rows < 3 || rows > 0xffff) {
+    throw new RangeError("MMF rows must be an integer between 3 and 65535");
+  }
+  if (msfEntries.length > 0xff) {
+    throw new RangeError("MMF supports at most 255 MSF entries");
+  }
+
+  const totalTiles = columns * rows;
+  if (totalTiles > MAX_EDITOR_TILE_COUNT) {
+    throw new RangeError(`Editor maps support at most ${MAX_EDITOR_TILE_COUNT} tiles`);
+  }
+  const { width, height } = getMmfMapPixelSize(columns, rows);
+  return {
+    mapColumnCounts: columns,
+    mapRowCounts: rows,
+    mapPixelWidth: width,
+    mapPixelHeight: height,
+    msfEntries: msfEntries.map((entry) => ({ ...entry })),
+    trapTable: [],
+    layer1: new Uint8Array(totalTiles * 2),
+    layer2: new Uint8Array(totalTiles * 2),
+    layer3: new Uint8Array(totalTiles * 2),
+    barriers: new Uint8Array(totalTiles),
+    traps: new Uint8Array(totalTiles),
+    extensions: [],
   };
 }

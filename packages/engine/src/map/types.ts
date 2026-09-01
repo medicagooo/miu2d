@@ -1,3 +1,9 @@
+/**
+ * Map runtime types shared by MMF parsing, rendering and the Dashboard painter.
+ * AI trace: `MiuMapData` is created by `parseMMF` or `createBlankMiuMapData`, consumed by
+ * `MapViewer`/`MapRenderer`, and converted through `mmf-dto.ts` before API writes. Unknown
+ * extension chunks remain attached so editing core layers cannot discard future MMF data.
+ */
 // Map tile types matching implementation
 export interface MapMpcIndex {
   frame: number; // byte
@@ -42,6 +48,12 @@ export interface MsfEntry {
   looping: boolean;
 }
 
+/** Preserved MMF extension chunk in original file order. */
+export interface MmfExtension {
+  id: string;
+  data: Uint8Array;
+}
+
 // ============= Trap Entry (MMF format) =============
 
 export interface TrapEntry {
@@ -78,6 +90,8 @@ export interface MiuMapData {
   barriers: Uint8Array;
   /** Trap indices: totalTiles × 1 byte */
   traps: Uint8Array;
+  /** Unknown/future MMF chunks; writers must preserve them verbatim. */
+  extensions?: MmfExtension[];
 }
 
 // ============= Legacy MAP format types (for viewer / old parser) =============

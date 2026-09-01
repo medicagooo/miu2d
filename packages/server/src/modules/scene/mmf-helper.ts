@@ -4,6 +4,8 @@
  * 直接内联 MMF 解析/序列化逻辑（不依赖 @miu2d/engine，避免 nodenext 模块兼容问题）。
  * 使用 node:zlib 的 zstd 支持进行压缩/解压。
  * 提供 mmfData (base64 binary) ↔ MiuMapDataDto (JSON-safe) 双向转换。
+ * AI trace: `SceneService.create/update` 是写入调用方；未知 extension chunks 作为 DTO
+ * 的一部分保留，避免 Dashboard 修改基础图层时损坏未来格式数据。
  */
 import { zstdCompressSync, zstdDecompressSync } from "node:zlib";
 import type { MiuMapDataDto } from "@miu2d/types";
@@ -32,6 +34,7 @@ interface MiuMapData {
   layer3: Uint8Array;
   barriers: Uint8Array;
   traps: Uint8Array;
+  extensions: { id: string; data: Uint8Array }[];
 }
 
 // ── MMF 解析 ──
@@ -88,7 +91,8 @@ function parseMMF(buffer: ArrayBuffer): MiuMapData | null {
     }
   }
 
-  // Skip extension chunks until END sentinel
+  // Preserve extension chunks until END sentinel
+  const extensions: { id: string; data: Uint8Array }[] = [];
   while (offset + 8 <= data.length) {
     const chunkId = String.fromCharCode(
       data[offset],
@@ -99,6 +103,8 @@ function parseMMF(buffer: ArrayBuffer): MiuMapData | null {
     const chunkLen = view.getUint32(offset + 4, true);
     offset += 8;
     if (chunkId === "END\0") break;
+    if (offset + chunkLen > data.length) return null;
+    extensions.push({ id: chunkId, data: data.slice(offset, offset + chunkLen) });
     offset += chunkLen;
   }
 
@@ -139,6 +145,7 @@ function parseMMF(buffer: ArrayBuffer): MiuMapData | null {
     layer3,
     barriers,
     traps,
+    extensions,
   };
 }
 
@@ -147,6 +154,31 @@ function parseMMF(buffer: ArrayBuffer): MiuMapData | null {
 function serializeMMF(mapData: MiuMapData): ArrayBuffer {
   const encoder = new TextEncoder();
   const totalTiles = mapData.mapColumnCounts * mapData.mapRowCounts;
+
+  // Persistence boundary: every byte array must match the declared dimensions and every
+  // non-zero tile reference must resolve through the MMF MSF table. `SceneService.create/update`
+  // call this before storing `mmfData`; the renderer may skip invalid indices, but storage must
+  // reject them so the editor cannot persist a silently incomplete scene.
+  const expectedLayerLength = totalTiles * 2;
+  for (const [layerName, layer] of [
+    ["layer1", mapData.layer1],
+    ["layer2", mapData.layer2],
+    ["layer3", mapData.layer3],
+  ] as const) {
+    if (layer.length !== expectedLayerLength) {
+      throw new RangeError(`${layerName} length does not match the MMF dimensions`);
+    }
+    for (let offset = 0; offset < layer.length; offset += 2) {
+      if (layer[offset] > mapData.msfEntries.length) {
+        throw new RangeError(
+          `${layerName} tile ${offset / 2} references missing MSF index ${layer[offset]}`
+        );
+      }
+    }
+  }
+  if (mapData.barriers.length !== totalTiles || mapData.traps.length !== totalTiles) {
+    throw new RangeError("MMF property layer length does not match the declared dimensions");
+  }
 
   let msfTableSize = 0;
   const encodedMsfNames: Uint8Array[] = [];
@@ -185,7 +217,11 @@ function serializeMMF(mapData: MiuMapData): ArrayBuffer {
   const hasTraps = mapData.trapTable.length > 0;
   const flags = 0x01 | (hasTraps ? 0x02 : 0); // always zstd
 
-  const headerSize = 8 + 12 + msfTableSize + (hasTraps ? trapTableSize : 0) + 8;
+  const extensionSize = mapData.extensions.reduce(
+    (sum, extension) => sum + 8 + extension.data.length,
+    0
+  );
+  const headerSize = 8 + 12 + msfTableSize + (hasTraps ? trapTableSize : 0) + extensionSize + 8;
   const totalSize = headerSize + compressedBlob.length;
 
   const buf = new ArrayBuffer(totalSize);
@@ -236,6 +272,15 @@ function serializeMMF(mapData: MiuMapData): ArrayBuffer {
     }
   }
 
+  // Extension chunks (preserve original order and bytes)
+  for (const extension of mapData.extensions) {
+    for (let i = 0; i < 4; i++) out[offset + i] = extension.id.charCodeAt(i) & 0xff;
+    view.setUint32(offset + 4, extension.data.length, true);
+    offset += 8;
+    out.set(extension.data, offset);
+    offset += extension.data.length;
+  }
+
   // End Sentinel
   out[offset] = 0x45;
   out[offset + 1] = 0x4e;
@@ -265,6 +310,10 @@ function miuMapDataToDto(data: MiuMapData): MiuMapDataDto {
     layer3: Buffer.from(data.layer3).toString("base64"),
     barriers: Buffer.from(data.barriers).toString("base64"),
     traps: Buffer.from(data.traps).toString("base64"),
+    extensions: data.extensions.map((extension) => ({
+      id: extension.id,
+      data: Buffer.from(extension.data).toString("base64"),
+    })),
   };
 }
 
@@ -281,6 +330,10 @@ function dtoToMiuMapData(dto: MiuMapDataDto): MiuMapData {
     layer3: new Uint8Array(Buffer.from(dto.layer3, "base64")),
     barriers: new Uint8Array(Buffer.from(dto.barriers, "base64")),
     traps: new Uint8Array(Buffer.from(dto.traps, "base64")),
+    extensions: (dto.extensions ?? []).map((extension) => ({
+      id: extension.id,
+      data: new Uint8Array(Buffer.from(extension.data, "base64")),
+    })),
   };
 }
 

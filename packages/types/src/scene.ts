@@ -1,9 +1,15 @@
 /**
  * 场景类型定义
  *
- * 场景 = 一张地图 + 关联的脚本、陷阱、NPC、物件
- * 地图文件 (*.mmf) 存储在文件系统 (S3)
- * 其他数据（脚本/陷阱/NPC/OBJ）解析为 JSON 存储在 scene.data 字段
+ * 场景 = 一张地图 + 关联的脚本、陷阱、NPC、物件。
+ *
+ * AI trace:
+ * - `SceneService` 将 MMF 二进制以 base64 存入 `scenes.mmfData`，API 使用
+ *   `MiuMapDataDto` 传输结构化地图；Dashboard 场景编辑器是主要写入调用方。
+ * - `resolveSceneMsfPath` 同时供引擎地图加载器和服务端资源清单使用，保证普通
+ *   `file.msf` 与编辑器生成的共享图块引用 `source-map/file.msf` 采用同一规则。
+ * - DTO 约束对应 MMF1 的 uint8/uint16 字段和固定 tile blob 布局，避免序列化时
+ *   发生索引截断、数组补零或未知扩展块丢失。
  */
 import { z } from "zod";
 
@@ -129,6 +135,61 @@ export interface TrapEntryDto {
   scriptPath: string;
 }
 
+/** MMF extension chunk；按原顺序保留未知 chunk，确保编辑后可无损写回。 */
+export interface MmfExtensionDto {
+  /** 固定 4 字节 ASCII ChunkID，不能使用 END\0。 */
+  id: string;
+  /** 原始 chunk data（base64）。 */
+  data: string;
+}
+
+/** MMF1 根据错行等角网格尺寸派生出的像素范围。 */
+export function getMmfMapPixelSize(
+  columns: number,
+  rows: number
+): {
+  width: number;
+  height: number;
+} {
+  return {
+    width: (columns - 1) * 64,
+    height: (Math.floor((rows - 3) / 2) + 1) * 32,
+  };
+}
+
+/**
+ * 规范化 MMF 中的 MSF 引用。允许单文件名或相对 `msf/map` 根的安全子路径，
+ * 禁止绝对路径和 `..`，避免新场景共享图块时逃逸资源根目录。
+ */
+export function normalizeMsfEntryName(entryName: string): string | null {
+  const normalized = entryName.trim().replace(/\\/g, "/");
+  if (!normalized || normalized.startsWith("/") || /^[A-Za-z]:/.test(normalized)) return null;
+  const segments = normalized.split("/");
+  if (segments.some((segment) => !segment || segment === "." || segment === "..")) return null;
+  return segments.join("/");
+}
+
+/**
+ * 将模板场景的普通 MSF 文件名转换成可复用的共享引用。
+ * 已经带安全目录的引用保持不变，避免连续复制场景时重复添加目录。
+ */
+export function scopeMsfEntryName(sourceMapName: string, entryName: string): string | null {
+  const normalizedEntry = normalizeMsfEntryName(entryName);
+  const normalizedSource = normalizeMsfEntryName(sourceMapName);
+  if (!normalizedEntry || !normalizedSource || normalizedSource.includes("/")) return null;
+  return normalizedEntry.includes("/") ? normalizedEntry : `${normalizedSource}/${normalizedEntry}`;
+}
+
+/** 返回相对资源根的统一 MSF 路径；普通引用仍落在当前地图目录。 */
+export function resolveSceneMsfPath(mapName: string, entryName: string): string | null {
+  const normalizedEntry = normalizeMsfEntryName(entryName);
+  const normalizedMap = normalizeMsfEntryName(mapName);
+  if (!normalizedEntry || !normalizedMap || normalizedMap.includes("/")) return null;
+  return normalizedEntry.includes("/")
+    ? `msf/map/${normalizedEntry}`
+    : `msf/map/${normalizedMap}/${normalizedEntry}`;
+}
+
 /**
  * MiuMapData 的 JSON 安全表示
  *
@@ -152,21 +213,146 @@ export interface MiuMapDataDto {
   barriers: string;
   /** Trap indices: base64(totalTiles × 1 byte) */
   traps: string;
+  /** 未知/未来 MMF extension chunks，编辑器必须原样保留。 */
+  extensions?: MmfExtensionDto[];
 }
 
-export const MiuMapDataDtoSchema = z.object({
-  mapColumnCounts: z.number(),
-  mapRowCounts: z.number(),
-  mapPixelWidth: z.number(),
-  mapPixelHeight: z.number(),
-  msfEntries: z.array(z.object({ name: z.string(), looping: z.boolean() })),
-  trapTable: z.array(z.object({ trapIndex: z.number(), scriptPath: z.string() })),
-  layer1: z.string(),
-  layer2: z.string(),
-  layer3: z.string(),
-  barriers: z.string(),
-  traps: z.string(),
-});
+function base64ByteLength(value: string): number {
+  if (value.length % 4 !== 0) return -1;
+  if (!/^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/.test(value)) {
+    return -1;
+  }
+  const padding = value.endsWith("==") ? 2 : value.endsWith("=") ? 1 : 0;
+  return (value.length / 4) * 3 - padding;
+}
+
+function base64ByteAt(value: string, byteIndex: number): number {
+  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+  const quartetOffset = Math.floor(byteIndex / 3) * 4;
+  const first = alphabet.indexOf(value[quartetOffset]);
+  const second = alphabet.indexOf(value[quartetOffset + 1]);
+  const remainder = byteIndex % 3;
+  if (remainder === 0) return (first << 2) | (second >> 4);
+  const third = alphabet.indexOf(value[quartetOffset + 2]);
+  if (remainder === 1) return ((second & 0x0f) << 4) | (third >> 2);
+  const fourth = alphabet.indexOf(value[quartetOffset + 3]);
+  return ((third & 0x03) << 6) | fourth;
+}
+
+const Base64Schema = z
+  .string()
+  .refine((value) => base64ByteLength(value) >= 0, "无效的 base64 数据");
+
+function utf8ByteLength(value: string): number {
+  let length = 0;
+  for (const character of value) {
+    const codePoint = character.codePointAt(0) ?? 0;
+    length += codePoint <= 0x7f ? 1 : codePoint <= 0x7ff ? 2 : codePoint <= 0xffff ? 3 : 4;
+  }
+  return length;
+}
+
+export const MiuMapDataDtoSchema = z
+  .object({
+    mapColumnCounts: z.number().int().min(2).max(0xffff),
+    mapRowCounts: z.number().int().min(3).max(0xffff),
+    mapPixelWidth: z.number().int().nonnegative(),
+    mapPixelHeight: z.number().int().nonnegative(),
+    msfEntries: z
+      .array(
+        z.object({
+          name: z
+            .string()
+            .min(1)
+            .refine((name) => utf8ByteLength(name) <= 0xff, "MSF 引用超过 255 字节")
+            .refine((name) => normalizeMsfEntryName(name) !== null, "MSF 引用路径不安全"),
+          looping: z.boolean(),
+        })
+      )
+      .max(0xff),
+    trapTable: z
+      .array(
+        z.object({
+          trapIndex: z.number().int().min(1).max(0xff),
+          scriptPath: z
+            .string()
+            .refine((path) => utf8ByteLength(path) <= 0xffff, "陷阱脚本路径过长"),
+        })
+      )
+      .max(0xffff),
+    layer1: Base64Schema,
+    layer2: Base64Schema,
+    layer3: Base64Schema,
+    barriers: Base64Schema,
+    traps: Base64Schema,
+    extensions: z
+      .array(
+        z.object({
+          id: z
+            .string()
+            .length(4)
+            .refine(
+              (id) => [...id].every((character) => character.charCodeAt(0) <= 0xff),
+              "ChunkID 必须是四个单字节字符"
+            )
+            .refine((id) => id !== "END\0", "END 不是扩展块"),
+          data: Base64Schema,
+        })
+      )
+      .optional(),
+  })
+  .superRefine((data, ctx) => {
+    const totalTiles = data.mapColumnCounts * data.mapRowCounts;
+    const expected = getMmfMapPixelSize(data.mapColumnCounts, data.mapRowCounts);
+    if (data.mapPixelWidth !== expected.width) {
+      ctx.addIssue({
+        code: "custom",
+        path: ["mapPixelWidth"],
+        message: "像素宽度与地图列数不一致",
+      });
+    }
+    if (data.mapPixelHeight !== expected.height) {
+      ctx.addIssue({
+        code: "custom",
+        path: ["mapPixelHeight"],
+        message: "像素高度与地图行数不一致",
+      });
+    }
+    for (const field of ["layer1", "layer2", "layer3"] as const) {
+      const layerLength = base64ByteLength(data[field]);
+      if (layerLength !== totalTiles * 2) {
+        ctx.addIssue({ code: "custom", path: [field], message: "瓦片图层长度与地图尺寸不一致" });
+        continue;
+      }
+      for (let offset = 0; offset < layerLength; offset += 2) {
+        if (base64ByteAt(data[field], offset) > data.msfEntries.length) {
+          ctx.addIssue({
+            code: "custom",
+            path: [field],
+            message: `瓦片 ${offset / 2} 引用了不存在的 MSF 索引`,
+          });
+          break;
+        }
+      }
+    }
+    for (const field of ["barriers", "traps"] as const) {
+      if (base64ByteLength(data[field]) !== totalTiles) {
+        ctx.addIssue({ code: "custom", path: [field], message: "地图属性层长度与地图尺寸不一致" });
+      }
+    }
+    const trapIndices = new Set<number>();
+    for (let i = 0; i < data.trapTable.length; i++) {
+      const trapIndex = data.trapTable[i].trapIndex;
+      if (trapIndices.has(trapIndex)) {
+        ctx.addIssue({
+          code: "custom",
+          path: ["trapTable", i, "trapIndex"],
+          message: "陷阱编号重复",
+        });
+      }
+      trapIndices.add(trapIndex);
+    }
+  });
 
 // ============= 场景 Schema =============
 
@@ -226,6 +412,8 @@ export const CreateSceneInputSchema = z.object({
   name: z.string(),
   mapFileName: z.string(),
   data: z.record(z.string(), z.unknown()).nullable().optional(),
+  /** 新建可绘制场景时直接写入的结构化空白 MMF。 */
+  mapParsed: MiuMapDataDtoSchema.optional(),
 });
 export type CreateSceneInput = z.infer<typeof CreateSceneInputSchema>;
 

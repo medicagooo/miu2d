@@ -3,9 +3,15 @@
  *
  * SceneDetailPage: 外部 wrapper — 提供 SceneEntriesProvider context
  * SceneDetailContent: 核心内容 — 地图预览 + 右侧 tab 面板（NPC/OBJ/脚本/陷阱）
+ *
+ * AI trace:
+ * - `scene.get.mapParsed` 是地图基线；本页拥有 MMF dirty/history/stroke 状态，并通过
+ *   `scene.update({mapParsed})` 显式保存，独立于 SceneEntriesContext 的文本/实体保存。
+ * - `MapViewer` 负责权威坐标换算和 atlas 加载，本页只修改活动图层的两字节引用。
+ * - `MapDataPanel`/`MapTileEditorPanel` 是控制面板，游戏 `MapRenderer` 是最终预览路径。
  */
 import type { MiuMapData } from "@miu2d/engine/map/types";
-import { dtoToMiuMapData } from "@miu2d/engine/resource/format/mmf-dto";
+import { dtoToMiuMapData, miuMapDataToDto } from "@miu2d/engine/resource/format/mmf-dto";
 import { trpc, useToast } from "@miu2d/shared";
 import type {
   NpcListItem,
@@ -15,7 +21,13 @@ import type {
   SceneObjEntry,
 } from "@miu2d/types";
 import { NpcKindValues, NpcRelationValues, ObjKindValues } from "@miu2d/types";
-import type { MapMarker, MapViewerHandle, SidePanelTab } from "@miu2d/viewer";
+import type {
+  MapMarker,
+  MapTilePointerPhase,
+  MapTileResource,
+  MapViewerHandle,
+  SidePanelTab,
+} from "@miu2d/viewer";
 import { MapViewer } from "@miu2d/viewer";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
@@ -27,10 +39,40 @@ import { getResourceRoot } from "../../utils/resourcePath";
 import { ContextMenu } from "../fileTree/ContextMenu";
 import { ConfirmDialog } from "../fileTree/Dialogs";
 import { MapDataPanel } from "./MapDataPanel";
+import type {
+  MapTileEditorControls,
+  MapTileLayer,
+  MapTileSelection,
+  MapTileTool,
+} from "./MapTileEditorPanel";
 import { SceneEntriesProvider, useSceneEntries } from "./SceneEntriesContext";
 import { SceneItemEditorPanel } from "./SceneItemEditorPanel";
 import { createDefaultNpcEntry, createDefaultObjEntry } from "./scene-constants";
 import { useGameData, useSpriteCache } from "./scene-sprites";
+
+interface TileChange {
+  tileIndex: number;
+  beforeMsf: number;
+  beforeFrame: number;
+  afterMsf: number;
+  afterFrame: number;
+}
+
+interface TileEditCommand {
+  layer: MapTileLayer;
+  changes: TileChange[];
+}
+
+interface ActiveTileStroke {
+  layer: MapTileLayer;
+  mapData: MiuMapData;
+  target: Uint8Array;
+  changes: Map<number, TileChange>;
+}
+
+function cloneMapData(data: MiuMapData): MiuMapData {
+  return dtoToMiuMapData(miuMapDataToDto(data));
+}
 
 // ============= 外部 Wrapper =============
 
@@ -83,14 +125,30 @@ function SceneDetailContent() {
     { gameId: gameId!, id: sceneId! },
     { enabled: !!gameId && !!sceneId }
   );
+  const updateMapMutation = trpc.scene.update.useMutation();
 
   // 从 Context 获取条目（唯一数据源）
   const { npcEntries, setNpcEntries, objEntries, setObjEntries, isAnyDirty } = useSceneEntries();
 
   // 地图数据加载
   const [mapData, setMapData] = useState<MiuMapData | null>(null);
+  const mapDataRef = useRef<MiuMapData | null>(null);
+  mapDataRef.current = mapData;
+  const savedMapRef = useRef<MiuMapData | null>(null);
   const [mapLoading, setMapLoading] = useState(false);
   const [mapError, setMapError] = useState<string | null>(null);
+  const [mapDirty, setMapDirty] = useState(false);
+  const mapDirtyRef = useRef(false);
+  mapDirtyRef.current = mapDirty;
+  const [mapSaving, setMapSaving] = useState(false);
+  const [mapSaveMessage, setMapSaveMessage] = useState("");
+  const [tileResources, setTileResources] = useState<readonly MapTileResource[]>([]);
+  const [activeTileLayer, setActiveTileLayer] = useState<MapTileLayer>("layer1");
+  const [tileTool, setTileTool] = useState<MapTileTool>("pan");
+  const [selectedTile, setSelectedTile] = useState<MapTileSelection | null>(null);
+  const [undoStack, setUndoStack] = useState<TileEditCommand[]>([]);
+  const [redoStack, setRedoStack] = useState<TileEditCommand[]>([]);
+  const activeTileStrokeRef = useRef<ActiveTileStroke | null>(null);
   /** 手动选中高亮的 trap indices（从 MapDataPanel 选择） */
   const [panelHighlightTraps, setPanelHighlightTraps] = useState<number[] | null>(null);
 
@@ -133,8 +191,19 @@ function SceneDetailContent() {
   // biome-ignore lint/correctness/useExhaustiveDependencies: intentionally reset all state when sceneId changes
   useEffect(() => {
     setMapData(null);
+    mapDataRef.current = null;
+    savedMapRef.current = null;
     setMapError(null);
     setMapLoading(false);
+    setMapDirty(false);
+    mapDirtyRef.current = false;
+    setMapSaving(false);
+    setMapSaveMessage("");
+    setTileResources([]);
+    setSelectedTile(null);
+    setUndoStack([]);
+    setRedoStack([]);
+    activeTileStrokeRef.current = null;
     setSelectedNpcIdx(null);
     setSelectedObjIdx(null);
     setRightTab("map");
@@ -163,18 +232,18 @@ function SceneDetailContent() {
 
   // 导航拦截：有未保存修改时，刷新/关闭页面弹出浏览器原生提示
   useEffect(() => {
-    if (!isAnyDirty) return;
+    if (!isAnyDirty && !mapDirty) return;
     const handler = (e: BeforeUnloadEvent) => {
       e.preventDefault();
     };
     window.addEventListener("beforeunload", handler);
     return () => window.removeEventListener("beforeunload", handler);
-  }, [isAnyDirty]);
+  }, [isAnyDirty, mapDirty]);
 
   // 侧边栏点击拦截：dirty 时阻止导航
   const [pendingNavHref, setPendingNavHref] = useState<string | null>(null);
   const isAnyDirtyRef = useRef(false);
-  isAnyDirtyRef.current = isAnyDirty;
+  isAnyDirtyRef.current = isAnyDirty || mapDirty;
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       if (!isAnyDirtyRef.current) return;
@@ -194,6 +263,9 @@ function SceneDetailContent() {
   // 从 API 响应解析地图数据（后端已完成 MMF 解析）
   useEffect(() => {
     if (!scene?.mapFileName) return;
+    // Entity/script saves refetch the whole scene query. Keep an unsaved map draft authoritative
+    // across those refetches; the explicit map save/discard paths replace it deliberately.
+    if (mapDirtyRef.current && mapDataRef.current) return;
 
     setMapLoading(true);
     setMapError(null);
@@ -204,6 +276,12 @@ function SceneDetailContent() {
         // 后端返回的结构化 MMF 数据，转换为引擎运行时类型
         const data = dtoToMiuMapData(scene.mapParsed);
         setMapData(data);
+        mapDataRef.current = data;
+        savedMapRef.current = cloneMapData(data);
+        setMapDirty(false);
+        setUndoStack([]);
+        setRedoStack([]);
+        activeTileStrokeRef.current = null;
       } else {
         setMapError("无地图数据");
       }
@@ -213,6 +291,195 @@ function SceneDetailContent() {
       setMapLoading(false);
     }
   }, [scene?.mapFileName, scene?.mapParsed]);
+
+  const commitMapData = useCallback((next: MiuMapData) => {
+    mapDataRef.current = next;
+    setMapData(next);
+    mapDirtyRef.current = true;
+    setMapDirty(true);
+    setMapSaveMessage("");
+  }, []);
+
+  const handleTileResourcesLoaded = useCallback((resources: readonly MapTileResource[]) => {
+    setTileResources(resources);
+    if (resources.length === 0) return;
+    setSelectedTile((current) => {
+      if (
+        current &&
+        resources.some(
+          (resource) =>
+            resource.msfIndex === current.msfIndex && current.frame < resource.frames.length
+        )
+      ) {
+        return current;
+      }
+      const first = resources.find((resource) => resource.frames.length > 0);
+      return first ? { msfIndex: first.msfIndex, frame: 0 } : null;
+    });
+  }, []);
+
+  const handleDiscardMap = useCallback(() => {
+    if (!savedMapRef.current) return;
+    const restored = cloneMapData(savedMapRef.current);
+    mapDataRef.current = restored;
+    setMapData(restored);
+    mapDirtyRef.current = false;
+    setMapDirty(false);
+    setMapSaveMessage("已放弃地图修改");
+    setUndoStack([]);
+    setRedoStack([]);
+    activeTileStrokeRef.current = null;
+  }, []);
+
+  const handleSaveMap = useCallback(async () => {
+    const current = mapDataRef.current;
+    if (!current || !gameId || !sceneId || !mapDirty) return;
+    setMapSaving(true);
+    setMapSaveMessage("");
+    try {
+      const saved = await updateMapMutation.mutateAsync({
+        gameId,
+        id: sceneId,
+        mapParsed: miuMapDataToDto(current),
+      });
+      const persisted = saved.mapParsed ? dtoToMiuMapData(saved.mapParsed) : cloneMapData(current);
+      savedMapRef.current = cloneMapData(persisted);
+      mapDataRef.current = persisted;
+      setMapData(persisted);
+      mapDirtyRef.current = false;
+      setMapDirty(false);
+      setUndoStack([]);
+      setRedoStack([]);
+      activeTileStrokeRef.current = null;
+      setMapSaveMessage("地图已保存");
+      toast.success("地图已保存");
+      void refetchScene();
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      setMapSaveMessage(`保存失败: ${message}`);
+      toast.error(`地图保存失败: ${message}`);
+    } finally {
+      setMapSaving(false);
+    }
+  }, [gameId, sceneId, mapDirty, updateMapMutation, toast, refetchScene]);
+
+  const applyTileCommand = useCallback(
+    (command: TileEditCommand, useAfter: boolean) => {
+      const current = mapDataRef.current;
+      if (!current) return;
+      const target = new Uint8Array(current[command.layer]);
+      for (const change of command.changes) {
+        const offset = change.tileIndex * 2;
+        target[offset] = useAfter ? change.afterMsf : change.beforeMsf;
+        target[offset + 1] = useAfter ? change.afterFrame : change.beforeFrame;
+      }
+      commitMapData({ ...current, [command.layer]: target });
+    },
+    [commitMapData]
+  );
+
+  const handleUndoTile = useCallback(() => {
+    const command = undoStack[undoStack.length - 1];
+    if (!command) return;
+    applyTileCommand(command, false);
+    setUndoStack((current) => current.slice(0, -1));
+    setRedoStack((current) => [...current, command].slice(-100));
+  }, [undoStack, applyTileCommand]);
+
+  const handleRedoTile = useCallback(() => {
+    const command = redoStack[redoStack.length - 1];
+    if (!command) return;
+    applyTileCommand(command, true);
+    setRedoStack((current) => current.slice(0, -1));
+    setUndoStack((current) => [...current, command].slice(-100));
+  }, [redoStack, applyTileCommand]);
+
+  const handleTilePointer = useCallback(
+    (tileX: number, tileY: number, phase: MapTilePointerPhase) => {
+      if (phase === "end") {
+        const stroke = activeTileStrokeRef.current;
+        activeTileStrokeRef.current = null;
+        if (!stroke) return;
+        const changes = [...stroke.changes.values()].filter(
+          (change) =>
+            change.beforeMsf !== change.afterMsf || change.beforeFrame !== change.afterFrame
+        );
+        if (changes.length === 0) return;
+        const completed = { layer: stroke.layer, changes } satisfies TileEditCommand;
+        setMapData({ ...stroke.mapData });
+        mapDirtyRef.current = true;
+        setMapDirty(true);
+        setMapSaveMessage("");
+        setUndoStack((current) => [...current, completed].slice(-100));
+        setRedoStack([]);
+        return;
+      }
+
+      const current = mapDataRef.current;
+      if (
+        !current ||
+        tileX < 0 ||
+        tileY < 0 ||
+        tileX >= current.mapColumnCounts ||
+        tileY >= current.mapRowCounts ||
+        tileTool === "pan"
+      ) {
+        return;
+      }
+
+      const tileIndex = tileY * current.mapColumnCounts + tileX;
+      const offset = tileIndex * 2;
+
+      if (phase === "start" && tileTool === "eyedropper") {
+        const source = current[activeTileLayer];
+        const msfIndex = source[offset] ?? 0;
+        const frame = source[offset + 1] ?? 0;
+        if (msfIndex > 0) {
+          setSelectedTile({ msfIndex, frame });
+          setTileTool("brush");
+        }
+        return;
+      }
+
+      if (phase === "start") {
+        if (tileTool === "brush" && !selectedTile) return;
+        const target = new Uint8Array(current[activeTileLayer]);
+        const next = { ...current, [activeTileLayer]: target };
+        const stroke: ActiveTileStroke = {
+          layer: activeTileLayer,
+          mapData: next,
+          target,
+          changes: new Map(),
+        };
+        activeTileStrokeRef.current = stroke;
+        mapDataRef.current = next;
+        setMapData(next);
+      }
+
+      const stroke = activeTileStrokeRef.current;
+      if (!stroke || stroke.layer !== activeTileLayer) return;
+      const desiredMsf = tileTool === "eraser" ? 0 : (selectedTile?.msfIndex ?? 0);
+      const desiredFrame = tileTool === "eraser" ? 0 : (selectedTile?.frame ?? 0);
+      let change = stroke.changes.get(tileIndex);
+      if (!change) {
+        change = {
+          tileIndex,
+          beforeMsf: stroke.target[offset] ?? 0,
+          beforeFrame: stroke.target[offset + 1] ?? 0,
+          afterMsf: desiredMsf,
+          afterFrame: desiredFrame,
+        };
+        stroke.changes.set(tileIndex, change);
+      } else {
+        change.afterMsf = desiredMsf;
+        change.afterFrame = desiredFrame;
+      }
+      stroke.target[offset] = desiredMsf;
+      stroke.target[offset + 1] = desiredFrame;
+      mapViewerRef.current?.requestRender();
+    },
+    [activeTileLayer, tileTool, selectedTile]
+  );
 
   const handleMarkerClick = useCallback((index: number) => {
     if (index < npcCountRef.current) {
@@ -528,7 +795,7 @@ function SceneDetailContent() {
           traps: newTraps,
           trapTable: newTrapTable,
         };
-        setMapData(updatedMapData);
+        commitMapData(updatedMapData);
         setPanelHighlightTraps([trapIndex]);
         toast.success(`已在瓦片放置陷阱 #${trapIndex}（未保存）`);
       } else {
@@ -537,7 +804,7 @@ function SceneDetailContent() {
       }
       setMapContextMenu(null);
     },
-    [mapData, mapContextMenu, toast]
+    [mapData, mapContextMenu, toast, commitMapData]
   );
 
   /** 通过右键菜单放置/清除障碍 */
@@ -551,7 +818,7 @@ function SceneDetailContent() {
 
       const newBarriers = new Uint8Array(mapData.barriers);
       newBarriers[tileIdx] = barrierValue;
-      setMapData({ ...mapData, barriers: newBarriers });
+      commitMapData({ ...mapData, barriers: newBarriers });
       if (barrierValue === 0) {
         toast.success(`已清除障碍（未保存）`);
       } else {
@@ -559,7 +826,7 @@ function SceneDetailContent() {
       }
       setMapContextMenu(null);
     },
-    [mapData, mapContextMenu, toast]
+    [mapData, mapContextMenu, toast, commitMapData]
   );
 
   /** 通过右键菜单删除瓦片上的陷阱 */
@@ -569,10 +836,10 @@ function SceneDetailContent() {
     const tileIdx = tileY * mapData.mapColumnCounts + tileX;
     const newTraps = new Uint8Array(mapData.traps);
     newTraps[tileIdx] = 0;
-    setMapData({ ...mapData, traps: newTraps });
+    commitMapData({ ...mapData, traps: newTraps });
     toast.success("已清除瓦片陷阱（未保存）");
     setMapContextMenu(null);
-  }, [mapData, mapContextMenu, toast]);
+  }, [mapData, mapContextMenu, toast, commitMapData]);
 
   /** 通过右键菜单删除指定 NPC */
   const handleContextMenuDeleteNpc = useCallback(
@@ -602,9 +869,48 @@ function SceneDetailContent() {
   }, []);
 
   // mapData 被 MapDataPanel 修改后同步到本地状态
-  const handleMapDataChanged = useCallback((newMapData: MiuMapData) => {
-    setMapData(newMapData);
-  }, []);
+  const handleMapDataChanged = useCallback(
+    (newMapData: MiuMapData) => {
+      commitMapData(newMapData);
+    },
+    [commitMapData]
+  );
+
+  const tileEditorControls = useMemo<MapTileEditorControls>(
+    () => ({
+      resources: tileResources,
+      activeLayer: activeTileLayer,
+      tool: tileTool,
+      selectedTile,
+      dirty: mapDirty,
+      saving: mapSaving,
+      saveMessage: mapSaveMessage,
+      canUndo: undoStack.length > 0,
+      canRedo: redoStack.length > 0,
+      onLayerChange: setActiveTileLayer,
+      onToolChange: setTileTool,
+      onTileSelect: setSelectedTile,
+      onUndo: handleUndoTile,
+      onRedo: handleRedoTile,
+      onSave: () => void handleSaveMap(),
+      onDiscard: handleDiscardMap,
+    }),
+    [
+      tileResources,
+      activeTileLayer,
+      tileTool,
+      selectedTile,
+      mapDirty,
+      mapSaving,
+      mapSaveMessage,
+      undoStack.length,
+      redoStack.length,
+      handleUndoTile,
+      handleRedoTile,
+      handleSaveMap,
+      handleDiscardMap,
+    ]
+  );
 
   // 构建 sidePanelTabs — 地图 / NPC / OBJ / 脚本 / 陷阱 统一排列
   const sidePanelTabs = useMemo((): SidePanelTab[] => {
@@ -623,6 +929,7 @@ function SceneDetailContent() {
           onTrapSelect={handleMapPanelTrapSelect}
           gameId={gameId ?? ""}
           gameSlug={gameSlug ?? ""}
+          tileEditor={tileEditorControls}
         />
       ),
     });
@@ -747,6 +1054,7 @@ function SceneDetailContent() {
     handleHoverLeave,
     handleMapDataChanged,
     handleMapPanelTrapSelect,
+    tileEditorControls,
   ]);
 
   // markers
@@ -870,6 +1178,9 @@ function SceneDetailContent() {
             onTabChange={handleRightTabChange}
             highlightTrapIndices={highlightTrapIndices}
             onContextMenu={handleMapContextMenu}
+            interactionMode={tileTool === "pan" ? "pan" : "paint"}
+            onTilePointer={handleTilePointer}
+            onTileResourcesLoaded={handleTileResourcesLoaded}
           />
         </div>
       </div>

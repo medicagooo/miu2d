@@ -1,5 +1,10 @@
-/** 地图渲染器 - Canvas 基于的 JxqyMap 渲染 */
+/**
+ * 地图渲染器 - Canvas/WebGL 共用的 JxqyMap 渲染。
+ * AI trace: `loadMapMpcs` 被游戏运行时和 Dashboard `MapViewer` 共用；MSF 路径必须
+ * 通过 `resolveSceneMsfPath` 解析，才能让新场景安全复用模板场景的图块目录。
+ */
 
+import { resolveSceneMsfPath } from "@miu2d/types";
 import { logger } from "../core/logger";
 import type { Renderer } from "../renderer/renderer";
 import { loadMpc } from "../resource/format/mpc";
@@ -216,17 +221,7 @@ export function renderMapToOffscreen(mapRenderer: MapRenderer): HTMLCanvasElemen
         const drawX = Math.floor(px - rect.w / 2 + offX);
         const drawY = Math.floor(py - (rect.h - 16) + offY);
 
-        ctx.drawImage(
-          atlas.canvas,
-          rect.x,
-          rect.y,
-          rect.w,
-          rect.h,
-          drawX,
-          drawY,
-          rect.w,
-          rect.h
-        );
+        ctx.drawImage(atlas.canvas, rect.x, rect.y, rect.w, rect.h, drawX, drawY, rect.w, rect.h);
       }
     }
   }
@@ -250,10 +245,7 @@ export function renderMapToOffscreen(mapRenderer: MapRenderer): HTMLCanvasElemen
  * - 重访地图时从二进制缓存重新解码（WASM 解码很快）
  * - 避免 Safari/iPad 因 GPU 纹理累积耗尽内存被杀进程
  */
-export function prewarmMpcAtlasTextures(
-  mpcAtlases: (MpcAtlas | null)[],
-  renderer: Renderer
-): void {
+export function prewarmMpcAtlasTextures(mpcAtlases: (MpcAtlas | null)[], renderer: Renderer): void {
   if (renderer.type !== "webgl") return;
 
   let freed = 0;
@@ -295,14 +287,6 @@ export async function loadMapMpcs(
   renderer.maxTileHeight = 0;
   renderer.maxTileWidth = 0;
 
-  // MSF/MPC 基础路径: msf/map/{mapName}/
-  let msfBasePath = `msf/map/${mapNameWithoutExt}`;
-  if (resourceRoot) {
-    msfBasePath = `${resourceRoot}/${msfBasePath}`;
-  } else {
-    msfBasePath = ResourcePath.from(msfBasePath);
-  }
-
   // 收集需要加载的 MSF 任务
   interface MsfLoadTask {
     slotIndex: number;
@@ -317,7 +301,13 @@ export async function loadMapMpcs(
 
   for (let i = 0; i < totalSlots; i++) {
     const entry = mapData.msfEntries[i];
-    tasks.push({ slotIndex: i, url: `${msfBasePath}/${entry.name}` });
+    const relativePath = resolveSceneMsfPath(mapNameWithoutExt, entry.name);
+    if (!relativePath) {
+      logger.warn(`Skipping unsafe MSF path: ${entry.name}`);
+      continue;
+    }
+    const url = resourceRoot ? `${resourceRoot}/${relativePath}` : ResourcePath.from(relativePath);
+    tasks.push({ slotIndex: i, url });
   }
 
   const totalMpcs = tasks.length;

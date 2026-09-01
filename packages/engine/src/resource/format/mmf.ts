@@ -8,13 +8,13 @@
  * - Compact MSF table (variable-length, UTF-8)
  * - Embedded trap table (no external Traps.ini needed)
  * - zstd-compressed tile data blob
- * - Extension chunk support (forward-compatible)
+ * - Extension chunks are retained in `MiuMapData.extensions`, allowing Dashboard edits to
+ *   round-trip future MMF fields instead of merely skipping them.
  */
 
 import { logger } from "../../core/logger";
 import { getZstdDecompressor } from "../../core/zstd";
-import type { MiuMapData, MsfEntry, TrapEntry } from "../../map/types";
-import { resourceLoader } from "../resource-loader";
+import type { MiuMapData, MmfExtension, MsfEntry, TrapEntry } from "../../map/types";
 import { calcMapPixelSize } from "./binary-utils";
 
 /**
@@ -90,7 +90,8 @@ export function parseMMF(buffer: ArrayBuffer, mapPath?: string): MiuMapData | nu
     }
   }
 
-  // 5. Skip extension chunks until END sentinel
+  // 5. Preserve extension chunks until END sentinel
+  const extensions: MmfExtension[] = [];
   while (offset + 8 <= data.length) {
     const chunkId = String.fromCharCode(
       data[offset],
@@ -101,7 +102,11 @@ export function parseMMF(buffer: ArrayBuffer, mapPath?: string): MiuMapData | nu
     const chunkLen = view.getUint32(offset + 4, true);
     offset += 8;
     if (chunkId === "END\0") break;
-    // Skip unknown chunks (forward compatible)
+    if (offset + chunkLen > data.length) {
+      logger.error(`[MMF] Extension chunk ${chunkId} exceeds file bounds`);
+      return null;
+    }
+    extensions.push({ id: chunkId, data: data.slice(offset, offset + chunkLen) });
     offset += chunkLen;
   }
 
@@ -159,6 +164,7 @@ export function parseMMF(buffer: ArrayBuffer, mapPath?: string): MiuMapData | nu
     layer3,
     barriers,
     traps,
+    extensions,
   };
 }
 

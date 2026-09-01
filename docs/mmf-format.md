@@ -123,14 +123,17 @@ const pixelHeight = (Math.floor((rows - 3) / 2) + 1) * 32;
 | 字段 | 大小 | 类型 | 说明 |
 |------|------|------|------|
 | `nameLen` | 1 | u8 | MSF 文件名长度 (UTF-8 字节数) |
-| `name` | nameLen | UTF-8 | MSF 文件名 (不含目录前缀，如 `"map003-1-1.msf"`) |
+| `name` | nameLen | UTF-8 | MSF 引用（通常为文件名，如 `"map003-1-1.msf"`） |
 | `flags` | 1 | u8 | bit 0: looping (动画循环) |
 
 **设计说明**：
 - 旧格式固定 255 个 slot，每个 64 字节 = 16 KB。实际地图平均只用 ~20 个 MPC。
 - MMF 只存实际使用的 MSF 文件，变长名+1字节flag，~20 个文件约 400 字节。
 - **MSF 索引**：tile 中的 `msfIndex` 值 1~N 对应 MSF Table 中的条目 0~N-1（与旧格式一致，0=空）。
-- **目录路径**已去掉——引擎按约定推导：`msf/map/{mapNameWithoutExt}/`
+- 普通文件名由引擎按约定推导为 `msf/map/{mapNameWithoutExt}/{name}`。
+- Dashboard 新建场景复用现有图块时，允许写入相对 `msf/map` 根的安全引用
+  `{sourceMap}/{name}`；引擎和场景 manifest 都将其解析为
+  `msf/map/{sourceMap}/{name}`。绝对路径、`..` 和空路径段均被拒绝。
 
 ### Trap Table (偏移动态, 变长)
 
@@ -170,7 +173,7 @@ const pixelHeight = (Math.floor((rows - 3) / 2) + 1) * 32;
 
 ### Tile Data Blob (zstd 压缩)
 
-**未压缩结构**：分层连续存储，总大小 = `totalTiles × 5` 字节
+**未压缩结构**：分层连续存储，总大小 = `totalTiles × 8` 字节
 
 ```
 ┌─────────────────────────────────────────┐

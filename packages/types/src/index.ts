@@ -527,6 +527,7 @@ export type {
   ImportSceneItem,
   ListSceneInput,
   MiuMapDataDto,
+  MmfExtensionDto,
   MsfEntryDto,
   Scene,
   SceneData,
@@ -540,7 +541,8 @@ export type {
   TrapEntryDto,
   UpdateSceneInput,
 } from "./scene.js";
-// 场景类型
+// AI trace: scene DTO schemas and MSF path helpers are re-exported together so Dashboard,
+// server persistence and engine rendering consume one binary-format contract.
 export {
   ClearAllScenesInputSchema,
   ClearAllScenesResultSchema,
@@ -550,20 +552,24 @@ export {
   DeleteSceneInputSchema,
   extractDisplayName,
   GetSceneInputSchema,
+  getMmfMapPixelSize,
   getSceneDataCounts,
   ImportSceneBatchInputSchema,
   ImportSceneBatchResultSchema,
   ImportSceneItemSchema,
   ListSceneInputSchema,
   MiuMapDataDtoSchema,
+  normalizeMsfEntryName,
   parseIniContent,
   parseMapFileName,
   parseNpcEntries,
   parseObjEntries,
+  resolveSceneMsfPath,
   SceneItemKindEnum,
   SceneItemKindLabels,
   SceneListItemSchema,
   SceneSchema,
+  scopeMsfEntryName,
   UpdateSceneInputSchema,
 } from "./scene.js";
 export type {

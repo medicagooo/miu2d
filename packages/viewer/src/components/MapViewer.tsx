@@ -1,12 +1,18 @@
 /**
  * 地图预览组件
  *
- * 完全复用 engine 的渲染逻辑，使用 WebGL (Renderer) 渲染所有内容。
+ * 完全复用 engine 的渲染逻辑，通过可选 Canvas2D/WebGL Renderer 渲染所有内容。
  *
  * 架构: 单 canvas
  * - WebGL canvas: 逻辑分辨率 = containerSize/zoom，渲染地图瓦片 + NPC/OBJ 精灵
  *   + 网格/障碍/陷阱/标签/选中框（通过预渲染 offscreen canvas + drawSource）
  * - Renderer 懒初始化：首次 drawMap 时创建，避免 canvas 未挂载的竞态
+ *
+ * AI trace:
+ * - 游戏资源查看和 Dashboard `SceneDetailPage` 都调用本组件；默认交互仍是平移。
+ * - Dashboard 绘制模式通过 `interactionMode/onTilePointer` 接收统一的瓦片坐标，
+ *   通过 `onTileResourcesLoaded` 复用本组件已经生成的 MSF atlas，避免二次解码。
+ * - 地图数组改变但 MSF 表不变时只同步 `MapRenderer.mapData`，不得重载 atlas。
  */
 
 import {
@@ -78,6 +84,35 @@ function computeLogicalSize(
   return { logicalW: worldW, logicalH: worldH, worldW, worldH };
 }
 
+/** Fill gaps between browser pointer events so a fast brush stroke remains continuous. */
+function collectTileStrokeSegment(
+  from: { x: number; y: number },
+  to: { x: number; y: number }
+): { x: number; y: number }[] {
+  const points: { x: number; y: number }[] = [];
+  let x = from.x;
+  let y = from.y;
+  const dx = Math.abs(to.x - from.x);
+  const dy = Math.abs(to.y - from.y);
+  const stepX = from.x < to.x ? 1 : -1;
+  const stepY = from.y < to.y ? 1 : -1;
+  let error = dx - dy;
+
+  while (x !== to.x || y !== to.y) {
+    const doubledError = error * 2;
+    if (doubledError > -dy) {
+      error -= dy;
+      x += stepX;
+    }
+    if (doubledError < dx) {
+      error += dx;
+      y += stepY;
+    }
+    points.push({ x, y });
+  }
+  return points;
+}
+
 /** 地图标记（NPC/OBJ 等） */
 export interface MapMarker {
   /** 瓦片 X */
@@ -125,6 +160,18 @@ export interface SidePanelTab {
   label: string;
   /** Tab 内容（ReactNode） */
   content: ReactNode;
+}
+
+export type MapInteractionMode = "pan" | "paint";
+export type MapTilePointerPhase = "start" | "move" | "end";
+
+/** Dashboard 瓦片调色板复用的只读 atlas 数据；msfIndex 为 MMF 中的一基索引。 */
+export interface MapTileResource {
+  msfIndex: number;
+  name: string;
+  looping: boolean;
+  atlas: HTMLCanvasElement;
+  frames: { x: number; y: number; width: number; height: number }[];
 }
 
 interface MapViewerProps {
@@ -189,6 +236,12 @@ interface MapViewerProps {
     clientX: number;
     clientY: number;
   }) => void;
+  /** 平移或瓦片绘制模式；默认保持查看器原有的平移行为。 */
+  interactionMode?: MapInteractionMode;
+  /** 绘制模式中的瓦片指针生命周期。 */
+  onTilePointer?: (tileX: number, tileY: number, phase: MapTilePointerPhase) => void;
+  /** MSF atlas 加载完成后提供给外部调色板；地图切换时先回调空数组。 */
+  onTileResourcesLoaded?: (resources: readonly MapTileResource[]) => void;
 }
 
 /** MapViewer 暴露给父组件的命令式 API */
@@ -466,6 +519,9 @@ export const MapViewer = memo(
       onDrop,
       highlightTrapIndices,
       onContextMenu: onContextMenuProp,
+      interactionMode = "pan",
+      onTilePointer,
+      onTileResourcesLoaded,
     },
     ref
   ) {
@@ -534,6 +590,8 @@ export const MapViewer = memo(
     const mouseClientPosRef = useRef({ x: 0, y: 0 });
     const isHoveringRef = useRef(false);
     const isDraggingRef = useRef(false);
+    const isPaintingRef = useRef(false);
+    const lastPaintTileRef = useRef<{ x: number; y: number } | null>(null);
 
     // DOM refs：tooltip / 状态栏 / 面板坐标（直接操作 DOM，不走 React）
     const tooltipRef = useRef<HTMLDivElement>(null);
@@ -553,6 +611,8 @@ export const MapViewer = memo(
     // 标记位置覆盖回调（通过 ref 存储，避免影响 drawMap 依赖）
     const getMarkerPositionRef = useRef(getMarkerPosition);
     getMarkerPositionRef.current = getMarkerPosition;
+    const onTileResourcesLoadedRef = useRef(onTileResourcesLoaded);
+    onTileResourcesLoadedRef.current = onTileResourcesLoaded;
 
     // 动画时间
     const animTimeRef = useRef(0);
@@ -604,6 +664,14 @@ export const MapViewer = memo(
     // miuMapData ref（syncUI 通过 ref 读取，避免闭包过期）
     const miuMapDataRef = useRef(miuMapData);
     miuMapDataRef.current = miuMapData;
+
+    // Tile/trap edits replace the MiuMapData object without changing the MSF table.
+    // Keep the renderer pointed at the newest arrays while retaining already-decoded atlases.
+    useEffect(() => {
+      const renderer = rendererRef.current;
+      if (renderer && miuMapData) renderer.mapData = miuMapData;
+      needsRenderRef.current = true;
+    }, [miuMapData]);
 
     // MSF 稳定键：仅在 MSF 列表变化时才触发 MPC 重新加载，trap 编辑不会改变此值
     const msfKey = useMemo(
@@ -679,7 +747,9 @@ export const MapViewer = memo(
     // miuMapData 通过 ref 读取实际数据
     useEffect(() => {
       const data = miuMapDataRef.current;
+      onTileResourcesLoadedRef.current?.([]);
       if (!data || !mapName || !msfKey) return;
+      let cancelled = false;
 
       // 立刻设置加载状态，防止显示旧地图
       setIsMapLoading(true);
@@ -702,6 +772,25 @@ export const MapViewer = memo(
 
           if (!success) {
             setMapLoadError("加载 MPC 资源失败");
+          } else if (!cancelled) {
+            const resources: MapTileResource[] = [];
+            for (let i = 0; i < data.msfEntries.length; i++) {
+              const atlas = renderer.mpcAtlases[i];
+              if (!atlas) continue;
+              resources.push({
+                msfIndex: i + 1,
+                name: data.msfEntries[i].name,
+                looping: data.msfEntries[i].looping,
+                atlas: atlas.canvas,
+                frames: atlas.rects.map((rect) => ({
+                  x: rect.x,
+                  y: rect.y,
+                  width: rect.w,
+                  height: rect.h,
+                })),
+              });
+            }
+            onTileResourcesLoadedRef.current?.(resources);
           }
         } catch (err) {
           setMapLoadError(`加载失败: ${(err as Error).message}`);
@@ -711,6 +800,10 @@ export const MapViewer = memo(
       };
 
       loadMpcs();
+      return () => {
+        cancelled = true;
+        onTileResourcesLoadedRef.current?.([]);
+      };
     }, [msfKey, mapName, resourceRoot]);
 
     // 监听容器尺寸变化（仅标记脏，实际 resize 由 drawMap 统一处理，避免清空画布造成黑闪）
@@ -1272,6 +1365,18 @@ export const MapViewer = memo(
           return;
         }
 
+        if (interactionMode === "paint" && e.button === 0 && onTilePointer) {
+          const tile = MapBase.toTilePosition(wp.worldX, wp.worldY, false);
+          isPaintingRef.current = true;
+          lastPaintTileRef.current = { x: tile.x, y: tile.y };
+          tilePosRef.current = { x: tile.x, y: tile.y };
+          pendingClickRef.current = null;
+          onTilePointer(tile.x, tile.y, "start");
+          needsRenderRef.current = true;
+          e.preventDefault();
+          return;
+        }
+
         // 如果正在搬运标记，左键点击放置（右键由 contextmenu 处理取消）
         if (draggingMarkerRef.current !== null) {
           if (e.button !== 0) return;
@@ -1305,11 +1410,22 @@ export const MapViewer = memo(
         isDraggingRef.current = true;
         lastMouseRef.current = { x: e.clientX, y: e.clientY };
       },
-      [markers, onMarkerDrag, getWorldPos]
+      [markers, onMarkerDrag, getWorldPos, interactionMode, onTilePointer]
     );
 
     const handleMouseUp = useCallback(
       (e: React.MouseEvent) => {
+        if (isPaintingRef.current) {
+          const lastTile = lastPaintTileRef.current;
+          if (lastTile && onTilePointer) onTilePointer(lastTile.x, lastTile.y, "end");
+          isPaintingRef.current = false;
+          lastPaintTileRef.current = null;
+          isDraggingRef.current = false;
+          pendingClickRef.current = null;
+          needsRenderRef.current = true;
+          return;
+        }
+
         // 搬运模式下 mouseup 不放置（等待下次点击放置）
         if (draggingMarkerRef.current !== null) {
           needsRenderRef.current = true;
@@ -1367,7 +1483,7 @@ export const MapViewer = memo(
           }
         }
       },
-      [markers, onMarkerDrag, onMarkerClick, onEmptyClick, onTrapTileClick]
+      [markers, onMarkerDrag, onMarkerClick, onEmptyClick, onTrapTileClick, onTilePointer]
     );
 
     const handleMouseMove = useCallback(
@@ -1388,6 +1504,16 @@ export const MapViewer = memo(
         const prevTile = tilePosRef.current;
         if (tile.x !== prevTile.x || tile.y !== prevTile.y) {
           tilePosRef.current = { x: tile.x, y: tile.y };
+          if (isPaintingRef.current && onTilePointer) {
+            const previousPaintTile = lastPaintTileRef.current;
+            lastPaintTileRef.current = { x: tile.x, y: tile.y };
+            const segment = previousPaintTile
+              ? collectTileStrokeSegment(previousPaintTile, tile)
+              : [tile];
+            for (const segmentTile of segment) {
+              onTilePointer(segmentTile.x, segmentTile.y, "move");
+            }
+          }
           // 仅在缩放率足够高时才为 hover 高亮触发重绘，防止低缩放率下频繁重绘卡死
           if (zoomRef.current >= 0.2) {
             needsRenderRef.current = true;
@@ -1395,7 +1521,9 @@ export const MapViewer = memo(
         }
 
         // 拖拽移动
-        if (draggingMarkerRef.current !== null) {
+        if (isPaintingRef.current) {
+          // Paint strokes own the pointer until mouseup/mouseleave; never pan the camera.
+        } else if (draggingMarkerRef.current !== null) {
           // 拖拽标记 → 更新标记位置
           const dragTile = MapBase.toTilePosition(wp.worldX, wp.worldY, false);
           markerDragPosRef.current = { x: Math.max(0, dragTile.x), y: Math.max(0, dragTile.y) };
@@ -1425,10 +1553,16 @@ export const MapViewer = memo(
         // 鼠标移动时直接同步 DOM（tooltip 跟随响应更即时）
         syncUI();
       },
-      [getWorldPos, markers, syncUI]
+      [getWorldPos, markers, syncUI, onTilePointer]
     );
 
     const handleMouseLeave = useCallback(() => {
+      if (isPaintingRef.current) {
+        const lastTile = lastPaintTileRef.current;
+        if (lastTile && onTilePointer) onTilePointer(lastTile.x, lastTile.y, "end");
+      }
+      isPaintingRef.current = false;
+      lastPaintTileRef.current = null;
       isDraggingRef.current = false;
       isHoveringRef.current = false;
       // 取消标记拖拽（不提交）
@@ -1437,7 +1571,7 @@ export const MapViewer = memo(
       hoveredMarkerRef.current = null;
       needsRenderRef.current = true;
       syncUI();
-    }, [syncUI]);
+    }, [syncUI, onTilePointer]);
 
     // 右键：正在搬运标记时取消搬运；否则触发外部右键菜单回调
     const handleContextMenu = useCallback(
@@ -1677,11 +1811,13 @@ export const MapViewer = memo(
           <div
             ref={containerRef}
             className={`relative flex-1 min-w-0 overflow-hidden ${
-              draggingMarkerRef.current !== null
+              interactionMode === "paint"
                 ? "cursor-crosshair"
-                : hoveredMarkerRef.current !== null
-                  ? "cursor-pointer"
-                  : "cursor-grab active:cursor-grabbing"
+                : draggingMarkerRef.current !== null
+                  ? "cursor-crosshair"
+                  : hoveredMarkerRef.current !== null
+                    ? "cursor-pointer"
+                    : "cursor-grab active:cursor-grabbing"
             }`}
             onMouseDown={handleMouseDown}
             onMouseUp={handleMouseUp}
