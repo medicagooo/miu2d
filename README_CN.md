@@ -396,6 +396,8 @@ Debian WSL2 使用 mirrored networking 且运行原生 Docker 时，使用
 `deploy/wsl/compose.env` 将容器内 Nginx 发布到 WSL 回环端口 18080，并安装
 `deploy/wsl/miu2d-web-proxy.socket` 与 `deploy/wsl/miu2d-web-proxy.service`。该原生
 systemd socket 将 Windows 的 `http://localhost:8080` 转发到容器，不向局域网暴露服务。
+该 WSL 配置还会以同源、只读方式代理 `demo`、`sword1`、`sword2` 的公开 API 与游戏资源；
+浏览器凭据不会转发到远程服务，本地账号、存档、PostgreSQL 和 MinIO 仍由本地容器处理。
 
 ---
 

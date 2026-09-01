@@ -101,11 +101,18 @@ FROM nginx:alpine AS runner
 # STATIC_ONLY=true: 纯静态服务，无后端代理（镜像节点，VITE_DEMO_RESOURCES_DOMAIN 已指向外部后端）
 # STATIC_ONLY=false(默认): 包含 /trpc/ /game/ /s3/ 反向代理（完整部署）
 ARG STATIC_ONLY=false
-COPY packages/web/nginx.conf packages/web/nginx.static.conf /tmp/nginx-conf/
+ARG REMOTE_DEMOS=false
+COPY packages/web/nginx.conf packages/web/nginx.static.conf packages/web/nginx.demo-local.conf packages/web/nginx.demo-remote.conf /tmp/nginx-conf/
 RUN if [ "$STATIC_ONLY" = "true" ]; then \
       cp /tmp/nginx-conf/nginx.static.conf /etc/nginx/conf.d/default.conf; \
     else \
       cp /tmp/nginx-conf/nginx.conf /etc/nginx/conf.d/default.conf; \
+    fi \
+    && mkdir -p /etc/nginx/snippets \
+    && if [ "$REMOTE_DEMOS" = "true" ]; then \
+      cp /tmp/nginx-conf/nginx.demo-remote.conf /etc/nginx/snippets/miu2d-demo-upstream.conf; \
+    else \
+      cp /tmp/nginx-conf/nginx.demo-local.conf /etc/nginx/snippets/miu2d-demo-upstream.conf; \
     fi \
     && rm -rf /tmp/nginx-conf
 

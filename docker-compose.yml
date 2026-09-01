@@ -144,6 +144,7 @@ services:
       args:
         VITE_DEMO_RESOURCES_DOMAIN: ${VITE_DEMO_RESOURCES_DOMAIN:-}
         VITE_S3_BASE_URL: ${VITE_S3_BASE_URL:-/s3/miu2d}
+        REMOTE_DEMOS: ${REMOTE_DEMOS:-false}
     ports:
       # AI-TRACE: WEB_HOST_PORT 默认保持跨平台的 8080；WSL mirrored/native Docker
       # 使用 deploy/wsl/compose.env 改到 18080，再由原生 systemd socket 暴露 8080。
