@@ -2,7 +2,7 @@
  * 游戏调试区块 - 合并快捷操作和物品/武功
  */
 
-import { getMagicsData } from "@miu2d/engine/data";
+import { buildPlayerMagicCatalog, getMagicsData } from "@miu2d/engine/data";
 import { getMagicFromApiCache } from "@miu2d/engine/magic";
 import { EquipPosition, GoodKind, getAllGoods } from "@miu2d/engine/player/goods";
 import type React from "react";
@@ -257,10 +257,11 @@ export const GameDebugSection: React.FC<GameDebugSectionProps> = ({
     []
   );
 
-  // 从 API 数据获取所有玩家武功列表（userType === "player"），避免依赖 key 前缀约定
+  // AI-TRACE: The player debug picker uses the same merged eligibility contract as
+  // DebugManager.addAllMagics, so selecting one and adding all cannot disagree.
   const allMagics = useMemo(
     () =>
-      (getMagicsData()?.player ?? []).map((api) => {
+      buildPlayerMagicCatalog(getMagicsData()).map((api) => {
         const magic = getMagicFromApiCache(api.key);
         return { name: magic?.name ?? api.name ?? api.key, file: api.key };
       }),

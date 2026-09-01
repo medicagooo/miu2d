@@ -20,6 +20,7 @@ import { logger } from "../core/logger";
 import type { Direction, GameVariables } from "../core/types";
 import type { Difficulty } from "../character/level/difficulty";
 import { getGameSlug, getMagicsData, loadSceneNpcEntries, loadSceneObjEntries } from "../data/game-data-api";
+import { buildPlayerMagicCatalog } from "../data/player-magic-catalog";
 import { parseNpcData } from "../npc/npc-persistence";
 import type { GuiManager } from "../gui/gui-manager";
 import type { MagicItemInfo } from "../magic";
@@ -950,9 +951,9 @@ export class DebugManager {
       return 0;
     }
 
-    // 从 API 数据获取所有玩家武功（userType === "player"），避免依赖 key 前缀约定
-    const magicsData = getMagicsData();
-    const playerMagics = magicsData?.player.map((m) => m.key) ?? [];
+    // AI-TRACE: Player learning now consumes the merged player-usable catalog. The helper keeps
+    // remote ownership intact for NPC casting while excluding non-magic import residue.
+    const playerMagics = buildPlayerMagicCatalog(getMagicsData()).map((magic) => magic.key);
 
     let addedCount = 0;
     for (const magicFile of playerMagics) {
