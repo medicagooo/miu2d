@@ -4,6 +4,7 @@
  */
 
 import { trpc } from "@miu2d/shared";
+import { resolveMagicIconPath } from "@miu2d/shared/lib/npc-magic-icons";
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { CreateEntityModal } from "../components/common";
@@ -114,7 +115,9 @@ export function MagicListPanel({ basePath }: { basePath: string }) {
                 }
               >
                 <LazyAsfIcon
-                  iconPath={magic.icon}
+                  // AI-TRACE: explicit database icon first; verified NPC keys fall back to the
+                  // bundled Web PNG mapping without mutating the magic record.
+                  iconPath={resolveMagicIconPath(magic.icon, magic.key, magic.userType)}
                   gameSlug={currentGame?.slug}
                   size={36}
                   prefix="asf/magic/"

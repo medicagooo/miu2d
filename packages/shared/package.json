@@ -12,6 +12,7 @@
       "default": "./dist/locales/index.js"
     },
     "./lib/game-api": "./src/lib/game-api.ts",
+    "./lib/npc-magic-icons": "./src/lib/npc-magic-icons.ts",
     "./lib/monaco/jxqyScriptLanguage": "./src/lib/monaco/jxqyScriptLanguage.ts",
     "./lib/monaco/luaLanguage": "./src/lib/monaco/luaLanguage.ts",
     "./lib/monaco/gameApiDefinitions": "./src/lib/monaco/gameApiDefinitions.ts",

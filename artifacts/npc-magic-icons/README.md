@@ -5,6 +5,7 @@
 - 已生成并校验 34 枚实际 NPC 武功图标，输出为 `icons/*.png`，尺寸统一为 128×128。
 - `contact-sheet.png` 按本表顺序排列，用于快速视觉验收。
 - `manifest.json` 提供配置键、显示名、运动/效果依据和 PNG 路径的机器可读映射。
+- Web 运行资产复制到 `packages/web/public/npc-magic-icons/`；共享回退解析器按配置键接入游戏缓存、后台武功列表和武功选择器，已有 ASF/MSF 图标仍优先。
 - 数据中的 `Relation.Ini` 没有 `moveKind`，也不是 `magic-*.ini` 武功配置，因此判定为误归类记录并排除；没有为它虚构图标。
 
 ## 映射清单
@@ -58,6 +59,6 @@
 
 - 目的：为 `/game/:slug/api/data` 返回的 NPC 武功补齐可辨识的候选图标资产。
 - 上游：`magics.npc` 中的 `key`、`name`、`moveKind`、`lifeFrame`、`specialKind` 和效果字段；玩家热栏图标仅作为画风参考。
-- 下游：`manifest.json` 可作为未来配置映射输入，`icons/` 是 PNG 资产源，`contact-sheet.png` 仅用于审核。
-- 相邻关系：当前游戏武功显示链路使用 ASF/MSF 资源解码，尚未声明 PNG 映射；因此本次只交付图标与映射，不更改现有运行时、数据库或 S3。
-- 兼容约束：接入前需选择将 PNG 转为旧资源格式，或在 Web 渲染链路增加 PNG 图标支持；不能仅靠文件名让当前运行时自动加载。
+- 下游：`packages/shared/src/lib/npc-magic-icons.ts` 解析已知 NPC 配置键；引擎缓存、后台列表/选择器和原生图片兼容组件消费 Web-public PNG，`contact-sheet.png` 仅用于审核。
+- 相邻关系：已有 ASF/MSF 图标仍走原资源根目录、WASM 解码与 Canvas 动画；只有 `icon` 为空且配置键在显式清单内的 NPC 武功使用本地 PNG。
+- 兼容约束：回退不会修改数据库、API 响应或 S3；新增 NPC 配置必须先提供同名 PNG 并加入共享显式清单，否则继续显示原占位图。

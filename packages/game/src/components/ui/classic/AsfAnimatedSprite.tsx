@@ -8,6 +8,7 @@
  */
 
 import { type AsfData, getCompositeFrameCanvas, loadAsf } from "@miu2d/engine/resource/format/asf";
+import { isNativeImagePath } from "@miu2d/shared/lib/npc-magic-icons";
 import type React from "react";
 import { memo, useEffect, useRef, useState } from "react";
 
@@ -62,7 +63,7 @@ function normalizePath(path: string): string {
 }
 
 export interface AsfAnimatedSpriteProps {
-  /** ASF 文件路径 */
+  /** ASF/MSF 文件路径，或 Web 可直接显示的 PNG/JPEG/WebP/GIF/SVG 路径 */
   path: string | null;
   /** 是否自动播放动画 */
   autoPlay?: boolean;
@@ -100,9 +101,10 @@ export const AsfAnimatedSprite: React.FC<AsfAnimatedSpriteProps> = memo(
     const currentPathRef = useRef<string | null>(null);
     const needsInitialDrawRef = useRef(false);
 
-    // 加载 ASF
+    // AI-TRACE: Native image paths are the bundled NPC-icon compatibility path. They bypass
+    // loadAsf; every non-native path keeps the original ASF/MSF cache and canvas animation flow.
     useEffect(() => {
-      if (!path) {
+      if (!path || isNativeImagePath(path)) {
         setIsLoaded(false);
         setDimensions({ width: 0, height: 0 });
         cachedDataRef.current = null;
@@ -212,9 +214,28 @@ export const AsfAnimatedSprite: React.FC<AsfAnimatedSpriteProps> = memo(
       };
     }, [isLoaded, autoPlay, loop]);
 
-    if (!path || !isLoaded || dimensions.width === 0) {
+    if (!path) {
       return null;
     }
+
+    if (isNativeImagePath(path)) {
+      return (
+        <img
+          src={path}
+          alt={alt ?? ""}
+          className={className}
+          style={{
+            imageRendering: "pixelated",
+            maxWidth,
+            maxHeight,
+            objectFit: "contain",
+            ...style,
+          }}
+        />
+      );
+    }
+
+    if (!isLoaded || dimensions.width === 0) return null;
 
     // 计算 CSS 显示尺寸（等比缩放以适配 maxWidth/maxHeight）
     const displayStyle: React.CSSProperties = { imageRendering: "pixelated", ...style };

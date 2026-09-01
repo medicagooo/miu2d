@@ -8,6 +8,7 @@
  * - 相对路径：保持不变（由 magicLoader 处理）
  */
 
+import { getBundledNpcMagicIconPath } from "@miu2d/shared/lib/npc-magic-icons";
 import type { AttackFile, Magic } from "@miu2d/types";
 import { logger } from "../core/logger";
 import { getMagicsData } from "../data/game-data-api";
@@ -334,7 +335,11 @@ function convertApiMagicToMagicData(
 
   // 图像资源（主武功特有）
   magic.image = normalizeResourcePath(api.image, "magic");
-  magic.icon = normalizeResourcePath(api.icon, "magic");
+  // AI-TRACE: Explicit API icons keep the legacy ASF/MSF normalization. Only a missing icon on a
+  // verified NPC key falls back to the Web-public PNG contract in shared/npc-magic-icons.ts.
+  magic.icon = api.icon
+    ? normalizeResourcePath(api.icon, "magic")
+    : getBundledNpcMagicIconPath(api.key, api.userType);
   magic.superModeImage = normalizeResourcePath(api.superModeImage, "effect");
   magic.useActionFile = api.useActionFile || undefined;
 

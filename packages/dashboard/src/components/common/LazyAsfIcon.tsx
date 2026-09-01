@@ -7,6 +7,7 @@
 
 import { getCompositeFrameCanvas } from "@miu2d/engine/resource/format/asf";
 import { decodeAsfWasm } from "@miu2d/engine/wasm/wasm-asf-decoder";
+import { isNativeImagePath } from "@miu2d/shared/lib/npc-magic-icons";
 import { getNpcImageCandidates } from "@miu2d/types";
 import { type ReactNode, useEffect, useRef, useState } from "react";
 import { useWasm } from "../../hooks";
@@ -77,6 +78,15 @@ export function LazyAsfIcon({
     if (!isVisible || !iconPath || !gameSlug) {
       setDataUrl(null);
       loadedKeyRef.current = null;
+      return;
+    }
+
+    // AI-TRACE: Bundled NPC PNG paths bypass the game-resource ASF fetch/decode pipeline.
+    // Legacy ASF/MSF paths continue through buildResourceUrl and decodeAsfWasm below.
+    if (isNativeImagePath(iconPath)) {
+      setDataUrl(null);
+      setIsLoading(false);
+      loadedKeyRef.current = iconPath;
       return;
     }
 
@@ -153,6 +163,17 @@ export function LazyAsfIcon({
       cancelled = true;
     };
   }, [isVisible, iconPath, gameSlug, prefix, dataUrl, wasmReady]);
+
+  if (iconPath && isNativeImagePath(iconPath)) {
+    return (
+      <img
+        src={iconPath}
+        alt=""
+        className={`flex-shrink-0 object-contain ${className ?? ""}`}
+        style={{ ...sizeStyle, imageRendering: "pixelated" }}
+      />
+    );
+  }
 
   // 已加载 - 显示图标
   if (dataUrl) {
