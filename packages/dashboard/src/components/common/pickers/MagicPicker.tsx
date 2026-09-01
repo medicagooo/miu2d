@@ -9,12 +9,12 @@ import { getCompositeFrameCanvas } from "@miu2d/engine/resource/format/asf";
 import { decodeAsfWasm } from "@miu2d/engine/wasm/wasm-asf-decoder";
 import { initWasm } from "@miu2d/engine/wasm/wasm-manager";
 import { trpc } from "@miu2d/shared";
+import { resolveMagicIntro } from "@miu2d/shared/lib/npc-magic-descriptions";
 import {
   isNativeImagePath,
   resolveMagicIconPath,
 } from "@miu2d/shared/lib/npc-magic-icons";
-import type { MagicListItem } from "@miu2d/types";
-import { MagicMoveKindLabels } from "@miu2d/types";
+import { type MagicListItem, MagicMoveKindLabels } from "@miu2d/types";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { MagicPreview } from "../../../modules/magic/MagicPreview";
@@ -539,6 +539,9 @@ function MagicPreviewTooltip({ gameId, gameSlug, magicId, position }: MagicPrevi
     return null;
   }
 
+  // AI-TRACE: Picker previews mirror engine intro fallback without mutating the editable/API data.
+  const resolvedIntro = resolveMagicIntro(magic.intro, magic.key, magic.userType);
+
   return (
     <div
       className="fixed z-[9999] bg-[#1e1e1e] border border-[#3c3c3c] rounded-lg shadow-xl w-[280px]"
@@ -562,9 +565,9 @@ function MagicPreviewTooltip({ gameId, gameSlug, magicId, position }: MagicPrevi
       </div>
 
       {/* 简介 */}
-      {magic.intro && (
+      {resolvedIntro && (
         <div className="px-3 py-2 text-xs text-[#cccccc] border-b border-[#3c3c3c]">
-          {magic.intro}
+          {resolvedIntro}
         </div>
       )}
 

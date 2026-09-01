@@ -8,6 +8,7 @@
  * - 相对路径：保持不变（由 magicLoader 处理）
  */
 
+import { resolveMagicIntro } from "@miu2d/shared/lib/npc-magic-descriptions";
 import { getBundledNpcMagicIconPath } from "@miu2d/shared/lib/npc-magic-icons";
 import type { AttackFile, Magic } from "@miu2d/types";
 import { logger } from "../core/logger";
@@ -332,6 +333,9 @@ function convertApiMagicToMagicData(
   // 基础信息
   magic.fileName = extractFileName(api.key);
   applyCommonMagicFields(magic, api);
+  // AI-TRACE: Verified NPC keys use the approved bundled prose; unrelated/player API prose stays
+  // intact so player inventory/tooltips and NPC views share one description contract.
+  magic.intro = resolveMagicIntro(api.intro, api.key, api.userType) ?? "";
 
   // 图像资源（主武功特有）
   magic.image = normalizeResourcePath(api.image, "magic");
