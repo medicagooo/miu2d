@@ -6,7 +6,7 @@
  *   object keys but not PostgreSQL path rows.
  * - Entry point: docs/LOCAL_FULLY_LOCAL_DEPLOYMENT.md provides a public source endpoint, a
  *   local raw S3 backup directory, a scene manifest, and extra runtime paths observed during
- *   testing.
+ *   testing. --skip-missing true tolerates fallback probes that are also absent at the source.
  * - Data flow: source HEAD ETag/length -> local backup MD5 match -> resource-map.json ->
  *   restore-local-runtime-snapshot.ts -> hierarchical `files` rows -> FileRoutes -> local MinIO.
  * - Side effects: only writes the requested local JSON output; it never changes S3 or a database.
@@ -72,6 +72,7 @@ async function main(): Promise<void> {
   const manifestArg = args.manifest;
   const extrasArg = args.extras;
   const outputArg = args.output;
+  const skipMissing = args["skip-missing"] === "true";
   if (!sourceBase || !slug || !gameId || !backupArg || !manifestArg || !extrasArg || !outputArg) {
     throw new Error(
       "Required: --source-base, --slug, --game-id, --backup-dir, --manifest, --extras, --output"
@@ -101,7 +102,13 @@ async function main(): Promise<void> {
   for (const resourcePath of resourcePaths) {
     const url = `${sourceBase}/game/${encodeURIComponent(slug)}/resources/${encodeResourcePath(resourcePath)}`;
     const response = await headWithRetry(url);
-    if (!response.ok) throw new Error(`HEAD ${resourcePath}: HTTP ${response.status}`);
+    if (!response.ok) {
+      if (skipMissing && response.status === 404) {
+        console.log(`${resourcePath} -> skipped (source HTTP 404)`);
+        continue;
+      }
+      throw new Error(`HEAD ${resourcePath}: HTTP ${response.status}`);
+    }
     const size = Number(response.headers.get("content-length"));
     const checksum = response.headers.get("etag")?.replace(/^\"|\"$/g, "").toLowerCase();
     if (!Number.isSafeInteger(size) || !checksum || !/^[a-f0-9]{32}$/.test(checksum)) {
