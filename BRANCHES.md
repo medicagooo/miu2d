@@ -1,6 +1,7 @@
 {
   "pending": [
-    "0908-merge-upstream/merge-upstream"
+    "0908-merge-upstream/push-sync-branch-1",
+    "0908-merge-upstream/create-sync-pr-1"
   ],
   "timezone": "Asia/Singapore",
   "format": 1,
@@ -12,7 +13,7 @@
     ".branch-records/0908-magic-learning-dedup/state.json",
     ".branch-records/legacy-20260908.md",
     ".branch-records/0908-modern-auto-sort/state.json",
-    ".branch-records\\0908-merge-upstream/state.json"
+    ".branch-records/0908-merge-upstream/state.json"
   ],
   "changes": [
     {
@@ -50,10 +51,10 @@
     {
       "id": "0908-merge-upstream",
       "date": "2026-09-08",
-      "businessChange": "同步上游9月6日缓存/截图版本/S3同源签名/武侠品牌与地区提示；保留本地场景编辑、运行恢复、武功去重、自动整理和Docker部署兼容入口。同步分支完成，main未集成，未推送/部署",
+      "businessChange": "同步上游9月6日缓存/截图版本/S3同源签名/武侠品牌与地区提示；保留本地场景编辑、运行恢复、武功去重、自动整理和Docker部署兼容入口。同步分支已验证完成，main未集成、未部署；推送/PR见任务事件",
       "status": "complete",
       "request": "0908-merge-upstream/request-handle",
-      "evidence": ".branch-records\\0908-merge-upstream/state.json",
+      "evidence": ".branch-records/0908-merge-upstream/state.json",
       "implementedAt": "2026-09-08"
     }
   ]

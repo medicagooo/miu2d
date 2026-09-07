@@ -4,13 +4,14 @@
     "Perform a real merge of luckyyyyy/miu2d main 7965af9985988972da262947f150a414c49c324c",
     "Preserve local scene painter, runtime recovery, magic deduplication and inventory sort",
     "Resolve conflicts, verify code and commit locally",
-    "Publish this synchronization with merge ancestry preserved; a squash-only integration does not establish upstream/main as an ancestor"
+    "Publish this synchronization with merge ancestry preserved; a squash-only integration does not establish upstream/main as an ancestor",
+    "Push refs/heads/0908-merge-upstream to origin and open PR targeting main"
   ],
   "constraints": [
     "No discard, reset, force push, deployment or database administration",
-    "No push authorized",
     "Keep fork deployment usable; do not enable upstream production deployment for this fork",
-    "Retain existing docker-compose.yml production profile and STATIC_ONLY Docker build contract; upstream deploy job remains restricted to luckyyyyy/miu2d"
+    "Retain existing docker-compose.yml production profile and STATIC_ONLY Docker build contract; upstream deploy job remains restricted to luckyyyyy/miu2d",
+    "User explicitly authorized push of sync branch and PR creation; no main merge, force push, manual workflow operation or deployment authorized"
   ],
   "acceptance": [
     "Upstream tip and original local HEAD are ancestors of final merge",
@@ -31,7 +32,8 @@
     "Server rolldown command succeeded, but output is not a deployable artifact on Windows: baseline and merged main.js each reference 10 missing relative .ts modules. Baseline reproduced using original 63258b1 main source and unchanged build configuration. No deployment/runtime claim",
     "Existing Windows trpc generator matched no router files and emitted empty router during validation; that generated residue was restored to the tracked baseline. Web/server type checks passed using tracked router; generator source not changed",
     "Local isolated checks of actual getS3Url and real AWS SDK presigning passed for version changes and old callers, relative /s3 and absolute endpoints, upload/download; dummy test credentials only, no network writes",
-    "Registry metadata/task JSON and event references validated before merge commit; final parent/ancestor/clean-state verification follows commit"
+    "Registry metadata/task JSON and event references validated before merge commit; final parent/ancestor/clean-state verification follows commit",
+    "Verified local merge e334f78e452d8e071a06960f91015aad91f0cf39 parents 63258b187ff72558b4b5d552e45d51c78922053d and 7965af9985988972da262947f150a414c49c324c; original 38646d7 and upstream tip both ancestors, no missing upstream commits, clean worktree"
   ],
-  "next": "Verify local two-parent merge commit and clean state. No push authorized. After explicit authorization, predeclare/commit push event, push refs/heads/0908-merge-upstream to origin and create a PR targeting main; integrate with a merge commit (not squash) to retain upstream ancestry. Server Windows packaging remains a pre-existing separate issue."
+  "next": "Execute declared normal push including this registry commit, create PR against main and verify provider head SHA/PR status. Keep main unmerged until requested; use Merge commit when integrating."
 }
