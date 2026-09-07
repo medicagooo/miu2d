@@ -41,6 +41,11 @@ export interface MagicExpConfig {
   useMagicExpFraction: number;
 }
 
+export type AddMagicResult =
+  | { status: "added"; index: number; magic: MagicData }
+  | { status: "alreadyLearned"; magic: MagicData }
+  | { status: "failed"; reason: "invalidIndex" | "full" | "missingMagic" };
+
 /**
  * 武功列表管理器
  */
@@ -546,24 +551,47 @@ export class PlayerMagicInventory {
   }
 
   /**
-   * 添加武功到列表（唯一的公开 API）
+   * 学习查重覆盖实际持有容器；不改变供 UI 操作使用的面板索引查询。
+   * 同时检查原列表和当前变身列表，避免重复学习解除隐藏或重置已有进度。
+   * 读档批量恢复保持原语义，不在此处清理历史存档中的重复项。
+   */
+  private findLearnedMagic(fileName: string): MagicData | null {
+    const lowerName = fileName.toLowerCase();
+    const lists = new Set([
+      this.magicList,
+      this.getActiveMagicList(),
+      this.magicListHide,
+      this.getActiveMagicListHide(),
+      this.bottomSlots,
+      [this.xiuLianMagic],
+    ]);
+    for (const list of lists) {
+      for (const info of list) {
+        if (info?.magic?.fileName.toLowerCase() === lowerName) return info.magic;
+      }
+    }
+    return null;
+  }
+
+  /**
+   * 学习武功（Player.addMagic 和伙伴脚本共用入口）
    * @param fileName 武功文件名
    * @param options 可选参数
    *   - index: 指定位置（1..maxMagic），不指定则自动找空位
    *   - level: 等级，默认1
    *   - exp: 经验，默认0
-   * @returns [是否新增, 索引, 武功数据]
+   * @returns 显式学习结果；只有新增结果包含可供面板操作的索引。
    */
   async addMagic(
     fileName: string,
     options?: { index?: number; level?: number; exp?: number }
-  ): Promise<[boolean, number, MagicData | null]> {
+  ): Promise<AddMagicResult> {
     const { index: targetIndex, level = 1, exp = 0 } = options ?? {};
 
     // 检查是否已存在
-    const existingIndex = this.getIndexByFileName(fileName);
-    if (existingIndex !== -1) {
-      return [false, existingIndex, this.getActiveMagicList()[existingIndex]?.magic || null];
+    const existingMagic = this.findLearnedMagic(fileName);
+    if (existingMagic) {
+      return { status: "alreadyLearned", magic: existingMagic };
     }
 
     // 确定目标位置
@@ -571,14 +599,14 @@ export class PlayerMagicInventory {
     if (targetIndex !== undefined && targetIndex > 0) {
       if (!this.indexInRange(targetIndex)) {
         logger.warn(`[PlayerMagicInventory] Invalid index: ${targetIndex}`);
-        return [false, -1, null];
+        return { status: "failed", reason: "invalidIndex" };
       }
       index = targetIndex;
     } else {
       index = this.getFreeIndex();
       if (index === -1) {
         logger.warn("[PlayerMagicInventory] No free slot for magic");
-        return [false, -1, null];
+        return { status: "failed", reason: "full" };
       }
     }
 
@@ -586,7 +614,7 @@ export class PlayerMagicInventory {
     const magic = getMagic(fileName);
     if (!magic) {
       logger.warn(`[PlayerMagicInventory] Failed to load magic: ${fileName}`);
-      return [false, -1, null];
+      return { status: "failed", reason: "missingMagic" };
     }
 
     // 获取指定等级的武功数据
@@ -594,7 +622,7 @@ export class PlayerMagicInventory {
     const itemInfo = createDefaultMagicItemInfo(levelMagic, level);
     itemInfo.exp = exp;
 
-    // 使用统一入口添加
+    // 首次 await 前同步放置，确保连续/并发学习能查到同一武功。
     await this._setMagicItemAt(index, itemInfo);
 
     logger.debug(
@@ -602,7 +630,7 @@ export class PlayerMagicInventory {
     );
     this.updateView();
 
-    return [true, index, levelMagic];
+    return { status: "added", index, magic: levelMagic };
   }
 
   /**

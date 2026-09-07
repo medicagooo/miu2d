@@ -1,0 +1,2 @@
+# Branch registry format
+BRANCHES.md is JSON. Dates use Asia/Singapore. Entry date is the original record date; implementation, integration and deployment dates require separate evidence. records/read are repository-relative files. active contains task directory names; pending contains task/event IDs for predeclared Git operations. Task state.json contains effective requirements; events.jsonl preserves unique request/operation IDs. Legacy Markdown is retained verbatim; its section references do not establish verified integration or deployment.

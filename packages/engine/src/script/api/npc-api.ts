@@ -477,9 +477,10 @@ export function createNpcAPI(ctx: ScriptCommandContext, resolver: BlockingResolv
         if (npc.isPartner) {
           if (!npc.magicInventory) npc.initPartnerContainers();
           const inv = npc.magicInventory!;
-          const [isNew, addedIndex] = await inv.addMagic(magicFile);
-          if (isNew && addedIndex > 1) {
-            inv.exchangeListItem(1, addedIndex);
+          const result = await inv.addMagic(magicFile);
+          // 已学习的武功可能位于快捷栏/修炼栏，只有新增项可按面板索引移动。
+          if (result.status === "added" && result.index > 1) {
+            inv.exchangeListItem(1, result.index);
           }
           // 打印伙伴当前完整技能列表
           const panel = inv.getStoreMagics();
@@ -494,7 +495,7 @@ export function createNpcAPI(ctx: ScriptCommandContext, resolver: BlockingResolv
             .filter(Boolean)
             .join(", ");
           logger.log(
-            `[AddMagic] ${name} ← ${magicFile} (isNew=${isNew}, index=${addedIndex}) | ` +
+            `[AddMagic] ${name} ← ${magicFile} (status=${result.status}) | ` +
               `面板(${skills.length}): ${skills.join(", ")} | ` +
               `快捷栏: ${bottomStr || "空"}`
           );
