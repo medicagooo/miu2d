@@ -724,9 +724,10 @@ export abstract class PlayerBase extends Character {
   async addMagic(magicFile: string, level: number = 1): Promise<boolean> {
     if (!magicFile) return false;
 
-    const [isNew, index, magic] = await this._magicInventory.addMagic(magicFile, { level });
+    const result = await this._magicInventory.addMagic(magicFile, { level });
 
-    if (isNew && index !== -1 && magic) {
+    if (result.status === "added") {
+      const { magic } = result;
       // 新学会武功
       // Reference: GuiManager.ShowMessage("你学会了" + magic.Name);
       this.showMessage(`你学会了${magic.name}`);
@@ -734,22 +735,20 @@ export abstract class PlayerBase extends Character {
       return true;
     }
 
-    if (!isNew && index !== -1) {
+    if (result.status === "alreadyLearned") {
       // 武功已存在
       // Reference: GuiManager.ShowMessage("你已经学会了" + magic.Name);
-      if (magic) {
-        this.showMessage(`你已经学会了${magic.name}`);
-      }
+      this.showMessage(`你已经学会了${result.magic.name}`);
       logger.debug(`[Player] Magic already exists: ${magicFile}`);
       return true;
     }
 
-    // index === -1，添加失败（武功栏已满或加载失败）
+    // 添加失败（武功栏已满或加载失败）
     // Reference: GuiManager.ShowMessage("武功栏已满");
-    if (magic === null) {
-      logger.warn(`[Player] Failed to load magic: ${magicFile}`);
-    } else {
+    if (result.reason === "full") {
       this.showMessage("武功栏已满");
+    } else {
+      logger.warn(`[Player] Failed to add magic: ${magicFile} (${result.reason})`);
     }
     return false;
   }

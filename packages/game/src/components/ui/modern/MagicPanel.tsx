@@ -12,10 +12,13 @@ import type { TouchDragData } from "../../../contexts";
 import { useGameUIContext } from "../../../contexts";
 import type { BottomMagicDragData } from "../../hooks";
 import { AsfAnimatedSprite } from "../classic/AsfAnimatedSprite";
+import { InventorySortButton } from "./InventorySortButton";
 import type { MagicDragData, MagicItem } from "../classic/MagicGui";
 import { borderRadius, glassEffect, iconStyle, modernColors, spacing, transitions, typography } from "./theme";
 
 interface MagicPanelProps {
+  onSort?: () => void;
+  sortDisabled?: boolean;
   isVisible: boolean;
   // 旧接口（兼容）
   magics?: (MagicItem | null)[];
@@ -305,6 +308,8 @@ const MagicSlot: React.FC<MagicSlotProps> = ({
 };
 
 export const MagicPanel: React.FC<MagicPanelProps> = ({
+  onSort,
+  sortDisabled = false,
   isVisible,
   magics,
   magicInfos,
@@ -503,7 +508,7 @@ export const MagicPanel: React.FC<MagicPanelProps> = ({
             </div>
           </div>
 
-          <div style={{ flex: 1 }}>
+          <div style={{ flex: 1, minWidth: 0 }}>
             <div
               style={{
                 fontSize: typography.fontSize.lg,
@@ -528,6 +533,14 @@ export const MagicPanel: React.FC<MagicPanelProps> = ({
               种武学
             </div>
           </div>
+          <InventorySortButton
+            title="按升到10级所需累计经验从低到高排序"
+            disabled={!onSort || sortDisabled || !!dragData || !!bottomDragData || localDragIndex !== null}
+            onClick={() => {
+              onSort?.();
+              setScrollOffset(0);
+            }}
+          />
         </div>
       </div>
 

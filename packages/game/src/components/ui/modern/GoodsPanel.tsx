@@ -21,6 +21,7 @@ import { useGameUIContext } from "../../../contexts";
 import type { DragData, GoodItemData } from "../classic";
 import { useAsfImage } from "../classic/hooks";
 import { getItemBorderColor, getItemGlowColor, getItemQuality, ItemQuality } from "./Tooltips";
+import { InventorySortButton } from "./InventorySortButton";
 import { borderRadius, glassEffect, iconStyle, modernColors, spacing, transitions, typography } from "./theme";
 
 // 筛选类型
@@ -50,6 +51,8 @@ const wuxiaAccent = {
 };
 
 interface GoodsPanelProps {
+  onSort?: () => void;
+  sortDisabled?: boolean;
   isVisible: boolean;
   items: (GoodItemData | null)[];
   money: number;
@@ -281,6 +284,8 @@ const GoodsSlot: React.FC<ItemSlotProps> = ({
 };
 
 export const GoodsPanel: React.FC<GoodsPanelProps> = ({
+  onSort,
+  sortDisabled = false,
   isVisible,
   items,
   money,
@@ -551,7 +556,7 @@ export const GoodsPanel: React.FC<GoodsPanelProps> = ({
             </div>
           </div>
 
-          <div style={{ flex: 1 }}>
+          <div style={{ flex: 1, minWidth: 0 }}>
             <div
               style={{
                 fontSize: typography.fontSize.lg,
@@ -576,6 +581,14 @@ export const GoodsPanel: React.FC<GoodsPanelProps> = ({
               / {totalItemCount} 件
             </div>
           </div>
+          <InventorySortButton
+            title="整理整个背包：按分类、单件价值从低到高排序"
+            disabled={!onSort || sortDisabled || !!dragData}
+            onClick={() => {
+              onSort?.();
+              setScrollOffset(0);
+            }}
+          />
         </div>
       </div>
 

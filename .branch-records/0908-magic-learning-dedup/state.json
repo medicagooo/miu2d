@@ -1,0 +1,35 @@
+{
+  "requirements": [
+    "按文件名忽略大小写查重面板、快捷栏、修炼栏、隐藏武功",
+    "重复学习保留位置、等级、经验及隐藏状态",
+    "显式区分新增、已学习、失败，适配玩家与伙伴调用",
+    "验证、独立审查、修复有效问题、本地提交"
+  ],
+  "constraints": [
+    "不修改已有存档、不推送、不部署",
+    "保留批量读档接口与面板索引语义"
+  ],
+  "purpose": "修复三个游戏共用武功学习重复新增",
+  "status": "complete",
+  "integration": "verified",
+  "evidence": [
+    "基线 main 7c4fb514b47d2500f55a1092faeb26955fe02372，初始工作区干净",
+    "packages/engine/src/player/magic/player-magic-inventory.ts: findLearnedMagic / addMagic",
+    "packages/engine/src/player/base/player-base.ts: addMagic；packages/engine/src/script/api/npc-api.ts: addMagic",
+    "packages/engine/tests/player/magic-learning.test.ts：8 项通过",
+    "node node_modules/typescript/bin/tsc -p packages/engine/tsconfig.json --noEmit：通过",
+    "独立 bugbot 子代理审查未发现有效缺陷；无专用 Bugbot 类型，使用通用独立审查代理",
+    "全量引擎测试：550 通过、12 失败、1 文件加载失败（补充变身测试前）；失败在基线快照中复现：计时器 1、MMF DTO 5、战斗消耗 5、斗地主输出目录 1、NPC 缺失模块导致加载失败",
+    "基线报告：C:/Users/medic/AppData/Local/Temp/miu2d-magic-baseline-dad1d1fd96524da38214858c91f28321/results.json 及 failures-verified.json",
+    "git diff --check 通过；修改源码 Biome 检查无 lint 错误，现存 optional-chain 警告",
+    "原 BRANCHES.md 两条记录完整保留在 .branch-records/legacy-20260908.md，业务摘要保留在 JSON 索引",
+    "2026-09-08 commit-local verified: local main 79672e441f28969a629d197d20b174c8dbbaacd5; clean worktree; not pushed"
+  ],
+  "acceptance": [
+    "四种位置重复学习不新增",
+    "满面板仍识别已学习",
+    "首次学习与并发重复学习正确",
+    "测试通过且审查问题处理"
+  ],
+  "next": "无剩余实施工作；push 需用户明确指令"
+}
