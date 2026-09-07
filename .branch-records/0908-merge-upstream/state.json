@@ -3,12 +3,14 @@
   "requirements": [
     "Perform a real merge of luckyyyyy/miu2d main 7965af9985988972da262947f150a414c49c324c",
     "Preserve local scene painter, runtime recovery, magic deduplication and inventory sort",
-    "Resolve conflicts, verify code and commit locally"
+    "Resolve conflicts, verify code and commit locally",
+    "Publish this synchronization with merge ancestry preserved; a squash-only integration does not establish upstream/main as an ancestor"
   ],
   "constraints": [
     "No discard, reset, force push, deployment or database administration",
     "No push authorized",
-    "Keep fork deployment usable; do not enable upstream production deployment for this fork"
+    "Keep fork deployment usable; do not enable upstream production deployment for this fork",
+    "Retain existing docker-compose.yml production profile and STATIC_ONLY Docker build contract; upstream deploy job remains restricted to luckyyyyy/miu2d"
   ],
   "acceptance": [
     "Upstream tip and original local HEAD are ancestors of final merge",
@@ -16,10 +18,20 @@
     "Relevant tests and build/type checks run with results recorded",
     "Registry references parse and resolve"
   ],
-  "status": "active",
+  "status": "complete",
   "integration": "unmerged",
   "evidence": [
-    "Initial clean main 38646d7; origin/main 54e8d11 after fetch; one registered worktree D:/proj/miu2d"
+    "Starting clean local main 38646d7 and fetched origin/main 54e8d11; pre-action registry commit 63258b1",
+    "Real merge of upstream/main 7965af9985988972da262947f150a414c49c324c; 46 conflicts resolved by comparing blobs against upstream prior tip a81520f351dd",
+    "All fork engine/types/viewer/scene editor/runtime restoration/modern sort source files unchanged from local baseline 63258b1; no unmerged index entries",
+    "Upstream S3/public-cache, save screenshot version URLs, regional notice and wuxia branding integrated. One-time server save migration retired; existing deployment compatibility preserved",
+    "packages/engine: vitest run tests/player/inventory-sort.test.ts tests/player/magic-learning.test.ts tests/resource/mmf-dto.test.ts: 20/20 passed after building packages/types",
+    "node node_modules/typescript/bin/tsc --noEmit with engine, web and server tsconfig: all passed",
+    "Web Vite production build succeeded with existing chunk-size/browser-external/env-placeholder warnings; PWA artifacts generated",
+    "Server rolldown command succeeded, but output is not a deployable artifact on Windows: baseline and merged main.js each reference 10 missing relative .ts modules. Baseline reproduced using original 63258b1 main source and unchanged build configuration. No deployment/runtime claim",
+    "Existing Windows trpc generator matched no router files and emitted empty router during validation; that generated residue was restored to the tracked baseline. Web/server type checks passed using tracked router; generator source not changed",
+    "Local isolated checks of actual getS3Url and real AWS SDK presigning passed for version changes and old callers, relative /s3 and absolute endpoints, upload/download; dummy test credentials only, no network writes",
+    "Registry metadata/task JSON and event references validated before merge commit; final parent/ancestor/clean-state verification follows commit"
   ],
-  "next": "Create sync branch then merge upstream"
+  "next": "Verify local two-parent merge commit and clean state. No push authorized. After explicit authorization, predeclare/commit push event, push refs/heads/0908-merge-upstream to origin and create a PR targeting main; integrate with a merge commit (not squash) to retain upstream ancestry. Server Windows packaging remains a pre-existing separate issue."
 }

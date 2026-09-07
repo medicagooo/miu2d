@@ -2,7 +2,7 @@
 FROM node:22-alpine AS builder
 
 # 启用 corepack 以使用 pnpm
-RUN corepack enable && corepack prepare pnpm@10.15.1 --activate
+RUN corepack enable && corepack prepare pnpm@10.16.1 --activate
 
 WORKDIR /app
 
@@ -93,12 +93,13 @@ RUN COMMIT_HASH=$COMMIT_HASH \
     VITE_S3_BASE_URL=$VITE_S3_BASE_URL \
     CACHE_BUST=$CACHE_BUST \
     pnpm build
+RUN COMMIT_HASH=$COMMIT_HASH node -e 'require("fs").writeFileSync("dist/version.json", JSON.stringify({commit: process.env.COMMIT_HASH}))'
 
 # 生产阶段 - 使用 nginx 静态服务
 FROM nginx:alpine AS runner
 
-# STATIC_ONLY=true: 纯静态服务，无后端代理（镜像节点，VITE_DEMO_RESOURCES_DOMAIN 已指向外部后端）
-# STATIC_ONLY=false(默认): 包含 /trpc/ /game/ /s3/ 反向代理（完整部署）
+# Keep the fork's STATIC_ONLY build contract used by deploy/deploy-mirror.sh;
+# full-stack builds use the upstream proxy and cache rules in nginx.conf.
 ARG STATIC_ONLY=false
 COPY packages/web/nginx.conf packages/web/nginx.static.conf /tmp/nginx-conf/
 RUN if [ "$STATIC_ONLY" = "true" ]; then \

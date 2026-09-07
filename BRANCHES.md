@@ -1,6 +1,5 @@
 {
   "pending": [
-    "0908-merge-upstream/create-sync-branch",
     "0908-merge-upstream/merge-upstream"
   ],
   "timezone": "Asia/Singapore",
@@ -8,9 +7,7 @@
   "read": [
     ".branch-records/FORMAT.md"
   ],
-  "active": [
-    "0908-merge-upstream"
-  ],
+  "active": [],
   "records": [
     ".branch-records/0908-magic-learning-dedup/state.json",
     ".branch-records/legacy-20260908.md",
@@ -53,10 +50,11 @@
     {
       "id": "0908-merge-upstream",
       "date": "2026-09-08",
-      "businessChange": "计划同步上游9月6日缓存/截图/S3代理/武侠品牌与地区提示，保留本地场景编辑、运行恢复、武功去重和自动整理；部署差异按本地环境保留",
-      "status": "planned",
+      "businessChange": "同步上游9月6日缓存/截图版本/S3同源签名/武侠品牌与地区提示；保留本地场景编辑、运行恢复、武功去重、自动整理和Docker部署兼容入口。同步分支完成，main未集成，未推送/部署",
+      "status": "complete",
       "request": "0908-merge-upstream/request-handle",
-      "evidence": ".branch-records\\0908-merge-upstream/state.json"
+      "evidence": ".branch-records\\0908-merge-upstream/state.json",
+      "implementedAt": "2026-09-08"
     }
   ]
 }
