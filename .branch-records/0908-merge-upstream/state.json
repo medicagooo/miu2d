@@ -1,0 +1,25 @@
+{
+  "purpose": "Merge upstream main while preserving fork functionality and history",
+  "requirements": [
+    "Perform a real merge of luckyyyyy/miu2d main 7965af9985988972da262947f150a414c49c324c",
+    "Preserve local scene painter, runtime recovery, magic deduplication and inventory sort",
+    "Resolve conflicts, verify code and commit locally"
+  ],
+  "constraints": [
+    "No discard, reset, force push, deployment or database administration",
+    "No push authorized",
+    "Keep fork deployment usable; do not enable upstream production deployment for this fork"
+  ],
+  "acceptance": [
+    "Upstream tip and original local HEAD are ancestors of final merge",
+    "No unresolved conflicts; original fork changes preserved",
+    "Relevant tests and build/type checks run with results recorded",
+    "Registry references parse and resolve"
+  ],
+  "status": "active",
+  "integration": "unmerged",
+  "evidence": [
+    "Initial clean main 38646d7; origin/main 54e8d11 after fetch; one registered worktree D:/proj/miu2d"
+  ],
+  "next": "Create sync branch then merge upstream"
+}

@@ -1,17 +1,21 @@
 {
   "pending": [
-    "0908-modern-auto-sort/commit-local"
+    "0908-merge-upstream/create-sync-branch",
+    "0908-merge-upstream/merge-upstream"
   ],
   "timezone": "Asia/Singapore",
   "format": 1,
   "read": [
     ".branch-records/FORMAT.md"
   ],
-  "active": [],
+  "active": [
+    "0908-merge-upstream"
+  ],
   "records": [
     ".branch-records/0908-magic-learning-dedup/state.json",
     ".branch-records/legacy-20260908.md",
-    ".branch-records/0908-modern-auto-sort/state.json"
+    ".branch-records/0908-modern-auto-sort/state.json",
+    ".branch-records\\0908-merge-upstream/state.json"
   ],
   "changes": [
     {
@@ -45,6 +49,14 @@
       "request": "0908-modern-auto-sort/request-implement",
       "id": "0908-modern-auto-sort",
       "implementedAt": "2026-09-08"
+    },
+    {
+      "id": "0908-merge-upstream",
+      "date": "2026-09-08",
+      "businessChange": "计划同步上游9月6日缓存/截图/S3代理/武侠品牌与地区提示，保留本地场景编辑、运行恢复、武功去重和自动整理；部署差异按本地环境保留",
+      "status": "planned",
+      "request": "0908-merge-upstream/request-handle",
+      "evidence": ".branch-records\\0908-merge-upstream/state.json"
     }
   ]
 }
