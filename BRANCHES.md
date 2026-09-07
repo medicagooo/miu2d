@@ -1,6 +1,6 @@
 {
   "pending": [
-    "0908-remove-local-recovery/revert-recovery-1"
+    "0908-remove-local-recovery/push-main-1"
   ],
   "timezone": "Asia/Singapore",
   "format": 1,
