@@ -518,6 +518,35 @@ export class PlayerMagicInventory {
   }
 
   /**
+   * 现代 UI 自动整理当前面板（含变身列表），保留原对象及所有进度/引用。
+   * 经验是累计阈值：升到10级取9级 levelupExp，不能取满级被清零的10级值。
+   * 缺少10级或有效9级阈值的条目排末尾；同值稳定排序，不动独立容器。
+   */
+  sortInventory(): void {
+    const list = this.getActiveMagicList();
+    const threshold = (info: MagicItemInfo): number => {
+      const magic = info.magic;
+      const exp = magic?.levels?.get(9)?.levelupExp;
+      return magic &&
+        magic.maxLevel >= 10 &&
+        magic.levels?.has(10) &&
+        typeof exp === "number" &&
+        Number.isFinite(exp) &&
+        exp > 0
+        ? exp
+        : Number.POSITIVE_INFINITY;
+    };
+    const items = list
+      .slice(MAGIC_LIST_CONFIG.storeIndexBegin, MAGIC_LIST_CONFIG.storeIndexEnd + 1)
+      .filter((item): item is MagicItemInfo => item !== null);
+    items.sort((a, b) => threshold(a) - threshold(b) || 0);
+    for (let i = MAGIC_LIST_CONFIG.storeIndexBegin; i <= MAGIC_LIST_CONFIG.storeIndexEnd; i++) {
+      list[i] = items[i - MAGIC_LIST_CONFIG.storeIndexBegin] ?? null;
+    }
+    this.updateView();
+  }
+
+  /**
    * 根据文件名获取武功索引
    */
   getIndexByFileName(fileName: string): number {

@@ -1,0 +1,36 @@
+{
+  "purpose": "现代 UI 物品和武功自动整理",
+  "constraints": [
+    "不整理快捷栏、装备栏、修炼栏、隐藏列表，不合并或删除条目",
+    "顺序随现有存档保存，经典 UI 可见整理后顺序；不添加经典按钮",
+    "不推送或部署"
+  ],
+  "evidence": [
+    "baseline main 79672e441f28969a629d197d20b174c8dbbaacd5，工作区干净",
+    "GoodsListManager.sortInventory / PlayerMagicInventory.sortInventory：原对象稳定重排，空位末尾",
+    "UIAction SORT_GOODS/SORT_MAGIC → UIBridge.dispatch → 容器；useGameUILogic.handleSortInventory 清理 tooltip 并检查原生/触摸拖拽",
+    "现代 GoodsPanel/MagicPanel → InventorySortButton，整理后回顶部、保留筛选；经典入口不变",
+    "packages/engine/tests/player/inventory-sort.test.ts 6 项 + magic-learning.test.ts 8 项，共14项通过",
+    "引擎 tsc --noEmit 通过；修改源码 Biome lint 无错误（6 个已有警告）",
+    "游戏前端类型检查受既有 server/trpc 类型缺失等阻断；使用编译器 host 覆盖改动源码为 HEAD 对照：前后36项诊断相同，新增0",
+    "临时本地预览使用实际面板组件和模拟回调：浏览器验证布局、两个整理按钮点击、禁用状态及筛选保留；未运行三个游戏实机存档",
+    "独立 bugbot 子代理静态审查：无有效缺陷（无专用 Bugbot 类型）；修正无 onSort 回调时按钮禁用",
+    "存档 collector 测试确认保存整理后的 bagItems/panelMagics 顺序；独立容器和条目状态验证通过"
+  ],
+  "integration": "unknown",
+  "next": "执行本地提交并核对 HEAD/干净工作区；未授权 push 或部署",
+  "status": "complete",
+  "acceptance": [
+    "分类升序和经验升序、同值稳定、空位末尾正确",
+    "原对象数量进度随机属性冷却与独立容器不变",
+    "满背包与变身面板可整理，重复整理稳定",
+    "类型检查和回归测试通过，独立审查问题已处理"
+  ],
+  "requirements": [
+    "物品分类药品、装备、任务、其他；同类 good.cost 单价升序",
+    "武功按升到10级累计经验（9级 levelupExp）升序，缺失或上限不足10排末尾",
+    "稳定排序、空位末尾；只整理背包或当前活动武功面板，保留原对象及状态",
+    "现代面板添加按钮；拖拽中禁用；清除旧 tooltip；保持物品筛选",
+    "审查修复、测试、本地提交"
+  ]
+}

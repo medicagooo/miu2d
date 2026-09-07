@@ -11,7 +11,7 @@
   ],
   "purpose": "修复三个游戏共用武功学习重复新增",
   "status": "complete",
-  "integration": "unknown",
+  "integration": "verified",
   "evidence": [
     "基线 main 7c4fb514b47d2500f55a1092faeb26955fe02372，初始工作区干净",
     "packages/engine/src/player/magic/player-magic-inventory.ts: findLearnedMagic / addMagic",
@@ -22,7 +22,8 @@
     "全量引擎测试：550 通过、12 失败、1 文件加载失败（补充变身测试前）；失败在基线快照中复现：计时器 1、MMF DTO 5、战斗消耗 5、斗地主输出目录 1、NPC 缺失模块导致加载失败",
     "基线报告：C:/Users/medic/AppData/Local/Temp/miu2d-magic-baseline-dad1d1fd96524da38214858c91f28321/results.json 及 failures-verified.json",
     "git diff --check 通过；修改源码 Biome 检查无 lint 错误，现存 optional-chain 警告",
-    "原 BRANCHES.md 两条记录完整保留在 .branch-records/legacy-20260908.md，业务摘要保留在 JSON 索引"
+    "原 BRANCHES.md 两条记录完整保留在 .branch-records/legacy-20260908.md，业务摘要保留在 JSON 索引",
+    "2026-09-08 commit-local verified: local main 79672e441f28969a629d197d20b174c8dbbaacd5; clean worktree; not pushed"
   ],
   "acceptance": [
     "四种位置重复学习不新增",
@@ -30,5 +31,5 @@
     "首次学习与并发重复学习正确",
     "测试通过且审查问题处理"
   ],
-  "next": "执行 commit-local 事件后检查 HEAD 和工作区；未授权 push 或部署"
+  "next": "无剩余实施工作；push 需用户明确指令"
 }

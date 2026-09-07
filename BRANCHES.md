@@ -1,6 +1,6 @@
 {
   "pending": [
-    "0908-magic-learning-dedup/commit-local"
+    "0908-modern-auto-sort/commit-local"
   ],
   "timezone": "Asia/Singapore",
   "format": 1,
@@ -10,7 +10,8 @@
   "active": [],
   "records": [
     ".branch-records/0908-magic-learning-dedup/state.json",
-    ".branch-records/legacy-20260908.md"
+    ".branch-records/legacy-20260908.md",
+    ".branch-records/0908-modern-auto-sort/state.json"
   ],
   "changes": [
     {
@@ -34,6 +35,15 @@
       "request": "0908-magic-learning-dedup/request-implement",
       "evidence": ".branch-records/0908-magic-learning-dedup/state.json",
       "id": "0908-magic-learning-dedup",
+      "implementedAt": "2026-09-08"
+    },
+    {
+      "businessChange": "三个游戏现代背包与武功面板新增自动整理：物品按药品/装备/任务/其他及单价升序，武功按升10级经验升序；稳定重排实际面板槽位并保留条目状态，独立容器不变",
+      "status": "complete",
+      "date": "2026-09-08",
+      "evidence": ".branch-records/0908-modern-auto-sort/state.json",
+      "request": "0908-modern-auto-sort/request-implement",
+      "id": "0908-modern-auto-sort",
       "implementedAt": "2026-09-08"
     }
   ]

@@ -22,6 +22,7 @@ import type { GameEngine } from "@miu2d/engine/runtime/game-engine";
 import type { TimerState } from "@miu2d/engine/runtime/timer-manager";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { MagicHoverData, PanelType, PlayerVitals } from "../../contexts";
+import { useTouchDrag } from "../../contexts";
 import { useUIBridge } from "../adapters";
 import type { DragData, EquipSlotType } from "../ui/classic";
 import { slotTypeToEquipPosition } from "../ui/classic";
@@ -360,6 +361,19 @@ export function useGameUILogic({ engine }: UseGameUILogicOptions) {
   const [dragData, setDragData] = useState<DragData | null>(null);
   const [magicDragData, setMagicDragData] = useState<MagicDragData | null>(null);
   const [bottomMagicDragData, setBottomMagicDragData] = useState<BottomMagicDragData | null>(null);
+  const { isDragging: isTouchDragging } = useTouchDrag();
+  const isInventoryDragging = !!(dragData || magicDragData || bottomMagicDragData || isTouchDragging);
+
+  // 原生拖拽取消/结束后清理索引，避免自动整理永久禁用或后续 drop 使用旧槽位。
+  useEffect(() => {
+    const clearDrag = () => {
+      setDragData(null);
+      setMagicDragData(null);
+      setBottomMagicDragData(null);
+    };
+    window.addEventListener("dragend", clearDrag);
+    return () => window.removeEventListener("dragend", clearDrag);
+  }, []);
 
   // ============= Tooltip State =============
 
@@ -812,6 +826,14 @@ export function useGameUILogic({ engine }: UseGameUILogicOptions) {
     setMagicTooltip((prev) => ({ ...prev, isVisible: false }));
   }, []);
 
+  // 通过 UI bridge 重排实际容器；按钮只由现代面板提供，经典界面共享整理结果。
+  const handleSortInventory = useCallback((type: "SORT_GOODS" | "SORT_MAGIC") => {
+    if (isInventoryDragging) return;
+    handleMouseLeave();
+    handleMagicLeave();
+    dispatch({ type });
+  }, [dispatch, isInventoryDragging, handleMouseLeave, handleMagicLeave]);
+
   const handleGoodsHover = useCallback((good: UIGoodData | null, x: number, y: number) => {
     if (good) {
       setTooltip({
@@ -947,6 +969,8 @@ export function useGameUILogic({ engine }: UseGameUILogicOptions) {
     handleEquipDragStart,
 
     // Good handlers
+    isInventoryDragging,
+    handleSortInventory,
     handleGoodsRightClick,
     handleGoodsDrop,
     handleGoodsDragStart,

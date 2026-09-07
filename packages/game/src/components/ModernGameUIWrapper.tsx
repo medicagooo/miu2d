@@ -96,6 +96,8 @@ export const ModernGameUIWrapper: React.FC<ModernGameUIWrapperProps> = ({
     handleEquipDrop,
     handleEquipDragStart,
     handleGoodsRightClick,
+    isInventoryDragging,
+    handleSortInventory,
     handleGoodsDrop,
     handleGoodsDragStart,
     handleGoodsDropOnBottom,
@@ -548,6 +550,8 @@ export const ModernGameUIWrapper: React.FC<ModernGameUIWrapperProps> = ({
 
         {/* 物品面板 */}
         <GoodsPanel
+          onSort={() => handleSortInventory("SORT_GOODS")}
+          sortDisabled={isInventoryDragging}
           isVisible={panels?.goods ?? false}
           items={goodsItems}
           money={goodsData.money}
@@ -564,6 +568,8 @@ export const ModernGameUIWrapper: React.FC<ModernGameUIWrapperProps> = ({
 
         {/* 武功面板 */}
         <MagicPanel
+          onSort={() => handleSortInventory("SORT_MAGIC")}
+          sortDisabled={isInventoryDragging}
           isVisible={panels?.magic ?? false}
           magicInfos={magicData.storeMagics}
           onMagicClick={(storeIndex) => logger.log("Magic clicked:", storeIndex)}

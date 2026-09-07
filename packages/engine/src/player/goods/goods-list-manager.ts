@@ -147,6 +147,35 @@ export class GoodsListManager {
   }
 
   /**
+   * 现代 UI 自动整理：药品/装备/任务/其他，同类按单件 cost 升序。
+   * 只重排背包原对象，保留数量、随机属性及冷却；不触发装备效果或合并堆叠。
+   * 快捷栏、装备槽独立持有物品，现有存档流程直接保存重排后的背包索引。
+   */
+  sortInventory(): void {
+    const rank = (kind: GoodKind): number => {
+      switch (kind) {
+        case GoodKind.Drug:
+          return 0;
+        case GoodKind.Equipment:
+          return 1;
+        case GoodKind.Event:
+          return 2;
+        default:
+          return 3;
+      }
+    };
+    const items = this.goodsList
+      .slice(STORE_INDEX_BEGIN, STORE_INDEX_END + 1)
+      .filter((item): item is GoodsItemInfo => item !== null);
+    // Array.sort 为稳定排序：相同分类/价格保持原顺序，空位统一放到末尾。
+    items.sort((a, b) => rank(a.good.kind) - rank(b.good.kind) || a.good.cost - b.good.cost);
+    for (let i = STORE_INDEX_BEGIN; i <= STORE_INDEX_END; i++) {
+      this.goodsList[i] = items[i - STORE_INDEX_BEGIN] ?? null;
+    }
+    this.onUpdateView?.();
+  }
+
+  /**
    * Set item at specific index (for loading saves - bag only)
    */
   setItemAtIndex(index: number, fileName: string, count: number = 1): boolean {

@@ -654,6 +654,9 @@ export class UIBridgeImpl implements UIBridge {
         break;
 
       // 物品
+      case "SORT_GOODS":
+        this.deps.state.getGoodsListManager().sortInventory();
+        break;
       case "USE_ITEM":
         this.deps.goods.useItem(action.index);
         break;
@@ -686,6 +689,9 @@ export class UIBridgeImpl implements UIBridge {
         break;
 
       // 武功
+      case "SORT_MAGIC":
+        this.deps.state.getPlayerMagicInventory().sortInventory();
+        break;
       case "USE_MAGIC":
         this.deps.magic.useMagic(action.magicIndex);
         break;

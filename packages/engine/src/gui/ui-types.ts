@@ -442,6 +442,8 @@ export interface UISnapshot {
 export type UIEquipSlotName = "head" | "neck" | "body" | "back" | "hand" | "wrist" | "foot";
 
 export type UIAction =
+  | { type: "SORT_GOODS" }
+  | { type: "SORT_MAGIC" }
   // 面板控制
   | { type: "TOGGLE_PANEL"; panel: UIPanelName }
   // 对话
