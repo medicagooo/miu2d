@@ -1,19 +1,21 @@
 {
   "pending": [
-    "0908-merge-upstream/push-sync-branch-1",
-    "0908-merge-upstream/create-sync-pr-1"
+    "0908-remove-local-recovery/revert-recovery-1"
   ],
   "timezone": "Asia/Singapore",
   "format": 1,
   "read": [
     ".branch-records/FORMAT.md"
   ],
-  "active": [],
+  "active": [
+    "0908-remove-local-recovery"
+  ],
   "records": [
     ".branch-records/0908-magic-learning-dedup/state.json",
     ".branch-records/legacy-20260908.md",
     ".branch-records/0908-modern-auto-sort/state.json",
-    ".branch-records/0908-merge-upstream/state.json"
+    ".branch-records/0908-merge-upstream/state.json",
+    ".branch-records/0908-remove-local-recovery/state.json"
   ],
   "changes": [
     {
@@ -51,11 +53,30 @@
     {
       "id": "0908-merge-upstream",
       "date": "2026-09-08",
-      "businessChange": "同步上游9月6日缓存/截图版本/S3同源签名/武侠品牌与地区提示；保留本地场景编辑、运行恢复、武功去重、自动整理和Docker部署兼容入口。同步分支已验证完成，main未集成、未部署；推送/PR见任务事件",
+      "businessChange": "同步上游9月6日缓存/截图版本/S3同源签名/武侠品牌与地区提示，保留当时本地改动及Docker兼容入口；2026-09-08 经 PR #1 合入 main 7a7c479。恢复工具后续撤销见 0908-remove-local-recovery",
       "status": "complete",
       "request": "0908-merge-upstream/request-handle",
       "evidence": ".branch-records/0908-merge-upstream/state.json",
-      "implementedAt": "2026-09-08"
+      "implementedAt": "2026-09-08",
+      "mainIntegratedAt": "2026-09-08"
+    },
+    {
+      "id": "legacy-local-recovery",
+      "date": "2026-09-02",
+      "businessChange": "增加公开运行快照采集、资源路径映射及本地数据库恢复脚本，覆盖 sword1/sword2/demo 的初始场景；不等同于完整游戏数据恢复",
+      "status": "superseded",
+      "implementedAt": "2026-09-02",
+      "evidence": ".branch-records/0908-remove-local-recovery/state.json",
+      "supersededBy": "0908-remove-local-recovery"
+    },
+    {
+      "id": "0908-remove-local-recovery",
+      "date": "2026-09-08",
+      "businessChange": "拟撤销 b5b90f7/7c4fb51 的四个恢复文件，不再建立本地数据库；现有数据库、容器和备份清理另待准确目标确认",
+      "status": "planned",
+      "request": "0908-remove-local-recovery/request-remove-recovery",
+      "evidence": ".branch-records/0908-remove-local-recovery/state.json",
+      "supersedes": "legacy-local-recovery"
     }
   ]
 }
