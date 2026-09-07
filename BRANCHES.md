@@ -72,11 +72,12 @@
     {
       "id": "0908-remove-local-recovery",
       "date": "2026-09-08",
-      "businessChange": "拟撤销 b5b90f7/7c4fb51 的四个恢复文件，不再建立本地数据库；现有数据库、容器和备份清理另待准确目标确认",
-      "status": "planned",
+      "businessChange": "撤销 b5b90f7/7c4fb51 的四个不完整恢复脚本/文档，AGENTS.md 明确不再创建或重建本地数据库；保留其他玩法与编辑器。现有数据清理未执行：项目 .data 不存在，Docker 不可用",
+      "status": "complete",
       "request": "0908-remove-local-recovery/request-remove-recovery",
       "evidence": ".branch-records/0908-remove-local-recovery/state.json",
-      "supersedes": "legacy-local-recovery"
+      "supersedes": "legacy-local-recovery",
+      "implementedAt": "2026-09-08"
     }
   ]
 }

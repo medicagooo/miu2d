@@ -17,12 +17,16 @@
     "登记撤销前后行为与验证证据",
     "本地提交完成，现有数据清理单独核对和确认"
   ],
-  "status": "active",
+  "status": "blocked",
   "integration": "unmerged",
   "evidence": [
     "起始 main 7a7c479 工作区干净",
     "四个目标文件 blob 与 7c4fb51 完全一致，没有后续改动",
-    "仅四个恢复文件内部互相引用，业务源码没有调用"
+    "仅四个恢复文件内部互相引用，业务源码没有调用",
+    "git revert --no-commit 7c4fb51 b5b90f7 成功：仅删除四个原始恢复文件，共986行；AGENTS.md 新增禁止创建/重建本地数据库规则",
+    "2026-09-08 核对 D:/proj/miu2d/.data 不存在，因此 postgres/minio/s3-backups/local-snapshots 四个旧记录路径均不存在，未执行删除",
+    "Docker CLI desktop-linux endpoint 无 dockerDesktopLinuxEngine 管道；Docker Desktop/backend 未运行，无法列出现存容器和挂载。旧文档名称 miu2d-postgres/miu2d-minio 仅为候选，未验证存在",
+    "代码/文档引用检索无遗留活动调用；登记保留原提交历史并链接撤销。未运行恢复、数据库创建、容器删除或数据清理命令"
   ],
-  "next": "预声明登记提交后依次 revert 7c4fb51 和 b5b90f7，新增仓库禁止创建本地数据库规则；并行只读核对清理目标"
+  "next": "仓库撤销完成后核对本地提交和干净工作区；实际数据库/容器/备份清理阻塞于 Docker 引擎不可用。Docker 可用后只读列出本项目容器及挂载，确认真实存在的目标和影响，取得准确操作确认再删除；不得重建本地数据库。未授权本次撤销的 push。"
 }
