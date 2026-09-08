@@ -9,10 +9,10 @@
  */
 
 import { resolveMagicIntro } from "@miu2d/shared/lib/npc-magic-descriptions";
-import { getBundledNpcMagicIconPath } from "@miu2d/shared/lib/npc-magic-icons";
+import { resolveMagicIconPath } from "@miu2d/shared/lib/npc-magic-icons";
 import type { AttackFile, Magic } from "@miu2d/types";
 import { logger } from "../core/logger";
-import { getMagicsData } from "../data/game-data-api";
+import { getGameSlug, getMagicsData } from "../data/game-data-api";
 import { createConfigCache } from "../resource/cache-registry";
 import { getResourceRoot, ResourceDirs } from "../resource/resource-paths";
 import type { MagicRenderer } from "./magic-renderer";
@@ -339,11 +339,11 @@ function convertApiMagicToMagicData(
 
   // 图像资源（主武功特有）
   magic.image = normalizeResourcePath(api.image, "magic");
-  // AI-TRACE: Explicit API icons keep the legacy ASF/MSF normalization. Only a missing icon on a
-  // verified NPC key falls back to the Web-public PNG contract in shared/npc-magic-icons.ts.
+  // AI-TRACE: Explicit API icons keep their resource normalization. Missing icons use the
+  // current game's audited PNG set regardless of ownership, then the legacy NPC fallback.
   magic.icon = api.icon
     ? normalizeResourcePath(api.icon, "magic")
-    : getBundledNpcMagicIconPath(api.key, api.userType);
+    : resolveMagicIconPath(undefined, api.key, api.userType, getGameSlug());
   magic.superModeImage = normalizeResourcePath(api.superModeImage, "effect");
   magic.useActionFile = api.useActionFile || undefined;
 

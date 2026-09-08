@@ -115,9 +115,14 @@ export function MagicListPanel({ basePath }: { basePath: string }) {
                 }
               >
                 <LazyAsfIcon
-                  // AI-TRACE: explicit database icon first; verified NPC keys fall back to the
-                  // bundled Web PNG mapping without mutating the magic record.
-                  iconPath={resolveMagicIconPath(magic.icon, magic.key, magic.userType)}
+                  // AI-TRACE: original icon first, then game-specific artwork, then legacy NPC
+                  // fallback. The same resolver is used by engine conversion and the picker.
+                  iconPath={resolveMagicIconPath(
+                    magic.icon,
+                    magic.key,
+                    magic.userType,
+                    currentGame?.slug
+                  )}
                   gameSlug={currentGame?.slug}
                   size={36}
                   prefix="asf/magic/"

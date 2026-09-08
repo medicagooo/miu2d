@@ -3,8 +3,11 @@
  * Purpose: resolve the 34 verified `magics.npc` keys to Web-public PNG fallbacks.
  * Upstream: remote/local game data keeps its original `Magic.icon`; callers pass `key` and `userType`.
  * Downstream: engine MagicData conversion and Dashboard list/picker renderers consume the returned path.
- * Compatibility: an explicit icon always wins; player and unknown NPC keys keep the legacy ASF/MSF path.
+ * Compatibility: an explicit icon always wins. With gameSlug, the audited per-game artwork has
+ * priority over these older NPC fallbacks; omitted slug preserves the existing three-argument API.
  */
+
+import { getGameMagicIconPath } from "./game-magic-icons";
 
 const BUNDLED_NPC_MAGIC_KEYS = new Set([
   "magic-百剑诀.ini",
@@ -62,9 +65,10 @@ export function getBundledNpcMagicIconPath(
 export function resolveMagicIconPath(
   icon: string | null | undefined,
   key: string,
-  userType?: string | null
+  userType?: string | null,
+  gameSlug?: string | null
 ): string | undefined {
-  return icon || getBundledNpcMagicIconPath(key, userType);
+  return icon || getGameMagicIconPath(gameSlug, key) || getBundledNpcMagicIconPath(key, userType);
 }
 
 export function isNativeImagePath(path: string | null | undefined): boolean {

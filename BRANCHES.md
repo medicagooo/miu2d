@@ -17,7 +17,8 @@
     ".branch-records/0908-modern-auto-sort/state.json",
     ".branch-records/0908-merge-upstream/state.json",
     ".branch-records/0908-remove-local-recovery/state.json",
-    ".branch-records/0908-integrate-local-commits/state.json"
+    ".branch-records/0908-integrate-local-commits/state.json",
+    ".branch-records/0908-missing-magic-icons/state.json"
   ],
   "changes": [
     {
@@ -90,6 +91,19 @@
       "evidence": ".branch-records/0908-integrate-local-commits/state.json",
       "implementedAt": "2026-09-08",
       "mainIntegratedAt": "2026-09-08"
+    },
+    {
+      "id": "0908-missing-magic-icons",
+      "date": "2026-09-08",
+      "businessChange": "三个游戏94个缺图配置已补齐：新绘65张；新剑侠的29项同名武功复用月影27张新绘、推山填海原图、已有弓箭备用图（原始资源404）；原图优先，数值说明归属不变",
+      "status": "implemented_local",
+      "request": [
+        "0908-missing-magic-icons/request-generate",
+        "0908-missing-magic-icons/request-reuse-demo"
+      ],
+      "evidence": ".branch-records/0908-missing-magic-icons/state.json",
+      "domain": "武功图标/游戏与后台",
+      "implementedAt": "2026-09-08T13:53:08.7505198+08:00"
     }
   ]
 }

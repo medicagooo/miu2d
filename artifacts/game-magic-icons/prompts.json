@@ -1,0 +1,945 @@
+{
+  "schemaVersion": 1,
+  "prompts": [
+    {
+      "idx": 0,
+      "slug": "demo",
+      "key": "player-magic-长剑.ini",
+      "name": "长剑",
+      "concept": "一柄朴素银色直剑，冷蓝短斩光，基础近身剑击。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for demo, 长剑, configuration player-magic-长剑.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 月影传说：match reference hotbar's simple luminous energy sprites: tiny bright nucleus, restrained soft additive glow, fine spark-like particles, smooth but low-resolution color ramps on nearly black ground. Use clearly different dominant hue and silhouette for each skill. No painted scenery or ornaments.\nSubject concept: 一柄朴素银色直剑，冷蓝短斩光，基础近身剑击。\nVerified mechanics for visual guidance: moveKind=SingleMove, specialKind=None, lifeFrame=4. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-yuying.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 1,
+      "slug": "demo",
+      "key": "magic-柳叶飞刀.ini",
+      "name": "柳叶飞刀",
+      "concept": "单枚细长柳叶飞刀斜向飞出，青绿细尾迹，轻巧精准。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for demo, 柳叶飞刀, configuration magic-柳叶飞刀.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 月影传说：match reference hotbar's simple luminous energy sprites: tiny bright nucleus, restrained soft additive glow, fine spark-like particles, smooth but low-resolution color ramps on nearly black ground. Use clearly different dominant hue and silhouette for each skill. No painted scenery or ornaments.\nSubject concept: 单枚细长柳叶飞刀斜向飞出，青绿细尾迹，轻巧精准。\nVerified mechanics for visual guidance: moveKind=SingleMove, specialKind=None, lifeFrame=40. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-yuying.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 2,
+      "slug": "demo",
+      "key": "magic-月眉儿攻击.ini",
+      "name": "月眉儿攻击",
+      "concept": "三道蓝紫月牙刃在一个紧凑区域交错旋转，月弧清晰。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for demo, 月眉儿攻击, configuration magic-月眉儿攻击.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 月影传说：match reference hotbar's simple luminous energy sprites: tiny bright nucleus, restrained soft additive glow, fine spark-like particles, smooth but low-resolution color ramps on nearly black ground. Use clearly different dominant hue and silhouette for each skill. No painted scenery or ornaments.\nSubject concept: 三道蓝紫月牙刃在一个紧凑区域交错旋转，月弧清晰。\nVerified mechanics for visual guidance: moveKind=RegionBased, specialKind=None, lifeFrame=23. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-yuying.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 3,
+      "slug": "demo",
+      "key": "magic-蜂王毒刺.ini",
+      "name": "蜂王毒刺",
+      "concept": "一枚金黄蜂尾毒针，尖端碧绿毒滴，短促刺击。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for demo, 蜂王毒刺, configuration magic-蜂王毒刺.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 月影传说：match reference hotbar's simple luminous energy sprites: tiny bright nucleus, restrained soft additive glow, fine spark-like particles, smooth but low-resolution color ramps on nearly black ground. Use clearly different dominant hue and silhouette for each skill. No painted scenery or ornaments.\nSubject concept: 一枚金黄蜂尾毒针，尖端碧绿毒滴，短促刺击。\nVerified mechanics for visual guidance: moveKind=SingleMove, specialKind=AddThewOrPoison, lifeFrame=2. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-yuying.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 4,
+      "slug": "demo",
+      "key": "magic-孟知秋攻击.ini",
+      "name": "孟知秋攻击",
+      "concept": "苍劲剑客的简化挥剑剪影与向外迸发的蓝金剑气。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for demo, 孟知秋攻击, configuration magic-孟知秋攻击.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 月影传说：match reference hotbar's simple luminous energy sprites: tiny bright nucleus, restrained soft additive glow, fine spark-like particles, smooth but low-resolution color ramps on nearly black ground. Use clearly different dominant hue and silhouette for each skill. No painted scenery or ornaments.\nSubject concept: 苍劲剑客的简化挥剑剪影与向外迸发的蓝金剑气。\nVerified mechanics for visual guidance: moveKind=RegionBased, specialKind=None, lifeFrame=20. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-yuying.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 5,
+      "slug": "demo",
+      "key": "magic-金针攻击.ini",
+      "name": "金针攻击",
+      "concept": "五根金针并列组成向前推进的针墙，金白细光。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for demo, 金针攻击, configuration magic-金针攻击.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 月影传说：match reference hotbar's simple luminous energy sprites: tiny bright nucleus, restrained soft additive glow, fine spark-like particles, smooth but low-resolution color ramps on nearly black ground. Use clearly different dominant hue and silhouette for each skill. No painted scenery or ornaments.\nSubject concept: 五根金针并列组成向前推进的针墙，金白细光。\nVerified mechanics for visual guidance: moveKind=WallMove, specialKind=None, lifeFrame=30. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-yuying.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 6,
+      "slug": "demo",
+      "key": "magic-紫轩攻击.ini",
+      "name": "花瓣攻击",
+      "concept": "三片紫红花瓣聚成尖锐飞梭，单向飞出，柔美凌厉。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for demo, 花瓣攻击, configuration magic-紫轩攻击.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 月影传说：match reference hotbar's simple luminous energy sprites: tiny bright nucleus, restrained soft additive glow, fine spark-like particles, smooth but low-resolution color ramps on nearly black ground. Use clearly different dominant hue and silhouette for each skill. No painted scenery or ornaments.\nSubject concept: 三片紫红花瓣聚成尖锐飞梭，单向飞出，柔美凌厉。\nVerified mechanics for visual guidance: moveKind=SingleMove, specialKind=None, lifeFrame=40. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-yuying.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 7,
+      "slug": "demo",
+      "key": "magic-毒液2.ini",
+      "name": "毒液2",
+      "concept": "亮黄绿色毒液向扇面喷溅，中心酸性液滴。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for demo, 毒液2, configuration magic-毒液2.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 月影传说：match reference hotbar's simple luminous energy sprites: tiny bright nucleus, restrained soft additive glow, fine spark-like particles, smooth but low-resolution color ramps on nearly black ground. Use clearly different dominant hue and silhouette for each skill. No painted scenery or ornaments.\nSubject concept: 亮黄绿色毒液向扇面喷溅，中心酸性液滴。\nVerified mechanics for visual guidance: moveKind=SectorMove, specialKind=None, lifeFrame=20. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-yuying.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 8,
+      "slug": "demo",
+      "key": "magic-符咒攻击.ini",
+      "name": "符咒攻击",
+      "concept": "三张金黄色小符纸呈扇形射出，红色符线仅抽象笔划，不要可读文字。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for demo, 符咒攻击, configuration magic-符咒攻击.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 月影传说：match reference hotbar's simple luminous energy sprites: tiny bright nucleus, restrained soft additive glow, fine spark-like particles, smooth but low-resolution color ramps on nearly black ground. Use clearly different dominant hue and silhouette for each skill. No painted scenery or ornaments.\nSubject concept: 三张金黄色小符纸呈扇形射出，红色符线仅抽象笔划，不要可读文字。\nVerified mechanics for visual guidance: moveKind=SectorMove, specialKind=None, lifeFrame=0. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-yuying.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 9,
+      "slug": "demo",
+      "key": "magic-土系攻击2.ini",
+      "name": "土系攻击2",
+      "concept": "三颗赭黄岩块沿紧凑螺旋旋转，土黄劲气。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for demo, 土系攻击2, configuration magic-土系攻击2.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 月影传说：match reference hotbar's simple luminous energy sprites: tiny bright nucleus, restrained soft additive glow, fine spark-like particles, smooth but low-resolution color ramps on nearly black ground. Use clearly different dominant hue and silhouette for each skill. No painted scenery or ornaments.\nSubject concept: 三颗赭黄岩块沿紧凑螺旋旋转，土黄劲气。\nVerified mechanics for visual guidance: moveKind=SpiralMove, specialKind=None, lifeFrame=40. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-yuying.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 10,
+      "slug": "demo",
+      "key": "magic-悲天悯人咒.ini",
+      "name": "悲天悯人咒",
+      "concept": "一朵白莲浮在淡蓝水波光环上，宁静而有力量。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for demo, 悲天悯人咒, configuration magic-悲天悯人咒.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 月影传说：match reference hotbar's simple luminous energy sprites: tiny bright nucleus, restrained soft additive glow, fine spark-like particles, smooth but low-resolution color ramps on nearly black ground. Use clearly different dominant hue and silhouette for each skill. No painted scenery or ornaments.\nSubject concept: 一朵白莲浮在淡蓝水波光环上，宁静而有力量。\nVerified mechanics for visual guidance: moveKind=RegionBased, specialKind=None, lifeFrame=23. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-yuying.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 11,
+      "slug": "demo",
+      "key": "magic-火系攻击2.ini",
+      "name": "火系攻击2",
+      "concept": "橙红火种落入圆形燃烧区域，小型环状火势。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for demo, 火系攻击2, configuration magic-火系攻击2.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 月影传说：match reference hotbar's simple luminous energy sprites: tiny bright nucleus, restrained soft additive glow, fine spark-like particles, smooth but low-resolution color ramps on nearly black ground. Use clearly different dominant hue and silhouette for each skill. No painted scenery or ornaments.\nSubject concept: 橙红火种落入圆形燃烧区域，小型环状火势。\nVerified mechanics for visual guidance: moveKind=RegionBased, specialKind=None, lifeFrame=40. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-yuying.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 12,
+      "slug": "demo",
+      "key": "magic-飞刀.ini",
+      "name": "飞刀",
+      "concept": "一枚宽短银色飞刀与冷蓝直线尾迹，区别于细长柳叶刀。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for demo, 飞刀, configuration magic-飞刀.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 月影传说：match reference hotbar's simple luminous energy sprites: tiny bright nucleus, restrained soft additive glow, fine spark-like particles, smooth but low-resolution color ramps on nearly black ground. Use clearly different dominant hue and silhouette for each skill. No painted scenery or ornaments.\nSubject concept: 一枚宽短银色飞刀与冷蓝直线尾迹，区别于细长柳叶刀。\nVerified mechanics for visual guidance: moveKind=SingleMove, specialKind=None, lifeFrame=40. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-yuying.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 13,
+      "slug": "demo",
+      "key": "magic-蔷薇攻击.ini",
+      "name": "蔷薇攻击",
+      "concept": "一朵深红蔷薇带一段弯曲绿色荆棘追击轨迹。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for demo, 蔷薇攻击, configuration magic-蔷薇攻击.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 月影传说：match reference hotbar's simple luminous energy sprites: tiny bright nucleus, restrained soft additive glow, fine spark-like particles, smooth but low-resolution color ramps on nearly black ground. Use clearly different dominant hue and silhouette for each skill. No painted scenery or ornaments.\nSubject concept: 一朵深红蔷薇带一段弯曲绿色荆棘追击轨迹。\nVerified mechanics for visual guidance: moveKind=FollowEnemy, specialKind=None, lifeFrame=40. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-yuying.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 14,
+      "slug": "demo",
+      "key": "magic-毒液.ini",
+      "name": "毒液",
+      "concept": "紫绿毒液如低矮扇形浪潮向前涌出，区别于毒液2的喷溅。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for demo, 毒液, configuration magic-毒液.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 月影传说：match reference hotbar's simple luminous energy sprites: tiny bright nucleus, restrained soft additive glow, fine spark-like particles, smooth but low-resolution color ramps on nearly black ground. Use clearly different dominant hue and silhouette for each skill. No painted scenery or ornaments.\nSubject concept: 紫绿毒液如低矮扇形浪潮向前涌出，区别于毒液2的喷溅。\nVerified mechanics for visual guidance: moveKind=SectorMove, specialKind=None, lifeFrame=20. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-yuying.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 15,
+      "slug": "demo",
+      "key": "magic-暗器2.ini",
+      "name": "暗器2",
+      "concept": "一枚蓝银十字暗器，细长笔直蓝色破空轨迹。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for demo, 暗器2, configuration magic-暗器2.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 月影传说：match reference hotbar's simple luminous energy sprites: tiny bright nucleus, restrained soft additive glow, fine spark-like particles, smooth but low-resolution color ramps on nearly black ground. Use clearly different dominant hue and silhouette for each skill. No painted scenery or ornaments.\nSubject concept: 一枚蓝银十字暗器，细长笔直蓝色破空轨迹。\nVerified mechanics for visual guidance: moveKind=SingleMove, specialKind=None, lifeFrame=100. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-yuying.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 16,
+      "slug": "demo",
+      "key": "magic-小符咒攻击.ini",
+      "name": "小符咒攻击",
+      "concept": "两张很小的金色符纸随机错开飞出，细碎紫金电火花，抽象符线不可读。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for demo, 小符咒攻击, configuration magic-小符咒攻击.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 月影传说：match reference hotbar's simple luminous energy sprites: tiny bright nucleus, restrained soft additive glow, fine spark-like particles, smooth but low-resolution color ramps on nearly black ground. Use clearly different dominant hue and silhouette for each skill. No painted scenery or ornaments.\nSubject concept: 两张很小的金色符纸随机错开飞出，细碎紫金电火花，抽象符线不可读。\nVerified mechanics for visual guidance: moveKind=RandomSector, specialKind=None, lifeFrame=40. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-yuying.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 17,
+      "slug": "demo",
+      "key": "magic-火系攻击3.ini",
+      "name": "火系攻击3",
+      "concept": "火焰掌印推出扇形橙红火浪，单一清楚轮廓。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for demo, 火系攻击3, configuration magic-火系攻击3.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 月影传说：match reference hotbar's simple luminous energy sprites: tiny bright nucleus, restrained soft additive glow, fine spark-like particles, smooth but low-resolution color ramps on nearly black ground. Use clearly different dominant hue and silhouette for each skill. No painted scenery or ornaments.\nSubject concept: 火焰掌印推出扇形橙红火浪，单一清楚轮廓。\nVerified mechanics for visual guidance: moveKind=SectorMove, specialKind=None, lifeFrame=40. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-yuying.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 18,
+      "slug": "demo",
+      "key": "magic-冰刀攻击.ini",
+      "name": "冰刀攻击",
+      "concept": "单柄冰蓝弯刃裹覆白色霜晶，短直线冰气。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for demo, 冰刀攻击, configuration magic-冰刀攻击.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 月影传说：match reference hotbar's simple luminous energy sprites: tiny bright nucleus, restrained soft additive glow, fine spark-like particles, smooth but low-resolution color ramps on nearly black ground. Use clearly different dominant hue and silhouette for each skill. No painted scenery or ornaments.\nSubject concept: 单柄冰蓝弯刃裹覆白色霜晶，短直线冰气。\nVerified mechanics for visual guidance: moveKind=SingleMove, specialKind=None, lifeFrame=40. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-yuying.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 19,
+      "slug": "demo",
+      "key": "magic-蝙蝠.ini",
+      "name": "蝙蝠",
+      "concept": "紫色蝙蝠展开双翼俯冲的清晰剪影，少量绿色邪气。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for demo, 蝙蝠, configuration magic-蝙蝠.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 月影传说：match reference hotbar's simple luminous energy sprites: tiny bright nucleus, restrained soft additive glow, fine spark-like particles, smooth but low-resolution color ramps on nearly black ground. Use clearly different dominant hue and silhouette for each skill. No painted scenery or ornaments.\nSubject concept: 紫色蝙蝠展开双翼俯冲的清晰剪影，少量绿色邪气。\nVerified mechanics for visual guidance: moveKind=SingleMove, specialKind=None, lifeFrame=20. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-yuying.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 20,
+      "slug": "demo",
+      "key": "magic-纳兰潜凛攻击.ini",
+      "name": "纳兰潜凛攻击",
+      "concept": "三道冰紫剑刃绕空心圆环旋转，阴寒肃杀。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for demo, 纳兰潜凛攻击, configuration magic-纳兰潜凛攻击.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 月影传说：match reference hotbar's simple luminous energy sprites: tiny bright nucleus, restrained soft additive glow, fine spark-like particles, smooth but low-resolution color ramps on nearly black ground. Use clearly different dominant hue and silhouette for each skill. No painted scenery or ornaments.\nSubject concept: 三道冰紫剑刃绕空心圆环旋转，阴寒肃杀。\nVerified mechanics for visual guidance: moveKind=CircleMove, specialKind=None, lifeFrame=40. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-yuying.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 21,
+      "slug": "demo",
+      "key": "magic-水系攻击2.ini",
+      "name": "水系攻击2",
+      "concept": "一道水蓝龙形水流弹，紧凑龙头和短尾，向前冲击。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for demo, 水系攻击2, configuration magic-水系攻击2.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 月影传说：match reference hotbar's simple luminous energy sprites: tiny bright nucleus, restrained soft additive glow, fine spark-like particles, smooth but low-resolution color ramps on nearly black ground. Use clearly different dominant hue and silhouette for each skill. No painted scenery or ornaments.\nSubject concept: 一道水蓝龙形水流弹，紧凑龙头和短尾，向前冲击。\nVerified mechanics for visual guidance: moveKind=SingleMove, specialKind=None, lifeFrame=40. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-yuying.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 22,
+      "slug": "demo",
+      "key": "magic-毒烟攻击.ini",
+      "name": "毒烟攻击",
+      "concept": "一缕紫绿色蛇形毒烟盘曲向前，细小亮绿毒核。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for demo, 毒烟攻击, configuration magic-毒烟攻击.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 月影传说：match reference hotbar's simple luminous energy sprites: tiny bright nucleus, restrained soft additive glow, fine spark-like particles, smooth but low-resolution color ramps on nearly black ground. Use clearly different dominant hue and silhouette for each skill. No painted scenery or ornaments.\nSubject concept: 一缕紫绿色蛇形毒烟盘曲向前，细小亮绿毒核。\nVerified mechanics for visual guidance: moveKind=SingleMove, specialKind=None, lifeFrame=80. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-yuying.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 23,
+      "slug": "demo",
+      "key": "magic-金刚电闪.ini",
+      "name": "金刚电闪",
+      "concept": "简化金色拳印伴随三道分叉紫电，随机散射的雷劲。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for demo, 金刚电闪, configuration magic-金刚电闪.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 月影传说：match reference hotbar's simple luminous energy sprites: tiny bright nucleus, restrained soft additive glow, fine spark-like particles, smooth but low-resolution color ramps on nearly black ground. Use clearly different dominant hue and silhouette for each skill. No painted scenery or ornaments.\nSubject concept: 简化金色拳印伴随三道分叉紫电，随机散射的雷劲。\nVerified mechanics for visual guidance: moveKind=RandomSector, specialKind=None, lifeFrame=40. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-yuying.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 24,
+      "slug": "demo",
+      "key": "magic-水系攻击1.ini",
+      "name": "水系攻击1",
+      "concept": "一颗紧凑青蓝水弹带短水尾，单体直射。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for demo, 水系攻击1, configuration magic-水系攻击1.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 月影传说：match reference hotbar's simple luminous energy sprites: tiny bright nucleus, restrained soft additive glow, fine spark-like particles, smooth but low-resolution color ramps on nearly black ground. Use clearly different dominant hue and silhouette for each skill. No painted scenery or ornaments.\nSubject concept: 一颗紧凑青蓝水弹带短水尾，单体直射。\nVerified mechanics for visual guidance: moveKind=SingleMove, specialKind=None, lifeFrame=40. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-yuying.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 25,
+      "slug": "demo",
+      "key": "magic-沙暴攻击.ini",
+      "name": "沙暴攻击",
+      "concept": "赭黄色沙旋风形成向前移动的风刃，小而紧凑。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for demo, 沙暴攻击, configuration magic-沙暴攻击.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 月影传说：match reference hotbar's simple luminous energy sprites: tiny bright nucleus, restrained soft additive glow, fine spark-like particles, smooth but low-resolution color ramps on nearly black ground. Use clearly different dominant hue and silhouette for each skill. No painted scenery or ornaments.\nSubject concept: 赭黄色沙旋风形成向前移动的风刃，小而紧凑。\nVerified mechanics for visual guidance: moveKind=LineMove, specialKind=None, lifeFrame=40. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-yuying.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 26,
+      "slug": "demo",
+      "key": "magic-金钱镖.ini",
+      "name": "金钱镖",
+      "concept": "三枚金色方孔钱币呈扇形射出，明亮金属边。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for demo, 金钱镖, configuration magic-金钱镖.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 月影传说：match reference hotbar's simple luminous energy sprites: tiny bright nucleus, restrained soft additive glow, fine spark-like particles, smooth but low-resolution color ramps on nearly black ground. Use clearly different dominant hue and silhouette for each skill. No painted scenery or ornaments.\nSubject concept: 三枚金色方孔钱币呈扇形射出，明亮金属边。\nVerified mechanics for visual guidance: moveKind=SectorMove, specialKind=None, lifeFrame=40. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-yuying.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 27,
+      "slug": "demo",
+      "key": "magic-花瓣攻击.ini",
+      "name": "花瓣攻击",
+      "concept": "粉白花瓣绕中心环形飞旋，区别于紫轩花瓣飞梭。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for demo, 花瓣攻击, configuration magic-花瓣攻击.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 月影传说：match reference hotbar's simple luminous energy sprites: tiny bright nucleus, restrained soft additive glow, fine spark-like particles, smooth but low-resolution color ramps on nearly black ground. Use clearly different dominant hue and silhouette for each skill. No painted scenery or ornaments.\nSubject concept: 粉白花瓣绕中心环形飞旋，区别于紫轩花瓣飞梭。\nVerified mechanics for visual guidance: moveKind=CircleMove, specialKind=None, lifeFrame=50. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-yuying.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 28,
+      "slug": "sword1",
+      "key": "magic018_碧波临风.ini",
+      "name": "碧波临风",
+      "concept": "碧绿水波与一道白色清风弧线凝为向前的细流，名称意象配合单向招式。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 碧波临风, configuration magic018_碧波临风.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 碧绿水波与一道白色清风弧线凝为向前的细流，名称意象配合单向招式。\nVerified mechanics for visual guidance: moveKind=SingleMove, specialKind=None, lifeFrame=0. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 29,
+      "slug": "sword1",
+      "key": "magic026_龙象九重.ini",
+      "name": "龙象九重",
+      "concept": "金色掌印中含简化龙象轮廓，厚重土金真气形成前推气墙，古朴强劲。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 龙象九重, configuration magic026_龙象九重.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 金色掌印中含简化龙象轮廓，厚重土金真气形成前推气墙，古朴强劲。\nVerified mechanics for visual guidance: moveKind=WallMove, specialKind=BuffOrPetrify, lifeFrame=20. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 30,
+      "slug": "sword1",
+      "key": "magic043_风云突起3.ini",
+      "name": "风云突起",
+      "concept": "一团紫绿急旋风云，一道毒绿直线穿出，第三式有毒效果，与冰蓝第一式和银白第二式区分。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 风云突起, configuration magic043_风云突起3.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 一团紫绿急旋风云，一道毒绿直线穿出，第三式有毒效果，与冰蓝第一式和银白第二式区分。\nVerified mechanics for visual guidance: moveKind=SingleMove, specialKind=AddThewOrPoison, lifeFrame=0. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 31,
+      "slug": "sword1",
+      "key": "magic040_血影怒雷.ini",
+      "name": "血影怒雷",
+      "concept": "血红人影环绕一道分叉紫雷，红紫圆形气劲，毒性用微量碧绿点光暗示。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 血影怒雷, configuration magic040_血影怒雷.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 血红人影环绕一道分叉紫雷，红紫圆形气劲，毒性用微量碧绿点光暗示。\nVerified mechanics for visual guidance: moveKind=CircleMove, specialKind=AddThewOrPoison, lifeFrame=0. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 32,
+      "slug": "sword1",
+      "key": "magic-金针攻击.ini",
+      "name": "金针攻击",
+      "concept": "五根金针并列组成向前推进的针墙，金白细光。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 金针攻击, configuration magic-金针攻击.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 五根金针并列组成向前推进的针墙，金白细光。\nVerified mechanics for visual guidance: moveKind=WallMove, specialKind=None, lifeFrame=30. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "generated-before-reuse-request-not-selected"
+    },
+    {
+      "idx": 33,
+      "slug": "sword1",
+      "key": "magic055_噬天灭地.ini",
+      "name": "噬天灭地",
+      "concept": "黑紫旋涡张开红色裂隙，压缩为一道横向黑红劲气墙。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 噬天灭地, configuration magic055_噬天灭地.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 黑紫旋涡张开红色裂隙，压缩为一道横向黑红劲气墙。\nVerified mechanics for visual guidance: moveKind=WallMove, specialKind=None, lifeFrame=20. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 34,
+      "slug": "sword1",
+      "key": "magic-孟知秋攻击.ini",
+      "name": "孟知秋攻击",
+      "concept": "苍劲剑客的简化挥剑剪影与向外迸发的蓝金剑气。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 孟知秋攻击, configuration magic-孟知秋攻击.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 苍劲剑客的简化挥剑剪影与向外迸发的蓝金剑气。\nVerified mechanics for visual guidance: moveKind=RegionBased, specialKind=None, lifeFrame=20. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "generated-before-reuse-request-not-selected"
+    },
+    {
+      "idx": 35,
+      "slug": "sword1",
+      "key": "magic049_快风残雨.ini",
+      "name": "疾风骤雨",
+      "concept": "青白风雨斜线扇形急射，疏朗三道主线，表现快风残雨配置的散射。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 疾风骤雨, configuration magic049_快风残雨.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 青白风雨斜线扇形急射，疏朗三道主线，表现快风残雨配置的散射。\nVerified mechanics for visual guidance: moveKind=RandomSector, specialKind=None, lifeFrame=40. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 36,
+      "slug": "sword1",
+      "key": "magic-蜂王毒刺.ini",
+      "name": "蜂王毒刺",
+      "concept": "一枚金黄蜂尾毒针，尖端碧绿毒滴，短促刺击。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 蜂王毒刺, configuration magic-蜂王毒刺.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 一枚金黄蜂尾毒针，尖端碧绿毒滴，短促刺击。\nVerified mechanics for visual guidance: moveKind=SingleMove, specialKind=AddThewOrPoison, lifeFrame=2. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "generated-before-reuse-request-not-selected"
+    },
+    {
+      "idx": 37,
+      "slug": "sword1",
+      "key": "magic-月眉儿攻击.ini",
+      "name": "月眉儿攻击",
+      "concept": "三道蓝紫月牙刃在一个紧凑区域交错旋转，月弧清晰。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 月眉儿攻击, configuration magic-月眉儿攻击.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 三道蓝紫月牙刃在一个紧凑区域交错旋转，月弧清晰。\nVerified mechanics for visual guidance: moveKind=RegionBased, specialKind=None, lifeFrame=23. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "generated-before-reuse-request-not-selected"
+    },
+    {
+      "idx": 38,
+      "slug": "sword1",
+      "key": "magic-柳叶飞刀.ini",
+      "name": "柳叶飞刀",
+      "concept": "单枚细长柳叶飞刀斜向飞出，青绿细尾迹，轻巧精准。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 柳叶飞刀, configuration magic-柳叶飞刀.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 单枚细长柳叶飞刀斜向飞出，青绿细尾迹，轻巧精准。\nVerified mechanics for visual guidance: moveKind=SingleMove, specialKind=None, lifeFrame=40. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "generated-before-reuse-request-not-selected"
+    },
+    {
+      "idx": 39,
+      "slug": "sword1",
+      "key": "magic060_射箭.ini",
+      "name": "射箭",
+      "concept": "简化弓手侧身拉弓剪影，三枚冰白箭头排成横列，寒冰箭墙。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 射箭, configuration magic060_射箭.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 简化弓手侧身拉弓剪影，三枚冰白箭头排成横列，寒冰箭墙。\nVerified mechanics for visual guidance: moveKind=FixedWall, specialKind=AddLifeOrFrozen, lifeFrame=0. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 40,
+      "slug": "sword1",
+      "key": "magic-水系攻击2.ini",
+      "name": "水系攻击2",
+      "concept": "一道水蓝龙形水流弹，紧凑龙头和短尾，向前冲击。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 水系攻击2, configuration magic-水系攻击2.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 一道水蓝龙形水流弹，紧凑龙头和短尾，向前冲击。\nVerified mechanics for visual guidance: moveKind=SingleMove, specialKind=None, lifeFrame=40. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "generated-before-reuse-request-not-selected"
+    },
+    {
+      "idx": 41,
+      "slug": "sword1",
+      "key": "magic047_蟒蛇出洞.ini",
+      "name": "蟒蛇出洞",
+      "concept": "金褐蟒蛇头从暗处前探，三道扇形蛇形劲气，简练蛇形轮廓。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 蟒蛇出洞, configuration magic047_蟒蛇出洞.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 金褐蟒蛇头从暗处前探，三道扇形蛇形劲气，简练蛇形轮廓。\nVerified mechanics for visual guidance: moveKind=RandomSector, specialKind=None, lifeFrame=40. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 42,
+      "slug": "sword1",
+      "key": "magic048_毒蛇吐芯.ini",
+      "name": "毒蛇吐芯",
+      "concept": "绿色毒蛇头吐出一线紫绿毒芒，单向穿刺。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 毒蛇吐芯, configuration magic048_毒蛇吐芯.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 绿色毒蛇头吐出一线紫绿毒芒，单向穿刺。\nVerified mechanics for visual guidance: moveKind=SingleMove, specialKind=AddThewOrPoison, lifeFrame=20. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 43,
+      "slug": "sword1",
+      "key": "magic-纳兰潜凛攻击.ini",
+      "name": "纳兰潜凛攻击",
+      "concept": "三道冰紫剑刃绕空心圆环旋转，阴寒肃杀。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 纳兰潜凛攻击, configuration magic-纳兰潜凛攻击.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 三道冰紫剑刃绕空心圆环旋转，阴寒肃杀。\nVerified mechanics for visual guidance: moveKind=CircleMove, specialKind=None, lifeFrame=40. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "skipped-in-favor-of-demo-reuse"
+    },
+    {
+      "idx": 44,
+      "slug": "sword1",
+      "key": "magic-蝙蝠.ini",
+      "name": "蝙蝠",
+      "concept": "紫色蝙蝠展开双翼俯冲的清晰剪影，少量绿色邪气。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 蝙蝠, configuration magic-蝙蝠.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 紫色蝙蝠展开双翼俯冲的清晰剪影，少量绿色邪气。\nVerified mechanics for visual guidance: moveKind=SingleMove, specialKind=None, lifeFrame=20. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "skipped-in-favor-of-demo-reuse"
+    },
+    {
+      "idx": 45,
+      "slug": "sword1",
+      "key": "magic-冰刀攻击.ini",
+      "name": "冰刀攻击",
+      "concept": "单柄冰蓝弯刃裹覆白色霜晶，短直线冰气。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 冰刀攻击, configuration magic-冰刀攻击.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 单柄冰蓝弯刃裹覆白色霜晶，短直线冰气。\nVerified mechanics for visual guidance: moveKind=SingleMove, specialKind=None, lifeFrame=40. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "skipped-in-favor-of-demo-reuse"
+    },
+    {
+      "idx": 46,
+      "slug": "sword1",
+      "key": "magic052_推山填海.ini",
+      "name": "推山填海",
+      "concept": "双掌向前推开的简化动作剪影，冰蓝巨浪形气劲，当前配置附冰冻。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 推山填海, configuration magic052_推山填海.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 双掌向前推开的简化动作剪影，冰蓝巨浪形气劲，当前配置附冰冻。\nVerified mechanics for visual guidance: moveKind=SingleMove, specialKind=AddLifeOrFrozen, lifeFrame=0. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "skipped-in-favor-of-demo-reuse"
+    },
+    {
+      "idx": 47,
+      "slug": "sword1",
+      "key": "magic-火系攻击3.ini",
+      "name": "火系攻击3",
+      "concept": "火焰掌印推出扇形橙红火浪，单一清楚轮廓。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 火系攻击3, configuration magic-火系攻击3.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 火焰掌印推出扇形橙红火浪，单一清楚轮廓。\nVerified mechanics for visual guidance: moveKind=SectorMove, specialKind=None, lifeFrame=40. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "skipped-in-favor-of-demo-reuse"
+    },
+    {
+      "idx": 48,
+      "slug": "sword1",
+      "key": "magic-小符咒攻击.ini",
+      "name": "小符咒攻击",
+      "concept": "两张很小的金色符纸随机错开飞出，细碎紫金电火花，抽象符线不可读。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 小符咒攻击, configuration magic-小符咒攻击.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 两张很小的金色符纸随机错开飞出，细碎紫金电火花，抽象符线不可读。\nVerified mechanics for visual guidance: moveKind=RandomSector, specialKind=None, lifeFrame=40. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "skipped-in-favor-of-demo-reuse"
+    },
+    {
+      "idx": 49,
+      "slug": "sword1",
+      "key": "magic043_风云突起2.ini",
+      "name": "风云突起",
+      "concept": "银白旋风裹一团浅青云气，直向飞出，无毒无冰的第二式。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 风云突起, configuration magic043_风云突起2.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 银白旋风裹一团浅青云气，直向飞出，无毒无冰的第二式。\nVerified mechanics for visual guidance: moveKind=SingleMove, specialKind=None, lifeFrame=0. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 50,
+      "slug": "sword1",
+      "key": "magic027_幻音玄剑.ini",
+      "name": "幻音玄剑",
+      "concept": "幽蓝直剑两侧各一条紫色音波，组成竖立剑气屏障。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 幻音玄剑, configuration magic027_幻音玄剑.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 幽蓝直剑两侧各一条紫色音波，组成竖立剑气屏障。\nVerified mechanics for visual guidance: moveKind=FixedWall, specialKind=None, lifeFrame=20. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 51,
+      "slug": "sword1",
+      "key": "magic023_雨后彩虹.ini",
+      "name": "雨后彩虹",
+      "concept": "一弧简练彩虹从两团青白雨雾间升起，横向光幕。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 雨后彩虹, configuration magic023_雨后彩虹.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 一弧简练彩虹从两团青白雨雾间升起，横向光幕。\nVerified mechanics for visual guidance: moveKind=FixedWall, specialKind=None, lifeFrame=40. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 52,
+      "slug": "sword1",
+      "key": "magic-暗器2.ini",
+      "name": "暗器2",
+      "concept": "一枚蓝银十字暗器，细长笔直蓝色破空轨迹。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 暗器2, configuration magic-暗器2.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 一枚蓝银十字暗器，细长笔直蓝色破空轨迹。\nVerified mechanics for visual guidance: moveKind=SingleMove, specialKind=None, lifeFrame=100. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "skipped-in-favor-of-demo-reuse"
+    },
+    {
+      "idx": 53,
+      "slug": "sword1",
+      "key": "magic049_疾风骤雨.ini",
+      "name": "疾风骤雨",
+      "concept": "密集青蓝雨针呈宽扇形飞出，五道明亮主线，与快风残雨和直射版本区分。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 疾风骤雨, configuration magic049_疾风骤雨.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 密集青蓝雨针呈宽扇形飞出，五道明亮主线，与快风残雨和直射版本区分。\nVerified mechanics for visual guidance: moveKind=RandomSector, specialKind=None, lifeFrame=40. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 54,
+      "slug": "sword1",
+      "key": "magic030_饿虎扑食.ini",
+      "name": "饿虎扑食",
+      "concept": "金橙猛虎扑击的简化剪影，两道前爪光痕。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 饿虎扑食, configuration magic030_饿虎扑食.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 金橙猛虎扑击的简化剪影，两道前爪光痕。\nVerified mechanics for visual guidance: moveKind=SingleMove, specialKind=None, lifeFrame=0. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 55,
+      "slug": "sword1",
+      "key": "magic039_残阳如血.ini",
+      "name": "残阳如血",
+      "concept": "半轮暗红落日与一线横向血红劲气，苍凉刚烈。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 残阳如血, configuration magic039_残阳如血.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 半轮暗红落日与一线横向血红劲气，苍凉刚烈。\nVerified mechanics for visual guidance: moveKind=WallMove, specialKind=None, lifeFrame=10. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 56,
+      "slug": "sword1",
+      "key": "magic-毒液.ini",
+      "name": "毒液",
+      "concept": "紫绿毒液如低矮扇形浪潮向前涌出，区别于毒液2的喷溅。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 毒液, configuration magic-毒液.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 紫绿毒液如低矮扇形浪潮向前涌出，区别于毒液2的喷溅。\nVerified mechanics for visual guidance: moveKind=SectorMove, specialKind=None, lifeFrame=20. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "skipped-in-favor-of-demo-reuse"
+    },
+    {
+      "idx": 57,
+      "slug": "sword1",
+      "key": "magic054_狂风逐日.ini",
+      "name": "狂风逐日",
+      "concept": "金色小日轮被三道青白狂风托起，横向展开的风障。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 狂风逐日, configuration magic054_狂风逐日.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 金色小日轮被三道青白狂风托起，横向展开的风障。\nVerified mechanics for visual guidance: moveKind=FixedWall, specialKind=None, lifeFrame=0. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 58,
+      "slug": "sword1",
+      "key": "magic043_风云突起1.ini",
+      "name": "风云突起",
+      "concept": "冰蓝旋风凝着三点白霜，直向射出，第一式带寒冰。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 风云突起, configuration magic043_风云突起1.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 冰蓝旋风凝着三点白霜，直向射出，第一式带寒冰。\nVerified mechanics for visual guidance: moveKind=SingleMove, specialKind=AddLifeOrFrozen, lifeFrame=0. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 59,
+      "slug": "sword1",
+      "key": "magic-蔷薇攻击.ini",
+      "name": "蔷薇攻击",
+      "concept": "一朵深红蔷薇带一段弯曲绿色荆棘追击轨迹。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 蔷薇攻击, configuration magic-蔷薇攻击.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 一朵深红蔷薇带一段弯曲绿色荆棘追击轨迹。\nVerified mechanics for visual guidance: moveKind=FollowEnemy, specialKind=None, lifeFrame=40. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "skipped-in-favor-of-demo-reuse"
+    },
+    {
+      "idx": 60,
+      "slug": "sword1",
+      "key": "magic046_投石惊浪.ini",
+      "name": "投石惊浪",
+      "concept": "灰褐小石落入蓝色水浪，三束扇形飞溅劲气。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 投石惊浪, configuration magic046_投石惊浪.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 灰褐小石落入蓝色水浪，三束扇形飞溅劲气。\nVerified mechanics for visual guidance: moveKind=RandomSector, specialKind=None, lifeFrame=0. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 61,
+      "slug": "sword1",
+      "key": "magic053_黑龙探海.ini",
+      "name": "黑龙探海",
+      "concept": "黑蓝龙首卷起一弧冰蓝海浪，龙形护壁，寒冰白光。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 黑龙探海, configuration magic053_黑龙探海.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 黑蓝龙首卷起一弧冰蓝海浪，龙形护壁，寒冰白光。\nVerified mechanics for visual guidance: moveKind=FixedWall, specialKind=AddLifeOrFrozen, lifeFrame=0. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 62,
+      "slug": "sword1",
+      "key": "magic051_疾风骤雨.ini",
+      "name": "疾风骤雨",
+      "concept": "一束银青风雨凝成笔直高速气箭，单向窄长轨迹，与两个扇形配置区分。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 疾风骤雨, configuration magic051_疾风骤雨.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 一束银青风雨凝成笔直高速气箭，单向窄长轨迹，与两个扇形配置区分。\nVerified mechanics for visual guidance: moveKind=SingleMove, specialKind=None, lifeFrame=20. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 63,
+      "slug": "sword1",
+      "key": "magic-飞刀.ini",
+      "name": "飞刀",
+      "concept": "一枚宽短银色飞刀与冷蓝直线尾迹，区别于细长柳叶刀。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 飞刀, configuration magic-飞刀.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 一枚宽短银色飞刀与冷蓝直线尾迹，区别于细长柳叶刀。\nVerified mechanics for visual guidance: moveKind=SingleMove, specialKind=None, lifeFrame=40. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "skipped-in-favor-of-demo-reuse"
+    },
+    {
+      "idx": 64,
+      "slug": "sword1",
+      "key": "magic-火系攻击2.ini",
+      "name": "火系攻击2",
+      "concept": "橙红火种落入圆形燃烧区域，小型环状火势。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 火系攻击2, configuration magic-火系攻击2.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 橙红火种落入圆形燃烧区域，小型环状火势。\nVerified mechanics for visual guidance: moveKind=RegionBased, specialKind=None, lifeFrame=40. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "skipped-in-favor-of-demo-reuse"
+    },
+    {
+      "idx": 65,
+      "slug": "sword1",
+      "key": "magic-悲天悯人咒.ini",
+      "name": "悲天悯人咒",
+      "concept": "一朵白莲浮在淡蓝水波光环上，宁静而有力量。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 悲天悯人咒, configuration magic-悲天悯人咒.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 一朵白莲浮在淡蓝水波光环上，宁静而有力量。\nVerified mechanics for visual guidance: moveKind=RegionBased, specialKind=None, lifeFrame=23. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "skipped-in-favor-of-demo-reuse"
+    },
+    {
+      "idx": 66,
+      "slug": "sword1",
+      "key": "magic033_紫霞神功.ini",
+      "name": "紫霞神功",
+      "concept": "端坐运功的极简紫色人影，环绕一圈紫霞真气，微量毒绿边光。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 紫霞神功, configuration magic033_紫霞神功.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 端坐运功的极简紫色人影，环绕一圈紫霞真气，微量毒绿边光。\nVerified mechanics for visual guidance: moveKind=CircleMove, specialKind=AddThewOrPoison, lifeFrame=0. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 67,
+      "slug": "sword1",
+      "key": "magic029_风卷残雪.ini",
+      "name": "风卷残云",
+      "concept": "青蓝旋风扫起白色雪片，凝成一条向前冲出的寒风，显示名风卷残云但配置带冰冻。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 风卷残云, configuration magic029_风卷残雪.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 青蓝旋风扫起白色雪片，凝成一条向前冲出的寒风，显示名风卷残云但配置带冰冻。\nVerified mechanics for visual guidance: moveKind=SingleMove, specialKind=AddLifeOrFrozen, lifeFrame=0. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 68,
+      "slug": "sword1",
+      "key": "magic-土系攻击2.ini",
+      "name": "土系攻击2",
+      "concept": "三颗赭黄岩块沿紧凑螺旋旋转，土黄劲气。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 土系攻击2, configuration magic-土系攻击2.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 三颗赭黄岩块沿紧凑螺旋旋转，土黄劲气。\nVerified mechanics for visual guidance: moveKind=SpiralMove, specialKind=None, lifeFrame=40. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "skipped-in-favor-of-demo-reuse"
+    },
+    {
+      "idx": 69,
+      "slug": "sword1",
+      "key": "magic041_倒转乾坤.ini",
+      "name": "倒转乾坤",
+      "concept": "金紫两股气流首尾相接反向回旋，阴阳相转的紧凑圆形轮廓。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 倒转乾坤, configuration magic041_倒转乾坤.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 金紫两股气流首尾相接反向回旋，阴阳相转的紧凑圆形轮廓。\nVerified mechanics for visual guidance: moveKind=FixedWall, specialKind=None, lifeFrame=40. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 70,
+      "slug": "sword1",
+      "key": "magic-花瓣攻击.ini",
+      "name": "花瓣攻击",
+      "concept": "粉白花瓣绕中心环形飞旋，区别于紫轩花瓣飞梭。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 花瓣攻击, configuration magic-花瓣攻击.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 粉白花瓣绕中心环形飞旋，区别于紫轩花瓣飞梭。\nVerified mechanics for visual guidance: moveKind=CircleMove, specialKind=None, lifeFrame=50. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "skipped-in-favor-of-demo-reuse"
+    },
+    {
+      "idx": 71,
+      "slug": "sword1",
+      "key": "magic032_幻魔雪刀.ini",
+      "name": "幻魔雪刀",
+      "concept": "三道冰白弯刀影呈扇形展开，淡紫幻影尾迹。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 幻魔雪刀, configuration magic032_幻魔雪刀.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 三道冰白弯刀影呈扇形展开，淡紫幻影尾迹。\nVerified mechanics for visual guidance: moveKind=SectorMove, specialKind=None, lifeFrame=0. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 72,
+      "slug": "sword1",
+      "key": "magic-符咒攻击.ini",
+      "name": "符咒攻击",
+      "concept": "三张金黄色小符纸呈扇形射出，红色符线仅抽象笔划，不要可读文字。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 符咒攻击, configuration magic-符咒攻击.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 三张金黄色小符纸呈扇形射出，红色符线仅抽象笔划，不要可读文字。\nVerified mechanics for visual guidance: moveKind=SectorMove, specialKind=None, lifeFrame=0. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "skipped-in-favor-of-demo-reuse"
+    },
+    {
+      "idx": 73,
+      "slug": "sword1",
+      "key": "magic036_金乌刀法.ini",
+      "name": "金乌刀法",
+      "concept": "一柄金橙刀影与小型日轮，赤金直斩气芒。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 金乌刀法, configuration magic036_金乌刀法.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 一柄金橙刀影与小型日轮，赤金直斩气芒。\nVerified mechanics for visual guidance: moveKind=SingleMove, specialKind=None, lifeFrame=0. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 74,
+      "slug": "sword1",
+      "key": "magic-毒液2.ini",
+      "name": "毒液2",
+      "concept": "亮黄绿色毒液向扇面喷溅，中心酸性液滴。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 毒液2, configuration magic-毒液2.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 亮黄绿色毒液向扇面喷溅，中心酸性液滴。\nVerified mechanics for visual guidance: moveKind=SectorMove, specialKind=None, lifeFrame=20. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "skipped-in-favor-of-demo-reuse"
+    },
+    {
+      "idx": 75,
+      "slug": "sword1",
+      "key": "magic045_摘花满天.ini",
+      "name": "摘花满天",
+      "concept": "一只简化拈花手指扬出三片粉白花瓣，随机扇形轨迹。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 摘花满天, configuration magic045_摘花满天.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 一只简化拈花手指扬出三片粉白花瓣，随机扇形轨迹。\nVerified mechanics for visual guidance: moveKind=RandomSector, specialKind=None, lifeFrame=40. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 76,
+      "slug": "sword1",
+      "key": "magic034_含元掌.ini",
+      "name": "含元掌",
+      "concept": "一枚古朴金白掌印，内含圆形真气核心，向外三道短劲气。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 含元掌, configuration magic034_含元掌.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 一枚古朴金白掌印，内含圆形真气核心，向外三道短劲气。\nVerified mechanics for visual guidance: moveKind=RandomSector, specialKind=None, lifeFrame=40. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 77,
+      "slug": "sword1",
+      "key": "magic035_观音散雪.ini",
+      "name": "观音散雪",
+      "concept": "白色手掌轻扬出扇形雪片与冰蓝光，宁静清晰。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 观音散雪, configuration magic035_观音散雪.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 白色手掌轻扬出扇形雪片与冰蓝光，宁静清晰。\nVerified mechanics for visual guidance: moveKind=SectorMove, specialKind=AddLifeOrFrozen, lifeFrame=20. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 78,
+      "slug": "sword1",
+      "key": "magic038_破石鞭法.ini",
+      "name": "破石鞭法",
+      "concept": "一条银灰长鞭绕成半圆击碎小岩块，带冰蓝寒光。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 破石鞭法, configuration magic038_破石鞭法.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 一条银灰长鞭绕成半圆击碎小岩块，带冰蓝寒光。\nVerified mechanics for visual guidance: moveKind=CircleMove, specialKind=AddLifeOrFrozen, lifeFrame=20. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 79,
+      "slug": "sword1",
+      "key": "magic-紫轩攻击.ini",
+      "name": "花瓣攻击",
+      "concept": "三片紫红花瓣聚成尖锐飞梭，单向飞出，柔美凌厉。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 花瓣攻击, configuration magic-紫轩攻击.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 三片紫红花瓣聚成尖锐飞梭，单向飞出，柔美凌厉。\nVerified mechanics for visual guidance: moveKind=SingleMove, specialKind=None, lifeFrame=40. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "skipped-in-favor-of-demo-reuse"
+    },
+    {
+      "idx": 80,
+      "slug": "sword1",
+      "key": "magic042_天外神音.ini",
+      "name": "天外神音",
+      "concept": "一枚古琴式弦线符号荡出同心蓝紫音波，暗示区域音杀。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 天外神音, configuration magic042_天外神音.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 一枚古琴式弦线符号荡出同心蓝紫音波，暗示区域音杀。\nVerified mechanics for visual guidance: moveKind=RegionBased, specialKind=None, lifeFrame=0. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 81,
+      "slug": "sword1",
+      "key": "magic037_劈波裂浪.ini",
+      "name": "劈波裂浪",
+      "concept": "银色斩芒竖直切开两瓣青蓝浪花，气势直接。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 劈波裂浪, configuration magic037_劈波裂浪.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 银色斩芒竖直切开两瓣青蓝浪花，气势直接。\nVerified mechanics for visual guidance: moveKind=SingleMove, specialKind=None, lifeFrame=0. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 82,
+      "slug": "sword1",
+      "key": "magic031_野马分鬃.ini",
+      "name": "野马分鬃",
+      "concept": "武者分掌架势的青白简化动作剪影，左右两道鬃毛般短气流。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 野马分鬃, configuration magic031_野马分鬃.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 武者分掌架势的青白简化动作剪影，左右两道鬃毛般短气流。\nVerified mechanics for visual guidance: moveKind=SingleMove, specialKind=None, lifeFrame=0. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 83,
+      "slug": "sword1",
+      "key": "magic061_莫须有.ini",
+      "name": "莫须有",
+      "concept": "三道若隐若现的淡紫无形掌影扇形展开，神秘空灵，名称没有可证实具象典故故以虚影表示。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 莫须有, configuration magic061_莫须有.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 三道若隐若现的淡紫无形掌影扇形展开，神秘空灵，名称没有可证实具象典故故以虚影表示。\nVerified mechanics for visual guidance: moveKind=SectorMove, specialKind=None, lifeFrame=0. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 84,
+      "slug": "sword1",
+      "key": "magic-金钱镖.ini",
+      "name": "金钱镖",
+      "concept": "三枚金色方孔钱币呈扇形射出，明亮金属边。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 金钱镖, configuration magic-金钱镖.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 三枚金色方孔钱币呈扇形射出，明亮金属边。\nVerified mechanics for visual guidance: moveKind=SectorMove, specialKind=None, lifeFrame=40. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "skipped-in-favor-of-demo-reuse"
+    },
+    {
+      "idx": 85,
+      "slug": "sword1",
+      "key": "magic-沙暴攻击.ini",
+      "name": "沙暴攻击",
+      "concept": "赭黄色沙旋风形成向前移动的风刃，小而紧凑。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 沙暴攻击, configuration magic-沙暴攻击.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 赭黄色沙旋风形成向前移动的风刃，小而紧凑。\nVerified mechanics for visual guidance: moveKind=LineMove, specialKind=None, lifeFrame=40. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "skipped-in-favor-of-demo-reuse"
+    },
+    {
+      "idx": 86,
+      "slug": "sword1",
+      "key": "magic062_弓箭.ini",
+      "name": "弓箭",
+      "concept": "朴素木弓与单枚银白箭矢，侧向拉满弓弦的简练剪影。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 弓箭, configuration magic062_弓箭.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 朴素木弓与单枚银白箭矢，侧向拉满弓弦的简练剪影。\nVerified mechanics for visual guidance: moveKind=SingleMove, specialKind=None, lifeFrame=20. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "skipped-in-favor-of-demo-reuse"
+    },
+    {
+      "idx": 87,
+      "slug": "sword1",
+      "key": "magic-水系攻击1.ini",
+      "name": "水系攻击1",
+      "concept": "一颗紧凑青蓝水弹带短水尾，单体直射。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 水系攻击1, configuration magic-水系攻击1.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 一颗紧凑青蓝水弹带短水尾，单体直射。\nVerified mechanics for visual guidance: moveKind=SingleMove, specialKind=None, lifeFrame=40. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "skipped-in-favor-of-demo-reuse"
+    },
+    {
+      "idx": 88,
+      "slug": "sword1",
+      "key": "magic028_慈航普度.ini",
+      "name": "慈航普渡",
+      "concept": "白金莲花与淡金圆形光晕，水蓝底部波纹，表现区域法力。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 慈航普渡, configuration magic028_慈航普度.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 白金莲花与淡金圆形光晕，水蓝底部波纹，表现区域法力。\nVerified mechanics for visual guidance: moveKind=RegionBased, specialKind=None, lifeFrame=40. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 89,
+      "slug": "sword1",
+      "key": "magic-金刚电闪.ini",
+      "name": "金刚电闪",
+      "concept": "简化金色拳印伴随三道分叉紫电，随机散射的雷劲。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 金刚电闪, configuration magic-金刚电闪.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 简化金色拳印伴随三道分叉紫电，随机散射的雷劲。\nVerified mechanics for visual guidance: moveKind=RandomSector, specialKind=None, lifeFrame=40. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "skipped-in-favor-of-demo-reuse"
+    },
+    {
+      "idx": 90,
+      "slug": "sword1",
+      "key": "magic050_追魂索命.ini",
+      "name": "追魂索命",
+      "concept": "一枚紫红尖锐魂芒拖着细窄幽蓝尾迹，单向疾射。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 追魂索命, configuration magic050_追魂索命.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 一枚紫红尖锐魂芒拖着细窄幽蓝尾迹，单向疾射。\nVerified mechanics for visual guidance: moveKind=SingleMove, specialKind=None, lifeFrame=20. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 91,
+      "slug": "sword1",
+      "key": "magic-毒烟攻击.ini",
+      "name": "毒烟攻击",
+      "concept": "一缕紫绿色蛇形毒烟盘曲向前，细小亮绿毒核。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 毒烟攻击, configuration magic-毒烟攻击.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 一缕紫绿色蛇形毒烟盘曲向前，细小亮绿毒核。\nVerified mechanics for visual guidance: moveKind=SingleMove, specialKind=None, lifeFrame=80. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "skipped-in-favor-of-demo-reuse"
+    },
+    {
+      "idx": 92,
+      "slug": "sword1",
+      "key": "magic044_威震五岳.ini",
+      "name": "威震五岳",
+      "concept": "金色拳印前出现五座极简土黄山峰轮廓，厚重一击。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword1, 威震五岳, configuration magic044_威震五岳.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 新剑侠情缘：match reference bottom hotbar's figurative low-resolution sprites, tiny readable martial-action silhouette or weapon, few sharp cyan/white/gold/purple accents and restrained glow. Shapes are direct, grounded and simple. No intricate painting or ornate medallion.\nSubject concept: 金色拳印前出现五座极简土黄山峰轮廓，厚重一击。\nVerified mechanics for visual guidance: moveKind=SingleMove, specialKind=None, lifeFrame=20. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-new-swords.png",
+      "disposition": "used"
+    },
+    {
+      "idx": 93,
+      "slug": "sword2",
+      "key": "player-magic-长剑.ini",
+      "name": "长剑",
+      "concept": "一柄朴素银色直剑，冷蓝短斩光，基础近身剑击。",
+      "prompt": "Use case: stylized-concept. Asset: ONE individual square martial-art skill icon for sword2, 长剑, configuration player-magic-长剑.ini.\nReference image role: STYLE REFERENCE ONLY. Look specifically at its small original skill icons in the BOTTOM HOTBAR; ignore all scene, browser and surrounding UI. 剑侠情缘2：match reference hotbar's luminous outlined symbols: very simple sword silhouette, white-blue and violet glow, black backdrop, low-resolution 2D sprite.\nSubject concept: 一柄朴素银色直剑，冷蓝短斩光，基础近身剑击。\nVerified mechanics for visual guidance: moveKind=SingleMove, specialKind=None, lifeFrame=2. These codes must NOT appear as text. Name-based imagery is artistic interpretation, not new game mechanics.\nComposition: single compact emblem, centered, fills roughly 65-75% of square; simple strong silhouette readable at 40x40 pixels, black background and clear margins. Render like a native 1990s/early-2000s Chinese PC RPG sprite, low-resolution hand-crafted raster appearance, subtle pixel grain and stepped edges. Avoid gigantic blocky Minecraft pixels; use fine pixel detail comparable to original 40px icons.\nNo text, no letters, no numbers, no border, no UI, no icon sheet, no extra panels, no photo, no high-detail illustration, no 3D glossy rendering. Deliver one usable square PNG for just this skill.",
+      "reference": "packages/web/public/screenshot/game-sword2.png",
+      "disposition": "used"
+    }
+  ]
+}

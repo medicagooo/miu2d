@@ -1,0 +1,263 @@
+[
+  {
+    "idx": 32,
+    "key": "magic-金针攻击.ini",
+    "name": "金针攻击",
+    "sourceKey": "magic-金针攻击.ini",
+    "sourceIcon": null,
+    "sourceSlug": "demo",
+    "path": "packages/web/public/magic-icons/demo/magic-金针攻击.png"
+  },
+  {
+    "idx": 34,
+    "key": "magic-孟知秋攻击.ini",
+    "name": "孟知秋攻击",
+    "sourceKey": "magic-孟知秋攻击.ini",
+    "sourceIcon": null,
+    "sourceSlug": "demo",
+    "path": "packages/web/public/magic-icons/demo/magic-孟知秋攻击.png"
+  },
+  {
+    "idx": 36,
+    "key": "magic-蜂王毒刺.ini",
+    "name": "蜂王毒刺",
+    "sourceKey": "magic-蜂王毒刺.ini",
+    "sourceIcon": null,
+    "sourceSlug": "demo",
+    "path": "packages/web/public/magic-icons/demo/magic-蜂王毒刺.png"
+  },
+  {
+    "idx": 37,
+    "key": "magic-月眉儿攻击.ini",
+    "name": "月眉儿攻击",
+    "sourceKey": "magic-月眉儿攻击.ini",
+    "sourceIcon": null,
+    "sourceSlug": "demo",
+    "path": "packages/web/public/magic-icons/demo/magic-月眉儿攻击.png"
+  },
+  {
+    "idx": 38,
+    "key": "magic-柳叶飞刀.ini",
+    "name": "柳叶飞刀",
+    "sourceKey": "magic-柳叶飞刀.ini",
+    "sourceIcon": null,
+    "sourceSlug": "demo",
+    "path": "packages/web/public/magic-icons/demo/magic-柳叶飞刀.png"
+  },
+  {
+    "idx": 40,
+    "key": "magic-水系攻击2.ini",
+    "name": "水系攻击2",
+    "sourceKey": "magic-水系攻击2.ini",
+    "sourceIcon": null,
+    "sourceSlug": "demo",
+    "path": "packages/web/public/magic-icons/demo/magic-水系攻击2.png"
+  },
+  {
+    "idx": 43,
+    "key": "magic-纳兰潜凛攻击.ini",
+    "name": "纳兰潜凛攻击",
+    "sourceKey": "magic-纳兰潜凛攻击.ini",
+    "sourceIcon": null,
+    "sourceSlug": "demo",
+    "path": "packages/web/public/magic-icons/demo/magic-纳兰潜凛攻击.png"
+  },
+  {
+    "idx": 44,
+    "key": "magic-蝙蝠.ini",
+    "name": "蝙蝠",
+    "sourceKey": "magic-蝙蝠.ini",
+    "sourceIcon": null,
+    "sourceSlug": "demo",
+    "path": "packages/web/public/magic-icons/demo/magic-蝙蝠.png"
+  },
+  {
+    "idx": 45,
+    "key": "magic-冰刀攻击.ini",
+    "name": "冰刀攻击",
+    "sourceKey": "magic-冰刀攻击.ini",
+    "sourceIcon": null,
+    "sourceSlug": "demo",
+    "path": "packages/web/public/magic-icons/demo/magic-冰刀攻击.png"
+  },
+  {
+    "idx": 46,
+    "key": "magic052_推山填海.ini",
+    "name": "推山填海",
+    "sourceKey": "player-magic-推山填海.ini",
+    "sourceIcon": "mag007-推山填海s.asf",
+    "sourceSlug": "demo",
+    "path": "packages/web/public/magic-icons/demo/original-player-magic-推山填海.png"
+  },
+  {
+    "idx": 47,
+    "key": "magic-火系攻击3.ini",
+    "name": "火系攻击3",
+    "sourceKey": "magic-火系攻击3.ini",
+    "sourceIcon": null,
+    "sourceSlug": "demo",
+    "path": "packages/web/public/magic-icons/demo/magic-火系攻击3.png"
+  },
+  {
+    "idx": 48,
+    "key": "magic-小符咒攻击.ini",
+    "name": "小符咒攻击",
+    "sourceKey": "magic-小符咒攻击.ini",
+    "sourceIcon": null,
+    "sourceSlug": "demo",
+    "path": "packages/web/public/magic-icons/demo/magic-小符咒攻击.png"
+  },
+  {
+    "idx": 52,
+    "key": "magic-暗器2.ini",
+    "name": "暗器2",
+    "sourceKey": "magic-暗器2.ini",
+    "sourceIcon": null,
+    "sourceSlug": "demo",
+    "path": "packages/web/public/magic-icons/demo/magic-暗器2.png"
+  },
+  {
+    "idx": 56,
+    "key": "magic-毒液.ini",
+    "name": "毒液",
+    "sourceKey": "magic-毒液.ini",
+    "sourceIcon": null,
+    "sourceSlug": "demo",
+    "path": "packages/web/public/magic-icons/demo/magic-毒液.png"
+  },
+  {
+    "idx": 59,
+    "key": "magic-蔷薇攻击.ini",
+    "name": "蔷薇攻击",
+    "sourceKey": "magic-蔷薇攻击.ini",
+    "sourceIcon": null,
+    "sourceSlug": "demo",
+    "path": "packages/web/public/magic-icons/demo/magic-蔷薇攻击.png"
+  },
+  {
+    "idx": 63,
+    "key": "magic-飞刀.ini",
+    "name": "飞刀",
+    "sourceKey": "magic-飞刀.ini",
+    "sourceIcon": null,
+    "sourceSlug": "demo",
+    "path": "packages/web/public/magic-icons/demo/magic-飞刀.png"
+  },
+  {
+    "idx": 64,
+    "key": "magic-火系攻击2.ini",
+    "name": "火系攻击2",
+    "sourceKey": "magic-火系攻击2.ini",
+    "sourceIcon": null,
+    "sourceSlug": "demo",
+    "path": "packages/web/public/magic-icons/demo/magic-火系攻击2.png"
+  },
+  {
+    "idx": 65,
+    "key": "magic-悲天悯人咒.ini",
+    "name": "悲天悯人咒",
+    "sourceKey": "magic-悲天悯人咒.ini",
+    "sourceIcon": null,
+    "sourceSlug": "demo",
+    "path": "packages/web/public/magic-icons/demo/magic-悲天悯人咒.png"
+  },
+  {
+    "idx": 68,
+    "key": "magic-土系攻击2.ini",
+    "name": "土系攻击2",
+    "sourceKey": "magic-土系攻击2.ini",
+    "sourceIcon": null,
+    "sourceSlug": "demo",
+    "path": "packages/web/public/magic-icons/demo/magic-土系攻击2.png"
+  },
+  {
+    "idx": 70,
+    "key": "magic-花瓣攻击.ini",
+    "name": "花瓣攻击",
+    "sourceKey": "magic-花瓣攻击.ini",
+    "sourceIcon": null,
+    "sourceSlug": "demo",
+    "path": "packages/web/public/magic-icons/demo/magic-花瓣攻击.png"
+  },
+  {
+    "idx": 72,
+    "key": "magic-符咒攻击.ini",
+    "name": "符咒攻击",
+    "sourceKey": "magic-符咒攻击.ini",
+    "sourceIcon": null,
+    "sourceSlug": "demo",
+    "path": "packages/web/public/magic-icons/demo/magic-符咒攻击.png"
+  },
+  {
+    "idx": 74,
+    "key": "magic-毒液2.ini",
+    "name": "毒液2",
+    "sourceKey": "magic-毒液2.ini",
+    "sourceIcon": null,
+    "sourceSlug": "demo",
+    "path": "packages/web/public/magic-icons/demo/magic-毒液2.png"
+  },
+  {
+    "idx": 79,
+    "key": "magic-紫轩攻击.ini",
+    "name": "花瓣攻击",
+    "sourceKey": "magic-紫轩攻击.ini",
+    "sourceIcon": null,
+    "sourceSlug": "demo",
+    "path": "packages/web/public/magic-icons/demo/magic-紫轩攻击.png"
+  },
+  {
+    "idx": 84,
+    "key": "magic-金钱镖.ini",
+    "name": "金钱镖",
+    "sourceKey": "magic-金钱镖.ini",
+    "sourceIcon": null,
+    "sourceSlug": "demo",
+    "path": "packages/web/public/magic-icons/demo/magic-金钱镖.png"
+  },
+  {
+    "idx": 85,
+    "key": "magic-沙暴攻击.ini",
+    "name": "沙暴攻击",
+    "sourceKey": "magic-沙暴攻击.ini",
+    "sourceIcon": null,
+    "sourceSlug": "demo",
+    "path": "packages/web/public/magic-icons/demo/magic-沙暴攻击.png"
+  },
+  {
+    "idx": 86,
+    "key": "magic062_弓箭.ini",
+    "name": "弓箭",
+    "sourceKey": "magic-弓箭.ini",
+    "sourceIcon": "白虹贯日s.mpc",
+    "sourceSlug": "demo",
+    "path": "packages/web/public/npc-magic-icons/magic-弓箭.png"
+  },
+  {
+    "idx": 87,
+    "key": "magic-水系攻击1.ini",
+    "name": "水系攻击1",
+    "sourceKey": "magic-水系攻击1.ini",
+    "sourceIcon": null,
+    "sourceSlug": "demo",
+    "path": "packages/web/public/magic-icons/demo/magic-水系攻击1.png"
+  },
+  {
+    "idx": 89,
+    "key": "magic-金刚电闪.ini",
+    "name": "金刚电闪",
+    "sourceKey": "magic-金刚电闪.ini",
+    "sourceIcon": null,
+    "sourceSlug": "demo",
+    "path": "packages/web/public/magic-icons/demo/magic-金刚电闪.png"
+  },
+  {
+    "idx": 91,
+    "key": "magic-毒烟攻击.ini",
+    "name": "毒烟攻击",
+    "sourceKey": "magic-毒烟攻击.ini",
+    "sourceIcon": null,
+    "sourceSlug": "demo",
+    "path": "packages/web/public/magic-icons/demo/magic-毒烟攻击.png"
+  }
+]

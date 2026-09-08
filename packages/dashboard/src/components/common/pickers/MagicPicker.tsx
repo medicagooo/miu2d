@@ -10,10 +10,7 @@ import { decodeAsfWasm } from "@miu2d/engine/wasm/wasm-asf-decoder";
 import { initWasm } from "@miu2d/engine/wasm/wasm-manager";
 import { trpc } from "@miu2d/shared";
 import { resolveMagicIntro } from "@miu2d/shared/lib/npc-magic-descriptions";
-import {
-  isNativeImagePath,
-  resolveMagicIconPath,
-} from "@miu2d/shared/lib/npc-magic-icons";
+import { isNativeImagePath, resolveMagicIconPath } from "@miu2d/shared/lib/npc-magic-icons";
 import { type MagicListItem, MagicMoveKindLabels } from "@miu2d/types";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
@@ -102,7 +99,8 @@ export function MagicPicker({
                   ? resolveMagicIconPath(
                       selectedMagic.icon,
                       selectedMagic.key,
-                      selectedMagic.userType
+                      selectedMagic.userType,
+                      gameSlug
                     )
                   : undefined
               }
@@ -413,9 +411,14 @@ function MagicSelectDialog({
                 >
                   {/* 图标 - 优先使用武功自身图标 */}
                   <div className="w-8 h-8 mr-2 flex-shrink-0 flex items-center justify-center">
-                    {resolveMagicIconPath(magic.icon, magic.key, magic.userType) ? (
+                    {resolveMagicIconPath(magic.icon, magic.key, magic.userType, gameSlug) ? (
                       <MagicIcon
-                        iconPath={resolveMagicIconPath(magic.icon, magic.key, magic.userType)}
+                        iconPath={resolveMagicIconPath(
+                          magic.icon,
+                          magic.key,
+                          magic.userType,
+                          gameSlug
+                        )}
                         gameSlug={gameSlug}
                         size={28}
                       />
