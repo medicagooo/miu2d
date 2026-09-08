@@ -22,7 +22,8 @@
     "当前部署仅托管前端并代理原站 demo/sword1/sword2 公开 API 与资源，不配置数据库",
     "代理仅GET/HEAD且不传浏览器凭据；保留本地存档，账户/管理服务不在当前部署范围",
     "审查验证后合入push main，部署已确认Cloudflare账号并连接GitHub",
-    "公开模式隐藏账户与云存档，使用游戏快照JSON文件导出/导入；图标与manifest均经公开logo API"
+    "公开模式隐藏账户与云存档，使用游戏快照JSON文件导出/导入；图标与manifest均经公开logo API",
+    "首页隐藏整条顶部导航，构建后push并重新部署和绑定指定域名"
   ],
   "acceptance": [
     "三个游戏预览与入口正确且首页不启动游戏实例",
@@ -32,7 +33,7 @@
     "origin/main SHA 核实",
     "云部署单独验证健康/日志/业务"
   ],
-  "next": "验证本地构建后合入push main，使用GitHub Workers Builds发布并独立验证线上接口/资源/日志",
+  "next": "移除首页Header、构建并推送main、部署和域名验证",
   "integration": "unmerged",
   "verification": {
     "results": [

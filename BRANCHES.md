@@ -1,7 +1,7 @@
 {
   "pending": [
-    "0908-workers-game-tabs/merge-main-public-1",
-    "0908-workers-game-tabs/push-main-public-1"
+    "0908-workers-game-tabs/merge-main-header-1",
+    "0908-workers-game-tabs/push-main-header-1"
   ],
   "timezone": "Asia/Singapore",
   "format": 1,
@@ -141,6 +141,14 @@
       "status": "implemented_unmerged",
       "id": "0908-public-game-proxy",
       "request": ".branch-records/0908-workers-game-tabs/events.jsonl#request-public-proxy"
+    },
+    {
+      "request": ".branch-records/0908-workers-game-tabs/events.jsonl#request-hide-header",
+      "date": "2026-09-08",
+      "id": "0908-hide-landing-header",
+      "status": "implemented_unmerged",
+      "evidence": "packages/web/src/pages/landing/LandingPage.tsx",
+      "businessChange": "首页移除Logo、Features/Demo、游戏快捷链接与主题语言等整条顶部导航；保留主视觉三游戏切换和进入按钮"
     }
   ]
 }
