@@ -1,6 +1,6 @@
 {
   "pending": [
-    "0908-integrate-local-commits/merge-1"
+    "0908-integrate-local-commits/push-1"
   ],
   "timezone": "Asia/Singapore",
   "format": 1,
@@ -85,10 +85,11 @@
       "id": "0908-integrate-local-commits",
       "date": "2026-09-08",
       "businessChange": "合入旧分支：34项NPC武功缺省图标与描述；玩家/调试目录纳入有效NPC武功、去重并排除Relation.Ini，原API归属不变；秘籍按使用效果分类。Docker配置修复端口/依赖/S3参数，保留main缓存/地区规则；不启动或重建本地数据库",
-      "status": "implemented",
+      "status": "integrated",
       "request": "0908-integrate-local-commits/request-push",
       "evidence": ".branch-records/0908-integrate-local-commits/state.json",
-      "implementedAt": "2026-09-08"
+      "implementedAt": "2026-09-08",
+      "mainIntegratedAt": "2026-09-08"
     }
   ]
 }
