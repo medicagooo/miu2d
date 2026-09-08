@@ -1,0 +1,536 @@
+[
+  {
+    "index": 0,
+    "path": "packages/web/public/magic-icons/demo/player-magic-长剑.png",
+    "name": "长剑",
+    "sha256": "a20e206928d5921e72ee917fec9088bdddad6dfc38a6b6a04401278596705fbf"
+  },
+  {
+    "index": 1,
+    "path": "packages/web/public/magic-icons/demo/magic-柳叶飞刀.png",
+    "name": "柳叶飞刀",
+    "sha256": "20cd9d0c43de3aa2e6bbf1f9ba9e71576c8ce1462a8074e62f260de1dfe856d8"
+  },
+  {
+    "index": 2,
+    "path": "packages/web/public/magic-icons/demo/magic-月眉儿攻击.png",
+    "name": "月眉儿攻击",
+    "sha256": "b26a7aedf89c6831f66889cc632770025b497f4e2b4e9fb87c1107f7ab65c12b"
+  },
+  {
+    "index": 3,
+    "path": "packages/web/public/magic-icons/demo/magic-蜂王毒刺.png",
+    "name": "蜂王毒刺",
+    "sha256": "d3c6d412e59eaa0cc501ea97a6bd4a64fa1b35a15d4528d3bc1bcff69f5f977f"
+  },
+  {
+    "index": 4,
+    "path": "packages/web/public/magic-icons/demo/magic-孟知秋攻击.png",
+    "name": "孟知秋攻击",
+    "sha256": "45c91f6545f8c8f9c70d93086d8871b2d816aa96067c9efabc853926df5814ec"
+  },
+  {
+    "index": 5,
+    "path": "packages/web/public/magic-icons/demo/magic-金针攻击.png",
+    "name": "金针攻击",
+    "sha256": "c92b78d56d8ea311848a687eb89bbee128b3798ca7d9ef4750704567a7ab36f5"
+  },
+  {
+    "index": 6,
+    "path": "packages/web/public/magic-icons/demo/magic-紫轩攻击.png",
+    "name": "花瓣攻击",
+    "sha256": "bb5b40c3e2ee3ff2a4bf6f9e7f102db58f11058af238c6fb2b018c3c9c76580f"
+  },
+  {
+    "index": 7,
+    "path": "packages/web/public/magic-icons/demo/magic-毒液2.png",
+    "name": "毒液2",
+    "sha256": "fef90d4c1a8feeaacd4bbce56c708e236be66a8ac251e9f541893b45db0ce3e9"
+  },
+  {
+    "index": 8,
+    "path": "packages/web/public/magic-icons/demo/magic-符咒攻击.png",
+    "name": "符咒攻击",
+    "sha256": "4c7d3344d2b42ca846bfaa9b649d9209f9bc8fa8ab3a955695f6405bd1258744"
+  },
+  {
+    "index": 9,
+    "path": "packages/web/public/magic-icons/demo/magic-土系攻击2.png",
+    "name": "土系攻击2",
+    "sha256": "be1043bbe74917bfc0de4116f8e58c5cd198a48b0acf04afe2391a95227fc310"
+  },
+  {
+    "index": 10,
+    "path": "packages/web/public/magic-icons/demo/magic-悲天悯人咒.png",
+    "name": "悲天悯人咒",
+    "sha256": "ce49af008473fa658f34a1128d4f47c543ebfa0e6cc830b2b7397d7d9860a1cc"
+  },
+  {
+    "index": 11,
+    "path": "packages/web/public/magic-icons/demo/magic-火系攻击2.png",
+    "name": "火系攻击2",
+    "sha256": "6079e3f279614d16184dbd9e1cb475b81efd836b4725acd7e563b45299d5786b"
+  },
+  {
+    "index": 12,
+    "path": "packages/web/public/magic-icons/demo/magic-飞刀.png",
+    "name": "飞刀",
+    "sha256": "6e9c1fe1852c841de239e60342e4eb173e175991eee709ad97586198d2b69e88"
+  },
+  {
+    "index": 13,
+    "path": "packages/web/public/magic-icons/demo/magic-蔷薇攻击.png",
+    "name": "蔷薇攻击",
+    "sha256": "62e54885b48d08ab846e8822edc07737d15672050b93b92c0187745e59b0531e"
+  },
+  {
+    "index": 14,
+    "path": "packages/web/public/magic-icons/demo/magic-毒液.png",
+    "name": "毒液",
+    "sha256": "897752a5d14fa8520e93c614f24b682dc1a80842f14291fa6fd2bc48c452f043"
+  },
+  {
+    "index": 15,
+    "path": "packages/web/public/magic-icons/demo/magic-暗器2.png",
+    "name": "暗器2",
+    "sha256": "7f06ce6814b08afc3e64db5495638bdd745dc68072da0f5fe94d242562b03193"
+  },
+  {
+    "index": 16,
+    "path": "packages/web/public/magic-icons/demo/magic-小符咒攻击.png",
+    "name": "小符咒攻击",
+    "sha256": "0ebfca86e3be5d42f72330cad9a86dd878762e8cf1f4fdbcd8c4091772204a53"
+  },
+  {
+    "index": 17,
+    "path": "packages/web/public/magic-icons/demo/magic-火系攻击3.png",
+    "name": "火系攻击3",
+    "sha256": "8330d02255b8d3feebfbc55d79b26faafed9454733b0c04a575dadc0c51d4e48"
+  },
+  {
+    "index": 18,
+    "path": "packages/web/public/magic-icons/demo/magic-冰刀攻击.png",
+    "name": "冰刀攻击",
+    "sha256": "9924caf38b26cb4d13091c03e947219d1632ded473a73fb04ae1b2df1bffe0b0"
+  },
+  {
+    "index": 19,
+    "path": "packages/web/public/magic-icons/demo/magic-蝙蝠.png",
+    "name": "蝙蝠",
+    "sha256": "6977edf7551717910975e31a63fd379cee1b014e49a65bb7d76fbbe770fb9045"
+  },
+  {
+    "index": 20,
+    "path": "packages/web/public/magic-icons/demo/magic-纳兰潜凛攻击.png",
+    "name": "纳兰潜凛攻击",
+    "sha256": "7fffa7c4cf7703efbcd2f2d8f6e056dab3d8d9aa5b68c4a42622287dd786065f"
+  },
+  {
+    "index": 21,
+    "path": "packages/web/public/magic-icons/demo/magic-水系攻击2.png",
+    "name": "水系攻击2",
+    "sha256": "d8368d12602980258039f8b27f217719f4e7680ec253386d4ea2580c25d5e92e"
+  },
+  {
+    "index": 22,
+    "path": "packages/web/public/magic-icons/demo/magic-毒烟攻击.png",
+    "name": "毒烟攻击",
+    "sha256": "22007f3876e529333f895f87f0516742e186f27fc6151f267c352f441fad5034"
+  },
+  {
+    "index": 23,
+    "path": "packages/web/public/magic-icons/demo/magic-金刚电闪.png",
+    "name": "金刚电闪",
+    "sha256": "0bc204727bf35df67134fa3bd70eefe13df8c50aa3f3249293d294c3c5514498"
+  },
+  {
+    "index": 24,
+    "path": "packages/web/public/magic-icons/demo/magic-水系攻击1.png",
+    "name": "水系攻击1",
+    "sha256": "f77dd21526cc53eeabfffe5f3c1f38d131418d5bcb7591355746ded25b0b53e5"
+  },
+  {
+    "index": 25,
+    "path": "packages/web/public/magic-icons/demo/magic-沙暴攻击.png",
+    "name": "沙暴攻击",
+    "sha256": "e8761b02d17add1420aa178391abb244ffd39e59e5aa8b29c4da0345d04a14f8"
+  },
+  {
+    "index": 26,
+    "path": "packages/web/public/magic-icons/demo/magic-金钱镖.png",
+    "name": "金钱镖",
+    "sha256": "65cdd37d167a6a69e491cf780018b49da51d6624f6f190859d5b873420b0887a"
+  },
+  {
+    "index": 27,
+    "path": "packages/web/public/magic-icons/demo/magic-花瓣攻击.png",
+    "name": "花瓣攻击",
+    "sha256": "cfdda70f704ffa08c2c82530d806b04f43e9e638ed6f1d303c28a321fa90806e"
+  },
+  {
+    "index": 28,
+    "path": "packages/web/public/magic-icons/sword1/magic018_碧波临风.png",
+    "name": "碧波临风",
+    "sha256": "2b0876a22ed44d1d02e3e77bc2f807eaf93d2e70958ebcbcdb6f819b594c24d7"
+  },
+  {
+    "index": 29,
+    "path": "packages/web/public/magic-icons/sword1/magic026_龙象九重.png",
+    "name": "龙象九重",
+    "sha256": "99e16901de2441e35a08eb7348ef7e390b598426b94d11fc475f3599c80e3558"
+  },
+  {
+    "index": 30,
+    "path": "packages/web/public/magic-icons/sword1/magic043_风云突起3.png",
+    "name": "风云突起",
+    "sha256": "4867c252e4ba250f16c6f4c7c30a64a560f3fe7a90a7e89b0593fddb160052b8"
+  },
+  {
+    "index": 31,
+    "path": "packages/web/public/magic-icons/sword1/magic040_血影怒雷.png",
+    "name": "血影怒雷",
+    "sha256": "b6f8cbff5cbd6006fc9233647416adad9fb27b4495ea5657c5034be3e30fe77d"
+  },
+  {
+    "index": 32,
+    "path": "packages/web/public/magic-icons/sword1/magic055_噬天灭地.png",
+    "name": "噬天灭地",
+    "sha256": "f9feea1e99ec0adead9b792a26704d0789655dbbdf97d2766efa34ce9548d150"
+  },
+  {
+    "index": 33,
+    "path": "packages/web/public/magic-icons/sword1/magic049_快风残雨.png",
+    "name": "疾风骤雨",
+    "sha256": "76a4f46093448cfecea6c669bf1e961c20fc0d77c6bf358384897d5e032a6cae"
+  },
+  {
+    "index": 34,
+    "path": "packages/web/public/magic-icons/sword1/magic060_射箭.png",
+    "name": "射箭",
+    "sha256": "ba136988656c410eef2877e4f8c9455d7f3b9c62d231b4136ccaac41794bdac3"
+  },
+  {
+    "index": 35,
+    "path": "packages/web/public/magic-icons/sword1/magic047_蟒蛇出洞.png",
+    "name": "蟒蛇出洞",
+    "sha256": "4e5027cbbf7ca97da0aa297fd04abfc7d41882de300640dfab479659d9320eda"
+  },
+  {
+    "index": 36,
+    "path": "packages/web/public/magic-icons/sword1/magic048_毒蛇吐芯.png",
+    "name": "毒蛇吐芯",
+    "sha256": "11583e2b6bc67e6e94143d51f8696b8630d2106b54230fba74f535da19f982be"
+  },
+  {
+    "index": 37,
+    "path": "packages/web/public/magic-icons/sword1/magic043_风云突起2.png",
+    "name": "风云突起",
+    "sha256": "34e777bf7add3642d2a843a83973945a352293612d9577c12fd011ed3f0f76fd"
+  },
+  {
+    "index": 38,
+    "path": "packages/web/public/magic-icons/sword1/magic027_幻音玄剑.png",
+    "name": "幻音玄剑",
+    "sha256": "94e5cab015f2f2453bba2b8d4d00fd26db40c9c7b612528ea91808dcbc950b9f"
+  },
+  {
+    "index": 39,
+    "path": "packages/web/public/magic-icons/sword1/magic023_雨后彩虹.png",
+    "name": "雨后彩虹",
+    "sha256": "3b84ec6d8ebc59bafe7f45ae97c62d69be4ebe679a4f7f0fbe7c04a0c1aa1312"
+  },
+  {
+    "index": 40,
+    "path": "packages/web/public/magic-icons/sword1/magic049_疾风骤雨.png",
+    "name": "疾风骤雨",
+    "sha256": "670f34d18922de264fcdc9fb5b5b4e0a787fa1051e457797e394b71e412ec375"
+  },
+  {
+    "index": 41,
+    "path": "packages/web/public/magic-icons/sword1/magic030_饿虎扑食.png",
+    "name": "饿虎扑食",
+    "sha256": "4a1f6a9611ff14d0a15c176233282eb12e7832ce7053597170d5ab4e1c7f1bb0"
+  },
+  {
+    "index": 42,
+    "path": "packages/web/public/magic-icons/sword1/magic039_残阳如血.png",
+    "name": "残阳如血",
+    "sha256": "da8ab09d30137e5aef07a754b0c0249e0338b1edc9df2bd3fdd9a512b19dd482"
+  },
+  {
+    "index": 43,
+    "path": "packages/web/public/magic-icons/sword1/magic054_狂风逐日.png",
+    "name": "狂风逐日",
+    "sha256": "212b389a43a49a9f348036353136fc4420350cb9c378bec5222c8ca508a9e95c"
+  },
+  {
+    "index": 44,
+    "path": "packages/web/public/magic-icons/sword1/magic043_风云突起1.png",
+    "name": "风云突起",
+    "sha256": "812b868058e773e7b0011517a7305ee4b8bdf4df850460360a223a142eab802f"
+  },
+  {
+    "index": 45,
+    "path": "packages/web/public/magic-icons/sword1/magic046_投石惊浪.png",
+    "name": "投石惊浪",
+    "sha256": "79d9e01f2a8f79f91e1f5dbb4fcd69e515a140402d9afa238f7d225247103d1f"
+  },
+  {
+    "index": 46,
+    "path": "packages/web/public/magic-icons/sword1/magic053_黑龙探海.png",
+    "name": "黑龙探海",
+    "sha256": "583bdd91c724db6cbba9be8dc82249413b5a9fe4d2f0b5e667be29c07fdfa0eb"
+  },
+  {
+    "index": 47,
+    "path": "packages/web/public/magic-icons/sword1/magic051_疾风骤雨.png",
+    "name": "疾风骤雨",
+    "sha256": "55bf59f390e9c0a8c4be98b74457b80f64db2e17a4737a5bc77b97bd70f2babc"
+  },
+  {
+    "index": 48,
+    "path": "packages/web/public/magic-icons/sword1/magic033_紫霞神功.png",
+    "name": "紫霞神功",
+    "sha256": "52eeb358b16dba7f654efffea8ea4f8b3152e2b396a92e303def8b6f733c130b"
+  },
+  {
+    "index": 49,
+    "path": "packages/web/public/magic-icons/sword1/magic029_风卷残雪.png",
+    "name": "风卷残云",
+    "sha256": "d1afe5a2268f3a72bb2e1bb8b7881b5774e1e32ee24e64f1d385d05d928d0679"
+  },
+  {
+    "index": 50,
+    "path": "packages/web/public/magic-icons/sword1/magic041_倒转乾坤.png",
+    "name": "倒转乾坤",
+    "sha256": "2cd5c724d076058a0a4680e1fd50fa44f71e8335074b59d552e6f5e56d16458e"
+  },
+  {
+    "index": 51,
+    "path": "packages/web/public/magic-icons/sword1/magic032_幻魔雪刀.png",
+    "name": "幻魔雪刀",
+    "sha256": "a638a646e69382bd96edf05a46a0c3a34cecc7fedea6d0bce995d78c09279a93"
+  },
+  {
+    "index": 52,
+    "path": "packages/web/public/magic-icons/sword1/magic036_金乌刀法.png",
+    "name": "金乌刀法",
+    "sha256": "3706b363c01bbfdb8e5ddb71bad2cb3927e05bf3068bef3d1091698a26c3da8f"
+  },
+  {
+    "index": 53,
+    "path": "packages/web/public/magic-icons/sword1/magic045_摘花满天.png",
+    "name": "摘花满天",
+    "sha256": "9aef6c0f638bd426813970d9d5f5253614142df86a40df962c2c8d34bfb3d4aa"
+  },
+  {
+    "index": 54,
+    "path": "packages/web/public/magic-icons/sword1/magic034_含元掌.png",
+    "name": "含元掌",
+    "sha256": "c67de10576fa28b50c9456998244f1db4d33a2c569c8ba690fb55e0f87b418fe"
+  },
+  {
+    "index": 55,
+    "path": "packages/web/public/magic-icons/sword1/magic035_观音散雪.png",
+    "name": "观音散雪",
+    "sha256": "aa386c302f117f99898c57a4d216d6fa8d5c1594cbc460116b7389c72b5a5234"
+  },
+  {
+    "index": 56,
+    "path": "packages/web/public/magic-icons/sword1/magic038_破石鞭法.png",
+    "name": "破石鞭法",
+    "sha256": "effb8ca4de0349b76bff6bdcfc837422624b139ad3c473c71615c4bd35ec8e51"
+  },
+  {
+    "index": 57,
+    "path": "packages/web/public/magic-icons/sword1/magic042_天外神音.png",
+    "name": "天外神音",
+    "sha256": "e6ce5672682f38c84a7d281515ab1ae70dbfffd8cce644081ef58aadd00a5a20"
+  },
+  {
+    "index": 58,
+    "path": "packages/web/public/magic-icons/sword1/magic037_劈波裂浪.png",
+    "name": "劈波裂浪",
+    "sha256": "3b73f971dccfd4d8d0898da3fe20bfb4bbf9d66b225c2749ee03a731df5804ce"
+  },
+  {
+    "index": 59,
+    "path": "packages/web/public/magic-icons/sword1/magic031_野马分鬃.png",
+    "name": "野马分鬃",
+    "sha256": "da1a58f30f15031853cd0cd416a5ff35425d2bb5c596f551dd3279bc333bd8ae"
+  },
+  {
+    "index": 60,
+    "path": "packages/web/public/magic-icons/sword1/magic061_莫须有.png",
+    "name": "莫须有",
+    "sha256": "ce7a7fb6ad2da6549dc9ab627731366ef0699c5f2d73fb46df80656805ced441"
+  },
+  {
+    "index": 61,
+    "path": "packages/web/public/magic-icons/sword1/magic028_慈航普度.png",
+    "name": "慈航普渡",
+    "sha256": "bc9b5e573dce2acbc01779a5f03b0d1b7716021032be2f2a1ddc57f6a890694a"
+  },
+  {
+    "index": 62,
+    "path": "packages/web/public/magic-icons/sword1/magic050_追魂索命.png",
+    "name": "追魂索命",
+    "sha256": "649e896e97a0b11f0548922d5f66cf1decb97132e22b471773bd274599663ec4"
+  },
+  {
+    "index": 63,
+    "path": "packages/web/public/magic-icons/sword1/magic044_威震五岳.png",
+    "name": "威震五岳",
+    "sha256": "2d72cc3aa77de40d1be949333fd8a6fca8798b5615eb939a557f67ea293b0ce5"
+  },
+  {
+    "index": 64,
+    "path": "packages/web/public/magic-icons/sword2/player-magic-长剑.png",
+    "name": "长剑",
+    "sha256": "017aad0b4ab6c692d27e23e06dc3b9ae7d7935ea9cd3a31a99d2b6ee0c7b0eda"
+  },
+  {
+    "index": 65,
+    "path": "packages/web/public/magic-icons/sword2/magic-暴雨梨花箭.png",
+    "name": "暴雨梨花箭",
+    "sha256": "f1f166b4f0219c3d9a0592163f1a23bc19b31bf3f38c2b98c7af32fb15a2a2e7"
+  },
+  {
+    "index": 66,
+    "path": "packages/web/public/magic-icons/sword2/magic-别离心法.png",
+    "name": "别离心法",
+    "sha256": "2c2b3636b7803abd84063e771683d0fb37b92ec4154e5103c3759b11663e613c"
+  },
+  {
+    "index": 67,
+    "path": "packages/web/public/magic-icons/sword2/magic-十一式暴雨剑法.png",
+    "name": "十一式暴雨剑法",
+    "sha256": "ac728ab5e622e5a98a54474fa8cd4ee99855665184579581b99b6ac6a61ab607"
+  },
+  {
+    "index": 68,
+    "path": "packages/web/public/magic-icons/sword2/magic-封神十二剑.png",
+    "name": "封神十二剑",
+    "sha256": "96e2e45ad1f2027eef3dde5031ed506633aa68141fbfabc18618fed4a70ac5c9"
+  },
+  {
+    "index": 69,
+    "path": "packages/web/public/magic-icons/sword2/magic-风残剑法.png",
+    "name": "风残剑法",
+    "sha256": "3be7b8802073e9e161cbf9beedea2e616b77b0aad30fcfb2b08c8702e98f888f"
+  },
+  {
+    "index": 70,
+    "path": "packages/web/public/magic-icons/sword2/magic-拈花指.png",
+    "name": "拈花指",
+    "sha256": "c5c67c799bb304d9e39076f9309a7a8fbf226881076306e31c092db5dd32f15a"
+  },
+  {
+    "index": 71,
+    "path": "packages/web/public/magic-icons/sword2/magic-天忍神功.png",
+    "name": "天忍神功",
+    "sha256": "73c71d855dc0509c8e1b7b9602be65706678e997c05f0b0ea04549d98e28a644"
+  },
+  {
+    "index": 72,
+    "path": "packages/web/public/magic-icons/sword2/magic-乱披风箭术.png",
+    "name": "乱披风箭术",
+    "sha256": "895b1e3afa947995d77faad1b77280f612b6ee3a6841f714214f32db3cf469b3"
+  },
+  {
+    "index": 73,
+    "path": "packages/web/public/magic-icons/sword2/magic-逍遥刀法.png",
+    "name": "逍遥刀法",
+    "sha256": "0439b5854b19aa1a067b2a4f42212dc1a0f2bf2ebfb43c333a19f8cd1b669ca8"
+  },
+  {
+    "index": 74,
+    "path": "packages/web/public/magic-icons/sword2/magic-断金斧.png",
+    "name": "断金斧",
+    "sha256": "3a42edc3ed3a396b99731aa467ac9701407c6337c53d7adfdc762a57902e63bc"
+  },
+  {
+    "index": 75,
+    "path": "packages/web/public/magic-icons/sword2/magic-孔雀翎.png",
+    "name": "孔雀翎",
+    "sha256": "02e802ac993f0bcc6ecbcb8386a06385e95e334e0a262792b92aea57778d42dd"
+  },
+  {
+    "index": 76,
+    "path": "packages/web/public/magic-icons/sword2/magic-葵花宝典.png",
+    "name": "葵花宝典",
+    "sha256": "f35bb86a8839a14de9246db903094dfb8fd7b52040bbab8bc5384165dbee0e78"
+  },
+  {
+    "index": 77,
+    "path": "packages/web/public/magic-icons/sword2/magic-霹雳刀法.png",
+    "name": "霹雳刀法",
+    "sha256": "d5c29dc7e7b364379f7019db23aeb8d4fb0e5c795490c84202f369fca511c8c4"
+  },
+  {
+    "index": 78,
+    "path": "packages/web/public/magic-icons/sword2/magic-流水掌法.png",
+    "name": "流水掌法",
+    "sha256": "ef6a28f907a317402354e0a3bd2166c76065870937d7c1e7efd64ed8110df881"
+  },
+  {
+    "index": 79,
+    "path": "packages/web/public/magic-icons/sword2/magic-逆流刀法.png",
+    "name": "逆流刀法",
+    "sha256": "ead72e8d42a8147fadf246e2c90fde66e56295adb7c8563ed6a8886480b2a651"
+  },
+  {
+    "index": 80,
+    "path": "packages/web/public/magic-icons/sword2/magic-百变掌法.png",
+    "name": "百变掌法",
+    "sha256": "f4a05efb0a7441e89c13bd99f6b34adbebab007cbf5e25a1032e09c02f93b5c2"
+  },
+  {
+    "index": 81,
+    "path": "packages/web/public/magic-icons/sword2/magic-棍棒.png",
+    "name": "棍棒",
+    "sha256": "8195ecfab3f9cbd8472f206d36ad5229ba0dc51766e6107071866e9dd7925b21"
+  },
+  {
+    "index": 82,
+    "path": "packages/web/public/magic-icons/sword2/magic-长剑.png",
+    "name": "长剑",
+    "sha256": "ff2924bfc8c88b5e2a5b827c26bcb644c443036059d5ab2905fa2513d7a3dc97"
+  },
+  {
+    "index": 83,
+    "path": "packages/web/public/magic-icons/sword2/magic-火箭.png",
+    "name": "火箭",
+    "sha256": "68bc0b10a18e488ba37319cb96c7902f50a4ed2a6e2f55401a8bf1c25d298c4b"
+  },
+  {
+    "index": 84,
+    "path": "packages/web/public/magic-icons/sword2/magic-拳脚.png",
+    "name": "拳脚",
+    "sha256": "28137b4b041f468ed41964f2a0dc52989b9c3ca837a84165ad1fb637b2c55b1f"
+  },
+  {
+    "index": 85,
+    "path": "packages/web/public/magic-icons/sword2/magic-刀.png",
+    "name": "刀",
+    "sha256": "6cb3335edbde2e847bd398fe43062d139ed3cfcafa84f4e8fb154110ba499a63"
+  },
+  {
+    "index": 86,
+    "path": "packages/web/public/magic-icons/sword2/magic-冰弓箭.png",
+    "name": "冰弓箭",
+    "sha256": "8c2b15c66d3e1d89204c3d215b46cb87bc1878728631b7871039bfcd721c2d1a"
+  },
+  {
+    "index": 87,
+    "path": "packages/web/public/magic-icons/sword2/magic-两格长枪.png",
+    "name": "长枪",
+    "sha256": "f560be99dd8c6c5cfd1ca794be909147463166c80c567e2f7096b50e8ac7102b"
+  },
+  {
+    "index": 88,
+    "path": "packages/web/public/magic-icons/sword2/magic-弓箭.png",
+    "name": "弓箭",
+    "sha256": "3aeabffa942ade4206e3945023ac726ef3989e19188de160601d68f858077925"
+  }
+]

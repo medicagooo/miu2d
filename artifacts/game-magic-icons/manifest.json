@@ -20,7 +20,13 @@
       "status": "generated",
       "generationId": "exec-8d4040a9-5d3d-422b-8f39-f6df1c295779.png",
       "concept": "一柄朴素银色直剑，冷蓝短斩光，基础近身剑击。",
-      "sha256": "a20e206928d5921e72ee917fec9088bdddad6dfc38a6b6a04401278596705fbf"
+      "sha256": "428800c5767885f20bb6cc63b93b67c7c80e5167ca7518807d029504503f9cdb",
+      "transparency": {
+        "originalSha256": "a20e206928d5921e72ee917fec9088bdddad6dfc38a6b6a04401278596705fbf",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "demo",
@@ -38,7 +44,13 @@
       "status": "generated",
       "generationId": "exec-9bb28746-e46c-4876-ad94-0c0f7d08105e.png",
       "concept": "单枚细长柳叶飞刀斜向飞出，青绿细尾迹，轻巧精准。",
-      "sha256": "20cd9d0c43de3aa2e6bbf1f9ba9e71576c8ce1462a8074e62f260de1dfe856d8"
+      "sha256": "86edfcccf707f2706ffcef3e7e91c36b981dfa860900ec7987b33d5248510f21",
+      "transparency": {
+        "originalSha256": "20cd9d0c43de3aa2e6bbf1f9ba9e71576c8ce1462a8074e62f260de1dfe856d8",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "demo",
@@ -56,7 +68,13 @@
       "status": "generated",
       "generationId": "exec-d645eea4-83c7-4c68-a3d8-3ef5b04c07a1.png",
       "concept": "三道蓝紫月牙刃在一个紧凑区域交错旋转，月弧清晰。",
-      "sha256": "b26a7aedf89c6831f66889cc632770025b497f4e2b4e9fb87c1107f7ab65c12b"
+      "sha256": "2ee1433d4762c894934084f13a633d180f5b33592183815895d8ce0131db358d",
+      "transparency": {
+        "originalSha256": "b26a7aedf89c6831f66889cc632770025b497f4e2b4e9fb87c1107f7ab65c12b",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "demo",
@@ -74,7 +92,13 @@
       "status": "generated",
       "generationId": "exec-02cc902f-ef89-4907-b7f2-7865f0162ef2.png",
       "concept": "一枚金黄蜂尾毒针，尖端碧绿毒滴，短促刺击。",
-      "sha256": "d3c6d412e59eaa0cc501ea97a6bd4a64fa1b35a15d4528d3bc1bcff69f5f977f"
+      "sha256": "ec6356b5f7a881ea9be639108482ee52a1fedabf44a2f5bdbadaa31366cc58f0",
+      "transparency": {
+        "originalSha256": "d3c6d412e59eaa0cc501ea97a6bd4a64fa1b35a15d4528d3bc1bcff69f5f977f",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "demo",
@@ -92,7 +116,13 @@
       "status": "generated",
       "generationId": "exec-8dd3f300-6b27-4a87-b672-e80c2aa74cff.png",
       "concept": "苍劲剑客的简化挥剑剪影与向外迸发的蓝金剑气。",
-      "sha256": "45c91f6545f8c8f9c70d93086d8871b2d816aa96067c9efabc853926df5814ec"
+      "sha256": "2012e1b8aaeeb69a4cd0a0306c213c00c423873c10a9e875c69dda68fae4688e",
+      "transparency": {
+        "originalSha256": "45c91f6545f8c8f9c70d93086d8871b2d816aa96067c9efabc853926df5814ec",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "demo",
@@ -110,7 +140,13 @@
       "status": "generated",
       "generationId": "exec-e886c515-5d83-4729-bc32-62d1808aacc1.png",
       "concept": "五根金针并列组成向前推进的针墙，金白细光。",
-      "sha256": "c92b78d56d8ea311848a687eb89bbee128b3798ca7d9ef4750704567a7ab36f5"
+      "sha256": "93281b7a7439fcec34ccb78be4e978c7971c31d32d3e0389660c79076ce683d3",
+      "transparency": {
+        "originalSha256": "c92b78d56d8ea311848a687eb89bbee128b3798ca7d9ef4750704567a7ab36f5",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "demo",
@@ -128,7 +164,13 @@
       "status": "generated",
       "generationId": "exec-182b481f-ddd5-4092-973a-b8c4a573e964.png",
       "concept": "三片紫红花瓣聚成尖锐飞梭，单向飞出，柔美凌厉。",
-      "sha256": "bb5b40c3e2ee3ff2a4bf6f9e7f102db58f11058af238c6fb2b018c3c9c76580f"
+      "sha256": "c5d58d3e2b6eb7332881f466273cefcfc967fba6a5e6d20411916ab5ebf42655",
+      "transparency": {
+        "originalSha256": "bb5b40c3e2ee3ff2a4bf6f9e7f102db58f11058af238c6fb2b018c3c9c76580f",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "demo",
@@ -146,7 +188,13 @@
       "status": "generated",
       "generationId": "exec-27982b37-399b-49e6-83b0-7df59cf66a92.png",
       "concept": "亮黄绿色毒液向扇面喷溅，中心酸性液滴。",
-      "sha256": "fef90d4c1a8feeaacd4bbce56c708e236be66a8ac251e9f541893b45db0ce3e9"
+      "sha256": "9e7b2e73ec8f2010132dadfe48706f14059bacfae064384987000434dc1f2df9",
+      "transparency": {
+        "originalSha256": "fef90d4c1a8feeaacd4bbce56c708e236be66a8ac251e9f541893b45db0ce3e9",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "demo",
@@ -164,7 +212,13 @@
       "status": "generated",
       "generationId": "exec-4344fa19-31d0-4f93-bae6-9042b0777bab.png",
       "concept": "三张金黄色小符纸呈扇形射出，红色符线仅抽象笔划，不要可读文字。",
-      "sha256": "4c7d3344d2b42ca846bfaa9b649d9209f9bc8fa8ab3a955695f6405bd1258744"
+      "sha256": "f89c69f19d05e7eb3c1c8c8487f348e1d0c90ac8b77cfa25be8c417131938b2e",
+      "transparency": {
+        "originalSha256": "4c7d3344d2b42ca846bfaa9b649d9209f9bc8fa8ab3a955695f6405bd1258744",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "demo",
@@ -182,7 +236,13 @@
       "status": "generated",
       "generationId": "exec-0e932ea7-4efa-4f21-99b0-00c495b7a717.png",
       "concept": "三颗赭黄岩块沿紧凑螺旋旋转，土黄劲气。",
-      "sha256": "be1043bbe74917bfc0de4116f8e58c5cd198a48b0acf04afe2391a95227fc310"
+      "sha256": "4c2750edd81cadd23c494726e6ee277f4e3e9f9ec689a7677e37975a2cf7d7e2",
+      "transparency": {
+        "originalSha256": "be1043bbe74917bfc0de4116f8e58c5cd198a48b0acf04afe2391a95227fc310",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "demo",
@@ -200,7 +260,13 @@
       "status": "generated",
       "generationId": "exec-afdf2121-37f0-4da5-8d87-aba88ff9a0ba.png",
       "concept": "一朵白莲浮在淡蓝水波光环上，宁静而有力量。",
-      "sha256": "ce49af008473fa658f34a1128d4f47c543ebfa0e6cc830b2b7397d7d9860a1cc"
+      "sha256": "c49340a0e565f4b4722fcac1e64852971ac25f06169f8edda7a358b505e91a8f",
+      "transparency": {
+        "originalSha256": "ce49af008473fa658f34a1128d4f47c543ebfa0e6cc830b2b7397d7d9860a1cc",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "demo",
@@ -218,7 +284,13 @@
       "status": "generated",
       "generationId": "exec-87d16386-8915-4344-87ed-4d44fd14969b.png",
       "concept": "橙红火种落入圆形燃烧区域，小型环状火势。",
-      "sha256": "6079e3f279614d16184dbd9e1cb475b81efd836b4725acd7e563b45299d5786b"
+      "sha256": "75ee1299c77fc82b2e45458079cf85f7f23e0d4c7de459b87e6d60f9549f4ac2",
+      "transparency": {
+        "originalSha256": "6079e3f279614d16184dbd9e1cb475b81efd836b4725acd7e563b45299d5786b",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "demo",
@@ -236,7 +308,13 @@
       "status": "generated",
       "generationId": "exec-083e0323-1e00-4319-8f3c-f91722a8911f.png",
       "concept": "一枚宽短银色飞刀与冷蓝直线尾迹，区别于细长柳叶刀。",
-      "sha256": "6e9c1fe1852c841de239e60342e4eb173e175991eee709ad97586198d2b69e88"
+      "sha256": "db43555aeda133e6905669b6cda10453a394bf9a1e9c2c1e6fb5204093f5c78e",
+      "transparency": {
+        "originalSha256": "6e9c1fe1852c841de239e60342e4eb173e175991eee709ad97586198d2b69e88",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "demo",
@@ -254,7 +332,13 @@
       "status": "generated",
       "generationId": "exec-438feca7-a4f6-4135-884d-3b0abc6c61d7.png",
       "concept": "一朵深红蔷薇带一段弯曲绿色荆棘追击轨迹。",
-      "sha256": "62e54885b48d08ab846e8822edc07737d15672050b93b92c0187745e59b0531e"
+      "sha256": "9286fdb3b3cca685aeadc9090b86de72610f5f4b682343b829fe91d0bfb6e5a4",
+      "transparency": {
+        "originalSha256": "62e54885b48d08ab846e8822edc07737d15672050b93b92c0187745e59b0531e",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "demo",
@@ -272,7 +356,13 @@
       "status": "generated",
       "generationId": "exec-4318da4f-bd5b-45c3-99b6-1c25e106f425.png",
       "concept": "紫绿毒液如低矮扇形浪潮向前涌出，区别于毒液2的喷溅。",
-      "sha256": "897752a5d14fa8520e93c614f24b682dc1a80842f14291fa6fd2bc48c452f043"
+      "sha256": "9fe348e0be7c71d33e6cc3ae4435455217d81164b162b00f2675aac9208fd216",
+      "transparency": {
+        "originalSha256": "897752a5d14fa8520e93c614f24b682dc1a80842f14291fa6fd2bc48c452f043",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "demo",
@@ -290,7 +380,13 @@
       "status": "generated",
       "generationId": "exec-326d00ab-0748-41d8-9e4f-8634f58d92b0.png",
       "concept": "一枚蓝银十字暗器，细长笔直蓝色破空轨迹。",
-      "sha256": "7f06ce6814b08afc3e64db5495638bdd745dc68072da0f5fe94d242562b03193"
+      "sha256": "7217f04f79bea8eb2c6c7921f4706e82800aa5f686e63ca41a90637a77517e54",
+      "transparency": {
+        "originalSha256": "7f06ce6814b08afc3e64db5495638bdd745dc68072da0f5fe94d242562b03193",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "demo",
@@ -308,7 +404,13 @@
       "status": "generated",
       "generationId": "exec-6f690f60-5329-4c52-9eff-977b545b8796.png",
       "concept": "两张很小的金色符纸随机错开飞出，细碎紫金电火花，抽象符线不可读。",
-      "sha256": "0ebfca86e3be5d42f72330cad9a86dd878762e8cf1f4fdbcd8c4091772204a53"
+      "sha256": "cbd31e4c0d400a65b65d6dbfb004b1b37ecb7605cff0f97486392f70c5de9356",
+      "transparency": {
+        "originalSha256": "0ebfca86e3be5d42f72330cad9a86dd878762e8cf1f4fdbcd8c4091772204a53",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "demo",
@@ -326,7 +428,13 @@
       "status": "generated",
       "generationId": "exec-ec3efbca-c370-4c37-a630-d82c853d345b.png",
       "concept": "火焰掌印推出扇形橙红火浪，单一清楚轮廓。",
-      "sha256": "8330d02255b8d3feebfbc55d79b26faafed9454733b0c04a575dadc0c51d4e48"
+      "sha256": "48b29b2a702766537d3737979ed778f06d284055f7fc378305a02969a2bda21d",
+      "transparency": {
+        "originalSha256": "8330d02255b8d3feebfbc55d79b26faafed9454733b0c04a575dadc0c51d4e48",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "demo",
@@ -344,7 +452,13 @@
       "status": "generated",
       "generationId": "exec-ddeeafcd-2722-4dfd-bd29-81073ee3950c.png",
       "concept": "单柄冰蓝弯刃裹覆白色霜晶，短直线冰气。",
-      "sha256": "9924caf38b26cb4d13091c03e947219d1632ded473a73fb04ae1b2df1bffe0b0"
+      "sha256": "f9a1939a189643dcf11170eb2b77a3c72822210cc1eb6c13da119f5f8c22dc81",
+      "transparency": {
+        "originalSha256": "9924caf38b26cb4d13091c03e947219d1632ded473a73fb04ae1b2df1bffe0b0",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "demo",
@@ -362,7 +476,13 @@
       "status": "generated",
       "generationId": "exec-79c59d4c-3a81-4c37-ba6e-e7428e14063b.png",
       "concept": "紫色蝙蝠展开双翼俯冲的清晰剪影，少量绿色邪气。",
-      "sha256": "6977edf7551717910975e31a63fd379cee1b014e49a65bb7d76fbbe770fb9045"
+      "sha256": "13d4fb90231c4b288df64d20b6cb821028bf635cdfbfa93399f46ef1c930f1d5",
+      "transparency": {
+        "originalSha256": "6977edf7551717910975e31a63fd379cee1b014e49a65bb7d76fbbe770fb9045",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "demo",
@@ -380,7 +500,13 @@
       "status": "generated",
       "generationId": "exec-70ea68fa-51f0-42ed-a822-5a9ad4a03fbe.png",
       "concept": "三道冰紫剑刃绕空心圆环旋转，阴寒肃杀。",
-      "sha256": "7fffa7c4cf7703efbcd2f2d8f6e056dab3d8d9aa5b68c4a42622287dd786065f"
+      "sha256": "fae83f978b9d845bf12deb56dc6e1083739860e0fe0559b89f0e71e5f61fabb5",
+      "transparency": {
+        "originalSha256": "7fffa7c4cf7703efbcd2f2d8f6e056dab3d8d9aa5b68c4a42622287dd786065f",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "demo",
@@ -398,7 +524,13 @@
       "status": "generated",
       "generationId": "exec-56084787-b035-48db-965a-5d5ccf69c92b.png",
       "concept": "一道水蓝龙形水流弹，紧凑龙头和短尾，向前冲击。",
-      "sha256": "d8368d12602980258039f8b27f217719f4e7680ec253386d4ea2580c25d5e92e"
+      "sha256": "f1f1e323f8a33f733d714597d890176971c2327e47799da481a5679623e0156d",
+      "transparency": {
+        "originalSha256": "d8368d12602980258039f8b27f217719f4e7680ec253386d4ea2580c25d5e92e",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "demo",
@@ -416,7 +548,13 @@
       "status": "generated",
       "generationId": "exec-79b0f6a7-8ec1-4705-abe3-b561d414732d.png",
       "concept": "一缕紫绿色蛇形毒烟盘曲向前，细小亮绿毒核。",
-      "sha256": "22007f3876e529333f895f87f0516742e186f27fc6151f267c352f441fad5034"
+      "sha256": "50ed1f0cef1a13610c81d01f7113a10283d72c8728b6eb4b89f1ad9655535355",
+      "transparency": {
+        "originalSha256": "22007f3876e529333f895f87f0516742e186f27fc6151f267c352f441fad5034",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "demo",
@@ -434,7 +572,13 @@
       "status": "generated",
       "generationId": "exec-17829948-99a3-4db6-9d9c-8bbe2accca21.png",
       "concept": "简化金色拳印伴随三道分叉紫电，随机散射的雷劲。",
-      "sha256": "0bc204727bf35df67134fa3bd70eefe13df8c50aa3f3249293d294c3c5514498"
+      "sha256": "236120c6163eea2a0557df16f3a9bdb659ef35dc71dd3f1f355ca7162500e056",
+      "transparency": {
+        "originalSha256": "0bc204727bf35df67134fa3bd70eefe13df8c50aa3f3249293d294c3c5514498",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "demo",
@@ -452,7 +596,13 @@
       "status": "generated",
       "generationId": "exec-c42e7d5d-8f17-4f56-b696-2903e6df5d7a.png",
       "concept": "一颗紧凑青蓝水弹带短水尾，单体直射。",
-      "sha256": "f77dd21526cc53eeabfffe5f3c1f38d131418d5bcb7591355746ded25b0b53e5"
+      "sha256": "7e8f4ea2427064968fc02f42c303227396f7d0b7a3fb52131ff07e1910d5aca0",
+      "transparency": {
+        "originalSha256": "f77dd21526cc53eeabfffe5f3c1f38d131418d5bcb7591355746ded25b0b53e5",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "demo",
@@ -470,7 +620,13 @@
       "status": "generated",
       "generationId": "exec-54434ff0-24e4-4633-b9cb-0a915476149d.png",
       "concept": "赭黄色沙旋风形成向前移动的风刃，小而紧凑。",
-      "sha256": "e8761b02d17add1420aa178391abb244ffd39e59e5aa8b29c4da0345d04a14f8"
+      "sha256": "319fb3dd0bb512335421e2fa489ae6699553764a791574f17cd349239dc8f267",
+      "transparency": {
+        "originalSha256": "e8761b02d17add1420aa178391abb244ffd39e59e5aa8b29c4da0345d04a14f8",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "demo",
@@ -488,7 +644,13 @@
       "status": "generated",
       "generationId": "exec-6e822a25-5b50-4cdd-8f46-73380e787f93.png",
       "concept": "三枚金色方孔钱币呈扇形射出，明亮金属边。",
-      "sha256": "65cdd37d167a6a69e491cf780018b49da51d6624f6f190859d5b873420b0887a"
+      "sha256": "ca2422528e72e464005b3a7a91e2191cb9426595a4caf55e9451032ecf82feb3",
+      "transparency": {
+        "originalSha256": "65cdd37d167a6a69e491cf780018b49da51d6624f6f190859d5b873420b0887a",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "demo",
@@ -506,7 +668,13 @@
       "status": "generated",
       "generationId": "exec-4fc9a92e-aad2-4eb0-b9e8-826ae4bd5206.png",
       "concept": "粉白花瓣绕中心环形飞旋，区别于紫轩花瓣飞梭。",
-      "sha256": "cfdda70f704ffa08c2c82530d806b04f43e9e638ed6f1d303c28a321fa90806e"
+      "sha256": "2ae974f1f13cd2ec19085add148ff8d63b9078786242f6eaf857f879886843cf",
+      "transparency": {
+        "originalSha256": "cfdda70f704ffa08c2c82530d806b04f43e9e638ed6f1d303c28a321fa90806e",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -524,7 +692,13 @@
       "status": "generated",
       "generationId": "exec-4c0d5956-8f5b-493b-a702-da939a9a0bc6.png",
       "concept": "碧绿水波与一道白色清风弧线凝为向前的细流，名称意象配合单向招式。",
-      "sha256": "2b0876a22ed44d1d02e3e77bc2f807eaf93d2e70958ebcbcdb6f819b594c24d7"
+      "sha256": "4b2485ff07b10c2e73430c47c13d41c22e81bd7dd8169a887827fbd510d643cb",
+      "transparency": {
+        "originalSha256": "2b0876a22ed44d1d02e3e77bc2f807eaf93d2e70958ebcbcdb6f819b594c24d7",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -542,7 +716,13 @@
       "status": "generated",
       "generationId": "exec-256c77fe-8077-4f93-b0fa-be17828fd900.png",
       "concept": "金色掌印中含简化龙象轮廓，厚重土金真气形成前推气墙，古朴强劲。",
-      "sha256": "99e16901de2441e35a08eb7348ef7e390b598426b94d11fc475f3599c80e3558"
+      "sha256": "b0fad2c04fe95a157d59cdfffbab8631c259bc5df9da827b455e45c7bf3422a9",
+      "transparency": {
+        "originalSha256": "99e16901de2441e35a08eb7348ef7e390b598426b94d11fc475f3599c80e3558",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -560,7 +740,13 @@
       "status": "generated",
       "generationId": "exec-d83d9d64-0279-40db-b18d-9270bbb5a1e5.png",
       "concept": "一团紫绿急旋风云，一道毒绿直线穿出，第三式有毒效果，与冰蓝第一式和银白第二式区分。",
-      "sha256": "4867c252e4ba250f16c6f4c7c30a64a560f3fe7a90a7e89b0593fddb160052b8"
+      "sha256": "3cb738ee034ddd6d42000cc708f6c1639239fd11457ce8cd27945bf9c775c80a",
+      "transparency": {
+        "originalSha256": "4867c252e4ba250f16c6f4c7c30a64a560f3fe7a90a7e89b0593fddb160052b8",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -578,7 +764,13 @@
       "status": "generated",
       "generationId": "exec-50b080ad-983d-4046-a72d-12631b1fc268.png",
       "concept": "血红人影环绕一道分叉紫雷，红紫圆形气劲，毒性用微量碧绿点光暗示。",
-      "sha256": "b6f8cbff5cbd6006fc9233647416adad9fb27b4495ea5657c5034be3e30fe77d"
+      "sha256": "102559108419199f37ce2eada4d7bc4f44052ad8cafb807cecca3f933fc7f87e",
+      "transparency": {
+        "originalSha256": "b6f8cbff5cbd6006fc9233647416adad9fb27b4495ea5657c5034be3e30fe77d",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -596,7 +788,13 @@
       "status": "reused-generated",
       "reusedFrom": "demo/magic-金针攻击.ini",
       "concept": "五根金针并列组成向前推进的针墙，金白细光。",
-      "sha256": "c92b78d56d8ea311848a687eb89bbee128b3798ca7d9ef4750704567a7ab36f5"
+      "sha256": "93281b7a7439fcec34ccb78be4e978c7971c31d32d3e0389660c79076ce683d3",
+      "transparency": {
+        "originalSha256": "c92b78d56d8ea311848a687eb89bbee128b3798ca7d9ef4750704567a7ab36f5",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -614,7 +812,13 @@
       "status": "generated",
       "generationId": "exec-5d6600b4-2639-4f16-a318-60fa33fec6c5.png",
       "concept": "黑紫旋涡张开红色裂隙，压缩为一道横向黑红劲气墙。",
-      "sha256": "f9feea1e99ec0adead9b792a26704d0789655dbbdf97d2766efa34ce9548d150"
+      "sha256": "0a033632de8a1662e18b005fb8dc128b3567c1353886fa1eed36690fd0152416",
+      "transparency": {
+        "originalSha256": "f9feea1e99ec0adead9b792a26704d0789655dbbdf97d2766efa34ce9548d150",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -632,7 +836,13 @@
       "status": "reused-generated",
       "reusedFrom": "demo/magic-孟知秋攻击.ini",
       "concept": "苍劲剑客的简化挥剑剪影与向外迸发的蓝金剑气。",
-      "sha256": "45c91f6545f8c8f9c70d93086d8871b2d816aa96067c9efabc853926df5814ec"
+      "sha256": "2012e1b8aaeeb69a4cd0a0306c213c00c423873c10a9e875c69dda68fae4688e",
+      "transparency": {
+        "originalSha256": "45c91f6545f8c8f9c70d93086d8871b2d816aa96067c9efabc853926df5814ec",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -650,7 +860,13 @@
       "status": "generated",
       "generationId": "exec-5dbb83c6-6f5f-49e8-9fef-b53e336cc193.png",
       "concept": "青白风雨斜线扇形急射，疏朗三道主线，表现快风残雨配置的散射。",
-      "sha256": "76a4f46093448cfecea6c669bf1e961c20fc0d77c6bf358384897d5e032a6cae"
+      "sha256": "56380656b9c0643acb7f6cfd4215c8c13ab440880b5e9fa5d5f4aaa6a2e3581c",
+      "transparency": {
+        "originalSha256": "76a4f46093448cfecea6c669bf1e961c20fc0d77c6bf358384897d5e032a6cae",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -668,7 +884,13 @@
       "status": "reused-generated",
       "reusedFrom": "demo/magic-蜂王毒刺.ini",
       "concept": "一枚金黄蜂尾毒针，尖端碧绿毒滴，短促刺击。",
-      "sha256": "d3c6d412e59eaa0cc501ea97a6bd4a64fa1b35a15d4528d3bc1bcff69f5f977f"
+      "sha256": "ec6356b5f7a881ea9be639108482ee52a1fedabf44a2f5bdbadaa31366cc58f0",
+      "transparency": {
+        "originalSha256": "d3c6d412e59eaa0cc501ea97a6bd4a64fa1b35a15d4528d3bc1bcff69f5f977f",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -686,7 +908,13 @@
       "status": "reused-generated",
       "reusedFrom": "demo/magic-月眉儿攻击.ini",
       "concept": "三道蓝紫月牙刃在一个紧凑区域交错旋转，月弧清晰。",
-      "sha256": "b26a7aedf89c6831f66889cc632770025b497f4e2b4e9fb87c1107f7ab65c12b"
+      "sha256": "2ee1433d4762c894934084f13a633d180f5b33592183815895d8ce0131db358d",
+      "transparency": {
+        "originalSha256": "b26a7aedf89c6831f66889cc632770025b497f4e2b4e9fb87c1107f7ab65c12b",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -704,7 +932,13 @@
       "status": "reused-generated",
       "reusedFrom": "demo/magic-柳叶飞刀.ini",
       "concept": "单枚细长柳叶飞刀斜向飞出，青绿细尾迹，轻巧精准。",
-      "sha256": "20cd9d0c43de3aa2e6bbf1f9ba9e71576c8ce1462a8074e62f260de1dfe856d8"
+      "sha256": "86edfcccf707f2706ffcef3e7e91c36b981dfa860900ec7987b33d5248510f21",
+      "transparency": {
+        "originalSha256": "20cd9d0c43de3aa2e6bbf1f9ba9e71576c8ce1462a8074e62f260de1dfe856d8",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -722,7 +956,13 @@
       "status": "generated",
       "generationId": "exec-dec6c05e-1513-4365-88f1-041c14bf385d.png",
       "concept": "简化弓手侧身拉弓剪影，三枚冰白箭头排成横列，寒冰箭墙。",
-      "sha256": "ba136988656c410eef2877e4f8c9455d7f3b9c62d231b4136ccaac41794bdac3"
+      "sha256": "8aefc0e34a09d9b6718cfba6d2a1f7018471b6698bd8ccb48b82c308d6280a97",
+      "transparency": {
+        "originalSha256": "ba136988656c410eef2877e4f8c9455d7f3b9c62d231b4136ccaac41794bdac3",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -740,7 +980,13 @@
       "status": "reused-generated",
       "reusedFrom": "demo/magic-水系攻击2.ini",
       "concept": "一道水蓝龙形水流弹，紧凑龙头和短尾，向前冲击。",
-      "sha256": "d8368d12602980258039f8b27f217719f4e7680ec253386d4ea2580c25d5e92e"
+      "sha256": "f1f1e323f8a33f733d714597d890176971c2327e47799da481a5679623e0156d",
+      "transparency": {
+        "originalSha256": "d8368d12602980258039f8b27f217719f4e7680ec253386d4ea2580c25d5e92e",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -758,7 +1004,13 @@
       "status": "generated",
       "generationId": "exec-0dc08e28-b0ad-4f61-867a-7725414c4db0.png",
       "concept": "金褐蟒蛇头从暗处前探，三道扇形蛇形劲气，简练蛇形轮廓。",
-      "sha256": "4e5027cbbf7ca97da0aa297fd04abfc7d41882de300640dfab479659d9320eda"
+      "sha256": "9676d0644469a55b42818fd289d4e46087d62452d299a28e93e845a6a8169912",
+      "transparency": {
+        "originalSha256": "4e5027cbbf7ca97da0aa297fd04abfc7d41882de300640dfab479659d9320eda",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -776,7 +1028,13 @@
       "status": "generated",
       "generationId": "exec-d239de75-303c-46b3-8b17-ba39d6125245.png",
       "concept": "绿色毒蛇头吐出一线紫绿毒芒，单向穿刺。",
-      "sha256": "11583e2b6bc67e6e94143d51f8696b8630d2106b54230fba74f535da19f982be"
+      "sha256": "721a350e7399b62c7651de77bf7200916844cd1e095da5dbfd30c97eb4eeebac",
+      "transparency": {
+        "originalSha256": "11583e2b6bc67e6e94143d51f8696b8630d2106b54230fba74f535da19f982be",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -794,7 +1052,13 @@
       "status": "reused-generated",
       "reusedFrom": "demo/magic-纳兰潜凛攻击.ini",
       "concept": "三道冰紫剑刃绕空心圆环旋转，阴寒肃杀。",
-      "sha256": "7fffa7c4cf7703efbcd2f2d8f6e056dab3d8d9aa5b68c4a42622287dd786065f"
+      "sha256": "fae83f978b9d845bf12deb56dc6e1083739860e0fe0559b89f0e71e5f61fabb5",
+      "transparency": {
+        "originalSha256": "7fffa7c4cf7703efbcd2f2d8f6e056dab3d8d9aa5b68c4a42622287dd786065f",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -812,7 +1076,13 @@
       "status": "reused-generated",
       "reusedFrom": "demo/magic-蝙蝠.ini",
       "concept": "紫色蝙蝠展开双翼俯冲的清晰剪影，少量绿色邪气。",
-      "sha256": "6977edf7551717910975e31a63fd379cee1b014e49a65bb7d76fbbe770fb9045"
+      "sha256": "13d4fb90231c4b288df64d20b6cb821028bf635cdfbfa93399f46ef1c930f1d5",
+      "transparency": {
+        "originalSha256": "6977edf7551717910975e31a63fd379cee1b014e49a65bb7d76fbbe770fb9045",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -830,7 +1100,13 @@
       "status": "reused-generated",
       "reusedFrom": "demo/magic-冰刀攻击.ini",
       "concept": "单柄冰蓝弯刃裹覆白色霜晶，短直线冰气。",
-      "sha256": "9924caf38b26cb4d13091c03e947219d1632ded473a73fb04ae1b2df1bffe0b0"
+      "sha256": "f9a1939a189643dcf11170eb2b77a3c72822210cc1eb6c13da119f5f8c22dc81",
+      "transparency": {
+        "originalSha256": "9924caf38b26cb4d13091c03e947219d1632ded473a73fb04ae1b2df1bffe0b0",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -866,7 +1142,13 @@
       "status": "reused-generated",
       "reusedFrom": "demo/magic-火系攻击3.ini",
       "concept": "火焰掌印推出扇形橙红火浪，单一清楚轮廓。",
-      "sha256": "8330d02255b8d3feebfbc55d79b26faafed9454733b0c04a575dadc0c51d4e48"
+      "sha256": "48b29b2a702766537d3737979ed778f06d284055f7fc378305a02969a2bda21d",
+      "transparency": {
+        "originalSha256": "8330d02255b8d3feebfbc55d79b26faafed9454733b0c04a575dadc0c51d4e48",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -884,7 +1166,13 @@
       "status": "reused-generated",
       "reusedFrom": "demo/magic-小符咒攻击.ini",
       "concept": "两张很小的金色符纸随机错开飞出，细碎紫金电火花，抽象符线不可读。",
-      "sha256": "0ebfca86e3be5d42f72330cad9a86dd878762e8cf1f4fdbcd8c4091772204a53"
+      "sha256": "cbd31e4c0d400a65b65d6dbfb004b1b37ecb7605cff0f97486392f70c5de9356",
+      "transparency": {
+        "originalSha256": "0ebfca86e3be5d42f72330cad9a86dd878762e8cf1f4fdbcd8c4091772204a53",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -902,7 +1190,13 @@
       "status": "generated",
       "generationId": "exec-b6b533f6-5bc6-43a6-8cf5-993a8dce225a.png",
       "concept": "银白旋风裹一团浅青云气，直向飞出，无毒无冰的第二式。",
-      "sha256": "34e777bf7add3642d2a843a83973945a352293612d9577c12fd011ed3f0f76fd"
+      "sha256": "93b5b04b438253f188ca6082d34e26f45614770532b2434fff1b77d783555417",
+      "transparency": {
+        "originalSha256": "34e777bf7add3642d2a843a83973945a352293612d9577c12fd011ed3f0f76fd",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -920,7 +1214,13 @@
       "status": "generated",
       "generationId": "exec-bfccf678-76cb-4e32-bc90-a99fd05f3d8d.png",
       "concept": "幽蓝直剑两侧各一条紫色音波，组成竖立剑气屏障。",
-      "sha256": "94e5cab015f2f2453bba2b8d4d00fd26db40c9c7b612528ea91808dcbc950b9f"
+      "sha256": "d27baabe5b6135ef897d3ac340202edcb435e10c7709d8d45923bf7486a7f5ac",
+      "transparency": {
+        "originalSha256": "94e5cab015f2f2453bba2b8d4d00fd26db40c9c7b612528ea91808dcbc950b9f",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -938,7 +1238,13 @@
       "status": "generated",
       "generationId": "exec-055aba10-ea45-40a4-a512-4737c9b02273.png",
       "concept": "一弧简练彩虹从两团青白雨雾间升起，横向光幕。",
-      "sha256": "3b84ec6d8ebc59bafe7f45ae97c62d69be4ebe679a4f7f0fbe7c04a0c1aa1312"
+      "sha256": "e4bb74eb9b0dfed69a8e7bcb32e2811f5a22d73b6b282930be91dba3b4f2a51a",
+      "transparency": {
+        "originalSha256": "3b84ec6d8ebc59bafe7f45ae97c62d69be4ebe679a4f7f0fbe7c04a0c1aa1312",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -956,7 +1262,13 @@
       "status": "reused-generated",
       "reusedFrom": "demo/magic-暗器2.ini",
       "concept": "一枚蓝银十字暗器，细长笔直蓝色破空轨迹。",
-      "sha256": "7f06ce6814b08afc3e64db5495638bdd745dc68072da0f5fe94d242562b03193"
+      "sha256": "7217f04f79bea8eb2c6c7921f4706e82800aa5f686e63ca41a90637a77517e54",
+      "transparency": {
+        "originalSha256": "7f06ce6814b08afc3e64db5495638bdd745dc68072da0f5fe94d242562b03193",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -974,7 +1286,13 @@
       "status": "generated",
       "generationId": "exec-e9d9f3c1-2108-4860-87ac-24fb149ba722.png",
       "concept": "密集青蓝雨针呈宽扇形飞出，五道明亮主线，与快风残雨和直射版本区分。",
-      "sha256": "670f34d18922de264fcdc9fb5b5b4e0a787fa1051e457797e394b71e412ec375"
+      "sha256": "da5502a52e3c59053c17492faca070fa41e9175d94c910c8bba39e3a59d57f63",
+      "transparency": {
+        "originalSha256": "670f34d18922de264fcdc9fb5b5b4e0a787fa1051e457797e394b71e412ec375",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -992,7 +1310,13 @@
       "status": "generated",
       "generationId": "exec-d140a531-b4fb-42ac-8d02-4ca9fc1fe159.png",
       "concept": "金橙猛虎扑击的简化剪影，两道前爪光痕。",
-      "sha256": "4a1f6a9611ff14d0a15c176233282eb12e7832ce7053597170d5ab4e1c7f1bb0"
+      "sha256": "539213995f2ecb2d5f81867b5c45bc42d46609045b78229428bd049408b8ef53",
+      "transparency": {
+        "originalSha256": "4a1f6a9611ff14d0a15c176233282eb12e7832ce7053597170d5ab4e1c7f1bb0",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -1010,7 +1334,13 @@
       "status": "generated",
       "generationId": "exec-dcd455f4-1808-49cf-8d8b-6be2cfe5fa15.png",
       "concept": "半轮暗红落日与一线横向血红劲气，苍凉刚烈。",
-      "sha256": "da8ab09d30137e5aef07a754b0c0249e0338b1edc9df2bd3fdd9a512b19dd482"
+      "sha256": "d11434afa7fd758149db81a196fe15895043995e631535afd3c483b67841512f",
+      "transparency": {
+        "originalSha256": "da8ab09d30137e5aef07a754b0c0249e0338b1edc9df2bd3fdd9a512b19dd482",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -1028,7 +1358,13 @@
       "status": "reused-generated",
       "reusedFrom": "demo/magic-毒液.ini",
       "concept": "紫绿毒液如低矮扇形浪潮向前涌出，区别于毒液2的喷溅。",
-      "sha256": "897752a5d14fa8520e93c614f24b682dc1a80842f14291fa6fd2bc48c452f043"
+      "sha256": "9fe348e0be7c71d33e6cc3ae4435455217d81164b162b00f2675aac9208fd216",
+      "transparency": {
+        "originalSha256": "897752a5d14fa8520e93c614f24b682dc1a80842f14291fa6fd2bc48c452f043",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -1046,7 +1382,13 @@
       "status": "generated",
       "generationId": "exec-55c4c8d0-cd84-4a0f-8a8c-ca0d0d2f903a.png",
       "concept": "金色小日轮被三道青白狂风托起，横向展开的风障。",
-      "sha256": "212b389a43a49a9f348036353136fc4420350cb9c378bec5222c8ca508a9e95c"
+      "sha256": "15883cf7ff0797f95be62bcda7aca2fb1b7c904bfb50c9205cb87dfa5ceb5ad0",
+      "transparency": {
+        "originalSha256": "212b389a43a49a9f348036353136fc4420350cb9c378bec5222c8ca508a9e95c",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -1064,7 +1406,13 @@
       "status": "generated",
       "generationId": "exec-50119b69-5d43-45e4-8dbd-0690f75d3243.png",
       "concept": "冰蓝旋风凝着三点白霜，直向射出，第一式带寒冰。",
-      "sha256": "812b868058e773e7b0011517a7305ee4b8bdf4df850460360a223a142eab802f"
+      "sha256": "1c28d523da8b2bf5334e4bc4fdc98d712316d59651342004f21d70932dcf2df5",
+      "transparency": {
+        "originalSha256": "812b868058e773e7b0011517a7305ee4b8bdf4df850460360a223a142eab802f",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -1082,7 +1430,13 @@
       "status": "reused-generated",
       "reusedFrom": "demo/magic-蔷薇攻击.ini",
       "concept": "一朵深红蔷薇带一段弯曲绿色荆棘追击轨迹。",
-      "sha256": "62e54885b48d08ab846e8822edc07737d15672050b93b92c0187745e59b0531e"
+      "sha256": "9286fdb3b3cca685aeadc9090b86de72610f5f4b682343b829fe91d0bfb6e5a4",
+      "transparency": {
+        "originalSha256": "62e54885b48d08ab846e8822edc07737d15672050b93b92c0187745e59b0531e",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -1100,7 +1454,13 @@
       "status": "generated",
       "generationId": "exec-d3d1ecd3-1be9-4cef-9d0a-780d016dc586.png",
       "concept": "灰褐小石落入蓝色水浪，三束扇形飞溅劲气。",
-      "sha256": "79d9e01f2a8f79f91e1f5dbb4fcd69e515a140402d9afa238f7d225247103d1f"
+      "sha256": "470140f9b9dd2eb4c07758c4c365bd4548500e508533b319800ac005d333c71b",
+      "transparency": {
+        "originalSha256": "79d9e01f2a8f79f91e1f5dbb4fcd69e515a140402d9afa238f7d225247103d1f",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -1118,7 +1478,13 @@
       "status": "generated",
       "generationId": "exec-d90366f4-d1f4-4717-9bdd-98e6e74ad72b.png",
       "concept": "黑蓝龙首卷起一弧冰蓝海浪，龙形护壁，寒冰白光。",
-      "sha256": "583bdd91c724db6cbba9be8dc82249413b5a9fe4d2f0b5e667be29c07fdfa0eb"
+      "sha256": "53a06528342672e0c4277df04463014d7747087211d100d5f4dfda415183f04b",
+      "transparency": {
+        "originalSha256": "583bdd91c724db6cbba9be8dc82249413b5a9fe4d2f0b5e667be29c07fdfa0eb",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -1136,7 +1502,13 @@
       "status": "generated",
       "generationId": "exec-727f716c-fa2b-43d1-be50-bc5f64a05b3a.png",
       "concept": "一束银青风雨凝成笔直高速气箭，单向窄长轨迹，与两个扇形配置区分。",
-      "sha256": "55bf59f390e9c0a8c4be98b74457b80f64db2e17a4737a5bc77b97bd70f2babc"
+      "sha256": "40694c6053539de26f0625a32a67a636820db7c565e26c3398eccfb2eca6c2c0",
+      "transparency": {
+        "originalSha256": "55bf59f390e9c0a8c4be98b74457b80f64db2e17a4737a5bc77b97bd70f2babc",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -1154,7 +1526,13 @@
       "status": "reused-generated",
       "reusedFrom": "demo/magic-飞刀.ini",
       "concept": "一枚宽短银色飞刀与冷蓝直线尾迹，区别于细长柳叶刀。",
-      "sha256": "6e9c1fe1852c841de239e60342e4eb173e175991eee709ad97586198d2b69e88"
+      "sha256": "db43555aeda133e6905669b6cda10453a394bf9a1e9c2c1e6fb5204093f5c78e",
+      "transparency": {
+        "originalSha256": "6e9c1fe1852c841de239e60342e4eb173e175991eee709ad97586198d2b69e88",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -1172,7 +1550,13 @@
       "status": "reused-generated",
       "reusedFrom": "demo/magic-火系攻击2.ini",
       "concept": "橙红火种落入圆形燃烧区域，小型环状火势。",
-      "sha256": "6079e3f279614d16184dbd9e1cb475b81efd836b4725acd7e563b45299d5786b"
+      "sha256": "75ee1299c77fc82b2e45458079cf85f7f23e0d4c7de459b87e6d60f9549f4ac2",
+      "transparency": {
+        "originalSha256": "6079e3f279614d16184dbd9e1cb475b81efd836b4725acd7e563b45299d5786b",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -1190,7 +1574,13 @@
       "status": "reused-generated",
       "reusedFrom": "demo/magic-悲天悯人咒.ini",
       "concept": "一朵白莲浮在淡蓝水波光环上，宁静而有力量。",
-      "sha256": "ce49af008473fa658f34a1128d4f47c543ebfa0e6cc830b2b7397d7d9860a1cc"
+      "sha256": "c49340a0e565f4b4722fcac1e64852971ac25f06169f8edda7a358b505e91a8f",
+      "transparency": {
+        "originalSha256": "ce49af008473fa658f34a1128d4f47c543ebfa0e6cc830b2b7397d7d9860a1cc",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -1208,7 +1598,13 @@
       "status": "generated",
       "concept": "端坐运功的极简紫色人影，环绕一圈紫霞真气，微量毒绿边光。",
       "generationId": "exec-c6d98605-6000-41dd-a392-8cbfbe72e863.png",
-      "sha256": "52eeb358b16dba7f654efffea8ea4f8b3152e2b396a92e303def8b6f733c130b"
+      "sha256": "f354cc6c8616bec855da6006e528fbda405970b046091b12a72a4f8335fdf440",
+      "transparency": {
+        "originalSha256": "52eeb358b16dba7f654efffea8ea4f8b3152e2b396a92e303def8b6f733c130b",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -1226,7 +1622,13 @@
       "status": "generated",
       "concept": "青蓝旋风扫起白色雪片，凝成一条向前冲出的寒风，显示名风卷残云但配置带冰冻。",
       "generationId": "exec-cd2f233a-3d96-4e2f-81fb-631d0faedeb6.png",
-      "sha256": "d1afe5a2268f3a72bb2e1bb8b7881b5774e1e32ee24e64f1d385d05d928d0679"
+      "sha256": "01e02fd92133a1100af0a95dc595241618ba42ea72a00c280ca100a32779acac",
+      "transparency": {
+        "originalSha256": "d1afe5a2268f3a72bb2e1bb8b7881b5774e1e32ee24e64f1d385d05d928d0679",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -1244,7 +1646,13 @@
       "status": "reused-generated",
       "reusedFrom": "demo/magic-土系攻击2.ini",
       "concept": "三颗赭黄岩块沿紧凑螺旋旋转，土黄劲气。",
-      "sha256": "be1043bbe74917bfc0de4116f8e58c5cd198a48b0acf04afe2391a95227fc310"
+      "sha256": "4c2750edd81cadd23c494726e6ee277f4e3e9f9ec689a7677e37975a2cf7d7e2",
+      "transparency": {
+        "originalSha256": "be1043bbe74917bfc0de4116f8e58c5cd198a48b0acf04afe2391a95227fc310",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -1262,7 +1670,13 @@
       "status": "generated",
       "concept": "金紫两股气流首尾相接反向回旋，阴阳相转的紧凑圆形轮廓。",
       "generationId": "exec-d89b0f47-4fb3-4dcd-baac-0bfb863d8ae4.png",
-      "sha256": "2cd5c724d076058a0a4680e1fd50fa44f71e8335074b59d552e6f5e56d16458e"
+      "sha256": "a6ce5929faf72f89841768bdd734d134057e6ee87951171de2a3139616fd8ff3",
+      "transparency": {
+        "originalSha256": "2cd5c724d076058a0a4680e1fd50fa44f71e8335074b59d552e6f5e56d16458e",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -1280,7 +1694,13 @@
       "status": "reused-generated",
       "reusedFrom": "demo/magic-花瓣攻击.ini",
       "concept": "粉白花瓣绕中心环形飞旋，区别于紫轩花瓣飞梭。",
-      "sha256": "cfdda70f704ffa08c2c82530d806b04f43e9e638ed6f1d303c28a321fa90806e"
+      "sha256": "2ae974f1f13cd2ec19085add148ff8d63b9078786242f6eaf857f879886843cf",
+      "transparency": {
+        "originalSha256": "cfdda70f704ffa08c2c82530d806b04f43e9e638ed6f1d303c28a321fa90806e",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -1298,7 +1718,13 @@
       "status": "generated",
       "concept": "三道冰白弯刀影呈扇形展开，淡紫幻影尾迹。",
       "generationId": "exec-beca9244-3949-4993-8fc2-154fa6f1a92a.png",
-      "sha256": "a638a646e69382bd96edf05a46a0c3a34cecc7fedea6d0bce995d78c09279a93"
+      "sha256": "26058c88e7139d65524fd95a4a88b69ae56ec8174de249761b9c46db412cb029",
+      "transparency": {
+        "originalSha256": "a638a646e69382bd96edf05a46a0c3a34cecc7fedea6d0bce995d78c09279a93",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -1316,7 +1742,13 @@
       "status": "reused-generated",
       "reusedFrom": "demo/magic-符咒攻击.ini",
       "concept": "三张金黄色小符纸呈扇形射出，红色符线仅抽象笔划，不要可读文字。",
-      "sha256": "4c7d3344d2b42ca846bfaa9b649d9209f9bc8fa8ab3a955695f6405bd1258744"
+      "sha256": "f89c69f19d05e7eb3c1c8c8487f348e1d0c90ac8b77cfa25be8c417131938b2e",
+      "transparency": {
+        "originalSha256": "4c7d3344d2b42ca846bfaa9b649d9209f9bc8fa8ab3a955695f6405bd1258744",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -1334,7 +1766,13 @@
       "status": "generated",
       "concept": "一柄金橙刀影与小型日轮，赤金直斩气芒。",
       "generationId": "exec-392fc33f-57a8-4022-a697-97e57f8d8bf2.png",
-      "sha256": "3706b363c01bbfdb8e5ddb71bad2cb3927e05bf3068bef3d1091698a26c3da8f"
+      "sha256": "27692c7cef1252c8623e3a1997953623d5ed5354e967a48e728ac3a6476b5358",
+      "transparency": {
+        "originalSha256": "3706b363c01bbfdb8e5ddb71bad2cb3927e05bf3068bef3d1091698a26c3da8f",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -1352,7 +1790,13 @@
       "status": "reused-generated",
       "reusedFrom": "demo/magic-毒液2.ini",
       "concept": "亮黄绿色毒液向扇面喷溅，中心酸性液滴。",
-      "sha256": "fef90d4c1a8feeaacd4bbce56c708e236be66a8ac251e9f541893b45db0ce3e9"
+      "sha256": "9e7b2e73ec8f2010132dadfe48706f14059bacfae064384987000434dc1f2df9",
+      "transparency": {
+        "originalSha256": "fef90d4c1a8feeaacd4bbce56c708e236be66a8ac251e9f541893b45db0ce3e9",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -1370,7 +1814,13 @@
       "status": "generated",
       "concept": "一只简化拈花手指扬出三片粉白花瓣，随机扇形轨迹。",
       "generationId": "exec-aa2b3f5d-2a5e-4a3f-9c4c-e2eb858406fd.png",
-      "sha256": "9aef6c0f638bd426813970d9d5f5253614142df86a40df962c2c8d34bfb3d4aa"
+      "sha256": "1b52c358c986da4892c344e304a0948ea553b7f1da255164f61a0a4db04d6e64",
+      "transparency": {
+        "originalSha256": "9aef6c0f638bd426813970d9d5f5253614142df86a40df962c2c8d34bfb3d4aa",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -1388,7 +1838,13 @@
       "status": "generated",
       "concept": "一枚古朴金白掌印，内含圆形真气核心，向外三道短劲气。",
       "generationId": "exec-2990d457-bbab-42de-b467-b91a6a38a582.png",
-      "sha256": "c67de10576fa28b50c9456998244f1db4d33a2c569c8ba690fb55e0f87b418fe"
+      "sha256": "5b78daf76c97370337d6589138c18bd42fcb29a4a4f6cc2f9a7c4db68049f139",
+      "transparency": {
+        "originalSha256": "c67de10576fa28b50c9456998244f1db4d33a2c569c8ba690fb55e0f87b418fe",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -1406,7 +1862,13 @@
       "status": "generated",
       "concept": "白色手掌轻扬出扇形雪片与冰蓝光，宁静清晰。",
       "generationId": "exec-d6dc8209-0753-4ec3-9b8b-7186789c3a97.png",
-      "sha256": "aa386c302f117f99898c57a4d216d6fa8d5c1594cbc460116b7389c72b5a5234"
+      "sha256": "4926e94c0d252790be660b872b48d69e371d25bb2611463c9aee1978b62d3aa2",
+      "transparency": {
+        "originalSha256": "aa386c302f117f99898c57a4d216d6fa8d5c1594cbc460116b7389c72b5a5234",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -1424,7 +1886,13 @@
       "status": "generated",
       "concept": "一条银灰长鞭绕成半圆击碎小岩块，带冰蓝寒光。",
       "generationId": "exec-fbf791b8-16d3-48ed-90f0-af9ce33c2286.png",
-      "sha256": "effb8ca4de0349b76bff6bdcfc837422624b139ad3c473c71615c4bd35ec8e51"
+      "sha256": "83536f329426aec34b74bed2c81c628302f328a5166c746ff451c5ca34de087a",
+      "transparency": {
+        "originalSha256": "effb8ca4de0349b76bff6bdcfc837422624b139ad3c473c71615c4bd35ec8e51",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -1442,7 +1910,13 @@
       "status": "reused-generated",
       "reusedFrom": "demo/magic-紫轩攻击.ini",
       "concept": "三片紫红花瓣聚成尖锐飞梭，单向飞出，柔美凌厉。",
-      "sha256": "bb5b40c3e2ee3ff2a4bf6f9e7f102db58f11058af238c6fb2b018c3c9c76580f"
+      "sha256": "c5d58d3e2b6eb7332881f466273cefcfc967fba6a5e6d20411916ab5ebf42655",
+      "transparency": {
+        "originalSha256": "bb5b40c3e2ee3ff2a4bf6f9e7f102db58f11058af238c6fb2b018c3c9c76580f",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -1460,7 +1934,13 @@
       "status": "generated",
       "concept": "一枚古琴式弦线符号荡出同心蓝紫音波，暗示区域音杀。",
       "generationId": "exec-b32d9b8f-f6de-44e8-898e-078837e29c64.png",
-      "sha256": "e6ce5672682f38c84a7d281515ab1ae70dbfffd8cce644081ef58aadd00a5a20"
+      "sha256": "db480e6a79ff7829ba2b84bcab57101b7a89c9e50e12388e9c370980ce7add87",
+      "transparency": {
+        "originalSha256": "e6ce5672682f38c84a7d281515ab1ae70dbfffd8cce644081ef58aadd00a5a20",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -1478,7 +1958,13 @@
       "status": "generated",
       "concept": "银色斩芒竖直切开两瓣青蓝浪花，气势直接。",
       "generationId": "exec-cd6ce1ea-1a60-42f0-a95c-bec42e833df9.png",
-      "sha256": "3b73f971dccfd4d8d0898da3fe20bfb4bbf9d66b225c2749ee03a731df5804ce"
+      "sha256": "c1930ed037b45a1c959391ad0d149a82163fd43dfce34acde3fe953cb80159f9",
+      "transparency": {
+        "originalSha256": "3b73f971dccfd4d8d0898da3fe20bfb4bbf9d66b225c2749ee03a731df5804ce",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -1496,7 +1982,13 @@
       "status": "generated",
       "concept": "武者分掌架势的青白简化动作剪影，左右两道鬃毛般短气流。",
       "generationId": "exec-ce4d092f-0568-4c19-8521-ee3ae72734c2.png",
-      "sha256": "da1a58f30f15031853cd0cd416a5ff35425d2bb5c596f551dd3279bc333bd8ae"
+      "sha256": "fbd9bbe7b725f0e5939d947d7911305a965b4679b61716646bcf02f2186b13e1",
+      "transparency": {
+        "originalSha256": "da1a58f30f15031853cd0cd416a5ff35425d2bb5c596f551dd3279bc333bd8ae",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -1514,7 +2006,13 @@
       "status": "generated",
       "concept": "三道若隐若现的淡紫无形掌影扇形展开，神秘空灵，名称没有可证实具象典故故以虚影表示。",
       "generationId": "exec-741f1246-236f-4059-995a-c8864a31a696.png",
-      "sha256": "ce7a7fb6ad2da6549dc9ab627731366ef0699c5f2d73fb46df80656805ced441"
+      "sha256": "a5486ffa685fc79d5f69e7d48a7256a74e1b19596f9a9a17f217c27cd979cce1",
+      "transparency": {
+        "originalSha256": "ce7a7fb6ad2da6549dc9ab627731366ef0699c5f2d73fb46df80656805ced441",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -1532,7 +2030,13 @@
       "status": "reused-generated",
       "reusedFrom": "demo/magic-金钱镖.ini",
       "concept": "三枚金色方孔钱币呈扇形射出，明亮金属边。",
-      "sha256": "65cdd37d167a6a69e491cf780018b49da51d6624f6f190859d5b873420b0887a"
+      "sha256": "ca2422528e72e464005b3a7a91e2191cb9426595a4caf55e9451032ecf82feb3",
+      "transparency": {
+        "originalSha256": "65cdd37d167a6a69e491cf780018b49da51d6624f6f190859d5b873420b0887a",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -1550,7 +2054,13 @@
       "status": "reused-generated",
       "reusedFrom": "demo/magic-沙暴攻击.ini",
       "concept": "赭黄色沙旋风形成向前移动的风刃，小而紧凑。",
-      "sha256": "e8761b02d17add1420aa178391abb244ffd39e59e5aa8b29c4da0345d04a14f8"
+      "sha256": "319fb3dd0bb512335421e2fa489ae6699553764a791574f17cd349239dc8f267",
+      "transparency": {
+        "originalSha256": "e8761b02d17add1420aa178391abb244ffd39e59e5aa8b29c4da0345d04a14f8",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -1586,7 +2096,13 @@
       "status": "reused-generated",
       "reusedFrom": "demo/magic-水系攻击1.ini",
       "concept": "一颗紧凑青蓝水弹带短水尾，单体直射。",
-      "sha256": "f77dd21526cc53eeabfffe5f3c1f38d131418d5bcb7591355746ded25b0b53e5"
+      "sha256": "7e8f4ea2427064968fc02f42c303227396f7d0b7a3fb52131ff07e1910d5aca0",
+      "transparency": {
+        "originalSha256": "f77dd21526cc53eeabfffe5f3c1f38d131418d5bcb7591355746ded25b0b53e5",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -1604,7 +2120,13 @@
       "status": "generated",
       "concept": "白金莲花与淡金圆形光晕，水蓝底部波纹，表现区域法力。",
       "generationId": "exec-5c30fc4e-ef19-4e15-b176-274832eb0fe2.png",
-      "sha256": "bc9b5e573dce2acbc01779a5f03b0d1b7716021032be2f2a1ddc57f6a890694a"
+      "sha256": "4d39c03af1543db923311468c91563f0773ff81f8f8c4ab03684b9f05fe4726f",
+      "transparency": {
+        "originalSha256": "bc9b5e573dce2acbc01779a5f03b0d1b7716021032be2f2a1ddc57f6a890694a",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -1622,7 +2144,13 @@
       "status": "reused-generated",
       "reusedFrom": "demo/magic-金刚电闪.ini",
       "concept": "简化金色拳印伴随三道分叉紫电，随机散射的雷劲。",
-      "sha256": "0bc204727bf35df67134fa3bd70eefe13df8c50aa3f3249293d294c3c5514498"
+      "sha256": "236120c6163eea2a0557df16f3a9bdb659ef35dc71dd3f1f355ca7162500e056",
+      "transparency": {
+        "originalSha256": "0bc204727bf35df67134fa3bd70eefe13df8c50aa3f3249293d294c3c5514498",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -1640,7 +2168,13 @@
       "status": "generated",
       "concept": "一枚紫红尖锐魂芒拖着细窄幽蓝尾迹，单向疾射。",
       "generationId": "exec-a4c3365d-3273-4279-b62e-31e875c217f3.png",
-      "sha256": "649e896e97a0b11f0548922d5f66cf1decb97132e22b471773bd274599663ec4"
+      "sha256": "bbbbb5cab3884635a51e2e296837a773dc8e98382ff65dcc30d3b62ff46ca48e",
+      "transparency": {
+        "originalSha256": "649e896e97a0b11f0548922d5f66cf1decb97132e22b471773bd274599663ec4",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -1658,7 +2192,13 @@
       "status": "reused-generated",
       "reusedFrom": "demo/magic-毒烟攻击.ini",
       "concept": "一缕紫绿色蛇形毒烟盘曲向前，细小亮绿毒核。",
-      "sha256": "22007f3876e529333f895f87f0516742e186f27fc6151f267c352f441fad5034"
+      "sha256": "50ed1f0cef1a13610c81d01f7113a10283d72c8728b6eb4b89f1ad9655535355",
+      "transparency": {
+        "originalSha256": "22007f3876e529333f895f87f0516742e186f27fc6151f267c352f441fad5034",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword1",
@@ -1676,7 +2216,13 @@
       "status": "generated",
       "concept": "金色拳印前出现五座极简土黄山峰轮廓，厚重一击。",
       "generationId": "exec-d7f4839c-79a2-4ccf-8a90-2d18345984f6.png",
-      "sha256": "2d72cc3aa77de40d1be949333fd8a6fca8798b5615eb939a557f67ea293b0ce5"
+      "sha256": "a0b397e119f8d67a5dd8e09bf6853a9db0f77c796ced4bd42dfd1355f7be65eb",
+      "transparency": {
+        "originalSha256": "2d72cc3aa77de40d1be949333fd8a6fca8798b5615eb939a557f67ea293b0ce5",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "slug": "sword2",
@@ -1694,7 +2240,13 @@
       "status": "generated",
       "generationId": "exec-3557acee-70a2-440d-a1db-27d9bb182ded.png",
       "concept": "一柄朴素银色直剑，冷蓝短斩光，基础近身剑击。",
-      "sha256": "017aad0b4ab6c692d27e23e06dc3b9ae7d7935ea9cd3a31a99d2b6ee0c7b0eda"
+      "sha256": "8268ab0a60cf385996753dec262d30236de42fa73dd8f0ec35802883e429d97d",
+      "transparency": {
+        "originalSha256": "017aad0b4ab6c692d27e23e06dc3b9ae7d7935ea9cd3a31a99d2b6ee0c7b0eda",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     }
   ]
 }

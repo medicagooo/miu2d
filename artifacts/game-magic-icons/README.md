@@ -4,7 +4,7 @@
 
 新剑侠情缘同名复用月影传说，同名多配置优先相同 key。弓箭原始资源 404，因此复用已有备用图；推山填海保留原始 30×40 第一帧。数值、说明、归属和原有非空 icon 不变。未推送、未部署。
 
-本目录 index.html 可浏览、搜索和放大图片。manifest.json 含数据依据、资产路径、复用来源和 SHA256；prompts.json 保留生成设计及未采用提示词。
+本目录 index.html 可浏览、搜索和放大图片。透明化记录见 ../transparent-magic-icons/README.md。manifest.json 含数据依据、资产路径、复用来源和 SHA256；prompts.json 保留生成设计及未采用提示词。
 
 ## 月影传说
 

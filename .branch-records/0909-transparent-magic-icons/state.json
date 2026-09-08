@@ -1,0 +1,36 @@
+{
+  "purpose": "89张已采用生成武功图标去黑底转透明",
+  "acceptance": [
+    "89张均有透明背景，原图/备用图哈希保持",
+    "浅深棋盘背景和小尺寸检查，资产清单哈希更新",
+    "相关测试、离线构建通过"
+  ],
+  "integration": "verified",
+  "evidence": [
+    "起点main 9a280cac4e83297274247998802d1713c3d82bb1，单工作树且干净",
+    "artifacts/transparent-magic-icons/targets.json和report.json：锁定89个原始/结果SHA256及像素统计；原始备份保留在.git/codex-artifact-backups/0909-transparent-magic-icons",
+    "artifacts/transparent-magic-icons/process.mjs：连通背景软透明、边缘去黑混合、大面积封闭背景处理；射箭人物、残阳如血黑衣及剑/铁鞭材质单独保护",
+    "artifacts/transparent-magic-icons/verification.json：89项尺寸及透明度通过，17077995个高亮像素不变，96764个射箭材质像素不变；重合成黑底单通道误差<=5/255",
+    "两个原资产manifest哈希更新，27项同文件复用同步；原始和既有备用图哈希保持",
+    "14种代表图浅/深/灰对照、89项浅底总览已检视；浏览器178/178图片加载，棋盘/浅/深切换和搜索通过",
+    "12项已有图标/加载测试通过；离线Vite生产构建通过；89张dist资产SHA256与新manifest一致；无引擎/共享/后台代码改动"
+  ],
+  "status": "complete",
+  "constraints": [
+    "原始图标、既有备用图、弃用稿不变",
+    "保留内部必要暗色细节，先连通背景识别再去黑色混合",
+    "仅本地实现验证提交；未授权push或部署"
+  ],
+  "next": "透明化本地实现完成；未推送、未部署。仅在用户明确要求后登记并执行推送。",
+  "requirements": [
+    "原65张及剑侠2后续24张，共89个文件；复用技能同步",
+    "只处理背景和边缘透明度，保持主体与光晕、尺寸、路径映射",
+    "用户确认程序去黑底方案，先代表图试处理再批量"
+  ],
+  "artifacts": [
+    "artifacts/transparent-magic-icons/index.html",
+    "artifacts/transparent-magic-icons/README.md",
+    "artifacts/transparent-magic-icons/report.json",
+    "packages/web/public/magic-icons/"
+  ]
+}

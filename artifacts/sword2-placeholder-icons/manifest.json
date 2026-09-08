@@ -12,9 +12,15 @@
       "concept": "三根平行的白蓝箭形光线，点缀两片小白花瓣",
       "generationId": "exec-e8ea208e-3cb1-4774-9022-9f47128b5cb6.png",
       "status": "generated",
-      "sha256": "f1f166b4f0219c3d9a0592163f1a23bc19b31bf3f38c2b98c7af32fb15a2a2e7",
+      "sha256": "d0614eb36aa23dce5cd9e3212de90caf6d02e28791a3cf43a2d2ef7f3dbe90cf",
       "width": 1114,
-      "height": 1411
+      "height": 1411,
+      "transparency": {
+        "originalSha256": "f1f166b4f0219c3d9a0592163f1a23bc19b31bf3f38c2b98c7af32fb15a2a2e7",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "key": "magic-别离心法.ini",
@@ -28,9 +34,15 @@
       "concept": "两道分离的青白弯曲内劲，中央小光点",
       "generationId": "exec-5fb34601-a2fd-40ff-82db-8f68d9922bb8.png",
       "status": "generated",
-      "sha256": "2c2b3636b7803abd84063e771683d0fb37b92ec4154e5103c3759b11663e613c",
+      "sha256": "1deb37884d5f89fe08308fd5ebcaa3be6205a07c5bf43c212fa81a228258dd79",
       "width": 1114,
-      "height": 1411
+      "height": 1411,
+      "transparency": {
+        "originalSha256": "2c2b3636b7803abd84063e771683d0fb37b92ec4154e5103c3759b11663e613c",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "key": "magic-十一式暴雨剑法.ini",
@@ -44,9 +56,15 @@
       "concept": "三道竖直白蓝剑形光线加几根短雨线",
       "generationId": "exec-d7302880-0e0d-4060-b61a-5b3bfc19c5c5.png",
       "status": "generated",
-      "sha256": "ac728ab5e622e5a98a54474fa8cd4ee99855665184579581b99b6ac6a61ab607",
+      "sha256": "b39c503f02b1d194b0eaac06dc7c0b9bcddcba38fdb869cd2dc513443eab17b2",
       "width": 1114,
-      "height": 1412
+      "height": 1412,
+      "transparency": {
+        "originalSha256": "ac728ab5e622e5a98a54474fa8cd4ee99855665184579581b99b6ac6a61ab607",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "key": "magic-封神十二剑.ini",
@@ -60,9 +78,15 @@
       "concept": "简化金黄色放射剑形光芒",
       "generationId": "exec-6e348a4a-5de2-4d7d-b6a2-3b8ab22a96b3.png",
       "status": "generated",
-      "sha256": "96e2e45ad1f2027eef3dde5031ed506633aa68141fbfabc18618fed4a70ac5c9",
+      "sha256": "334b67c94d356ed9eeb072c4b14da1668a3a9f2baee79bbfca7ca415685d2a43",
       "width": 1114,
-      "height": 1411
+      "height": 1411,
+      "transparency": {
+        "originalSha256": "96e2e45ad1f2027eef3dde5031ed506633aa68141fbfabc18618fed4a70ac5c9",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "key": "magic-风残剑法.ini",
@@ -76,9 +100,15 @@
       "concept": "青白剑形轮廓与一条断续弯风线",
       "generationId": "exec-aa9bda41-8a26-4e66-9717-c0b44ed49ade.png",
       "status": "generated",
-      "sha256": "3be7b8802073e9e161cbf9beedea2e616b77b0aad30fcfb2b08c8702e98f888f",
+      "sha256": "677bd263be43d7c9372a48bf1dc880d7026ab8e10c29ecfd81347592eba6c18c",
       "width": 1114,
-      "height": 1411
+      "height": 1411,
+      "transparency": {
+        "originalSha256": "3be7b8802073e9e161cbf9beedea2e616b77b0aad30fcfb2b08c8702e98f888f",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "key": "magic-拈花指.ini",
@@ -92,9 +122,15 @@
       "concept": "金色手指轮廓拈一朵小白花",
       "generationId": "exec-c7bdee35-be9b-454b-8849-6a2269deb34c.png",
       "status": "generated",
-      "sha256": "c5c67c799bb304d9e39076f9309a7a8fbf226881076306e31c092db5dd32f15a",
+      "sha256": "78a8d5b313612ae53ab42a33a9903329f67ddeb10b9176a0c4ca8792a3786e0a",
       "width": 1114,
-      "height": 1411
+      "height": 1411,
+      "transparency": {
+        "originalSha256": "c5c67c799bb304d9e39076f9309a7a8fbf226881076306e31c092db5dd32f15a",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "key": "magic-天忍神功.ini",
@@ -108,9 +144,15 @@
       "concept": "红色尖焰符号，白亮核心",
       "generationId": "exec-84ac8bdf-ae1e-42a0-a3b7-3cccd7974c14.png",
       "status": "generated",
-      "sha256": "73c71d855dc0509c8e1b7b9602be65706678e997c05f0b0ea04549d98e28a644",
+      "sha256": "d9bcaa6a4867a64c66b9a97c54d61cc1cb0033247d6de34393672b0d7cce92f5",
       "width": 1114,
-      "height": 1411
+      "height": 1411,
+      "transparency": {
+        "originalSha256": "73c71d855dc0509c8e1b7b9602be65706678e997c05f0b0ea04549d98e28a644",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "key": "magic-乱披风箭术.ini",
@@ -124,9 +166,15 @@
       "concept": "三根错落方向的青色箭线与一道弧线",
       "generationId": "exec-82b22dad-0b65-4e1f-9f19-20695d998225.png",
       "status": "generated",
-      "sha256": "895b1e3afa947995d77faad1b77280f612b6ee3a6841f714214f32db3cf469b3",
+      "sha256": "04639f77dc313b171c6829e784f28c2217350a1f3d712aba24ba69c412eb9f14",
       "width": 1114,
-      "height": 1411
+      "height": 1411,
+      "transparency": {
+        "originalSha256": "895b1e3afa947995d77faad1b77280f612b6ee3a6841f714214f32db3cf469b3",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "key": "magic-逍遥刀法.ini",
@@ -140,9 +188,15 @@
       "concept": "淡青弯刀形轮廓与一条流畅弧线",
       "generationId": "exec-29b50740-c3ea-4f31-b767-eeffe49a5039.png",
       "status": "generated",
-      "sha256": "0439b5854b19aa1a067b2a4f42212dc1a0f2bf2ebfb43c333a19f8cd1b669ca8",
+      "sha256": "02520b662a1716050b12b29b7fdd85c39b5cd2326cd47ba04882f533528f100e",
       "width": 1114,
-      "height": 1411
+      "height": 1411,
+      "transparency": {
+        "originalSha256": "0439b5854b19aa1a067b2a4f42212dc1a0f2bf2ebfb43c333a19f8cd1b669ca8",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "key": "magic-断金斧.ini",
@@ -156,9 +210,15 @@
       "concept": "金黄斧头符号与一道短弧",
       "generationId": "exec-d3a70c50-e5f3-4644-8cbe-f89f991ff73b.png",
       "status": "generated",
-      "sha256": "3a42edc3ed3a396b99731aa467ac9701407c6337c53d7adfdc762a57902e63bc",
+      "sha256": "a52b7e2fb158470bb0f1b54ce9dc6f8406d799a43fa3011b7b1387791df19b74",
       "width": 1114,
-      "height": 1411
+      "height": 1411,
+      "transparency": {
+        "originalSha256": "3a42edc3ed3a396b99731aa467ac9701407c6337c53d7adfdc762a57902e63bc",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "key": "magic-孔雀翎.ini",
@@ -172,9 +232,15 @@
       "concept": "蓝绿色孔雀尾形五根针芒",
       "generationId": "exec-3b4605bb-8d91-4128-ba7a-da998668f950.png",
       "status": "generated",
-      "sha256": "02e802ac993f0bcc6ecbcb8386a06385e95e334e0a262792b92aea57778d42dd",
+      "sha256": "25b43b784d4ebd1ea660052f74a0f44e5f2c96e4ded7b31616daba7d99b9c590",
       "width": 1114,
-      "height": 1411
+      "height": 1411,
+      "transparency": {
+        "originalSha256": "02e802ac993f0bcc6ecbcb8386a06385e95e334e0a262792b92aea57778d42dd",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "key": "magic-葵花宝典.ini",
@@ -188,9 +254,15 @@
       "concept": "红紫色简化卷轴轮廓，几根金针光线",
       "generationId": "exec-189fb9c8-8f88-41ee-9514-bae1d6443711.png",
       "status": "generated",
-      "sha256": "f35bb86a8839a14de9246db903094dfb8fd7b52040bbab8bc5384165dbee0e78",
+      "sha256": "a7e504e5bda8fcee8524cc219314adabc1aff27b2f2c52c0264e30253ef047ad",
       "width": 1114,
-      "height": 1411
+      "height": 1411,
+      "transparency": {
+        "originalSha256": "f35bb86a8839a14de9246db903094dfb8fd7b52040bbab8bc5384165dbee0e78",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "key": "magic-霹雳刀法.ini",
@@ -204,9 +276,15 @@
       "concept": "紫白刀形轮廓与一根闪电折线",
       "generationId": "exec-52cd2a53-75b3-4b2f-bcba-740255399315.png",
       "status": "generated",
-      "sha256": "d5c29dc7e7b364379f7019db23aeb8d4fb0e5c795490c84202f369fca511c8c4",
+      "sha256": "c8f81732016d1e45b3af9ddb141e448cdf3ea4a664381a43a3d3ddf9e163b9a9",
       "width": 1114,
-      "height": 1411
+      "height": 1411,
+      "transparency": {
+        "originalSha256": "d5c29dc7e7b364379f7019db23aeb8d4fb0e5c795490c84202f369fca511c8c4",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "key": "magic-流水掌法.ini",
@@ -220,9 +298,15 @@
       "concept": "青蓝手掌轮廓，下连两条水波线",
       "generationId": "exec-4e3630bc-be24-4daa-bbb6-d5bfedeb95af.png",
       "status": "generated",
-      "sha256": "ef6a28f907a317402354e0a3bd2166c76065870937d7c1e7efd64ed8110df881",
+      "sha256": "7e8bed4b0dd8935b85f422985163f1a455437bdd80a349385501cdd1d7082b98",
       "width": 1114,
-      "height": 1411
+      "height": 1411,
+      "transparency": {
+        "originalSha256": "ef6a28f907a317402354e0a3bd2166c76065870937d7c1e7efd64ed8110df881",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "key": "magic-逆流刀法.ini",
@@ -236,9 +320,15 @@
       "concept": "青蓝弯刀形，上挑一条逆向水波",
       "generationId": "exec-69b7c425-edc1-4410-8f41-2dab81e707e5.png",
       "status": "generated",
-      "sha256": "ead72e8d42a8147fadf246e2c90fde66e56295adb7c8563ed6a8886480b2a651",
+      "sha256": "b3b85de03d1fef6ea9306d80dd38f27a377b706bf365565e3b85520adbc8770c",
       "width": 1114,
-      "height": 1411
+      "height": 1411,
+      "transparency": {
+        "originalSha256": "ead72e8d42a8147fadf246e2c90fde66e56295adb7c8563ed6a8886480b2a651",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "key": "magic-百变掌法.ini",
@@ -252,9 +342,15 @@
       "concept": "金紫色一个主掌与两道错位掌影",
       "generationId": "exec-95cc9c39-790b-4cf9-a0fd-5f5b3b054f79.png",
       "status": "generated",
-      "sha256": "f4a05efb0a7441e89c13bd99f6b34adbebab007cbf5e25a1032e09c02f93b5c2",
+      "sha256": "055c6adcf09ba9673a73f000a8a9e5a3665aa6a909dc80de51226ba126f87235",
       "width": 1114,
-      "height": 1411
+      "height": 1411,
+      "transparency": {
+        "originalSha256": "f4a05efb0a7441e89c13bd99f6b34adbebab007cbf5e25a1032e09c02f93b5c2",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "key": "magic-棍棒.ini",
@@ -268,9 +364,15 @@
       "concept": "金棕色长棍轮廓，简单高光",
       "generationId": "exec-61cccef9-767c-40c6-b115-19d8e06ae167.png",
       "status": "generated",
-      "sha256": "8195ecfab3f9cbd8472f206d36ad5229ba0dc51766e6107071866e9dd7925b21",
+      "sha256": "98abeab27ea1beeb1750e27b5c0543549f2f2a8bd9b234b623ce58bfb3fdf185",
       "width": 1114,
-      "height": 1412
+      "height": 1412,
+      "transparency": {
+        "originalSha256": "8195ecfab3f9cbd8472f206d36ad5229ba0dc51766e6107071866e9dd7925b21",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "key": "magic-长剑.ini",
@@ -284,9 +386,15 @@
       "concept": "银蓝色竖直中式直剑轮廓",
       "generationId": "exec-30ba3b6f-eb05-4308-91b5-59eb6fd0eab1.png",
       "status": "generated",
-      "sha256": "ff2924bfc8c88b5e2a5b827c26bcb644c443036059d5ab2905fa2513d7a3dc97",
+      "sha256": "c413f1df0fc99dd90a98d48e3debc03b52b9387b392494c6519fd4851779adca",
       "width": 1114,
-      "height": 1411
+      "height": 1411,
+      "transparency": {
+        "originalSha256": "ff2924bfc8c88b5e2a5b827c26bcb644c443036059d5ab2905fa2513d7a3dc97",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "key": "magic-火箭.ini",
@@ -300,9 +408,15 @@
       "concept": "橙红色箭形火焰符号",
       "generationId": "exec-6bbc1004-d912-4d5c-b257-8ce2b3409971.png",
       "status": "generated",
-      "sha256": "68bc0b10a18e488ba37319cb96c7902f50a4ed2a6e2f55401a8bf1c25d298c4b",
+      "sha256": "e4ff8a304b004acf8c580d5a02b282eb9ba9fda540d1b20cd4fbd1eba14040b7",
       "width": 1114,
-      "height": 1411
+      "height": 1411,
+      "transparency": {
+        "originalSha256": "68bc0b10a18e488ba37319cb96c7902f50a4ed2a6e2f55401a8bf1c25d298c4b",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "key": "magic-拳脚.ini",
@@ -316,9 +430,15 @@
       "concept": "金黄色拳头轮廓与一小道踢击弧",
       "generationId": "exec-54b7747e-f6f4-47be-a899-cc387233637a.png",
       "status": "generated",
-      "sha256": "28137b4b041f468ed41964f2a0dc52989b9c3ca837a84165ad1fb637b2c55b1f",
+      "sha256": "3c9278b83d430d6eaa1dbab85c367b922626ff302210d911bfabfd735fe8bbb9",
       "width": 1114,
-      "height": 1412
+      "height": 1412,
+      "transparency": {
+        "originalSha256": "28137b4b041f468ed41964f2a0dc52989b9c3ca837a84165ad1fb637b2c55b1f",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "key": "magic-刀.ini",
@@ -332,9 +452,15 @@
       "concept": "白亮银色中式宽刀轮廓",
       "generationId": "exec-92e5edcb-251a-4674-8ca6-72237ee86400.png",
       "status": "generated",
-      "sha256": "6cb3335edbde2e847bd398fe43062d139ed3cfcafa84f4e8fb154110ba499a63",
+      "sha256": "d44f8b90b1cd6c2a3e3fb91985da3042c1927a693e143c7c87529875e551818d",
       "width": 1114,
-      "height": 1411
+      "height": 1411,
+      "transparency": {
+        "originalSha256": "6cb3335edbde2e847bd398fe43062d139ed3cfcafa84f4e8fb154110ba499a63",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "key": "magic-冰弓箭.ini",
@@ -348,9 +474,15 @@
       "concept": "冰蓝弓箭轮廓与小冰晶",
       "generationId": "exec-27339ca8-ecb3-459d-a19a-c7406919b042.png",
       "status": "generated",
-      "sha256": "8c2b15c66d3e1d89204c3d215b46cb87bc1878728631b7871039bfcd721c2d1a",
+      "sha256": "207c722fae8f07a6771839b8d559fa9af74aeb47511b8859c257fd730b6aeeff",
       "width": 1114,
-      "height": 1411
+      "height": 1411,
+      "transparency": {
+        "originalSha256": "8c2b15c66d3e1d89204c3d215b46cb87bc1878728631b7871039bfcd721c2d1a",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "key": "magic-两格长枪.ini",
@@ -364,9 +496,15 @@
       "concept": "白亮长枪轮廓配暗红短缨",
       "generationId": "exec-b063c43c-94c5-41bc-ba55-ee9f448d2231.png",
       "status": "generated",
-      "sha256": "f560be99dd8c6c5cfd1ca794be909147463166c80c567e2f7096b50e8ac7102b",
+      "sha256": "8d64ca158a36bcd76a58163c29c68cc6b5ca0169d682b0378262fe10494211c2",
       "width": 1114,
-      "height": 1411
+      "height": 1411,
+      "transparency": {
+        "originalSha256": "f560be99dd8c6c5cfd1ca794be909147463166c80c567e2f7096b50e8ac7102b",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     },
     {
       "key": "magic-弓箭.ini",
@@ -380,14 +518,20 @@
       "concept": "淡金木弓和一支白色箭的简洁轮廓",
       "generationId": "exec-3c739c6f-7849-4e9b-927b-5532318e5c9f.png",
       "status": "generated",
-      "sha256": "3aeabffa942ade4206e3945023ac726ef3989e19188de160601d68f858077925",
+      "sha256": "c5a3f9a512a5c117a9a22720eff46584dab0607874169f66f455670d9f5a4c82",
       "width": 1114,
-      "height": 1411
+      "height": 1411,
+      "transparency": {
+        "originalSha256": "3aeabffa942ade4206e3945023ac726ef3989e19188de160601d68f858077925",
+        "status": "black-matte-removed",
+        "at": "2026-09-09",
+        "record": "artifacts/transparent-magic-icons/report.json"
+      }
     }
   ],
   "at": "2026-09-08T14:34:05.7942351+08:00",
   "source": "https://miu2d.com/game/sword2/api/data",
-  "style": "以原始30×38白虹贯日、大力金刚掌、寒霜掌为参考，黑底简洁发光像素符号。首批写实插画弃用。",
+  "style": "以原始30×38白虹贯日、大力金刚掌、寒霜掌为参考，原作发光像素符号，生成图背景已转透明。首批写实插画弃用。",
   "publication": "本地实现；未推送、未部署",
   "references": [
     {

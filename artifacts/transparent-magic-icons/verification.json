@@ -1,0 +1,9 @@
+{
+  "files": 89,
+  "updatedAliases": 27,
+  "brightPixelsUnchanged": 17077995,
+  "protectedArcherPixelsUnchanged": 96764,
+  "maxAllowedBlackCompositeChannelError": 5,
+  "originalAndFallbackManifests": "unchanged hashes",
+  "result": "pass"
+}

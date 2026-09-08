@@ -22,7 +22,8 @@
     ".branch-records/0908-integrate-local-commits/state.json",
     ".branch-records/0908-missing-magic-icons/state.json",
     ".branch-records/0908-sword2-placeholder-icons/state.json",
-    ".branch-records/0908-workers-game-tabs/state.json"
+    ".branch-records/0908-workers-game-tabs/state.json",
+    ".branch-records/0909-transparent-magic-icons/state.json"
   ],
   "changes": [
     {
@@ -149,6 +150,20 @@
       "status": "implemented_unmerged",
       "evidence": "packages/web/src/pages/landing/LandingPage.tsx",
       "businessChange": "首页移除Logo、Features/Demo、游戏快捷链接与主题语言等整条顶部导航；保留主视觉三游戏切换和进入按钮"
+    },
+    {
+      "evidence": ".branch-records/0909-transparent-magic-icons/state.json",
+      "date": "2026-09-09",
+      "request": "0909-transparent-magic-icons/request-1",
+      "domain": "武功图标/三个游戏",
+      "businessChange": "89张已采用生成武功图由黑底转透明（此前65+剑侠2后续24），27个同文件复用项同步。保留光晕、像素轮廓和必要暗部；原始/旧备用图、尺寸、路径、技能数据及映射不变。",
+      "status": "implemented_local",
+      "id": "0909-transparent-magic-icons",
+      "implementedAt": "2026-09-09T01:53:05.3486764+08:00",
+      "relatedChanges": [
+        "0908-missing-magic-icons",
+        "0908-sword2-placeholder-icons"
+      ]
     }
   ]
 }
