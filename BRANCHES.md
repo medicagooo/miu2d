@@ -24,7 +24,8 @@
     ".branch-records/0908-missing-magic-icons/state.json",
     ".branch-records/0908-sword2-placeholder-icons/state.json",
     ".branch-records/0908-workers-game-tabs/state.json",
-    ".branch-records/0909-transparent-magic-icons/state.json"
+    ".branch-records/0909-transparent-magic-icons/state.json",
+    ".branch-records/0909-landing-hero-only/state.json"
   ],
   "changes": [
     {
@@ -165,6 +166,15 @@
         "0908-missing-magic-icons",
         "0908-sword2-placeholder-icons"
       ]
+    },
+    {
+      "id": "0909-landing-hero-only",
+      "date": "2026-09-09",
+      "businessChange": "官网首页由游戏展示及多个宣传板块、页脚精简为仅Hero游戏展示与选择区域；保留三个游戏切换和进入游戏入口。",
+      "status": "implemented",
+      "request": ".branch-records/0909-landing-hero-only/events.jsonl#request-1",
+      "evidence": ".branch-records/0909-landing-hero-only/state.json",
+      "implementationDate": "2026-09-09"
     }
   ]
 }

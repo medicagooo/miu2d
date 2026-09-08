@@ -1,0 +1,25 @@
+{
+  "purpose": "首页仅保留用户选中的游戏展示与选择区域",
+  "requirements": [
+    "LandingPage仅渲染Hero（section#demo），移除后续宣传板块与页脚"
+  ],
+  "constraints": [
+    "保留Hero背景、文案、游戏切换与进入游戏链接",
+    "不部署、不推送、不操作数据库"
+  ],
+  "acceptance": [
+    "首页仅有选中区域",
+    "前端静态检查与离线构建通过"
+  ],
+  "status": "complete",
+  "integration": "verified",
+  "evidence": [
+    "起点main 48ebc34c4011247c6dda7a8df80ca00ee75a36ce；工作树干净",
+    "packages/web/src/pages/landing/LandingPage.tsx",
+    "2026-09-09 Asia/Singapore：本地main已实现；LandingPage仅挂载Hero，Hero及games.ts未改动",
+    "node直接执行现有Biome check、TypeScript tsc -b、Vite build全部通过；git diff --check通过",
+    "pnpm触发依赖重装检查后因无TTY中止，改用现有依赖执行；构建有资源域名环境变量、分包大小和Browserslist提示",
+    "没有推送或部署"
+  ],
+  "next": "本地工作完成；发布需用户另行授权"
+}
