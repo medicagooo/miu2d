@@ -1,5 +1,7 @@
 {
-  "pending": [],
+  "pending": [
+    "0908-sword2-placeholder-icons/push-main-1"
+  ],
   "timezone": "Asia/Singapore",
   "format": 1,
   "read": [

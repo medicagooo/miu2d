@@ -2,7 +2,7 @@
   "purpose": "重绘剑侠2复用白虹贯日占位图的24个技能",
   "constraints": [
     "保留真正白虹贯日、其他专属图、其他游戏及旧调用兼容",
-    "仅本地文件，无数据库写入，无部署；本次未授权push"
+    "用户已授权普通推送origin/main；不直接部署、不写数据库"
   ],
   "requirements": [
     "24项独立生成图标并接入游戏和编辑器",
@@ -20,11 +20,12 @@
     "packages/shared/src/lib/sword2-placeholder-icons.ts:getSword2PlaceholderIconPath，npc-magic-icons.ts:resolveMagicIconPath统一游戏和后台；magic-config-loader.ts在资源规范化前替换",
     "12项新旧图标与引擎路径测试通过；dashboard/web tsc通过；Vite离线生产构建通过；24张dist PNG哈希一致",
     "浏览器24项、75/75图片加载，掌法筛选2项；30×38缩略预览完成",
-    "此前0908-missing-magic-icons/push-main-1已核验origin/main=3606c656cab4467e2d3cf25caf367808d2109d2b，本次普通登记更新移除已完成pending"
+    "此前0908-missing-magic-icons/push-main-1已核验origin/main=3606c656cab4467e2d3cf25caf367808d2109d2b，本次普通登记更新移除已完成pending",
+    "推送前：main=38a87aca43e9f530e7f937a255460fabdd8c32ed，origin/main=3606c656cab4467e2d3cf25caf367808d2109d2b，干净且仅领先1个已验证实现提交"
   ],
   "status": "complete",
   "integration": "verified",
-  "next": "本地实现完成；尚未推送或部署。后续仅在明确授权后登记并执行push。",
+  "next": "执行push-main-1并核验远端main SHA；登记为意图，不代表成功",
   "artifacts": [
     "artifacts/sword2-placeholder-icons/README.md",
     "artifacts/sword2-placeholder-icons/index.html",
