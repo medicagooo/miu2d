@@ -1,0 +1,24 @@
+{
+  "purpose": "将本地旧分支10个独有提交整合并推送 main",
+  "requirements": [
+    "合入 0901-fix-docker-wsl-deploy d33964c 的10个独有提交",
+    "解决冲突并保留当前 main 新规则、去重、自动整理与本地恢复撤销",
+    "验证后正常推送 origin/main"
+  ],
+  "constraints": [
+    "不启动或重建数据库，不部署，不手工触发CI，不强推",
+    "保留 JSON 业务账本及历史；不新增生产运维私密资料"
+  ],
+  "acceptance": [
+    "源分支成为 main 祖先",
+    "相关测试和前端构建验证",
+    "远端 main 与本地 SHA 一致"
+  ],
+  "status": "active",
+  "integration": "unmerged",
+  "evidence": [
+    "2026-09-08 fetch 后 main/origin/main 均为 5ef850bece3d42c7fb06decb21e77bb9da17ab77，工作区干净",
+    "merge-tree 预览冲突为 BRANCHES.md、两个Dockerfile、nginx.conf"
+  ],
+  "next": "登记并提交后合并源分支，解决冲突，验证并推送"
+}

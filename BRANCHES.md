@@ -1,6 +1,6 @@
 {
   "pending": [
-    "0908-remove-local-recovery/push-main-1"
+    "0908-integrate-local-commits/merge-1"
   ],
   "timezone": "Asia/Singapore",
   "format": 1,
@@ -8,14 +8,16 @@
     ".branch-records/FORMAT.md"
   ],
   "active": [
-    "0908-remove-local-recovery"
+    "0908-remove-local-recovery",
+    "0908-integrate-local-commits"
   ],
   "records": [
     ".branch-records/0908-magic-learning-dedup/state.json",
     ".branch-records/legacy-20260908.md",
     ".branch-records/0908-modern-auto-sort/state.json",
     ".branch-records/0908-merge-upstream/state.json",
-    ".branch-records/0908-remove-local-recovery/state.json"
+    ".branch-records/0908-remove-local-recovery/state.json",
+    ".branch-records/0908-integrate-local-commits/state.json"
   ],
   "changes": [
     {
@@ -78,6 +80,14 @@
       "evidence": ".branch-records/0908-remove-local-recovery/state.json",
       "supersedes": "legacy-local-recovery",
       "implementedAt": "2026-09-08"
+    },
+    {
+      "id": "0908-integrate-local-commits",
+      "date": "2026-09-08",
+      "businessChange": "计划合入旧分支：34项NPC武功内置图标与描述、玩家可用武功目录和秘籍分类，以及Docker启动兼容修复；保留main现行规则与禁止本地恢复决定",
+      "status": "planned",
+      "request": "0908-integrate-local-commits/request-push",
+      "evidence": ".branch-records/0908-integrate-local-commits/state.json"
     }
   ]
 }
