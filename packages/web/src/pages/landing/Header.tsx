@@ -1,3 +1,4 @@
+import { GAMES } from "./games";
 /**
  * Header - 官网顶部导航
  */
@@ -8,12 +9,6 @@ import { Avatar, GitHubIcon, GlobeIcon, MoonIcon, SunIcon } from "@miu2d/ui";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-
-const GAMES = [
-  { slug: "demo", name: "月影传说", logo: "/screenshot/logo-yuying.webp" },
-  { slug: "sword1", name: "新剑侠情缘", logo: "/screenshot/logo-new-swords.png" },
-  { slug: "sword2", name: "剑侠情缘2", logo: "/screenshot/logo-sword2.png" },
-] as const;
 
 function GameNavLink({ slug, name, logo }: { slug: string; name: string; logo: string }) {
   return (
@@ -60,8 +55,8 @@ export function Header() {
           {/* Logo */}
           <motion.button
             type="button"
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="flex items-center gap-2 text-xl font-bold bg-gradient-to-r from-orange-500 to-amber-500 bg-clip-text text-transparent"
+            onClick={() => scrollTo("demo")}
+            className="shrink-0 flex items-center gap-2 text-xl font-bold bg-gradient-to-r from-orange-500 to-amber-500 bg-clip-text text-transparent"
             whileHover={{ scale: 1.02 }}
           >
             <img src="/icons/wuxia-v1-192.png" alt="" className="w-8 h-8 rounded-lg" />
@@ -90,7 +85,7 @@ export function Header() {
 
             {/* 直接展示各游戏链接 */}
             {GAMES.map((g) => (
-              <GameNavLink key={g.slug} slug={g.slug} name={g.name} logo={g.logo} />
+              <GameNavLink key={g.slug} slug={g.slug} name={t(`demo.tabs.${g.key}`)} logo={g.logo} />
             ))}
           </nav>
 
@@ -103,7 +98,7 @@ export function Header() {
               rel="noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="p-2 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+              className="hidden sm:block p-2 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
               aria-label="GitHub"
             >
               <GitHubIcon className="w-5 h-5 text-zinc-600 dark:text-zinc-400" />
@@ -144,7 +139,7 @@ export function Header() {
               onClick={toggleTheme}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="p-2 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+              className="hidden sm:block p-2 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
             >
               {theme === "dark" ? (
                 <SunIcon className="w-5 h-5 text-zinc-400" />
@@ -166,13 +161,13 @@ export function Header() {
               <div className="flex items-center gap-2 ml-1">
                 <Link
                   to="/login"
-                  className="px-3 py-1.5 rounded-lg text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+                  className="whitespace-nowrap px-2 sm:px-3 py-1.5 rounded-lg text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
                 >
                   {t("nav.login")}
                 </Link>
                 <Link
                   to="/register"
-                  className="px-3 py-1.5 rounded-lg text-sm font-medium bg-gradient-to-r from-orange-500 to-amber-500 text-white hover:from-orange-600 hover:to-amber-600 transition-all shadow-sm"
+                  className="whitespace-nowrap px-2 sm:px-3 py-1.5 rounded-lg text-sm font-medium bg-gradient-to-r from-orange-500 to-amber-500 text-white hover:from-orange-600 hover:to-amber-600 transition-all shadow-sm"
                 >
                   {t("nav.register")}
                 </Link>

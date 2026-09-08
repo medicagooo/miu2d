@@ -15,5 +15,5 @@
     "erasableSyntaxOnly": false,
     "jsx": "react-jsx"
   },
-  "include": ["src"]
+  "include": ["src", "../../worker-configuration.d.ts"]
 }

@@ -1,5 +1,6 @@
 import type { Game } from "@prisma/client";
 import type { FetchCreateContextFnOptions } from "@trpc/server/adapters/fetch";
+import { AsyncLocalStorage } from "node:async_hooks";
 import { db } from "../db/client";
 import { normalizeLanguage } from "../i18n";
 import { getCookieValue, resolveUserId, SESSION_COOKIE_NAME } from "../utils/session";
@@ -8,19 +9,18 @@ import { getCookieValue, resolveUserId, SESSION_COOKIE_NAME } from "../utils/ses
  * Hono 注入的 Response 对象引用
  * 用于 auth 等模块需要设置 cookie 的场景
  */
-let _pendingRes:
-  | {
-      setCookie: (name: string, value: string, options: Record<string, unknown>) => void;
-      deleteCookie: (name: string, options: Record<string, unknown>) => void;
-    }
-  | undefined;
-
-export function setPendingRes(res: typeof _pendingRes) {
-  _pendingRes = res;
+type PendingResponse = {
+  setCookie: (name: string, value: string, options: Record<string, unknown>) => void;
+  deleteCookie: (name: string, options: Record<string, unknown>) => void;
+};
+const responseContext = new AsyncLocalStorage<PendingResponse>();
+// Cookie callbacks belong to a single Hono request, including during concurrent awaits.
+export function withPendingRes<T>(res: PendingResponse, callback: () => T): T {
+  return responseContext.run(res, callback);
 }
 
 export function getPendingRes() {
-  return _pendingRes;
+  return responseContext.getStore();
 }
 
 export const createContext = async ({ req }: FetchCreateContextFnOptions) => {
@@ -46,7 +46,7 @@ export const createContext = async ({ req }: FetchCreateContextFnOptions) => {
     game: undefined as Game | undefined,
     language,
     ip,
-    res: _pendingRes,
+    res: getPendingRes(),
   };
 };
 

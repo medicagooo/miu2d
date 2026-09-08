@@ -45,6 +45,10 @@ vfx-demo
 /magic
 /maplogos-512/
 .codegraph/
+dist-worker/
+.wrangler/
+wrangler.deploy.local.json
+wrangler.types.local.json
 
 # Deployment operations are private and kept outside this repository.
 /ops/
@@ -53,3 +57,4 @@ vfx-demo
 /docs/*cloudflare*
 /docs/private/
 /.private/
+dist-compiled/

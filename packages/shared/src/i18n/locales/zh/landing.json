@@ -244,5 +244,13 @@
   "tech": {
     "title": "现代技术栈",
     "subtitle": "基于最新 Web 技术构建，享受流畅开发体验"
+  },
+  "gameEntry": {
+    "collection": "经典武侠集",
+    "description": "重回熟悉的江湖，续写你的侠客故事。",
+    "unavailable": "画面暂时无法加载，仍可进入游戏。",
+    "choose": "选择你的江湖",
+    "enter": "进入游戏",
+    "loading": "正在加载画面…"
   }
 }

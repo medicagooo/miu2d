@@ -13,7 +13,7 @@ import { createDefaultGameConfig, GameConfigDataSchema } from "@miu2d/types";
 import type { Prisma } from "@prisma/client";
 import { Hono } from "hono";
 import { stream } from "hono/streaming";
-import sharp from "sharp";
+import { getImageProcessor } from "../runtime/context";
 import { db } from "../db/client";
 import { gameConfigService } from "../modules/gameConfig/gameConfig.service";
 import * as s3 from "../storage/s3";
@@ -47,10 +47,7 @@ function allLogoKeys(gameId: string): string[] {
 async function generateLogoVariants(src: Buffer): Promise<Array<{ size: LogoSize; buf: Buffer }>> {
   const results: Array<{ size: LogoSize; buf: Buffer }> = [];
   for (const size of LOGO_SIZES) {
-    const buf = await sharp(src)
-      .resize(size, size, { fit: "cover", kernel: "lanczos3" })
-      .png()
-      .toBuffer();
+    const buf = await getImageProcessor().resize(src, size);
     results.push({ size, buf });
   }
   return results;
@@ -182,10 +179,12 @@ gameConfigRoutes.get(":gameSlug/api/logo/:size", async (c) => {
     }
 
     const key = logoSizedKey(game.id, size);
-    const { stream: fileStream, contentType, contentLength, notModified } = await s3.getFileStream(
-      key,
-      c.req.header("if-none-match")
-    );
+    const {
+      stream: fileStream,
+      contentType,
+      contentLength,
+      notModified,
+    } = await s3.getFileStream(key, c.req.header("if-none-match"));
 
     if (notModified) return c.body(null, 304);
 
@@ -251,7 +250,7 @@ gameConfigRoutes.post(":gameSlug/api/logo", async (c) => {
     }
 
     // 验证图片尺寸：必须 >= 512x512
-    const metadata = await sharp(body).metadata();
+    const metadata = await getImageProcessor().metadata(body);
     if (!metadata.width || !metadata.height || metadata.width < 512 || metadata.height < 512) {
       return c.json(
         {

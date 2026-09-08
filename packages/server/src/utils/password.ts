@@ -1,9 +1,9 @@
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 
 const SALT_ROUNDS = 12;
 
 /**
- * Hash a plaintext password with bcrypt.
+ * Portable bcrypt implementation; preserves existing hashes and cost 12 on both runtimes.
  */
 export async function hashPassword(password: string): Promise<string> {
   return bcrypt.hash(password, SALT_ROUNDS);

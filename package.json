@@ -9,7 +9,7 @@
     "dev:web": "turbo run dev --filter=@miu2d/web",
     "dev:server": "turbo run dev gen:trpc:watch --parallel --filter=@miu2d/server --filter=@miu2d/types",
     "build": "pnpm -r build",
-    "build:web": "pnpm --filter @miu2d/types build && pnpm --filter @miu2d/server db:generate && pnpm --filter @miu2d/server gen:trpc && pnpm --filter @miu2d/engine build && pnpm --filter @miu2d/web build",
+    "build:web": "pnpm --filter @miu2d/types build && pnpm --filter @miu2d/server db:generate && pnpm --filter @miu2d/server gen:trpc && pnpm --filter @miu2d/web build",
     "build:wasm": "bash scripts/build-wasm.sh",
     "lint": "biome lint packages/",
     "format": "biome format --write packages/",
@@ -19,12 +19,17 @@
     "db:up": "docker-compose up -d db minio",
     "db:down": "docker-compose down",
     "db:migrate": "pnpm --filter @miu2d/server db:migrate",
-    "db:seed": "pnpm --filter @miu2d/server db:seed"
+    "db:seed": "pnpm --filter @miu2d/server db:seed",
+    "build:workers": "pnpm build:web && pnpm --filter @miu2d/shared build:locales && pnpm --filter @miu2d/server build:worker",
+    "deploy:workers": "node scripts/deploy-workers.mjs",
+    "types:workers": "node scripts/generate-worker-types.mjs",
+    "test:workers": "pnpm --filter @miu2d/server exec tsx --test src/runtime/context.test.ts && wrangler deploy --dry-run --outdir .wrangler/dry-run && node scripts/verify-worker-runtime.mjs"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.3.13",
     "turbo": "^2.8.17",
-    "typescript": "~5.9.3"
+    "typescript": "~5.9.3",
+    "wrangler": "^4.129.1"
   },
   "overrides": {
     "vite": "^8.0.0"

@@ -1,4 +1,5 @@
 import type { Context, Next } from "hono";
+import { runtimeContext } from "../runtime/context";
 
 export interface RateLimitOptions {
   /** Maximum number of requests allowed within the window. */
@@ -25,16 +26,7 @@ export function createRateLimiter(options: RateLimitOptions) {
 
   const store = new Map<string, WindowRecord>();
 
-  // Periodically evict stale entries to prevent unbounded memory growth.
-  const cleanup = setInterval(() => {
-    const now = Date.now();
-    for (const [key, record] of store) {
-      if (record.resetAt < now) store.delete(key);
-    }
-  }, windowMs);
-
-  // Allow Jest / Node to exit without waiting for the timer.
-  if (cleanup.unref) cleanup.unref();
+  let nextCleanup = 0;
 
   return async (c: Context, next: Next) => {
     const ip =
@@ -43,6 +35,20 @@ export function createRateLimiter(options: RateLimitOptions) {
       "unknown";
 
     const now = Date.now();
+    const runtime = runtimeContext.getStore();
+    if (runtime) {
+      const retryAfter = await runtime.rateLimit(`${c.req.path}:${ip}`, maxRequests, windowMs);
+      if (retryAfter > 0) {
+        c.header("Retry-After", String(retryAfter));
+        return c.json({ error: message }, 429);
+      }
+      return next();
+    }
+    // Node-only lazy cleanup; Workers must not start a module-level interval.
+    if (now >= nextCleanup) {
+      for (const [key, value] of store) if (value.resetAt <= now) store.delete(key);
+      nextCleanup = now + windowMs;
+    }
     const record = store.get(ip);
 
     if (!record || record.resetAt < now) {

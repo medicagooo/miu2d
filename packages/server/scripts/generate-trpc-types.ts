@@ -144,7 +144,10 @@ const generateTypes = () => {
     tsConfigFilePath: path.resolve(rootDir, "tsconfig.json")
   });
 
-  const routers = project.getSourceFiles(`${modulesDir}/**/*.router.ts`);
+  // ts-morph globs use forward slashes even on Windows. Fail before overwriting
+  // the client contract if discovery breaks on a build host.
+  const routers = project.getSourceFiles(`${toPosix(modulesDir)}/**/*.router.ts`);
+  if (routers.length === 0) throw new Error("No tRPC routers discovered");
   const importMap = new Map<string, Set<string>>();
   const routerEntries: string[] = [];
 

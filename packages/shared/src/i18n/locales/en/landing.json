@@ -244,5 +244,13 @@
   "tech": {
     "title": "Modern Tech Stack",
     "subtitle": "Built with latest web technologies for smooth development experience"
+  },
+  "gameEntry": {
+    "collection": "THE WUXIA COLLECTION",
+    "description": "Return to a familiar world. Write your next chapter.",
+    "unavailable": "Preview unavailable. You can still enter the game.",
+    "choose": "Choose your world",
+    "enter": "Enter game",
+    "loading": "Loading preview…"
   }
 }

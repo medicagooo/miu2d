@@ -15,7 +15,8 @@
         var m = location.pathname.match(/^\/game\/([^/]+)/);
         if (m) {
           var slug = m[1];
-          var base = '%VITE_DEMO_RESOURCES_DOMAIN%' || '';
+          var base = '%VITE_DEMO_RESOURCES_DOMAIN%';
+          if (base.charAt(0) === '%') base = '';
           document.querySelector('link[rel="manifest"]').href = base + '/game/' + slug + '/api/manifest';
           document.querySelector('link[rel="apple-touch-icon"]').href = base + '/game/' + slug + '/api/logo/192';
         }

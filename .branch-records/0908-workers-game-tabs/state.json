@@ -1,13 +1,19 @@
 {
   "purpose": "前后端适配 Workers，复用线上 PostgreSQL/S3，首页三游戏悬停截图 Tab；review、修复、push main，并准备 GitHub 部署",
-  "evidence": [],
+  "evidence": [
+    "packages/server/src/worker.ts",
+    "packages/server/src/runtime/context.test.ts",
+    "scripts/verify-worker-runtime.mjs",
+    "packages/web/src/pages/landing/games.ts",
+    "packages/web/public/screenshot/titles/SOURCES.md"
+  ],
   "constraints": [
     "不创建或恢复本地数据库",
     "私密配置与运维记录不入仓库",
     "直接云写入在明确目标操作影响后单独确认",
     "不手动操作 GitHub Actions，除非获对应授权"
   ],
-  "status": "active",
+  "status": "blocked",
   "requirements": [
     "三个游戏真实首页截图全视口预览、鼠标悬停和触摸/键盘切换、独立进入按钮",
     "Workers 承担前后端，保留 Node 兼容入口及线上数据契约",
@@ -22,6 +28,17 @@
     "origin/main SHA 核实",
     "云部署单独验证健康/日志/业务"
   ],
-  "next": "创建已登记分支，实施和验证",
-  "integration": "unmerged"
+  "next": "代码合入并推送main后：获取原线上配置的私密位置；用户确认目标账号下Worker/Hyperdrive/Images/Secrets/GitHub构建操作；然后部署并验证线上健康、日志、游戏及登录。",
+  "integration": "unmerged",
+  "verification": {
+    "results": [
+      "离线 build:workers 通过",
+      "test:workers 4项测试、Wrangler dry-run、真实workerd健康/SPA/API/退出Cookie/S3代理回归通过；无数据库创建或查询",
+      "旧Node后端build通过",
+      "Bugbot一项S3路径前缀问题已修复",
+      "桌面hover/键盘和手机390x844入口视觉验证通过",
+      "云连接及登录业务未验证，尚未部署"
+    ],
+    "at": "2026-09-08T16:04:08.3502793+08:00"
+  }
 }

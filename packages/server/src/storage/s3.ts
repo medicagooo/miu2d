@@ -10,16 +10,21 @@ import {
   DeleteObjectsCommand,
   GetObjectCommand,
   HeadObjectCommand,
+  HeadBucketCommand,
   PutObjectCommand,
   S3Client,
 } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
-import { NodeHttpHandler } from "@smithy/node-http-handler";
-import http from "node:http";
+import { FetchHttpHandler } from "@smithy/fetch-http-handler";
 import { env } from "../env";
 import { Logger } from "../utils/logger.js";
 
 const logger = new Logger("S3Storage");
+
+/** Readiness probe performs a bucket metadata read, never an object write. */
+export async function checkStorageConnection(): Promise<void> {
+  await getS3Client().send(new HeadBucketCommand({ Bucket: bucket }));
+}
 
 /**
  * S3 内部配置（server-to-MinIO，用于实际数据传输）
@@ -32,13 +37,10 @@ const s3Config = {
     secretAccessKey: env.s3SecretKey,
   },
   forcePathStyle: true, // MinIO 需要
-  requestHandler: new NodeHttpHandler({
-    connectionTimeout: 5000, // TCP 连接超时 5s
-    requestTimeout: 10000,   // 请求超时 10s
-    // keep-alive 但空闲 30s 后主动销毁，避免 MinIO 服务端先关连接
-    // 导致客户端复用陈旧 socket 时触发 connectionTimeout
-    httpAgent: new http.Agent({ keepAlive: true, timeout: 30000 }),
-  }),
+  // Fetch is shared by Workers and Node 22; do not carry Node socket pools across requests.
+  requestHandler: new FetchHttpHandler({ requestTimeout: 10000 }),
+  requestChecksumCalculation: "WHEN_REQUIRED" as const,
+  responseChecksumValidation: "WHEN_REQUIRED" as const,
 };
 
 const bucket = env.s3Bucket;
@@ -102,7 +104,10 @@ function toPublicSignedUrl(url: string): string {
  * 格式: {s3PublicEndpoint}/{bucket}/{key}
  */
 export function getPublicFileUrl(storageKey: string): string {
-  return `${s3PublicEndpoint}/${bucket}/${storageKey}`;
+  const prefix = s3PublicEndpoint.startsWith("/")
+    ? new URL(env.s3Endpoint).pathname.replace(/\/+$/, "")
+    : "";
+  return `${s3PublicEndpoint.replace(/\/+$/, "")}${prefix}/${bucket}/${storageKey}`;
 }
 
 /**

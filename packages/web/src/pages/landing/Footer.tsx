@@ -1,3 +1,4 @@
+import { GAMES } from "./games";
 /**
  * Footer - 页脚
  */
@@ -5,12 +6,6 @@
 import { GitHubIcon } from "@miu2d/ui";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
-
-const GAMES = [
-  { slug: "demo", name: "月影传说", logo: "/screenshot/logo-yuying.webp" },
-  { slug: "sword1", name: "新剑侠情缘", logo: "/screenshot/logo-new-swords.png" },
-  { slug: "sword2", name: "剑侠情缘2", logo: "/screenshot/logo-sword2.png" },
-] as const;
 
 function GameFooterLink({ slug, name, logo }: { slug: string; name: string; logo: string }) {
   return (
@@ -52,7 +47,7 @@ export function Footer() {
               <img src="/icons/wuxia-v1-192.png" alt="" className="w-8 h-8 rounded-lg" />
               Miu2D Engine
             </motion.div>
-            <p className="mt-3 text-sm text-zinc-600 dark:text-zinc-400">{t("footer.tagline")}</p>
+            <p className="mt-3 text-sm text-zinc-600 dark:text-zinc-400">{t("footer.desc")}</p>
             <div className="mt-5">
               <motion.a
                 href="https://github.com/luckyyyyy/miu2d"
@@ -70,11 +65,11 @@ export function Footer() {
           {/* 游戏列 */}
           <div>
             <h4 className="text-sm font-semibold text-zinc-900 dark:text-white uppercase tracking-wider">
-              {t("nav.games")}
+              {t("gameEntry.choose")}
             </h4>
             <ul className="mt-4 space-y-3">
               {GAMES.map((g) => (
-                <GameFooterLink key={g.slug} slug={g.slug} name={g.name} logo={g.logo} />
+                <GameFooterLink key={g.slug} slug={g.slug} name={t(`demo.tabs.${g.key}`)} logo={g.logo} />
               ))}
             </ul>
           </div>
@@ -82,7 +77,7 @@ export function Footer() {
           {/* 导航列 */}
           <div>
             <h4 className="text-sm font-semibold text-zinc-900 dark:text-white uppercase tracking-wider">
-              {t("footer.about")}
+              {t("footer.links")}
             </h4>
             <ul className="mt-4 space-y-3">
               <li>
@@ -107,7 +102,7 @@ export function Footer() {
 
         {/* 版权 */}
         <div className="mt-10 pt-8 border-t border-zinc-200 dark:border-zinc-800 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-zinc-500 dark:text-zinc-400">{t("footer.copyright")}</p>
+          <p className="text-sm text-zinc-500 dark:text-zinc-400">{t("footer.license")}</p>
           <p className="text-sm text-zinc-500 dark:text-zinc-400">Made with ❤️ and AI ✨</p>
         </div>
       </div>

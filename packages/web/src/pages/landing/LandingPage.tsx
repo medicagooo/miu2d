@@ -10,7 +10,7 @@
 
 import { CrossPlatformSection } from "./CrossPlatformSection";
 import { CTA } from "./CTA";
-import { DemoSection } from "./DemoSection";
+
 import { Features } from "./Features";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
@@ -25,7 +25,7 @@ export default function LandingPage() {
       <Header />
       <main>
         <Hero />
-        <DemoSection />
+
         <MobileShowcase />
         <Features />
         <CrossPlatformSection />

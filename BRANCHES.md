@@ -1,7 +1,7 @@
 {
   "pending": [
-    "0908-sword2-placeholder-icons/push-main-1",
-    "0908-workers-game-tabs/create-branch-1"
+    "0908-workers-game-tabs/merge-main-1",
+    "0908-workers-game-tabs/push-main-1"
   ],
   "timezone": "Asia/Singapore",
   "format": 1,
@@ -128,10 +128,11 @@
       "id": "0908-workers-game-tabs",
       "date": "2026-09-08",
       "domain": "首页/Workers运行时",
-      "businessChange": "计划将官网首屏改为新剑侠/月影/剑侠2悬停全屏首页截图Tab，前后端适配Workers，沿用线上PostgreSQL/S3和原Node入口",
-      "status": "planned",
+      "businessChange": "官网首屏改为新剑侠/月影/剑侠2三个Tab，悬停/键盘/触摸动态切换真实首页背景，独立按钮进入对应游戏；Workers同源提供页面/API/S3代理，通过Hyperdrive复用线上PostgreSQL，保留Node入口、旧密码与会话契约。代码已验证，云配置和部署待授权。",
+      "status": "implemented_unmerged",
       "request": "0908-workers-game-tabs/request-1",
-      "evidence": ".branch-records\\0908-workers-game-tabs/state.json"
+      "evidence": ".branch-records\\0908-workers-game-tabs/state.json",
+      "implementedAt": "2026-09-08T16:04:08.3502793+08:00"
     }
   ]
 }

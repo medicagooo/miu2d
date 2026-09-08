@@ -1,0 +1,45 @@
+.game-hero { position: relative; isolation: isolate; min-height: 760px; height: 100svh; overflow: hidden; background: #151b1c; color: #fff; display: flex; flex-direction: column; justify-content: flex-end; padding: 110px max(5vw, 24px) 32px; }
+.game-hero-art, .game-hero-shade { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+.game-hero-art img { position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: scale(1.025); transition: opacity 420ms ease, transform 800ms ease; }
+.game-hero-art img.is-visible { opacity: 1; transform: scale(1); }
+.game-hero-shade { background: linear-gradient(90deg, rgb(6 13 15 / .83), rgb(6 13 15 / .2) 70%), linear-gradient(0deg, rgb(6 13 15 / .96), transparent 60%); }
+.game-hero-content { max-width: 760px; padding-bottom: clamp(38px, 8vh, 100px); }
+.game-hero-eyebrow { font-size: 11px; letter-spacing: .28em; color: #dbdfd7; margin-bottom: 48px; }
+.game-hero-edition { color: var(--game-accent); font-size: 11px; letter-spacing: .23em; margin-bottom: 18px; }
+.game-hero h1 { font-family: "Songti SC", "Noto Serif SC", SimSun, serif; font-size: clamp(40px, 5.7vw, 84px); letter-spacing: .12em; line-height: 1.3; font-weight: 600; text-shadow: 0 3px 28px #0008; }
+.game-hero-description { margin-top: 20px; color: #e0e2de; font-size: 15px; letter-spacing: .08em; line-height: 1.9; }
+.game-hero-play { display: inline-flex; align-items: center; justify-content: space-between; gap: 56px; min-height: 52px; padding: 0 24px; margin-top: 32px; color: #172022; background: var(--game-accent); font-size: 14px; font-weight: 600; transition: background 300ms, transform 200ms; }
+.game-hero-play:hover { transform: translateY(-2px); }
+.game-hero-play:focus-visible, .game-tabs button:focus-visible { outline: 3px solid white; outline-offset: 5px; }
+.game-hero-status { font-size: 12px; color: #ddd; margin-top: 12px; }
+.game-hero-hint { display: flex; justify-content: space-between; color: #b1bab7; font-size: 10px; letter-spacing: .2em; margin-bottom: 18px; }
+.game-tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid #ffffff30; }
+.game-tabs button { position: relative; display: flex; align-items: center; gap: 20px; padding: 25px 20px; min-height: 100px; text-align: left; color: #aab3b0; cursor: pointer; transition: color 250ms, background 250ms; border-right: 1px solid #ffffff20; }
+.game-tabs button:last-child { border-right: 0; }
+.game-tabs button::before { content: ""; position: absolute; inset: -1px 0 auto; height: 2px; background: var(--game-accent); opacity: 0; transform: scaleX(.3); transition: opacity 250ms, transform 350ms; }
+.game-tabs button[aria-selected="true"] { color: #fff; background: #ffffff09; }
+.game-tabs button[aria-selected="true"]::before { opacity: 1; transform: scaleX(1); }
+.game-tabs button img { width: 40px; height: 40px; object-fit: contain; }
+.game-tab-number { font-size: 10px; color: var(--game-accent); }
+.game-tab-arrow { margin-left: auto; opacity: .7; }
+@media (max-width: 767px) {
+  .game-hero { min-height: 660px; padding: 100px 20px 24px; }
+  .game-hero-content { padding-bottom: 50px; }
+  .game-hero-eyebrow { margin-bottom: 32px; font-size: 9px; }
+  .game-tabs button { flex-direction: column; justify-content: center; gap: 10px; padding: 18px 5px; font-size: 12px; }
+  .game-tab-number, .game-tab-arrow { display: none; }
+  .game-tabs button img { width: 30px; height: 30px; }
+  .game-hero-shade { background: linear-gradient(0deg, #071010 2%, #07101085 65%, #07101035); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .game-hero-art img, .game-tabs button, .game-tabs button::before, .game-hero-play { transition: none; transform: none; }
+}
+@media (max-height: 760px) {
+  .game-hero { min-height: 100svh; padding-top: 88px; padding-bottom: 20px; }
+  .game-hero-content { padding-bottom: 26px; }
+  .game-hero-eyebrow { margin-bottom: 18px; }
+  .game-hero h1 { font-size: clamp(32px, 5vw, 58px); }
+  .game-hero-description { margin-top: 12px; }
+  .game-hero-play { margin-top: 20px; }
+  .game-tabs button { min-height: 76px; padding-top: 16px; padding-bottom: 16px; }
+}

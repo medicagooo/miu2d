@@ -15,6 +15,7 @@ import type { Context } from "../../trpc/context";
 import { Ctx, Mutation, Router } from "../../trpc/decorators";
 import { Logger } from "../../utils/logger.js";
 import { verifyPassword } from "../../utils/password";
+import { backgroundTask } from "../../runtime/context";
 import { emailTokenService } from "../user/emailToken.service";
 import { authService, toUserOutput } from "./auth.service";
 
@@ -49,9 +50,11 @@ export class AuthRouter {
     const sessionId = await authService.createSession(user.id);
     authService.setSessionCookie(ctx.res, sessionId);
 
-    // 异步发送登录通知邮件（不阻塞登录响应）
-    sendLoginNotification(user.email, user.name, ctx.ip).catch((err) =>
-      this.logger.error("Failed to send login notification", err)
+    // Worker entry extends task lifetime and retains its DB client until completion.
+    backgroundTask(
+      sendLoginNotification(user.email, user.name, ctx.ip).catch((err) =>
+        this.logger.error("Failed to send login notification", err)
+      )
     );
 
     return {
@@ -75,13 +78,17 @@ export class AuthRouter {
     const sessionId = await authService.createSession(result.user.id);
     authService.setSessionCookie(ctx.res, sessionId);
 
-    // 异步发送欢迎邮件和验证邮件（不阻塞注册响应）
-    sendWelcomeEmail(result.user.email, result.user.name).catch((err) =>
-      this.logger.error("Failed to send welcome email", err)
+    // Keep the Node response behavior while retaining Worker verification-token jobs.
+    backgroundTask(
+      sendWelcomeEmail(result.user.email, result.user.name).catch((err) =>
+        this.logger.error("Failed to send welcome email", err)
+      )
     );
-    emailTokenService
-      .createAndSendVerifyToken(result.user.id, result.user.email, result.user.name)
-      .catch((err) => this.logger.error("Failed to send verify email", err));
+    backgroundTask(
+      emailTokenService
+        .createAndSendVerifyToken(result.user.id, result.user.email, result.user.name)
+        .catch((err) => this.logger.error("Failed to send verify email", err))
+    );
 
     return {
       user: toUserOutput(result.user),
