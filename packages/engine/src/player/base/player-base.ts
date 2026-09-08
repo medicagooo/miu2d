@@ -15,6 +15,8 @@ import {
   Direction,
 } from "../../core/types";
 import type { GuiManager } from "../../gui/gui-manager";
+import { getGameSlug } from "../../data/game-data-api";
+import { canPlayerAddMagic } from "../../data/player-magic-catalog";
 import { getMagic } from "../../magic/magic-config-loader";
 import type { MagicData, MagicItemInfo } from "../../magic/types";
 import type { Npc, NpcManager } from "../../npc";
@@ -723,6 +725,10 @@ export abstract class PlayerBase extends Character {
    */
   async addMagic(magicFile: string, level: number = 1): Promise<boolean> {
     if (!magicFile) return false;
+
+    // Shared with the debug catalog: reject new learning without deleting saved skills or
+    // filtering the lower-level inventory loaders used by save restoration and companions.
+    if (!canPlayerAddMagic(magicFile, getGameSlug())) return false;
 
     const result = await this._magicInventory.addMagic(magicFile, { level });
 

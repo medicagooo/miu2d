@@ -953,7 +953,7 @@ export class DebugManager {
 
     // AI-TRACE: Player learning now consumes the merged player-usable catalog. The helper keeps
     // remote ownership intact for NPC casting while excluding non-magic import residue.
-    const playerMagics = buildPlayerMagicCatalog(getMagicsData()).map((magic) => magic.key);
+    const playerMagics = buildPlayerMagicCatalog(getMagicsData(), getGameSlug()).map((magic) => magic.key);
 
     let addedCount = 0;
     for (const magicFile of playerMagics) {

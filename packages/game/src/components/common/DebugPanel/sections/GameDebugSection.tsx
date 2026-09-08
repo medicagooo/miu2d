@@ -2,7 +2,7 @@
  * 游戏调试区块 - 合并快捷操作和物品/武功
  */
 
-import { buildPlayerMagicCatalog, getMagicsData } from "@miu2d/engine/data";
+import { buildPlayerMagicCatalog, getGameSlug, getMagicsData } from "@miu2d/engine/data";
 import { getMagicFromApiCache } from "@miu2d/engine/magic";
 import {
   EquipPosition,
@@ -352,7 +352,7 @@ export const GameDebugSection: React.FC<GameDebugSectionProps> = ({
   // DebugManager.addAllMagics, so selecting one and adding all cannot disagree.
   const allMagics = useMemo(
     () =>
-      buildPlayerMagicCatalog(getMagicsData()).map((api) => {
+      buildPlayerMagicCatalog(getMagicsData(), getGameSlug()).map((api) => {
         const magic = getMagicFromApiCache(api.key);
         return { name: magic?.name ?? api.name ?? api.key, file: api.key };
       }),

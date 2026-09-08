@@ -1,0 +1,29 @@
+{
+  "next": "本地实现及补级方案已完成；等待用户对补级方案的后续指示；未推送或部署",
+  "status": "complete",
+  "acceptance": [
+    "玩家选择、全部添加及Player.addMagic共享游戏限定规则",
+    "旧调用及其他游戏兼容，定向测试和构建通过",
+    "补级方案说明实际清单、等级数值与经验语义、平衡风险和验证方法"
+  ],
+  "requirements": [
+    "sword1/demo排除指定基础攻击，涵盖实际12/9条记录；sword1额外包含显示普通攻击的player-magic1-长剑及编号射箭/弓箭",
+    "其余单级武功调查三个游戏并给出方案，暂不实施补级"
+  ],
+  "constraints": [
+    "保留存档已持有技能、NPC配置与施法、柳叶飞刀及剑侠2添加规则",
+    "不进行数据库变更、推送或部署"
+  ],
+  "integration": "verified",
+  "evidence": [
+    "main 87dbcab63e6f3b1beaa64312b5be9391937855d8 工作树干净",
+    "2026-09-09读取三个游戏公开api/data核验标识",
+    "本地main实现：共享canPlayerAddMagic用于目录、全部添加及PlayerBase.addMagic；恢复存档及NPC路径未修改",
+    "14项测试通过：目录精确过滤、归属无关、路径大小写、其他游戏和旧调用兼容、原学习去重",
+    "现有依赖直接执行TypeScript -b和Vite生产构建成功；git diff --check通过；构建环境变量和分包警告未阻断",
+    ".branch-records/0909-player-magic-policy/level-plan.md",
+    ".branch-records/0909-player-magic-policy/level-audit.json",
+    "候选96条：新剑侠61/月影26/剑侠2 9；均无等级表，另2条疑似升级特效待核实；方案未实施"
+  ],
+  "purpose": "限制指定武功的玩家新增，并提出其余单级武功10级补全方案"
+}

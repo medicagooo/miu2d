@@ -25,7 +25,8 @@
     ".branch-records/0908-sword2-placeholder-icons/state.json",
     ".branch-records/0908-workers-game-tabs/state.json",
     ".branch-records/0909-transparent-magic-icons/state.json",
-    ".branch-records/0909-landing-hero-only/state.json"
+    ".branch-records/0909-landing-hero-only/state.json",
+    ".branch-records/0909-player-magic-policy/state.json"
   ],
   "changes": [
     {
@@ -174,6 +175,15 @@
       "status": "implemented",
       "request": ".branch-records/0909-landing-hero-only/events.jsonl#request-1",
       "evidence": ".branch-records/0909-landing-hero-only/state.json",
+      "implementationDate": "2026-09-09"
+    },
+    {
+      "id": "0909-player-magic-policy",
+      "date": "2026-09-09",
+      "businessChange": "按游戏限定玩家新增武功：新剑侠/月影移除指定基础攻击入口并拒绝新增，保留NPC和已有存档。其余单级武功10级补全仅方案，未实施。",
+      "status": "implemented",
+      "request": ".branch-records/0909-player-magic-policy/events.jsonl#request-1",
+      "evidence": ".branch-records/0909-player-magic-policy/state.json",
       "implementationDate": "2026-09-09"
     }
   ]

@@ -4,7 +4,8 @@
  * Downstream callers are `DebugManager.addAllMagics` and the game debug magic picker.
  * NPC records remain in their original API bucket so NPC casting is unchanged; this view only
  * broadens player eligibility, de-duplicates keys, and excludes the imported `Relation.Ini`
- * configuration record because it is not a martial art.
+ * configuration record because it is not a martial art. Game-specific exclusions also guard
+ * Player.addMagic; save restoration and NPC casting deliberately keep their original paths.
  */
 
 export interface PlayerUsableMagicEntry {
@@ -24,9 +25,34 @@ function isMagicRecord(key: string): boolean {
   return normalizeMagicKey(key).split("/").at(-1) !== "relation.ini";
 }
 
+const EXCLUDED_BASIC_ATTACKS = new Set([
+  "magic-弓箭.ini",
+  "magic-蜂王毒刺.ini",
+  "magic-两格长枪.ini",
+  "magic-强盗飞刀.ini",
+  "magic-刀.ini",
+  "magic-飞刀.ini",
+  "magic-蝙蝠.ini",
+  "magic-长剑.ini",
+  "player-magic-长剑.ini",
+]);
+
+/** Restrict new player learning only; omitted slug preserves the legacy catalog contract. */
+export function canPlayerAddMagic(key: string, gameSlug?: string): boolean {
+  const fileName = normalizeMagicKey(key).split("/").at(-1) ?? "";
+  if (!fileName || !isMagicRecord(key)) return false;
+  if (gameSlug !== "sword1" && gameSlug !== "demo") return true;
+  if (EXCLUDED_BASIC_ATTACKS.has(fileName)) return false;
+  return (
+    gameSlug !== "sword1" ||
+    !["player-magic1-长剑.ini", "magic060_射箭.ini", "magic062_弓箭.ini"].includes(fileName)
+  );
+}
+
 /** Return every valid player and NPC magic as a single player-usable catalog. */
 export function buildPlayerMagicCatalog<T extends PlayerUsableMagicEntry>(
-  magics: MagicBuckets<T> | null | undefined
+  magics: MagicBuckets<T> | null | undefined,
+  gameSlug?: string
 ): T[] {
   if (!magics) return [];
 
@@ -35,7 +61,7 @@ export function buildPlayerMagicCatalog<T extends PlayerUsableMagicEntry>(
 
   for (const magic of [...magics.player, ...magics.npc]) {
     const normalizedKey = normalizeMagicKey(magic.key);
-    if (!normalizedKey || !isMagicRecord(normalizedKey) || seenKeys.has(normalizedKey)) continue;
+    if (!canPlayerAddMagic(normalizedKey, gameSlug) || seenKeys.has(normalizedKey)) continue;
 
     seenKeys.add(normalizedKey);
     catalog.push(magic);
