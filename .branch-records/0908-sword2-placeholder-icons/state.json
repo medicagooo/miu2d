@@ -1,0 +1,33 @@
+{
+  "purpose": "重绘剑侠2复用白虹贯日占位图的24个技能",
+  "constraints": [
+    "保留真正白虹贯日、其他专属图、其他游戏及旧调用兼容",
+    "仅本地文件，无数据库写入，无部署；本次未授权push"
+  ],
+  "requirements": [
+    "24项独立生成图标并接入游戏和编辑器",
+    "按游戏、技能键和已知占位资源精确替换",
+    "直接对照剑侠2原始技能图标，黑底低分辨率发光符号；首批写实插画弃用"
+  ],
+  "acceptance": [
+    "24张PNG完整、唯一、可预览",
+    "精确替换和兼容测试、类型检查、离线构建通过"
+  ],
+  "evidence": [
+    "https://miu2d.com/game/sword2/api/data",
+    "本地main直接实现；基准3606c656cab4467e2d3cf25caf367808d2109d2b，开始时工作区干净",
+    "artifacts/sword2-placeholder-icons/manifest.json：24项、24个不同PNG及SHA256；prompts.json及3张原始30×38参考图",
+    "packages/shared/src/lib/sword2-placeholder-icons.ts:getSword2PlaceholderIconPath，npc-magic-icons.ts:resolveMagicIconPath统一游戏和后台；magic-config-loader.ts在资源规范化前替换",
+    "12项新旧图标与引擎路径测试通过；dashboard/web tsc通过；Vite离线生产构建通过；24张dist PNG哈希一致",
+    "浏览器24项、75/75图片加载，掌法筛选2项；30×38缩略预览完成",
+    "此前0908-missing-magic-icons/push-main-1已核验origin/main=3606c656cab4467e2d3cf25caf367808d2109d2b，本次普通登记更新移除已完成pending"
+  ],
+  "status": "complete",
+  "integration": "verified",
+  "next": "本地实现完成；尚未推送或部署。后续仅在明确授权后登记并执行push。",
+  "artifacts": [
+    "artifacts/sword2-placeholder-icons/README.md",
+    "artifacts/sword2-placeholder-icons/index.html",
+    "packages/web/public/magic-icons/sword2/"
+  ]
+}

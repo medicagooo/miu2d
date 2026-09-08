@@ -339,11 +339,11 @@ function convertApiMagicToMagicData(
 
   // 图像资源（主武功特有）
   magic.image = normalizeResourcePath(api.image, "magic");
-  // AI-TRACE: Explicit API icons keep their resource normalization. Missing icons use the
-  // current game's audited PNG set regardless of ownership, then the legacy NPC fallback.
-  magic.icon = api.icon
-    ? normalizeResourcePath(api.icon, "magic")
-    : resolveMagicIconPath(undefined, api.key, api.userType, getGameSlug());
+  // AI-TRACE: Resolve audited sword2 placeholders before normalization. Bundled PNGs
+  // are web-root assets; unchanged API resources retain legacy resource-root behavior.
+  const resolvedIcon = resolveMagicIconPath(api.icon, api.key, api.userType, getGameSlug());
+  magic.icon =
+    api.icon && resolvedIcon === api.icon ? normalizeResourcePath(api.icon, "magic") : resolvedIcon;
   magic.superModeImage = normalizeResourcePath(api.superModeImage, "effect");
   magic.useActionFile = api.useActionFile || undefined;
 

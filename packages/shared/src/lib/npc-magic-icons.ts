@@ -3,11 +3,12 @@
  * Purpose: resolve the 34 verified `magics.npc` keys to Web-public PNG fallbacks.
  * Upstream: remote/local game data keeps its original `Magic.icon`; callers pass `key` and `userType`.
  * Downstream: engine MagicData conversion and Dashboard list/picker renderers consume the returned path.
- * Compatibility: an explicit icon always wins. With gameSlug, the audited per-game artwork has
+ * Compatibility: explicit icons win except audited sword2 Baihong placeholders. With gameSlug, artwork has
  * priority over these older NPC fallbacks; omitted slug preserves the existing three-argument API.
  */
 
 import { getGameMagicIconPath } from "./game-magic-icons";
+import { getSword2PlaceholderIconPath } from "./sword2-placeholder-icons";
 
 const BUNDLED_NPC_MAGIC_KEYS = new Set([
   "magic-百剑诀.ini",
@@ -68,7 +69,12 @@ export function resolveMagicIconPath(
   userType?: string | null,
   gameSlug?: string | null
 ): string | undefined {
-  return icon || getGameMagicIconPath(gameSlug, key) || getBundledNpcMagicIconPath(key, userType);
+  return (
+    getSword2PlaceholderIconPath(icon, key, gameSlug) ||
+    icon ||
+    getGameMagicIconPath(gameSlug, key) ||
+    getBundledNpcMagicIconPath(key, userType)
+  );
 }
 
 export function isNativeImagePath(path: string | null | undefined): boolean {

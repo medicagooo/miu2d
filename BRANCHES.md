@@ -1,7 +1,5 @@
 {
-  "pending": [
-    "0908-missing-magic-icons/push-main-1"
-  ],
+  "pending": [],
   "timezone": "Asia/Singapore",
   "format": 1,
   "read": [
@@ -18,7 +16,8 @@
     ".branch-records/0908-merge-upstream/state.json",
     ".branch-records/0908-remove-local-recovery/state.json",
     ".branch-records/0908-integrate-local-commits/state.json",
-    ".branch-records/0908-missing-magic-icons/state.json"
+    ".branch-records/0908-missing-magic-icons/state.json",
+    ".branch-records/0908-sword2-placeholder-icons/state.json"
   ],
   "changes": [
     {
@@ -104,6 +103,21 @@
       "evidence": ".branch-records/0908-missing-magic-icons/state.json",
       "domain": "武功图标/游戏与后台",
       "implementedAt": "2026-09-08T13:53:08.7505198+08:00"
+    },
+    {
+      "status": "implemented_local",
+      "evidence": [
+        ".branch-records/0908-sword2-placeholder-icons/state.json"
+      ],
+      "request": [
+        "0908-sword2-placeholder-icons/request-1",
+        "0908-sword2-placeholder-icons/request-style"
+      ],
+      "date": "2026-09-08",
+      "businessChange": "剑侠2的24项错误复用白虹贯日图标改为独立发光像素图（16玩家、8 NPC），直接参考原始30×38图标。游戏及后台按游戏+技能键+占位资源精确替换，真正白虹贯日、专属图、旧调用与其他游戏保留；战斗数据不变。",
+      "id": "0908-sword2-placeholder-icons",
+      "domain": "武功图标/剑侠情缘2",
+      "implementedAt": "2026-09-08T15:03:55.4127752+08:00"
     }
   ]
 }
