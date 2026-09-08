@@ -5,3 +5,4 @@
  * 专注于从服务端 API 加载游戏配置和业务数据（NPC/物品/武功/等级/玩家/场景等）。
  */
 export * from "./game-data-api";
+export * from "./player-magic-catalog";

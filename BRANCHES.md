@@ -84,10 +84,11 @@
     {
       "id": "0908-integrate-local-commits",
       "date": "2026-09-08",
-      "businessChange": "计划合入旧分支：34项NPC武功内置图标与描述、玩家可用武功目录和秘籍分类，以及Docker启动兼容修复；保留main现行规则与禁止本地恢复决定",
-      "status": "planned",
+      "businessChange": "合入旧分支：34项NPC武功缺省图标与描述；玩家/调试目录纳入有效NPC武功、去重并排除Relation.Ini，原API归属不变；秘籍按使用效果分类。Docker配置修复端口/依赖/S3参数，保留main缓存/地区规则；不启动或重建本地数据库",
+      "status": "implemented",
       "request": "0908-integrate-local-commits/request-push",
-      "evidence": ".branch-records/0908-integrate-local-commits/state.json"
+      "evidence": ".branch-records/0908-integrate-local-commits/state.json",
+      "implementedAt": "2026-09-08"
     }
   ]
 }

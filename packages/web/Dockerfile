@@ -1,7 +1,8 @@
 # 构建阶段
 FROM node:22-alpine AS builder
 
-# 启用 corepack 以使用 pnpm
+# AI-TRACE: Web 镜像与 server 镜像共享 lockfile/workspace，必须使用根
+# package.json 声明的 pnpm 版本以保持可复现安装。
 RUN corepack enable && corepack prepare pnpm@10.16.1 --activate
 
 WORKDIR /app
@@ -101,11 +102,18 @@ FROM nginx:alpine AS runner
 # Keep the fork's STATIC_ONLY build contract used by deploy/deploy-mirror.sh;
 # full-stack builds use the upstream proxy and cache rules in nginx.conf.
 ARG STATIC_ONLY=false
-COPY packages/web/nginx.conf packages/web/nginx.static.conf /tmp/nginx-conf/
+ARG REMOTE_DEMOS=false
+COPY packages/web/nginx.conf packages/web/nginx.static.conf packages/web/nginx.demo-local.conf packages/web/nginx.demo-remote.conf /tmp/nginx-conf/
 RUN if [ "$STATIC_ONLY" = "true" ]; then \
       cp /tmp/nginx-conf/nginx.static.conf /etc/nginx/conf.d/default.conf; \
     else \
       cp /tmp/nginx-conf/nginx.conf /etc/nginx/conf.d/default.conf; \
+    fi \
+    && mkdir -p /etc/nginx/snippets \
+    && if [ "$REMOTE_DEMOS" = "true" ]; then \
+      cp /tmp/nginx-conf/nginx.demo-remote.conf /etc/nginx/snippets/miu2d-demo-upstream.conf; \
+    else \
+      cp /tmp/nginx-conf/nginx.demo-local.conf /etc/nginx/snippets/miu2d-demo-upstream.conf; \
     fi \
     && rm -rf /tmp/nginx-conf
 

@@ -7,6 +7,7 @@
  */
 
 import { getResourceDomain } from "@miu2d/shared/lib/game-api";
+import { isNativeImagePath } from "@miu2d/shared/lib/npc-magic-icons";
 
 export function getResourceRoot(gameSlug: string): string {
   return `${getResourceDomain()}/game/${gameSlug}/resources`;
@@ -80,6 +81,9 @@ export function buildMagicIconUrl(
   iconPath: string | null | undefined
 ): string | null {
   if (!iconPath) return null;
+  // AI-TRACE: Bundled NPC PNGs are Web-public URLs; only legacy ASF/MSF icons belong under the
+  // per-game resource root used by buildResourceUrl.
+  if (isNativeImagePath(iconPath)) return iconPath;
 
   let path = iconPath;
   // 如果不以 asf/ 开头，添加默认目录

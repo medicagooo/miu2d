@@ -2,9 +2,15 @@
  * 游戏调试区块 - 合并快捷操作和物品/武功
  */
 
-import { getMagicsData } from "@miu2d/engine/data";
+import { buildPlayerMagicCatalog, getMagicsData } from "@miu2d/engine/data";
 import { getMagicFromApiCache } from "@miu2d/engine/magic";
-import { EquipPosition, GoodKind, getAllGoods } from "@miu2d/engine/player/goods";
+import {
+  EquipPosition,
+  GoodKind,
+  getAllGoods,
+  goodsScriptTeachesMagic,
+} from "@miu2d/engine/player/goods";
+import { ResourcePath, resourceLoader } from "@miu2d/engine/resource";
 import type React from "react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useAsfImage } from "../../../ui/classic/hooks/useAsfImage";
@@ -31,7 +37,11 @@ type GoodsCategory = (typeof GOODS_CATEGORIES)[number];
  * 注意：Part 优先于 Kind — 原始 INI 中 Kind= 可能为空，服务端默认为 Drug，
  * 但只要 Part 有值就应该按装备分类。
  */
-function getGoodsCategory(kind: GoodKind, part: EquipPosition): Exclude<GoodsCategory, "全部"> {
+function getGoodsCategory(
+  kind: GoodKind,
+  part: EquipPosition,
+  teachesMagic = false
+): Exclude<GoodsCategory, "全部"> {
   // Part 优先分类
   switch (part) {
     case EquipPosition.Hand:
@@ -49,7 +59,7 @@ function getGoodsCategory(kind: GoodKind, part: EquipPosition): Exclude<GoodsCat
     case EquipPosition.Foot:
       return "鞋子";
   }
-  if (kind === GoodKind.Event) return "事件";
+  if (kind === GoodKind.Event) return teachesMagic ? "秘籍" : "事件";
   return "药品";
 }
 
@@ -58,16 +68,46 @@ function getGoodsCategory(kind: GoodKind, part: EquipPosition): Exclude<GoodsCat
 /** 懒加载单个物品图标（icon 小图，带 s 后缀） */
 function GoodsIconImg({ iconPath, size = 28 }: { iconPath: string; size?: number }) {
   const { dataUrl, isLoading } = useAsfImage(iconPath || null, 0);
-  if (!iconPath) return <span className="text-[#444]" style={{ width: size, height: size, display: "inline-block" }}>□</span>;
-  if (isLoading) return <span className="text-[#555] text-[9px]" style={{ width: size, height: size, display: "inline-flex", alignItems: "center", justifyContent: "center" }}>…</span>;
-  if (!dataUrl) return <span className="text-[#444]" style={{ width: size, height: size, display: "inline-block" }}>□</span>;
+  if (!iconPath)
+    return (
+      <span className="text-[#444]" style={{ width: size, height: size, display: "inline-block" }}>
+        □
+      </span>
+    );
+  if (isLoading)
+    return (
+      <span
+        className="text-[#555] text-[9px]"
+        style={{
+          width: size,
+          height: size,
+          display: "inline-flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        …
+      </span>
+    );
+  if (!dataUrl)
+    return (
+      <span className="text-[#444]" style={{ width: size, height: size, display: "inline-block" }}>
+        □
+      </span>
+    );
   return (
     <img
       src={dataUrl}
       alt=""
       width={size}
       height={size}
-      style={{ imageRendering: "pixelated", width: size, height: size, objectFit: "contain", flexShrink: 0 }}
+      style={{
+        imageRendering: "pixelated",
+        width: size,
+        height: size,
+        objectFit: "contain",
+        flexShrink: 0,
+      }}
     />
   );
 }
@@ -177,7 +217,8 @@ function GoodsCombobox({ items, value, onChange }: GoodsComboboxProps) {
                   <span className="flex-1 min-w-0">
                     <span className="block text-[11px] text-[#d4d4d4] leading-tight">{i.name}</span>
                     <span className="block text-[10px] text-[#666] leading-tight truncate">
-                      {i.file}{i.image ? ` · ${i.image}` : ""}
+                      {i.file}
+                      {i.image ? ` · ${i.image}` : ""}
                     </span>
                   </span>
                 </button>
@@ -236,7 +277,7 @@ export const GameDebugSection: React.FC<GameDebugSectionProps> = ({
   const [isReloadingUILayout, setIsReloadingUILayout] = useState(false);
 
   // 从 API 缓存获取物品列表（游戏数据加载后不变，用 useMemo 避免 500ms 重复计算）
-  const allGoods = useMemo(
+  const baseGoods = useMemo(
     () =>
       getAllGoods()
         .filter(
@@ -244,23 +285,74 @@ export const GameDebugSection: React.FC<GameDebugSectionProps> = ({
             // 过滤无名物品
             g.name.trim() !== "" &&
             // 过滤 kind=Drug 且 part=None 且无任何数值（纯空占位物品）
-            !(g.kind === GoodKind.Drug && g.part === EquipPosition.None &&
-              g.life === 0 && g.thew === 0 && g.mana === 0)
+            !(
+              g.kind === GoodKind.Drug &&
+              g.part === EquipPosition.None &&
+              g.life === 0 &&
+              g.thew === 0 &&
+              g.mana === 0
+            )
         )
         .map((g) => ({
           name: g.name,
           file: g.fileName,
           image: g.imagePath.replace("asf/goods/", ""),
           icon: g.iconPath, // e.g. "asf/goods/tm050-霹雳铠s.asf"
-          category: getGoodsCategory(g.kind, g.part),
+          kind: g.kind,
+          part: g.part,
+          script: g.script,
         })),
     []
   );
 
-  // 从 API 数据获取所有玩家武功列表（userType === "player"），避免依赖 key 前缀约定
+  const [magicManualFiles, setMagicManualFiles] = useState<ReadonlySet<string>>(new Set());
+
+  useEffect(() => {
+    let active = true;
+    const scriptedEventGoods = baseGoods.filter(
+      (good) => good.kind === GoodKind.Event && good.script.trim() !== ""
+    );
+
+    // AI-TRACE: Event goods execute these exact script/goods resources in
+    // GoodsListManager.usingGood. Reading the same files keeps the debug-only
+    // category aligned with actual use effects without changing API data,
+    // GoodKind, inventory behavior, or remote resources.
+    void Promise.all(
+      scriptedEventGoods.map(async (good) => {
+        const scriptPath = good.script.startsWith("/")
+          ? good.script
+          : ResourcePath.script(`goods/${good.script}`);
+        const scriptText = await resourceLoader.loadText(scriptPath);
+        return scriptText && goodsScriptTeachesMagic(scriptText) ? good.file : null;
+      })
+    ).then((files) => {
+      if (active) {
+        setMagicManualFiles(new Set(files.filter((file): file is string => file !== null)));
+      }
+    });
+
+    return () => {
+      active = false;
+    };
+  }, [baseGoods]);
+
+  const allGoods: GoodsItem[] = useMemo(
+    () =>
+      baseGoods.map((good) => ({
+        name: good.name,
+        file: good.file,
+        image: good.image,
+        icon: good.icon,
+        category: getGoodsCategory(good.kind, good.part, magicManualFiles.has(good.file)),
+      })),
+    [baseGoods, magicManualFiles]
+  );
+
+  // AI-TRACE: The player debug picker uses the same merged eligibility contract as
+  // DebugManager.addAllMagics, so selecting one and adding all cannot disagree.
   const allMagics = useMemo(
     () =>
-      (getMagicsData()?.player ?? []).map((api) => {
+      buildPlayerMagicCatalog(getMagicsData()).map((api) => {
         const magic = getMagicFromApiCache(api.key);
         return { name: magic?.name ?? api.name ?? api.key, file: api.key };
       }),
@@ -272,9 +364,10 @@ export const GameDebugSection: React.FC<GameDebugSectionProps> = ({
     selectedCategory === "全部"
       ? allGoods
       : allGoods.filter((item) => item.category === selectedCategory);
+  const selectedItemIsVisible = filteredItems.some((item) => item.file === selectedItem);
 
   const handleAddItem = async () => {
-    if (!onAddItem || !selectedItem) return;
+    if (!onAddItem || !selectedItem || !selectedItemIsVisible) return;
     setIsAddingItem(true);
     try {
       await onAddItem(selectedItem);
@@ -456,13 +549,13 @@ export const GameDebugSection: React.FC<GameDebugSectionProps> = ({
             </select>
             <GoodsCombobox
               items={filteredItems}
-              value={selectedItem}
+              value={selectedItemIsVisible ? selectedItem : ""}
               onChange={setSelectedItem}
             />
             <button
               type="button"
               onClick={handleAddItem}
-              disabled={isAddingItem || !selectedItem}
+              disabled={isAddingItem || !selectedItemIsVisible}
               className={`${btnPrimary} px-3`}
             >
               +

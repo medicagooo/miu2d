@@ -1,7 +1,8 @@
 # 构建阶段
 FROM node:22-alpine AS builder
 
-# 启用 corepack 以使用 pnpm
+# AI-TRACE: builder 与 runner 必须使用根 package.json 声明的同一 pnpm 版本，
+# 否则 workspace 安装策略和 native dependency 构建结果可能不一致。
 RUN corepack enable && corepack prepare pnpm@10.16.1 --activate
 
 WORKDIR /app
@@ -65,6 +66,11 @@ COPY packages/server/package.json ./packages/server/
 
 # 从构建阶段复制构建产物
 COPY --from=builder /app/packages/server/dist ./packages/server/dist
+
+# AI-TRACE: rolldown 的 server 产物仍以运行时 ESM import 加载 @miu2d/types；
+# pnpm --prod 只创建 workspace 链接，不会生成 types/dist，因此必须把 builder 中
+# 已由 packages/types 的 prebuild/build 入口生成的完整 dist 一并带入 runner。
+COPY --from=builder /app/packages/types/dist ./packages/types/dist
 
 # 复制 prisma schema 和迁移文件
 COPY --from=builder /app/packages/server/prisma ./packages/server/prisma

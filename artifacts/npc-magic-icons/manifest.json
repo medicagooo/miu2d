@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "generatedIconCount": 34,
+  "iconSize": { "width": 128, "height": 128 },
+  "excludedRecords": [
+    {
+      "key": "Relation.Ini",
+      "name": "Relation",
+      "reason": "No moveKind and not a magic-*.ini martial-art configuration."
+    }
+  ],
+  "icons": [
+    { "key": "magic-百剑诀.ini", "name": "百剑诀", "moveKind": "RegionBased", "lifeFrame": 0, "specialKind": "AddThewOrPoison", "icon": "icons/magic-百剑诀.png", "concept": "中央主剑与环形百剑阵" },
+    { "key": "magic-柳叶飞刀.ini", "name": "柳叶飞刀", "moveKind": "SingleMove", "lifeFrame": 40, "specialKind": "None", "icon": "icons/magic-柳叶飞刀.png", "concept": "柳叶形飞刀与青绿高速尾迹" },
+    { "key": "magic-月眉儿攻击.ini", "name": "月眉儿攻击", "moveKind": "RegionBased", "lifeFrame": 23, "specialKind": "None", "icon": "icons/magic-月眉儿攻击.png", "concept": "月牙刃组成的蓝紫区域旋风" },
+    { "key": "magic-弓箭.ini", "name": "弓箭", "moveKind": "SingleMove", "lifeFrame": 40, "specialKind": "None", "icon": "icons/magic-弓箭.png", "concept": "金弓与蓄力箭矢" },
+    { "key": "magic-蜂王毒刺.ini", "name": "蜂王毒刺", "moveKind": "SingleMove", "lifeFrame": 2, "specialKind": "AddThewOrPoison", "icon": "icons/magic-蜂王毒刺.png", "concept": "蜂王尾针、蜂巢与毒液" },
+    { "key": "magic-孟知秋攻击.ini", "name": "孟知秋攻击", "moveKind": "RegionBased", "lifeFrame": 20, "specialKind": "None", "icon": "icons/magic-孟知秋攻击.png", "concept": "长剑劈出的蓝金区域剑气" },
+    { "key": "magic-两格长枪.ini", "name": "长枪", "moveKind": "SingleMove", "lifeFrame": 4, "specialKind": "None", "icon": "icons/magic-两格长枪.png", "concept": "长枪突刺与红色命中火花" },
+    { "key": "magic-金针攻击.ini", "name": "金针攻击", "moveKind": "WallMove", "lifeFrame": 30, "specialKind": "None", "icon": "icons/magic-金针攻击.png", "concept": "成墙排列的金针与电光" },
+    { "key": "magic-紫轩攻击.ini", "name": "花瓣攻击", "moveKind": "SingleMove", "lifeFrame": 40, "specialKind": "None", "icon": "icons/magic-紫轩攻击.png", "concept": "紫红花瓣凝成的单体飞梭" },
+    { "key": "magic-强盗飞刀.ini", "name": "飞刀", "moveKind": "RandomSector", "lifeFrame": 24, "specialKind": "None", "icon": "icons/magic-强盗飞刀.png", "concept": "扇形散射的粗制飞刀" },
+    { "key": "magic-刀.ini", "name": "刀", "moveKind": "SingleMove", "lifeFrame": 2, "specialKind": "None", "icon": "icons/magic-刀.png", "concept": "弯刀与赤红近战斩痕" },
+    { "key": "magic-毒液2.ini", "name": "毒液2", "moveKind": "SectorMove", "lifeFrame": 20, "specialKind": "None", "icon": "icons/magic-毒液2.png", "concept": "扇面喷发的酸绿毒液" },
+    { "key": "magic-符咒攻击.ini", "name": "符咒攻击", "moveKind": "SectorMove", "lifeFrame": 0, "specialKind": "None", "icon": "icons/magic-符咒攻击.png", "concept": "三道符纸扇形齐发" },
+    { "key": "magic-推山填海.ini", "name": "镇狱破天劲", "moveKind": "RandomSector", "lifeFrame": 0, "specialKind": "AddLifeOrFrozen", "icon": "icons/magic-推山填海.png", "concept": "冰蓝真气重拳冲破岩环" },
+    { "key": "magic-土系攻击2.ini", "name": "土系攻击2", "moveKind": "SpiralMove", "lifeFrame": 40, "specialKind": "None", "icon": "icons/magic-土系攻击2.png", "concept": "螺旋卷起的巨岩与尘土" },
+    { "key": "magic-悲天悯人咒.ini", "name": "悲天悯人咒", "moveKind": "RegionBased", "lifeFrame": 23, "specialKind": "None", "icon": "icons/magic-悲天悯人咒.png", "concept": "净水白莲与宁静区域光环" },
+    { "key": "magic-火系攻击2.ini", "name": "火系攻击2", "moveKind": "RegionBased", "lifeFrame": 40, "specialKind": "None", "icon": "icons/magic-火系攻击2.png", "concept": "火球落入燃烧法阵" },
+    { "key": "magic-飞刀.ini", "name": "飞刀", "moveKind": "SingleMove", "lifeFrame": 40, "specialKind": "None", "icon": "icons/magic-飞刀.png", "concept": "单枚银色飞刀与蓝色直线尾迹" },
+    { "key": "magic-蔷薇攻击.ini", "name": "蔷薇攻击", "moveKind": "FollowEnemy", "lifeFrame": 40, "specialKind": "None", "icon": "icons/magic-蔷薇攻击.png", "concept": "带追踪准星的荆棘蔷薇" },
+    { "key": "magic-毒液.ini", "name": "毒液", "moveKind": "SectorMove", "lifeFrame": 20, "specialKind": "None", "icon": "icons/magic-毒液.png", "concept": "倾倒毒瓶与紫绿毒液扇流" },
+    { "key": "magic-暗器2.ini", "name": "暗器2", "moveKind": "SingleMove", "lifeFrame": 100, "specialKind": "None", "icon": "icons/magic-暗器2.png", "concept": "蓝黑十字暗器与长距离气流" },
+    { "key": "magic-小符咒攻击.ini", "name": "小符咒攻击", "moveKind": "RandomSector", "lifeFrame": 40, "specialKind": "None", "icon": "icons/magic-小符咒攻击.png", "concept": "小型符纸与随机金紫电弧" },
+    { "key": "magic-火系攻击3.ini", "name": "火系攻击3", "moveKind": "SectorMove", "lifeFrame": 40, "specialKind": "None", "icon": "icons/magic-火系攻击3.png", "concept": "扇面推进的烈焰掌风" },
+    { "key": "magic-冰刀攻击.ini", "name": "冰刀攻击", "moveKind": "SingleMove", "lifeFrame": 40, "specialKind": "None", "icon": "icons/magic-冰刀攻击.png", "concept": "冰蓝刀刃与霜晶直线尾迹" },
+    { "key": "magic-蝙蝠.ini", "name": "蝙蝠", "moveKind": "SingleMove", "lifeFrame": 20, "specialKind": "None", "icon": "icons/magic-蝙蝠.png", "concept": "紫绿妖蝠俯冲" },
+    { "key": "magic-纳兰潜凛攻击.ini", "name": "纳兰潜凛攻击", "moveKind": "CircleMove", "lifeFrame": 40, "specialKind": "None", "icon": "icons/magic-纳兰潜凛攻击.png", "concept": "三道冰紫刃影绕心旋转" },
+    { "key": "magic-水系攻击2.ini", "name": "水系攻击2", "moveKind": "SingleMove", "lifeFrame": 40, "specialKind": "None", "icon": "icons/magic-水系攻击2.png", "concept": "水龙形冰蓝弹体" },
+    { "key": "magic-毒烟攻击.ini", "name": "毒烟攻击", "moveKind": "SingleMove", "lifeFrame": 80, "specialKind": "None", "icon": "icons/magic-毒烟攻击.png", "concept": "香炉吐出蛇形紫绿毒烟" },
+    { "key": "magic-长剑.ini", "name": "长剑", "moveKind": "SingleMove", "lifeFrame": 2, "specialKind": "None", "icon": "icons/magic-长剑.png", "concept": "银色长剑与冷蓝剑芒" },
+    { "key": "magic-金刚电闪.ini", "name": "金刚电闪", "moveKind": "RandomSector", "lifeFrame": 40, "specialKind": "None", "icon": "icons/magic-金刚电闪.png", "concept": "金刚拳与分叉紫电" },
+    { "key": "magic-水系攻击1.ini", "name": "水系攻击1", "moveKind": "SingleMove", "lifeFrame": 40, "specialKind": "None", "icon": "icons/magic-水系攻击1.png", "concept": "紧凑水弹与青蓝飞行尾迹" },
+    { "key": "magic-沙暴攻击.ini", "name": "沙暴攻击", "moveKind": "LineMove", "lifeFrame": 40, "specialKind": "None", "icon": "icons/magic-沙暴攻击.png", "concept": "沙金直线旋风刃" },
+    { "key": "magic-金钱镖.ini", "name": "金钱镖", "moveKind": "SectorMove", "lifeFrame": 40, "specialKind": "None", "icon": "icons/magic-金钱镖.png", "concept": "三枚方孔钱镖扇形齐射" },
+    { "key": "magic-花瓣攻击.ini", "name": "花瓣攻击", "moveKind": "CircleMove", "lifeFrame": 50, "specialKind": "None", "icon": "icons/magic-花瓣攻击.png", "concept": "粉白花瓣绕玉心环形旋转" }
+  ]
+}

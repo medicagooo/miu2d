@@ -9,8 +9,12 @@ import { getCompositeFrameCanvas } from "@miu2d/engine/resource/format/asf";
 import { decodeAsfWasm } from "@miu2d/engine/wasm/wasm-asf-decoder";
 import { initWasm } from "@miu2d/engine/wasm/wasm-manager";
 import { trpc } from "@miu2d/shared";
-import type { MagicListItem } from "@miu2d/types";
-import { MagicMoveKindLabels } from "@miu2d/types";
+import { resolveMagicIntro } from "@miu2d/shared/lib/npc-magic-descriptions";
+import {
+  isNativeImagePath,
+  resolveMagicIconPath,
+} from "@miu2d/shared/lib/npc-magic-icons";
+import { type MagicListItem, MagicMoveKindLabels } from "@miu2d/types";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { MagicPreview } from "../../../modules/magic/MagicPreview";
@@ -92,7 +96,19 @@ export function MagicPicker({
         {value ? (
           <div className="flex items-center gap-2 flex-1 min-w-0">
             {/* 武功图标 */}
-            <MagicIcon iconPath={selectedMagic?.icon} gameSlug={gameSlug} size={20} />
+            <MagicIcon
+              iconPath={
+                selectedMagic
+                  ? resolveMagicIconPath(
+                      selectedMagic.icon,
+                      selectedMagic.key,
+                      selectedMagic.userType
+                    )
+                  : undefined
+              }
+              gameSlug={gameSlug}
+              size={20}
+            />
 
             {/* 武功名称 */}
             <span className="text-xs text-[#cccccc] truncate flex-1" title={value}>
@@ -397,8 +413,12 @@ function MagicSelectDialog({
                 >
                   {/* 图标 - 优先使用武功自身图标 */}
                   <div className="w-8 h-8 mr-2 flex-shrink-0 flex items-center justify-center">
-                    {magic.icon ? (
-                      <MagicIcon iconPath={magic.icon} gameSlug={gameSlug} size={28} />
+                    {resolveMagicIconPath(magic.icon, magic.key, magic.userType) ? (
+                      <MagicIcon
+                        iconPath={resolveMagicIconPath(magic.icon, magic.key, magic.userType)}
+                        gameSlug={gameSlug}
+                        size={28}
+                      />
                     ) : (
                       <span className="text-lg">{getMagicIcon(magic)}</span>
                     )}
@@ -519,6 +539,9 @@ function MagicPreviewTooltip({ gameId, gameSlug, magicId, position }: MagicPrevi
     return null;
   }
 
+  // AI-TRACE: Picker previews mirror engine intro fallback without mutating the editable/API data.
+  const resolvedIntro = resolveMagicIntro(magic.intro, magic.key, magic.userType);
+
   return (
     <div
       className="fixed z-[9999] bg-[#1e1e1e] border border-[#3c3c3c] rounded-lg shadow-xl w-[280px]"
@@ -542,9 +565,9 @@ function MagicPreviewTooltip({ gameId, gameSlug, magicId, position }: MagicPrevi
       </div>
 
       {/* 简介 */}
-      {magic.intro && (
+      {resolvedIntro && (
         <div className="px-3 py-2 text-xs text-[#cccccc] border-b border-[#3c3c3c]">
-          {magic.intro}
+          {resolvedIntro}
         </div>
       )}
 
@@ -625,6 +648,15 @@ function MagicIcon({ iconPath, gameSlug, size = 32 }: MagicIconProps) {
     if (!iconPath || !gameSlug) {
       setDataUrl(null);
       loadedPathRef.current = null;
+      return;
+    }
+
+    // AI-TRACE: resolveMagicIconPath may return a Web-public NPC PNG. Native images are already
+    // browser-ready and must not be prefixed with asf/magic or decoded as ASF/MSF.
+    if (isNativeImagePath(iconPath)) {
+      loadedPathRef.current = iconPath;
+      setDataUrl(iconPath);
+      setIsLoading(false);
       return;
     }
 

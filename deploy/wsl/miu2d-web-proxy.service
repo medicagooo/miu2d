@@ -1,0 +1,10 @@
+[Unit]
+Description=Miu2D WSL web socket proxy
+After=docker.service
+
+# AI-TRACE: systemd socket activation supplies the Windows-visible connection;
+# systemd-socket-proxyd relays it to the Compose web service selected by compose.env.
+[Service]
+ExecStart=/usr/lib/systemd/systemd-socket-proxyd 127.0.0.1:18080
+PrivateTmp=true
+NoNewPrivileges=true

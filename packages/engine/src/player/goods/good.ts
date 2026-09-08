@@ -41,6 +41,22 @@ export enum GoodEffectType {
   ClearPetrifaction = 8,
 }
 
+/**
+ * 判断物品使用脚本是否会让玩家学会武功。
+ *
+ * AI-TRACE: GameDebugSection uses this source-level effect check when splitting
+ * GoodKind.Event records into the UI-only “秘籍” and “事件” groups. The real item
+ * kind and GoodsListManager.usingGood execution path remain unchanged; matching is
+ * intentionally limited to active AddMagic(...) command lines so comments,
+ * dialogue text, and AddMagicExp(...) do not create false manual classifications.
+ */
+export function goodsScriptTeachesMagic(scriptText: string): boolean {
+  return scriptText.split(/\r?\n/).some((line) => {
+    const activeCode = line.replace(/\/\/.*$/, "").trim();
+    return /^AddMagic\s*\(/i.test(activeCode);
+  });
+}
+
 // ============= 类型映射 =============
 
 import type { EquipPosition as EquipPositionStr, GoodKind as GoodKindStr } from "@miu2d/types";
@@ -261,12 +277,9 @@ export class Good {
     if (this.attack !== 0) entries.push({ key: "attack", label: "攻", value: this.attack });
     if (this.defend !== 0) entries.push({ key: "defend", label: "防", value: this.defend });
     if (this.evade !== 0) entries.push({ key: "evade", label: "捷", value: this.evade });
-    if (this.lifeMax !== 0)
-      entries.push({ key: "lifeMax", label: "命上限", value: this.lifeMax });
-    if (this.thewMax !== 0)
-      entries.push({ key: "thewMax", label: "体上限", value: this.thewMax });
-    if (this.manaMax !== 0)
-      entries.push({ key: "manaMax", label: "气上限", value: this.manaMax });
+    if (this.lifeMax !== 0) entries.push({ key: "lifeMax", label: "命上限", value: this.lifeMax });
+    if (this.thewMax !== 0) entries.push({ key: "thewMax", label: "体上限", value: this.thewMax });
+    if (this.manaMax !== 0) entries.push({ key: "manaMax", label: "气上限", value: this.manaMax });
     return entries;
   }
 

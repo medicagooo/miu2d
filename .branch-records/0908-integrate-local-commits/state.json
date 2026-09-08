@@ -18,7 +18,19 @@
   "integration": "unmerged",
   "evidence": [
     "2026-09-08 fetch 后 main/origin/main 均为 5ef850bece3d42c7fb06decb21e77bb9da17ab77，工作区干净",
-    "merge-tree 预览冲突为 BRANCHES.md、两个Dockerfile、nginx.conf"
+    "merge-tree 预览冲突为 BRANCHES.md、两个Dockerfile、nginx.conf",
+    "Resolved Dockerfile comments and retained types/dist runtime copy, STATIC_ONLY and optional REMOTE_DEMOS; nginx main cache/site-region rules preserved",
+    "New feature tests: 12 passed; existing magic-learning and inventory-sort: 14 passed",
+    "Engine full suite: 38 files passed, 4 failed; 573 tests passed, 8 failed; failures in unchanged timer/common/doudizhu tests plus npc suite loading; full suite not green",
+    "Direct Node TypeScript -b and Vite production build passed using installed dependencies; pnpm wrapper auto-install blocked by ignored builds, its workspace-yaml side effect restored",
+    "docker compose --profile production config --quiet and git diff --cached --check passed; no containers started",
+    "New assets: 34 PNG icons under packages/web/public/npc-magic-icons; generated web dist remains ignored; no deployment"
   ],
-  "next": "登记并提交后合并源分支，解决冲突，验证并推送"
+  "next": "Commit resolved merge, verify ancestry, then predeclare and push main",
+  "behavior": [
+    "packages/engine/src/data/player-magic-catalog.ts broadens player/debug catalog to NPC magics, de-duplicates keys and excludes Relation.Ini without changing API ownership",
+    "packages/shared/src/lib/npc-magic-icons.ts supplies missing NPC icons only; existing icon wins; npc-magic-descriptions.ts resolves curated introductions",
+    "packages/engine/src/player/goods/good.ts and GameDebugSection.tsx classify manuals by script/use effect",
+    "docker-compose.yml adds loopback bindings, idempotent initialization dependencies and corrected S3 variables; retained as optional configuration only, local database prohibition unchanged"
+  ]
 }

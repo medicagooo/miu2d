@@ -1,0 +1,11 @@
+[Unit]
+Description=Miu2D Windows-visible WSL web socket
+
+# AI-TRACE: this native WSL socket is the Windows localhost entry point. Its matching
+# service forwards accepted connections to nginx's loopback-only Docker port 18080.
+[Socket]
+ListenStream=127.0.0.1:8080
+NoDelay=true
+
+[Install]
+WantedBy=sockets.target
