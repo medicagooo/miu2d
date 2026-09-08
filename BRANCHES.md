@@ -1,6 +1,7 @@
 {
   "pending": [
-    "0908-sword2-placeholder-icons/push-main-1"
+    "0908-sword2-placeholder-icons/push-main-1",
+    "0908-workers-game-tabs/create-branch-1"
   ],
   "timezone": "Asia/Singapore",
   "format": 1,
@@ -9,7 +10,8 @@
   ],
   "active": [
     "0908-remove-local-recovery",
-    "0908-integrate-local-commits"
+    "0908-integrate-local-commits",
+    "0908-workers-game-tabs"
   ],
   "records": [
     ".branch-records/0908-magic-learning-dedup/state.json",
@@ -19,7 +21,8 @@
     ".branch-records/0908-remove-local-recovery/state.json",
     ".branch-records/0908-integrate-local-commits/state.json",
     ".branch-records/0908-missing-magic-icons/state.json",
-    ".branch-records/0908-sword2-placeholder-icons/state.json"
+    ".branch-records/0908-sword2-placeholder-icons/state.json",
+    ".branch-records\\0908-workers-game-tabs/state.json"
   ],
   "changes": [
     {
@@ -120,6 +123,15 @@
       "id": "0908-sword2-placeholder-icons",
       "domain": "武功图标/剑侠情缘2",
       "implementedAt": "2026-09-08T15:03:55.4127752+08:00"
+    },
+    {
+      "id": "0908-workers-game-tabs",
+      "date": "2026-09-08",
+      "domain": "首页/Workers运行时",
+      "businessChange": "计划将官网首屏改为新剑侠/月影/剑侠2悬停全屏首页截图Tab，前后端适配Workers，沿用线上PostgreSQL/S3和原Node入口",
+      "status": "planned",
+      "request": "0908-workers-game-tabs/request-1",
+      "evidence": ".branch-records\\0908-workers-game-tabs/state.json"
     }
   ]
 }
