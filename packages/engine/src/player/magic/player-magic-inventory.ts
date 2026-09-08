@@ -4,6 +4,7 @@
  */
 
 import { logger } from "../../core/logger";
+import { getGameSlug, getMagicsData } from "../../data/game-data-api";
 import { getMagic, getMagicAtLevel, preloadMagicAsf } from "../../magic/magic-config-loader";
 import type { MagicData, MagicItemInfo } from "../../magic/types";
 import { createDefaultMagicItemInfo } from "../../magic/types";
@@ -27,6 +28,7 @@ import {
   setMagicHide as _setMagicHide,
 } from "./magic-list-hide";
 import { MagicListReplace } from "./magic-list-replace";
+import { repairPlayerMagicProgression } from "./player-magic-progression";
 
 /**
  * 武功经验配置
@@ -75,17 +77,35 @@ export class PlayerMagicInventory {
   private _npcIniIndex: number = 1;
 
   // === ReplaceMagicList（委托 MagicListReplace）===
-  private readonly replace = new MagicListReplace();
+  private readonly replace = new MagicListReplace((fileName) => this.getConfiguredMagic(fileName));
 
   // 快捷栏：物理持有武功项（物品从面板/修炼区移入）
   private bottomSlots: (MagicItemInfo | null)[] = new Array(MAGIC_LIST_CONFIG.bottomSlotCount).fill(
     null
   );
 
-  constructor() {
+  constructor(private readonly usePlayerProgression = false) {
     const size = MAGIC_LIST_CONFIG.maxMagic + 1;
     this.magicList = new Array(size).fill(null);
     this.magicListHide = new Array(size).fill(null);
+  }
+
+  // Only PlayerBase opts in. All learning, saved/hidden/replacement loading and reloads use
+  // this reader; NPC/companion inventories keep their original configuration and level curves.
+  private getConfiguredMagic(fileName: string): MagicData | null {
+    const magic = getMagic(fileName);
+    if (!magic || !this.usePlayerProgression) return magic;
+    const normalize = (key: string) => key.trim().replaceAll("\\", "/").split("/").at(-1)?.toLowerCase();
+    const source = getMagicsData()?.player.find(entry => normalize(entry.key) === normalize(magic.fileName));
+    return repairPlayerMagicProgression(magic, { gameSlug: getGameSlug(), userType: source?.userType });
+  }
+
+  private prepareSavedMagicItem(item: MagicItemInfo | null): MagicItemInfo | null {
+    if (this.usePlayerProgression && item?.magic) {
+      const magic = this.getConfiguredMagic(item.magic.fileName);
+      if (magic) item.magic = getMagicAtLevel(magic, item.level);
+    }
+    return item;
   }
 
   // ============= 委托上下文（惰性创建）=============
@@ -113,6 +133,7 @@ export class PlayerMagicInventory {
       magicListHide: this.magicListHide,
       callbacks: this.callbacks,
       getCurrentMagicInUse: () => this.currentMagicInUse,
+      getMagic: (fileName) => this.getConfiguredMagic(fileName),
       setCurrentMagicInUse: (v) => {
         this.currentMagicInUse = v;
       },
@@ -430,7 +451,7 @@ export class PlayerMagicInventory {
       }
 
       // 加载武功配置（同步，从 API 缓存读取）
-      const magic = getMagic(fileName);
+      const magic = this.getConfiguredMagic(fileName);
       if (!magic) {
         logger.warn(`[PlayerMagicInventory] Failed to load magic: ${fileName}`);
         results.push([false, -1]);
@@ -640,7 +661,7 @@ export class PlayerMagicInventory {
     }
 
     // 加载武功
-    const magic = getMagic(fileName);
+    const magic = this.getConfiguredMagic(fileName);
     if (!magic) {
       logger.warn(`[PlayerMagicInventory] Failed to load magic: ${fileName}`);
       return { status: "failed", reason: "missingMagic" };
@@ -1090,7 +1111,7 @@ export class PlayerMagicInventory {
    */
   setBottomSlots(slots: (MagicItemInfo | null)[]): void {
     for (let s = 0; s < this.bottomSlots.length; s++) {
-      this.bottomSlots[s] = slots[s] ?? null;
+      this.bottomSlots[s] = this.prepareSavedMagicItem(slots[s] ?? null);
     }
     this.updateView();
   }
@@ -1100,7 +1121,7 @@ export class PlayerMagicInventory {
    */
   setBottomSlotForLoad(slot: number, item: MagicItemInfo | null): void {
     if (slot >= 0 && slot < MAGIC_LIST_CONFIG.bottomSlotCount) {
-      this.bottomSlots[slot] = item;
+      this.bottomSlots[slot] = this.prepareSavedMagicItem(item);
     }
   }
 
@@ -1108,8 +1129,8 @@ export class PlayerMagicInventory {
    * 从存档直接设置修炼武功（用于 loadMagicContainer，绕过面板逻辑）
    */
   setXiuLianForLoad(item: MagicItemInfo | null): void {
-    this.xiuLianMagic = item;
-    this.callbacks.onXiuLianMagicChange?.(item);
+    this.xiuLianMagic = this.prepareSavedMagicItem(item);
+    this.callbacks.onXiuLianMagicChange?.(this.xiuLianMagic);
   }
 
   setNonReplaceMagicLevel(fileName: string, level: number): void {
@@ -1173,12 +1194,14 @@ export class PlayerMagicInventory {
    * 保留等级和经验，但使用新的 MagicData 配置
    */
   async reloadAllMagics(): Promise<void> {
-    let reloadCount = 0;
+    let reloadCount = this.replace.reloadAllMagics();
+
+    for (const item of this.bottomSlots) this.prepareSavedMagicItem(item);
 
     for (let i = 1; i <= MAGIC_LIST_CONFIG.maxMagic; i++) {
       const info = this.magicList[i];
       if (info?.magic) {
-        const newMagic = getMagic(info.magic.fileName);
+        const newMagic = this.getConfiguredMagic(info.magic.fileName);
         if (newMagic) {
           const levelMagic = getMagicAtLevel(newMagic, info.level);
           info.magic = levelMagic;
@@ -1188,7 +1211,7 @@ export class PlayerMagicInventory {
 
       const hideInfo = this.magicListHide[i];
       if (hideInfo?.magic) {
-        const newMagic = getMagic(hideInfo.magic.fileName);
+        const newMagic = this.getConfiguredMagic(hideInfo.magic.fileName);
         if (newMagic) {
           const levelMagic = getMagicAtLevel(newMagic, hideInfo.level);
           hideInfo.magic = levelMagic;
@@ -1205,7 +1228,7 @@ export class PlayerMagicInventory {
     }
 
     if (this.xiuLianMagic?.magic) {
-      const newMagic = getMagic(this.xiuLianMagic.magic.fileName);
+      const newMagic = this.getConfiguredMagic(this.xiuLianMagic.magic.fileName);
       if (newMagic) {
         const levelMagic = getMagicAtLevel(newMagic, this.xiuLianMagic.level);
         this.xiuLianMagic.magic = levelMagic;

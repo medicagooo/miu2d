@@ -2,7 +2,8 @@
   "pending": [
     "0908-workers-game-tabs/merge-main-header-1",
     "0908-workers-game-tabs/push-main-header-1",
-    "0909-transparent-magic-icons/push-main-1"
+    "0909-transparent-magic-icons/push-main-1",
+    "0909-player-level-repair/push-main-1"
   ],
   "timezone": "Asia/Singapore",
   "format": 1,
@@ -12,7 +13,8 @@
   "active": [
     "0908-remove-local-recovery",
     "0908-integrate-local-commits",
-    "0908-workers-game-tabs"
+    "0908-workers-game-tabs",
+    "0909-player-level-repair"
   ],
   "records": [
     ".branch-records/0908-magic-learning-dedup/state.json",
@@ -26,7 +28,8 @@
     ".branch-records/0908-workers-game-tabs/state.json",
     ".branch-records/0909-transparent-magic-icons/state.json",
     ".branch-records/0909-landing-hero-only/state.json",
-    ".branch-records/0909-player-magic-policy/state.json"
+    ".branch-records/0909-player-magic-policy/state.json",
+    ".branch-records/0909-player-level-repair/state.json"
   ],
   "changes": [
     {
@@ -184,6 +187,15 @@
       "status": "implemented",
       "request": ".branch-records/0909-player-magic-policy/events.jsonl#request-1",
       "evidence": ".branch-records/0909-player-magic-policy/state.json",
+      "implementationDate": "2026-09-09"
+    },
+    {
+      "id": "0909-player-level-repair",
+      "date": "2026-09-09",
+      "businessChange": "仅新剑侠/月影玩家运行时修复：掌上生雷和天外飞仙由空表改为新设计10级成长；5种武功共6条游戏记录纠正累计经验倒退/重复。天魔解体及两种物品暗器保留原样，NPC/伙伴/剑侠2不变；保留已有等级、经验与冷却，作者后改配置优先。",
+      "status": "implemented",
+      "request": ".branch-records/0909-player-level-repair/events.jsonl#execute-1",
+      "evidence": ".branch-records/0909-player-level-repair/state.json",
       "implementationDate": "2026-09-09"
     }
   ]

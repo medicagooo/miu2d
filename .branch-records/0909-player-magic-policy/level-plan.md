@@ -1,3 +1,5 @@
+> 已被2026-09-09的仅新剑侠/月影玩家范围取代。当前实施见 ../0909-player-level-repair/implementation.md；下方保留历史方案，非当前执行范围。
+
 # 单级武功补全到10级方案（未实施）
 
 2026-09-09，Asia/Singapore。依据三个游戏公开 game/{slug}/api/data 的只读结果及当前引擎。逐项标识、归属、基础数值和已有等级表见同目录 level-audit.json；此文件仅包含分析所需武功字段，不含账户或存档。
@@ -176,4 +178,3 @@
 | magic-冰弓箭.ini | 冰弓箭 |
 | magic-两格长枪.ini | 长枪 |
 | magic-弓箭.ini | 弓箭 |
-

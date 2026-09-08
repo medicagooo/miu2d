@@ -15,6 +15,7 @@ const HIDE_START_INDEX = 1000;
  * 替换武功列表管理器 — 持有变身状态和替换数据
  */
 export class MagicListReplace {
+  constructor(private readonly loadMagic: typeof getMagic = getMagic) {}
   private _isActive = false;
   private _currentFilePath = "";
   private _lists: Map<string, (MagicItemInfo | null)[]> = new Map();
@@ -22,6 +23,25 @@ export class MagicListReplace {
 
   get isActive(): boolean {
     return this._isActive;
+  }
+
+  /** Reload every saved form, including inactive/hidden lists, while retaining item state. */
+  reloadAllMagics(): number {
+    let count = 0;
+    const seen = new Set<MagicItemInfo>();
+    for (const lists of [this._lists, this._hideLists]) {
+      for (const list of lists.values()) {
+        for (const item of list) {
+          if (!item?.magic || seen.has(item)) continue;
+          seen.add(item);
+          const magic = this.loadMagic(item.magic.fileName);
+          if (!magic) continue;
+          item.magic = getMagicAtLevel(magic, item.level);
+          count++;
+        }
+      }
+    }
+    return count;
   }
 
   /**
@@ -68,9 +88,9 @@ export class MagicListReplace {
     // 填充存储区 (StoreIndex)
     for (let i = 1; i <= MAGIC_LIST_CONFIG.maxMagic; i++) {
       if (listI >= magicFileNames.length) break;
-      const magic = getMagic(ResourcePath.magic(magicFileNames[listI]));
+      const magic = this.loadMagic(ResourcePath.magic(magicFileNames[listI]));
       if (magic) {
-        newList[i] = createDefaultMagicItemInfo(magic, 1);
+        newList[i] = createDefaultMagicItemInfo(getMagicAtLevel(magic, 1), 1);
         newList[i]!.hideCount = 1;
       }
       listI++;
@@ -183,7 +203,7 @@ export class MagicListReplace {
         const newHideList: (MagicItemInfo | null)[] = new Array(size).fill(null);
 
         for (const item of items) {
-          const magic = getMagic(ResourcePath.magic(item.fileName));
+          const magic = this.loadMagic(ResourcePath.magic(item.fileName));
           if (magic) {
             const levelMagic = getMagicAtLevel(magic, item.level || 1);
             const info = createDefaultMagicItemInfo(levelMagic, item.level || 1);

@@ -1,0 +1,32 @@
+{
+  "constraints": [
+    "未经明确目标及影响确认不得写数据库或直接部署；可通过本地代码修复",
+    "不重建本地数据库，不清除玩家存档，不改NPC/剑侠2",
+    "旧96项成长设计已被新的仅玩家范围取代；现有用户明确排除规则仍有效"
+  ],
+  "evidence": [
+    "基线main fdb98d2aa848756b3f7935cb992a5cafd916de9b；2026-09-09最终fetch确认origin/main 48ebc34c4011247c6dda7a8df80ca00ee75a36ce为其祖先",
+    ".branch-records/0909-player-level-repair/implementation.md",
+    ".branch-records/0909-player-level-repair/sources.json",
+    "已按用户要求从公开发布包读取原始INI并校验CRC32/大小：5项原表确为空，并非已证实导入损失",
+    "35项定向测试通过（5个文件）；TypeScript tsc -b及Vite/PWA生产构建使用本地依赖通过；git diff --check通过",
+    "Bugbot发现1项P2：变身武功活动/非活动/隐藏缓存未刷新；已修复MagicListReplace.reloadAllMagics并增加回归测试，Bugbot复核通过"
+  ],
+  "next": "执行push-main-1；核验origin/main与本地HEAD一致及自动CI状态；成功不另建回填提交",
+  "acceptance": [
+    "原始数据与新设计明确区分，技能成长/累计经验可验证",
+    "玩家旧存档兼容，NPC和剑侠2回归通过",
+    "Bugbot审查完成、发现问题已修复；origin/main SHA实测与本地一致"
+  ],
+  "integration": "verified",
+  "purpose": "执行玩家武功成长数据核实与修复，Bugbot审查修复后推送main",
+  "status": "active",
+  "requirements": [
+    "仅sword1/demo且userType=player；保留此前指定技能排除；不修改NPC或剑侠2",
+    "优先核实新剑侠掌上生雷、天外飞仙、天魔解体大法、梅花镖、袖箭5项空参数等级表的原始配置及调用",
+    "核实并处理玩家累计经验阈值异常，保留原武功形态和伤害语义",
+    "Bugbot审查并修复问题，完成相关测试和离线构建，普通推送origin/main",
+    "原始来源同样为空：掌上生雷/天外飞仙采用明确新设计，剧情天魔解体及物品暗器保持原样；经验按implementation.md精确修正"
+  ],
+  "integrationEvidence": "实现及验证在当前main工作树完成；远端集成尚待push-main-1，operation.after仅意图"
+}

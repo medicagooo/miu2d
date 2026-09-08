@@ -7,13 +7,14 @@
  */
 
 import { logger } from "../../core/logger";
-import { getMagic, getMagicAtLevel } from "../../magic/magic-config-loader";
+import { getMagicAtLevel } from "../../magic/magic-config-loader";
 import type { MagicData, MagicItemInfo } from "../../magic/types";
 import { createDefaultMagicItemInfo } from "../../magic/types";
 import { MAGIC_LIST_CONFIG, type MagicListCallbacks } from "./magic-list-config";
 
 /** MagicListHide 所需的宿主上下文 */
 export interface MagicListHideDeps {
+  getMagic(fileName: string): MagicData | null;
   readonly magicList: (MagicItemInfo | null)[];
   readonly magicListHide: (MagicItemInfo | null)[];
   readonly callbacks: MagicListCallbacks;
@@ -58,7 +59,7 @@ export async function addHiddenMagic(
     return false;
   }
 
-  const magic = getMagic(fileName);
+  const magic = deps.getMagic(fileName);
   if (!magic) {
     logger.warn(`[PlayerMagicInventory] Failed to load hidden magic: ${fileName}`);
     return false;
@@ -108,7 +109,7 @@ export async function addHiddenMagicBatch(
       continue;
     }
 
-    const magic = getMagic(fileName);
+    const magic = deps.getMagic(fileName);
     if (!magic) {
       logger.warn(`[PlayerMagicInventory] Failed to load hidden magic: ${fileName}`);
       continue;

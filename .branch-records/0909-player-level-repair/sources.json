@@ -1,0 +1,138 @@
+{
+  "observedAt": "2026-09-09T03:28:41.2249382+08:00",
+  "provenance": "公开移植资源发布包（作者标注原版），不等同于已验证零售光盘原文件；Range提取并验证ZIP条目CRC32及大小",
+  "sources": [
+    {
+      "path": "game_profile.ini",
+      "bytes": 1067,
+      "sha256": "f99deabe4043038ac3d12158638cc50834e384f06bfac3c26f7c11fa4bb6b561",
+      "archive": "https://github.com/Upwinded/JXQY-all-in-one/releases/download/resources/xjxqy.zip"
+    },
+    {
+      "path": "ini/goods/goods062_梅花镖.ini",
+      "bytes": 140,
+      "sha256": "8957f6c477e9487c497ac06de3d12366b72f924719ebf065877b381303e23a80",
+      "archive": "https://github.com/Upwinded/JXQY-all-in-one/releases/download/resources/xjxqy.zip"
+    },
+    {
+      "path": "ini/goods/goods075_梅花镖.ini",
+      "bytes": 129,
+      "sha256": "8b4c8d574ad24b0662e9e2b396a4aba8208b78ff0ce5fb3147420b577cf364c3",
+      "archive": "https://github.com/Upwinded/JXQY-all-in-one/releases/download/resources/xjxqy.zip"
+    },
+    {
+      "path": "ini/goods/goods076_袖箭.ini",
+      "bytes": 120,
+      "sha256": "afe54ffca6b25179875b4ef1784688f1419648d4cc72c5363173dc93f968c3a3",
+      "archive": "https://github.com/Upwinded/JXQY-all-in-one/releases/download/resources/xjxqy.zip"
+    },
+    {
+      "path": "ini/magic/magic004_灵剑幻花.ini",
+      "bytes": 1379,
+      "sha256": "36571ffb95a469c6c203f3397bb598620a9ed5f31a2db393c3ee023b3f99b0c9",
+      "archive": "https://github.com/Upwinded/JXQY-all-in-one/releases/download/resources/xjxqy.zip"
+    },
+    {
+      "path": "ini/magic/magic005_掌上生雷.ini",
+      "bytes": 854,
+      "sha256": "e0fc810648638a1febfb7ac76a0a1874865d64e6c480833c16f3504f1541d670",
+      "archive": "https://github.com/Upwinded/JXQY-all-in-one/releases/download/resources/xjxqy.zip"
+    },
+    {
+      "path": "ini/magic/magic009_风雷九洲.ini",
+      "bytes": 1276,
+      "sha256": "1c7065150dfee13cfdad0a2d796e5c046d563c46b68966d87e47cbf795114f94",
+      "archive": "https://github.com/Upwinded/JXQY-all-in-one/releases/download/resources/xjxqy.zip"
+    },
+    {
+      "path": "ini/magic/magic011_天魔解体大法.ini",
+      "bytes": 1019,
+      "sha256": "c19a96672d61370ea12aca06da296c5d38ae06b59165547c6535afffb51b9993",
+      "archive": "https://github.com/Upwinded/JXQY-all-in-one/releases/download/resources/xjxqy.zip"
+    },
+    {
+      "path": "ini/magic/magic012_碧海潮生.ini",
+      "bytes": 1412,
+      "sha256": "01f33e33952d2265194584c6958e90fcf55a960413b83b0f92ef1ae60429de5d",
+      "archive": "https://github.com/Upwinded/JXQY-all-in-one/releases/download/resources/xjxqy.zip"
+    },
+    {
+      "path": "ini/magic/magic013_天外飞仙.ini",
+      "bytes": 906,
+      "sha256": "48ee8c638ac44dc0e033e3420bec896c6383f35a2d05cf6245899f03cab7e57f",
+      "archive": "https://github.com/Upwinded/JXQY-all-in-one/releases/download/resources/xjxqy.zip"
+    },
+    {
+      "path": "ini/magic/magic018_潮生碧海.ini",
+      "bytes": 1407,
+      "sha256": "969fe1327fb7c5a8b229a0036a2853ea374ad3cf46b4fbb9120d68bbc3f6db42",
+      "archive": "https://github.com/Upwinded/JXQY-all-in-one/releases/download/resources/xjxqy.zip"
+    },
+    {
+      "path": "ini/magic/magic018_碧波临风.ini",
+      "bytes": 1049,
+      "sha256": "74baf2d68059d1a42c6993b469c5d1d1ea96f78e4ab1b42e5c694b9d74a7b104",
+      "archive": "https://github.com/Upwinded/JXQY-all-in-one/releases/download/resources/xjxqy.zip"
+    },
+    {
+      "path": "ini/magic/magic024_幻影飞狐.ini",
+      "bytes": 1392,
+      "sha256": "b6a69bde08a5eaec5706b8a3a6ec3c86d50c5b97480814ec3afecb96ed4c6a97",
+      "archive": "https://github.com/Upwinded/JXQY-all-in-one/releases/download/resources/xjxqy.zip"
+    },
+    {
+      "path": "ini/magic/magic057_梅花镖.ini",
+      "bytes": 785,
+      "sha256": "eabdd2b8a2f579041e8ace3f042726fcc748859aab593ed9b67f54785ea853f5",
+      "archive": "https://github.com/Upwinded/JXQY-all-in-one/releases/download/resources/xjxqy.zip"
+    },
+    {
+      "path": "ini/magic/magic058_袖箭.ini",
+      "bytes": 717,
+      "sha256": "ea918ec900da60fe2e46fda8755bf9eccf233d0089934e1131d9578f28db958b",
+      "archive": "https://github.com/Upwinded/JXQY-all-in-one/releases/download/resources/xjxqy.zip"
+    },
+    {
+      "path": "ini/magic/magic满江红.ini",
+      "bytes": 1388,
+      "sha256": "146d7aa123fa2b1332e26647510afdb33eab3505e2905e93fa2995e94ccb15f9",
+      "archive": "https://github.com/Upwinded/JXQY-all-in-one/releases/download/resources/xjxqy.zip"
+    },
+    {
+      "path": "ini/magic/player-levelup-1.ini",
+      "bytes": 235,
+      "sha256": "1cd89b0ab4daaf25f418e80f4514960e80949bf110ab1c563411fe58da5c474a",
+      "archive": "https://github.com/Upwinded/JXQY-all-in-one/releases/download/resources/xjxqy.zip"
+    },
+    {
+      "path": "ini/magic/player-levelup-2.ini",
+      "bytes": 235,
+      "sha256": "7d8db9c0234fd62b4bd4202405b9c27a1ce5dab00819441a3a86be6f012a621a",
+      "archive": "https://github.com/Upwinded/JXQY-all-in-one/releases/download/resources/xjxqy.zip"
+    },
+    {
+      "path": "script/map/map084_金兵主帅营/天魔解体死亡.txt",
+      "bytes": 6920,
+      "sha256": "3bb30ea53fbb7f5400f3ad1748ee7ff3ee140dd06038d532588284fa482cb3b7",
+      "archive": "https://github.com/Upwinded/JXQY-all-in-one/releases/download/resources/xjxqy.zip"
+    },
+    {
+      "path": "game_profile.ini",
+      "bytes": 1076,
+      "sha256": "7b5f39c5a114d41b1bf9fcda0b4ade649f083c73e177662189a2c2007ee41de0",
+      "archive": "https://github.com/Upwinded/JXQY-all-in-one/releases/download/resources/yycs.zip"
+    },
+    {
+      "path": "ini/magic/player-magic-云生结海.ini",
+      "bytes": 1395,
+      "sha256": "1445bda54710f906164976d03314475ff6df29fdbe297a0070fc001b1f0c881c",
+      "archive": "https://github.com/Upwinded/JXQY-all-in-one/releases/download/resources/yycs.zip"
+    },
+    {
+      "path": "ini/magic/player-magic-魂牵梦绕.ini",
+      "bytes": 1095,
+      "sha256": "92409ed3746d558a5c9fe426698dbe157a17427a86c38e68ea7b160a85a979cc",
+      "archive": "https://github.com/Upwinded/JXQY-all-in-one/releases/download/resources/yycs.zip"
+    }
+  ]
+}

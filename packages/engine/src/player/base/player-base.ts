@@ -163,7 +163,7 @@ export abstract class PlayerBase extends Character {
     targetId?: string;
   } | null = null;
   // Player 持有 PlayerMagicInventory 和 GoodsListManager
-  protected _magicInventory: PlayerMagicInventory = new PlayerMagicInventory();
+  protected _magicInventory: PlayerMagicInventory = new PlayerMagicInventory(true);
   protected _goodsListManager: GoodsListManager = new GoodsListManager();
 
   // =============================================
