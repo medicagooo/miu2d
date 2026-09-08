@@ -1,11 +1,14 @@
 {
-  "purpose": "前后端适配 Workers，复用线上 PostgreSQL/S3，首页三游戏悬停截图 Tab；review、修复、push main，并准备 GitHub 部署",
+  "purpose": "三游戏首页与 Workers 公开游戏 API/资源代理部署；完整 Node/Workers 后端保留可选",
   "evidence": [
     "packages/server/src/worker.ts",
     "packages/server/src/runtime/context.test.ts",
     "scripts/verify-worker-runtime.mjs",
     "packages/web/src/pages/landing/games.ts",
-    "packages/web/public/screenshot/titles/SOURCES.md"
+    "packages/web/public/screenshot/titles/SOURCES.md",
+    "packages/server/src/worker-demo.ts",
+    "scripts/verify-demo-runtime.mjs",
+    "packages/game/src/components/LocalSaveLoadPanel.tsx"
   ],
   "constraints": [
     "不创建或恢复本地数据库",
@@ -13,12 +16,13 @@
     "直接云写入在明确目标操作影响后单独确认",
     "不手动操作 GitHub Actions，除非获对应授权"
   ],
-  "status": "blocked",
+  "status": "active",
   "requirements": [
-    "三个游戏真实首页截图全视口预览、鼠标悬停和触摸/键盘切换、独立进入按钮",
-    "Workers 承担前后端，保留 Node 兼容入口及线上数据契约",
-    "完成审查修复验证并推送 origin/main",
-    "部署到用户指定 Cloudflare 账号，通过 GitHub 集成"
+    "保留已完成三游戏悬停首页",
+    "当前部署仅托管前端并代理原站 demo/sword1/sword2 公开 API 与资源，不配置数据库",
+    "代理仅GET/HEAD且不传浏览器凭据；保留本地存档，账户/管理服务不在当前部署范围",
+    "审查验证后合入push main，部署已确认Cloudflare账号并连接GitHub",
+    "公开模式隐藏账户与云存档，使用游戏快照JSON文件导出/导入；图标与manifest均经公开logo API"
   ],
   "acceptance": [
     "三个游戏预览与入口正确且首页不启动游戏实例",
@@ -28,17 +32,15 @@
     "origin/main SHA 核实",
     "云部署单独验证健康/日志/业务"
   ],
-  "next": "代码合入并推送main后：获取原线上配置的私密位置；用户确认目标账号下Worker/Hyperdrive/Images/Secrets/GitHub构建操作；然后部署并验证线上健康、日志、游戏及登录。",
+  "next": "验证本地构建后合入push main，使用GitHub Workers Builds发布并独立验证线上接口/资源/日志",
   "integration": "unmerged",
   "verification": {
     "results": [
-      "离线 build:workers 通过",
-      "test:workers 4项测试、Wrangler dry-run、真实workerd健康/SPA/API/退出Cookie/S3代理回归通过；无数据库创建或查询",
-      "旧Node后端build通过",
-      "Bugbot一项S3路径前缀问题已修复",
-      "桌面hover/键盘和手机390x844入口视觉验证通过",
-      "云连接及登录业务未验证，尚未部署"
+      "公开Worker真实workerd运行测试通过：三游戏/Range/查询参数/凭据隔离/拒绝写入/未知路由/重定向/manifest",
+      "独立Bugbot审查后修复游戏内账户、存档和图标问题",
+      "完整Worker入口构建通过；最终公开前端类型检查及构建通过",
+      "无数据库创建或查询，线上部署待验证"
     ],
-    "at": "2026-09-08T16:04:08.3502793+08:00"
+    "at": "2026-09-08T16:26:42.0045964+08:00"
   }
 }

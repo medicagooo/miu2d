@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { HiOutlineXMark } from "react-icons/hi2";
 import { SettingsPanel, type SettingsPanelProps } from "./common/SidePanel";
 import { WebSaveLoadPanel } from "./WebSaveLoadPanel";
+import { LocalSaveLoadPanel } from "./LocalSaveLoadPanel";
 
 export type MenuTab = "save" | "settings";
 
@@ -40,6 +41,9 @@ const TABS: { key: MenuTab; label: string }[] = [
   { key: "save", label: "存档" },
   { key: "settings", label: "设置" },
 ];
+// Keep the original cloud panel for full deployments; demo saves stay on-device.
+const SaveLoadPanel =
+  import.meta.env.VITE_DEMO_ONLY === "true" ? LocalSaveLoadPanel : WebSaveLoadPanel;
 
 export function GameMenuPanel({
   visible,
@@ -136,7 +140,7 @@ export function GameMenuPanel({
         {/* Tab 内容 */}
         <div className="flex-1 overflow-y-auto">
           {activeTab === "save" && (
-            <WebSaveLoadPanel
+            <SaveLoadPanel
               embedded
               gameSlug={gameSlug}
               visible={visible}
@@ -155,7 +159,10 @@ export function GameMenuPanel({
       {showFeedback && (
         <div
           className="fixed inset-0 z-[1300] flex items-center justify-center"
-          onClick={(e) => { e.stopPropagation(); setShowFeedback(false); }}
+          onClick={(e) => {
+            e.stopPropagation();
+            setShowFeedback(false);
+          }}
         >
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
           <div

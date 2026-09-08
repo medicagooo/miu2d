@@ -1,7 +1,7 @@
 import { AuthProvider, DeviceProvider, ThemeProvider, TRPCProvider } from "@miu2d/shared";
 import { LoadingIcon } from "@miu2d/ui";
 import { lazy, Suspense } from "react";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { Navigate, Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { PWAUpdatePrompt } from "./PWAUpdatePrompt";
 import { RegionalSiteNotice } from "./RegionalSiteNotice";
 import { ForgotPasswordPage } from "./pages/ForgotPasswordPage";
@@ -40,14 +40,14 @@ export default function App() {
               >
                 <Routes>
                   <Route path="/" element={<LandingPage />} />
-                  <Route path="/login" element={<LoginPage />} />
-                  <Route path="/register" element={<RegisterPage />} />
-                  <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-                  <Route path="/reset-password" element={<ResetPasswordPage />} />
+                  <Route path="/login" element={import.meta.env.VITE_DEMO_ONLY === "true" ? <Navigate to="/" replace /> : <LoginPage />} />
+                  <Route path="/register" element={import.meta.env.VITE_DEMO_ONLY === "true" ? <Navigate to="/" replace /> : <RegisterPage />} />
+                  <Route path="/forgot-password" element={import.meta.env.VITE_DEMO_ONLY === "true" ? <Navigate to="/" replace /> : <ForgotPasswordPage />} />
+                  <Route path="/reset-password" element={import.meta.env.VITE_DEMO_ONLY === "true" ? <Navigate to="/" replace /> : <ResetPasswordPage />} />
                   <Route path="/game/:gameSlug" element={<GameScreen />} />
                   <Route path="/game/:gameSlug/" element={<GameScreen />} />
                   <Route path="/game/:gameSlug/share/:shareCode" element={<GameScreen />} />
-                  <Route path="/dashboard/*" element={<DashboardApp />} />
+                  <Route path="/dashboard/*" element={import.meta.env.VITE_DEMO_ONLY === "true" ? <Navigate to="/" replace /> : <DashboardApp />} />
                   <Route path="*" element={<NotFoundPage />} />
                 </Routes>
               </Suspense>

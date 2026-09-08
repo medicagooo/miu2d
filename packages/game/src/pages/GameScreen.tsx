@@ -81,9 +81,14 @@ const MOBILE_SCALE = 0.75;
 
 export default function GameScreen() {
   // ===== URL 参数 =====
-  const { gameSlug, shareCode } = useParams<{ gameSlug: string; shareCode?: string }>();
+  const { gameSlug, shareCode: routeShareCode } = useParams<{
+    gameSlug: string;
+    shareCode?: string;
+  }>();
+  const shareCode = import.meta.env.VITE_DEMO_ONLY === "true" ? undefined : routeShareCode;
   const searchParams = useSearchParams()[0];
-  const loadSaveId = searchParams.get("loadSave");
+  const loadSaveId =
+    import.meta.env.VITE_DEMO_ONLY === "true" ? null : searchParams.get("loadSave");
   const isEmbed = searchParams.get("embed") === "1";
 
   // ===== 全局状态 =====
@@ -253,14 +258,21 @@ export default function GameScreen() {
           document.title = config.gameName;
         }
         if (config?.logoUrl?.startsWith("games/")) {
-          const logoUrl = getS3Url(`${config.logoUrl}_512`);
+          // Demo proxy exposes only public game routes, never the S3 namespace.
+          const logoUrl =
+            import.meta.env.VITE_DEMO_ONLY === "true"
+              ? `/game/${gameSlug}/api/logo/512`
+              : getS3Url(`${config.logoUrl}_512`);
           setGameLogoUrl(logoUrl);
           document
             .querySelectorAll<HTMLLinkElement>("link[rel~='icon']")
             .forEach((el) => el.remove());
           const link = document.createElement("link");
           link.rel = "icon";
-          link.href = getS3Url(`${config.logoUrl}_128`);
+          link.href =
+            import.meta.env.VITE_DEMO_ONLY === "true"
+              ? `/game/${gameSlug}/api/logo/128`
+              : getS3Url(`${config.logoUrl}_128`);
           document.head.appendChild(link);
           // 注入游戏专属 PWA manifest，包含游戏名称、图标和 start_url
           const manifestEl = document.querySelector<HTMLLinkElement>("link[rel='manifest']");
@@ -456,7 +468,7 @@ export default function GameScreen() {
   }, []);
 
   const handleLoginRequest = useCallback(() => {
-    setShowAuthModal(true);
+    if (import.meta.env.VITE_DEMO_ONLY !== "true") setShowAuthModal(true);
   }, []);
 
   // ===== 顶栏显示 =====
@@ -542,7 +554,13 @@ export default function GameScreen() {
             <TitleGui
               gameSlug={gameSlug}
               gameName={gameName}
-              logoUrl={gameLogoUrl ? `${gameLogoUrl}/192` : undefined}
+              logoUrl={
+                import.meta.env.VITE_DEMO_ONLY === "true" && gameLogoUrl
+                  ? `/game/${gameSlug}/api/logo/192`
+                  : gameLogoUrl
+                    ? `${gameLogoUrl}/192`
+                    : undefined
+              }
               screenWidth={window.innerWidth}
               screenHeight={window.innerHeight}
               onNewGame={handleNewGame}
@@ -614,7 +632,9 @@ export default function GameScreen() {
         <DisclaimerModal visible={showDisclaimer} onConfirm={handleDisclaimerConfirm} />
 
         {/* 登录弹窗 */}
-        <AuthModal visible={showAuthModal} onClose={() => setShowAuthModal(false)} />
+        {import.meta.env.VITE_DEMO_ONLY !== "true" && (
+          <AuthModal visible={showAuthModal} onClose={() => setShowAuthModal(false)} />
+        )}
 
         {/* PWA 安装提示（游戏配置加载完成后展示，7天内不重复提示） */}
         <PWAInstallPrompt

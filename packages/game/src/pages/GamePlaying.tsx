@@ -379,7 +379,7 @@ export function GamePlaying({
 
   // ===== 存档按钮 =====
   const handleSaveClick = useCallback(() => {
-    if (!isAuthenticated) {
+    if (!isAuthenticated && import.meta.env.VITE_DEMO_ONLY !== "true") {
       onLoginRequest();
       return;
     }

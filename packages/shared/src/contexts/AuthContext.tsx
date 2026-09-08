@@ -22,10 +22,12 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
-  const [isLoading, setIsLoading] = useState(true); // 默认 loading 直到 session 检查完
+  const demoOnly = import.meta.env.VITE_DEMO_ONLY === "true";
+  const [isLoading, setIsLoading] = useState(!demoOnly);
 
   // 页面加载时恢复 session
   const profileQuery = trpc.user.getProfile.useQuery(undefined, {
+    enabled: !demoOnly,
     retry: false,
     refetchOnWindowFocus: false,
   });

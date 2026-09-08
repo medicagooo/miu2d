@@ -60,7 +60,7 @@ export function GameTopBar({ gameName, logoUrl, toolbarButtons, onLoginClick }: 
 
       {/* 右侧：用户信息 */}
       <div className="flex items-center gap-2">
-        {isAuthenticated && user ? (
+        {import.meta.env.VITE_DEMO_ONLY === "true" ? null : isAuthenticated && user ? (
           <div className="flex items-center gap-2">
             <span className="text-white/60 text-xs">{user.name}</span>
             <div className="w-7 h-7 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-xs font-bold">

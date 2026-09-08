@@ -149,7 +149,7 @@ export function Header() {
             </motion.button>
 
             {/* Auth */}
-            {isAuthenticated ? (
+            {import.meta.env.VITE_DEMO_ONLY === "true" ? null : isAuthenticated ? (
               <Link
                 to="/dashboard"
                 className="flex items-center gap-2 pl-2 pr-3 py-1.5 rounded-lg bg-gradient-to-r from-orange-500 to-amber-500 text-white text-sm font-medium hover:from-orange-600 hover:to-amber-600 transition-all shadow-sm"

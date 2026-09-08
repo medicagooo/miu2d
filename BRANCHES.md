@@ -1,7 +1,7 @@
 {
   "pending": [
-    "0908-workers-game-tabs/merge-main-1",
-    "0908-workers-game-tabs/push-main-1"
+    "0908-workers-game-tabs/merge-main-public-1",
+    "0908-workers-game-tabs/push-main-public-1"
   ],
   "timezone": "Asia/Singapore",
   "format": 1,
@@ -22,7 +22,7 @@
     ".branch-records/0908-integrate-local-commits/state.json",
     ".branch-records/0908-missing-magic-icons/state.json",
     ".branch-records/0908-sword2-placeholder-icons/state.json",
-    ".branch-records\\0908-workers-game-tabs/state.json"
+    ".branch-records/0908-workers-game-tabs/state.json"
   ],
   "changes": [
     {
@@ -133,6 +133,14 @@
       "request": "0908-workers-game-tabs/request-1",
       "evidence": ".branch-records\\0908-workers-game-tabs/state.json",
       "implementedAt": "2026-09-08T16:04:08.3502793+08:00"
+    },
+    {
+      "evidence": ".branch-records/0908-workers-game-tabs/state.json",
+      "businessChange": "当前Workers发布从直连原站数据库改为托管前端及代理demo/sword1/sword2公开API与资源；不部署账户管理后台，不创建数据库，保留可选完整后端；公开模式提供同游戏JSON文件存档导出/导入，图标与PWA manifest改走公开logo接口",
+      "date": "2026-09-08",
+      "status": "implemented_unmerged",
+      "id": "0908-public-game-proxy",
+      "request": ".branch-records/0908-workers-game-tabs/events.jsonl#request-public-proxy"
     }
   ]
 }

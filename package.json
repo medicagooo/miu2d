@@ -23,7 +23,10 @@
     "build:workers": "pnpm build:web && pnpm --filter @miu2d/shared build:locales && pnpm --filter @miu2d/server build:worker",
     "deploy:workers": "node scripts/deploy-workers.mjs",
     "types:workers": "node scripts/generate-worker-types.mjs",
-    "test:workers": "pnpm --filter @miu2d/server exec tsx --test src/runtime/context.test.ts && wrangler deploy --dry-run --outdir .wrangler/dry-run && node scripts/verify-worker-runtime.mjs"
+    "test:workers": "pnpm --filter @miu2d/server exec tsx --test src/runtime/context.test.ts && wrangler deploy --dry-run --outdir .wrangler/dry-run && node scripts/verify-worker-runtime.mjs",
+    "build:demo": "node scripts/build-demo.mjs",
+    "deploy:demo": "wrangler deploy --config wrangler.demo.jsonc",
+    "test:demo": "wrangler deploy --config wrangler.demo.jsonc --dry-run --outdir .wrangler/demo-dry-run && node scripts/verify-demo-runtime.mjs"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.3.13",
