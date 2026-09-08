@@ -1,7 +1,8 @@
 {
   "pending": [
     "0908-workers-game-tabs/merge-main-header-1",
-    "0908-workers-game-tabs/push-main-header-1"
+    "0908-workers-game-tabs/push-main-header-1",
+    "0909-transparent-magic-icons/push-main-1"
   ],
   "timezone": "Asia/Singapore",
   "format": 1,
