@@ -8,7 +8,7 @@
     "用户新增要求：新剑侠情缘复用月影传说同名武功图标；同名多配置优先相同key，避免花瓣攻击两变体混用"
   ],
   "constraints": [
-    "不替换非空原始icon；不修改数值、说明或武功归属；不推送、不部署、不写数据库",
+    "不替换非空原始icon；不修改数值、说明或武功归属；本次已授权推送origin/main；不直接部署、不写数据库",
     "排除Relation.Ini和player-levelup-*，不把关系配置与升级特效当作武功",
     "前序归属调整请求尚待用户明确本地逻辑或线上数据目标，本次只实施图标",
     "内置imagegen逐资产生成；新剑侠情缘同名复用月影传说；已生成的重复版本不接入",
@@ -28,7 +28,8 @@
     "artifacts/game-magic-icons/manifest.json：94项，65新绘，29复用，全部含SHA256",
     "artifacts/game-magic-icons/README.md与index.html：逐项清单和可搜索预览",
     "8项新旧图标测试通过；dashboard/web tsc通过；Vite生产构建通过，94个构建资产SHA256一致",
-    "浏览器94/94图片成功加载；花瓣攻击搜索显示4项且两种变体按key对应；格式检查通过"
+    "浏览器94/94图片成功加载；花瓣攻击搜索显示4项且两种变体按key对应；格式检查通过",
+    "推送前核验：origin/main ebbea43719690978f0ea4c3826d652f6caef6451，本地main a8d11610de33f109f50522f5ae312fc75a66d7e0，仅领先已验证的图标提交，工作区干净；旧push-1已由远端SHA证实完成"
   ],
-  "next": "无剩余本地图标任务；用户可打开artifacts/game-magic-icons/index.html查看全部结果。发布与数据库修改未授权。"
+  "next": "执行已登记push-main-1普通推送，验证远端main SHA；pending为意图，非成功证明"
 }

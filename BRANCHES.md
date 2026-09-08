@@ -1,6 +1,6 @@
 {
   "pending": [
-    "0908-integrate-local-commits/push-1"
+    "0908-missing-magic-icons/push-main-1"
   ],
   "timezone": "Asia/Singapore",
   "format": 1,
