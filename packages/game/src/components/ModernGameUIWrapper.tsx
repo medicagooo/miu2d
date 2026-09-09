@@ -7,7 +7,7 @@
 
 import { logger } from "@miu2d/engine/core/logger";
 import type { UIGoodData } from "@miu2d/engine/gui/ui-types";
-import { getMagicGrowthState } from '@miu2d/engine/magic/magic-growth-state';
+import { getMagicGrowthState } from "@miu2d/engine/magic/magic-growth-state";
 import type { Npc } from "@miu2d/engine/npc/npc";
 import { EquipPosition, GoodKind } from "@miu2d/engine/player/goods/good";
 import type React from "react";
@@ -135,6 +135,7 @@ export const ModernGameUIWrapper: React.FC<ModernGameUIWrapperProps> = ({
     level: player?.level ?? 1,
     exp: player?.exp ?? 0,
     levelUpExp: player?.levelUpExp ?? 100,
+    levelStartExp: player?.levelStartExp ?? 0,
     life: player?.life ?? 100,
     lifeMax: player?.lifeMax ?? 100,
     mana: player?.mana ?? 50,
@@ -231,9 +232,7 @@ export const ModernGameUIWrapper: React.FC<ModernGameUIWrapperProps> = ({
             .map((e) => `${e?.good?.fileName ?? "_"}:${e?.count ?? 0}`)
             .join("|")}#${next.magicInfos
             .map((m) => `${m?.magic?.fileName ?? "_"}:${m?.level ?? 0}`)
-            .join("|")}#${next.bottomMagics
-            .map((m) => m?.magic?.fileName ?? "_")
-            .join("|")}`
+            .join("|")}#${next.bottomMagics.map((m) => m?.magic?.fileName ?? "_").join("|")}`
         : "_null_";
       if (sig !== prevSig) {
         prevSig = sig;
@@ -308,7 +307,11 @@ export const ModernGameUIWrapper: React.FC<ModernGameUIWrapperProps> = ({
   );
 
   const handlePartnerBottomMagicDrop = useCallback(
-    (targetBottomSlot: number, source: MagicDragData | BottomMagicDragData, targetStoreIndex?: number) => {
+    (
+      targetBottomSlot: number,
+      source: MagicDragData | BottomMagicDragData,
+      targetStoreIndex?: number
+    ) => {
       if (!selectedNpc?.magicInventory) return;
       const mi = selectedNpc.magicInventory;
       if ("bottomSlot" in source) {
@@ -443,7 +446,13 @@ export const ModernGameUIWrapper: React.FC<ModernGameUIWrapperProps> = ({
             onEquipRightClick={handlePartnerEquipRightClick}
             onEquipDragStart={handlePartnerEquipDragStart}
             onEquipMouseEnter={(slot, good, rect) =>
-              good && setTooltip({ isVisible: true, good, isRecycle: false, position: { x: rect.right + 8, y: rect.top } })
+              good &&
+              setTooltip({
+                isVisible: true,
+                good,
+                isRecycle: false,
+                position: { x: rect.right + 8, y: rect.top },
+              })
             }
             onEquipMouseLeave={() => setTooltip((t) => ({ ...t, isVisible: false }))}
             magicInfos={partnerPanelData.magicInfos}
@@ -707,8 +716,26 @@ export const ModernGameUIWrapper: React.FC<ModernGameUIWrapperProps> = ({
             onPlaceBet={(choice: BetChoice, mult: number): DiceResult => {
               const gm = engine.gambleManager;
               const result = gm.rollDice(choice, mult);
-              if (!gm.hasEnoughMoney()) { gm.endGamble(); engine.guiManager.closeGambleGui(); }
-              return result ?? { dice: [1,1,1,1,1,1], sum: 6, win: false, betAmount: gamble.betAmount, netGain: -gamble.betAmount, randomBonus: 1, randomPenalty: 1, bonusText: null, penaltyText: null, specialEvent: null, comboBonus: null, comboBonusAmount: 0 };
+              if (!gm.hasEnoughMoney()) {
+                gm.endGamble();
+                engine.guiManager.closeGambleGui();
+              }
+              return (
+                result ?? {
+                  dice: [1, 1, 1, 1, 1, 1],
+                  sum: 6,
+                  win: false,
+                  betAmount: gamble.betAmount,
+                  netGain: -gamble.betAmount,
+                  randomBonus: 1,
+                  randomPenalty: 1,
+                  bonusText: null,
+                  penaltyText: null,
+                  specialEvent: null,
+                  comboBonus: null,
+                  comboBonusAmount: 0,
+                }
+              );
             }}
             onClose={handleGambleClose}
           />
@@ -721,8 +748,25 @@ export const ModernGameUIWrapper: React.FC<ModernGameUIWrapperProps> = ({
             onSpin={(mult: number) => {
               const sm = engine.slotManager;
               const result = sm.spin(mult);
-              if (!sm.hasEnoughMoney()) { sm.endSlot(); engine.guiManager.closeSlotGui(); }
-              return result ?? { reels: [["coin","coin","coin"],["coin","coin","coin"],["coin","coin","coin"]], winLines: [], totalWin: 0, betAmount: slot.betAmount, freeSpinTriggered: false, jackpot: false, isFreeSpin: false };
+              if (!sm.hasEnoughMoney()) {
+                sm.endSlot();
+                engine.guiManager.closeSlotGui();
+              }
+              return (
+                result ?? {
+                  reels: [
+                    ["coin", "coin", "coin"],
+                    ["coin", "coin", "coin"],
+                    ["coin", "coin", "coin"],
+                  ],
+                  winLines: [],
+                  totalWin: 0,
+                  betAmount: slot.betAmount,
+                  freeSpinTriggered: false,
+                  jackpot: false,
+                  isFreeSpin: false,
+                }
+              );
             }}
             onClose={handleSlotClose}
           />
@@ -802,13 +846,17 @@ export const ModernGameUIWrapper: React.FC<ModernGameUIWrapperProps> = ({
               fileName: magicTooltip.magicInfo.magic.fileName ?? "",
               name: magicTooltip.magicInfo.magic.name,
               intro: magicTooltip.magicInfo.magic.intro ?? "",
-              imagePath: magicTooltip.magicInfo.magic.image ?? magicTooltip.magicInfo.magic.icon ?? "",
+              imagePath:
+                magicTooltip.magicInfo.magic.image ?? magicTooltip.magicInfo.magic.icon ?? "",
               iconPath: magicTooltip.magicInfo.magic.icon ?? "",
               level: magicTooltip.magicInfo.level,
               maxLevel: magicTooltip.magicInfo.magic.maxLevel ?? 10,
               currentLevelExp: magicTooltip.magicInfo.exp,
               levelUpExp: magicTooltip.magicInfo.magic.levelupExp ?? 0,
-              growthState: getMagicGrowthState(magicTooltip.magicInfo.magic, magicTooltip.magicInfo.level),
+              growthState: getMagicGrowthState(
+                magicTooltip.magicInfo.magic,
+                magicTooltip.magicInfo.level
+              ),
               manaCost: magicTooltip.magicInfo.magic.manaCost ?? 0,
             }}
             position={magicTooltip.position}

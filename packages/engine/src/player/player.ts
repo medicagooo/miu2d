@@ -11,6 +11,8 @@
  * - 本文件包含状态机、存档/加载、等级、遮挡等 (~800行)
  */
 
+import { PlayerGrowth } from "./player-growth";
+import { clampPlayerLevel, getPlayerLevelStartExp } from "@miu2d/types";
 import type { Player as PlayerType } from "@miu2d/types";
 import type { Character } from "../character";
 import { applyFlatDataToCharacter } from "../character/character-config";
@@ -60,6 +62,23 @@ export interface PlayerStatsInfo {
  * Player - 完整的玩家类
  */
 export class Player extends PlayerCombat {
+  readonly growth = new PlayerGrowth(this, () =>
+    this.guiManager.showMessage(`${this.name}的等级提升了`)
+  );
+
+  get levelStartExp(): number {
+    const profile = this.growth.profile;
+    return profile ? getPlayerLevelStartExp(profile, this.level) : 0;
+  }
+
+  override recalculateBaseStats(): void {
+    if (!this.growth.recalculate()) super.recalculateBaseStats();
+  }
+
+  override levelUpTo(level: number): void {
+    if (!this.growth.levelUpTo(level)) super.levelUpTo(level);
+  }
+
   // =============================================
   // === Update State Machine ===
   // =============================================
@@ -366,7 +385,7 @@ export class Player extends PlayerCombat {
       this._magicInventory.awardKillExp(amount, this.name);
     }
 
-    super.addExp(amount);
+    if (!this.growth.addExp(amount)) super.addExp(amount);
   }
 
   /**
@@ -427,12 +446,14 @@ export class Player extends PlayerCombat {
    * @returns 已达到最高等级时返回 false
    */
   levelUp(): boolean {
+    if (this.growth.profile) this.growth.ensure();
     if (this.levelUpExp <= 0) return false;
     this.addExp(this.levelUpExp - this.exp + 1);
     return true;
   }
 
   setLevelTo(level: number): void {
+    if (this.growth.levelUpTo(level)) return;
     const levelConfig = this.levelManager.getLevelConfig();
 
     this.level = level;
@@ -473,6 +494,24 @@ export class Player extends PlayerCombat {
 
   async initializeFromLevelConfig(level: number = 1): Promise<void> {
     await this.levelManager.initialize();
+    if (this.growth.profile) {
+      this.level = clampPlayerLevel(level);
+      this.growth.load(
+        {
+          level: this.level,
+          exp: 0,
+          life: 1,
+          lifeMax: 1,
+          thew: 1,
+          thewMax: 1,
+          mana: 1,
+          manaMax: 1,
+        },
+        false
+      );
+      this.growth.recalculate();
+      return;
+    }
 
     const levelConfig = this.levelManager.getLevelConfig();
     if (!levelConfig) return;
@@ -535,6 +574,7 @@ export class Player extends PlayerCombat {
       // 统一触发副作用（setFlyIni → buildFlyIniInfos 等）
       this.applyConfigSetters();
 
+      this.growth.load(data, false);
       logger.info(`[Player] Loaded from API data: ${data.name} at (${data.mapX}, ${data.mapY})`);
       return true;
     } catch (error) {
@@ -548,6 +588,7 @@ export class Player extends PlayerCombat {
    * 用于 JSON 存档恢复，由 Loader.loadPlayerFromJSON 调用
    */
   loadFromSaveData(data: PlayerSaveData): void {
+    this.growth.load(data, true);
     // 新剑侠情缘: Effect 叠加 Attack 公式
     const gameConfig = getGameConfig();
     if (gameConfig?.effectFormulaAdditive) {
@@ -628,7 +669,7 @@ export class Player extends PlayerCombat {
         this.evade = value;
         break;
       case "level":
-        this.level = value;
+        this.setLevelTo(value);
         break;
       case "exp":
         this.exp = value;

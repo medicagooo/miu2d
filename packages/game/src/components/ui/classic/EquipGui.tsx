@@ -458,7 +458,9 @@ export const EquipGui: React.FC<EquipGuiProps> = ({
             <>
               <div style={getTextStyle(sc.level)}>{s.level}</div>
               <div style={getTextStyle(sc.exp)}>{s.exp}</div>
-              <div style={getTextStyle(sc.levelUp)}>{s.levelUpExp}</div>
+              <div style={getTextStyle(sc.levelUp)}>
+                {s.levelUpExp <= 0 ? "满级" : s.levelUpExp}
+              </div>
               <div style={getTextStyle(sc.life)}>
                 {s.life}/{s.lifeMax}
               </div>

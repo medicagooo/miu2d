@@ -2,6 +2,7 @@
  * PlayerAPI Implementation - Delegates to existing playerCommands logic
  */
 
+import type { PlayerGrowthSave } from "@miu2d/types";
 import { logger } from "../../core/logger";
 import { CharacterState } from "../../core/types";
 import type { Npc } from "../../npc";
@@ -24,6 +25,7 @@ export function createPlayerAPI(ctx: ScriptCommandContext, resolver: BlockingRes
 
   // In-memory snapshots for SavePlayer/LoadPlayer (shared across all scripts)
   const playerSnapshots = new Map<string, Record<string, number>>();
+  const growthSnapshots = new Map<string, PlayerGrowthSave>();
 
   /**
    * 获取当前玩家角色
@@ -292,6 +294,9 @@ export function createPlayerAPI(ctx: ScriptCommandContext, resolver: BlockingRes
 
     // In-memory snapshot (for SavePlayer / LoadPlayer commands)
     saveSnapshot: (key) => {
+      const growth = player.growth.save();
+      if (growth) growthSnapshots.set(key, growth);
+      else growthSnapshots.delete(key);
       const snapshot = {
         level: player.level,
         life: player.life,
@@ -301,6 +306,11 @@ export function createPlayerAPI(ctx: ScriptCommandContext, resolver: BlockingRes
         thew: player.thew,
         thewMax: player.thewMax,
         attack: player.attack,
+        attack2: player.attack2,
+        attack3: player.attack3,
+        defend2: player.defend2,
+        defend3: player.defend3,
+        levelUpExp: player.levelUpExp,
         defend: player.defend,
         evade: player.evade,
         exp: player.exp,
@@ -326,6 +336,13 @@ export function createPlayerAPI(ctx: ScriptCommandContext, resolver: BlockingRes
       player.defend = snapshot.defend;
       player.evade = snapshot.evade;
       player.exp = snapshot.exp;
+      player.attack2 = snapshot.attack2;
+      player.attack3 = snapshot.attack3;
+      player.defend2 = snapshot.defend2;
+      player.defend3 = snapshot.defend3;
+      player.levelUpExp = snapshot.levelUpExp;
+      player.growth.load({ ...snapshot, growth: growthSnapshots.get(key) }, true);
+      if (player.growth.profile) player.growth.recalculate();
       player.setMoney(snapshot.money);
       logger.log(`[GameAPI.player] loadSnapshot: key=${key}`);
     },

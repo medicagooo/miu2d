@@ -43,7 +43,16 @@ import { TopBar } from "./TopBar";
 import { XiuLianPanel } from "./XiuLianPanel";
 
 // UI面板类型
-type PanelType = "state" | "equip" | "goods" | "magic" | "xiulian" | "memo" | "system" | "npcEquip" | null;
+type PanelType =
+  | "state"
+  | "equip"
+  | "goods"
+  | "magic"
+  | "xiulian"
+  | "memo"
+  | "system"
+  | "npcEquip"
+  | null;
 
 interface ModernGameUIProps {
   screenWidth: number;
@@ -100,6 +109,7 @@ export const ModernGameUI: React.FC<ModernGameUIProps> = ({
       level: playerState?.level ?? 1,
       exp: playerState?.exp ?? 0,
       levelUpExp: playerState?.levelUpExp ?? 100,
+      levelStartExp: playerState?.levelStartExp ?? 0,
       life: playerState?.life ?? 100,
       lifeMax: playerState?.lifeMax ?? 100,
       mana: playerState?.mana ?? 50,

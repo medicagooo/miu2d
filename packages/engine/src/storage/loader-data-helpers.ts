@@ -79,6 +79,8 @@ export function findApiPlayerByIndex(index: number): PlayerType | null {
 export async function loadPlayerFromJSON(data: PlayerSaveData, player: Player): Promise<void> {
   player.loadFromSaveData(data);
 
+  // Formula migration runs after equipment/magic containers finish loading.
+  if (player.growth.profile) return;
   const maxLevel = player.levelManager.getMaxLevel();
   if (maxLevel > 0 && player.level >= maxLevel && (player.exp !== 0 || player.levelUpExp !== 0)) {
     logger.warn(
@@ -419,7 +421,11 @@ export async function loadMagicContainer(
 /**
  * 从新格式物品容器存档加载
  */
-export function loadGoodsContainer(container: GoodsContainerSave, manager: GoodsListManager, silent?: boolean): void {
+export function loadGoodsContainer(
+  container: GoodsContainerSave,
+  manager: GoodsListManager,
+  silent?: boolean
+): void {
   manager.renewList();
 
   // 加载背包物品

@@ -3,7 +3,8 @@
     "0908-workers-game-tabs/merge-main-header-1",
     "0908-workers-game-tabs/push-main-header-1",
     "0909-transparent-magic-icons/push-main-1",
-    "0909-npc-shape-growth/push-main-1"
+    "0909-npc-shape-growth/push-main-1",
+    "0909-player-growth-functions/push-main-1"
   ],
   "timezone": "Asia/Singapore",
   "format": 1,
@@ -16,7 +17,8 @@
     "0908-workers-game-tabs",
     "0909-player-level-repair",
     "0909-npc-player-growth",
-    "0909-npc-shape-growth"
+    "0909-npc-shape-growth",
+    "0909-player-growth-functions"
   ],
   "records": [
     ".branch-records/0908-magic-learning-dedup/state.json",
@@ -33,7 +35,8 @@
     ".branch-records/0909-player-magic-policy/state.json",
     ".branch-records/0909-player-level-repair/state.json",
     ".branch-records/0909-npc-player-growth/state.json",
-    ".branch-records/0909-npc-shape-growth/state.json"
+    ".branch-records/0909-npc-shape-growth/state.json",
+    ".branch-records/0909-player-growth-functions/state.json"
   ],
   "changes": [
     {
@@ -218,6 +221,15 @@
       "status": "implemented",
       "request": ".branch-records/0909-npc-shape-growth/events.jsonl#execute-1",
       "evidence": ".branch-records/0909-npc-shape-growth/state.json",
+      "implementationDate": "2026-09-09"
+    },
+    {
+      "businessChange": "三个游戏玩家从逐级表改为六套连续成长公式，上限1000；保留1级，原80/60级基础属性105%。后台共享公式只读预览；存档保留等级、本级经验与永久加成；玩家/伙伴进度隔离，伙伴和旧接口保留原规则。1000级停止角色经验，武功经验继续。",
+      "id": "0909-player-growth-functions",
+      "evidence": ".branch-records/0909-player-growth-functions/state.json",
+      "status": "implemented",
+      "date": "2026-09-09",
+      "request": ".branch-records/0909-player-growth-functions/events.jsonl#execute-1",
       "implementationDate": "2026-09-09"
     }
   ]

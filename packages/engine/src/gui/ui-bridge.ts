@@ -28,7 +28,7 @@ import {
 } from "../events/game-events";
 import type { MemoListManager } from "../gui/memo-list-manager";
 import type { MagicItemInfo } from "../magic/types";
-import { getMagicGrowthState } from '../magic/magic-growth-state';
+import { getMagicGrowthState } from "../magic/magic-growth-state";
 import {
   EQUIP_SLOT_COUNT,
   type GoodsItemInfo,
@@ -402,6 +402,7 @@ export class UIBridgeImpl implements UIBridge {
       level: player.level,
       exp: player.exp,
       levelUpExp: player.levelUpExp,
+      levelStartExp: player.levelStartExp,
       life: player.life,
       lifeMax: player.lifeMax,
       thew: player.thew,
@@ -841,7 +842,9 @@ export class UIBridgeImpl implements UIBridge {
     };
   }
 
-  requestRefresh(state: "goods" | "magic" | "shop" | "gamble" | "slot" | "doudizhu" | "memo" | "all"): void {
+  requestRefresh(
+    state: "goods" | "magic" | "shop" | "gamble" | "slot" | "doudizhu" | "memo" | "all"
+  ): void {
     // biome-ignore lint/nursery/noUnnecessaryConditions: switch on string union is always non-null by design
     switch (state) {
       case "goods":

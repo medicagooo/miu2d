@@ -11,6 +11,7 @@
  * - 本文件包含状态机、精灵加载、特殊动作等 (~800行)
  */
 
+import type { PlayerGrowthStats } from "@miu2d/types";
 import { getCharacterDeathExp } from "../combat/effect-calc";
 import { logger } from "../core/logger";
 import type { CharacterConfig, Vector2 } from "../core/types";
@@ -37,6 +38,7 @@ import {
 import { CharacterCombat, MAX_NON_FIGHT_SECONDS } from "./base";
 import { applyConfigToCharacter } from "./character-config";
 import { loadCharacterAsf, loadCharacterImage, loadNpcRes } from "./character-res-loader";
+import type { LevelDetail } from "./level/level-config-loader";
 
 const BLOCKED_ACTION_STATES: ReadonlySet<CharacterState> = new Set<CharacterState>([
   CharacterState.Jump,
@@ -94,10 +96,58 @@ export abstract class Character extends CharacterCombat {
     return undefined;
   }
 
-  /**
-   * 从等级配置 + 武功加成 + 装备加成重新计算基础属性。
-   * 存档加载完成后调用，修正因历史 bug 导致的累计错误值。
+  /** Compose a supplied level baseline with current equipment/magic bonuses.
+   * Player growth uses this same composition to preserve permanent save/script deltas;
+   * partners continue passing their authored legacy detail.
    */
+  calculateBaseStats(detail: Pick<LevelDetail, keyof PlayerGrowthStats>): PlayerGrowthStats {
+    const magicInventory = this.getMagicInventoryForRecalc();
+    const goodsManager = this.getGoodsManagerForRecalc();
+    // Base from level config
+    let lifeMax = detail.lifeMax || (detail as { life?: number }).life || 0;
+    let thewMax = detail.thewMax;
+    let manaMax = detail.manaMax;
+    let attack = detail.attack;
+    let defend = detail.defend;
+    let evade = detail.evade;
+    let attack2 = detail.attack2 || 0;
+    let defend2 = detail.defend2 || 0;
+    let attack3 = detail.attack3 || 0;
+    let defend3 = detail.defend3 || 0;
+
+    // Add magic stat bonuses
+    for (const info of magicInventory?.getAllMagicInfos() ?? []) {
+      if (!info.magic) continue;
+      lifeMax += info.magic.lifeMax || 0;
+      thewMax += info.magic.thewMax || 0;
+      manaMax += info.magic.manaMax || 0;
+      attack += info.magic.attack || 0;
+      defend += info.magic.defend || 0;
+      evade += info.magic.evade || 0;
+      attack2 += info.magic.attack2 || 0;
+      defend2 += info.magic.defend2 || 0;
+      attack3 += info.magic.attack3 || 0;
+      defend3 += info.magic.defend3 || 0;
+    }
+
+    // Add equipment stat bonuses
+    const eq = goodsManager?.sumEquipStats();
+    if (eq) {
+      lifeMax += eq.lifeMax;
+      thewMax += eq.thewMax;
+      manaMax += eq.manaMax;
+      attack += eq.attack;
+      defend += eq.defend;
+      evade += eq.evade;
+      attack2 += eq.attack2;
+      defend2 += eq.defend2;
+      attack3 += eq.attack3;
+      defend3 += eq.defend3;
+    }
+    return { lifeMax, thewMax, manaMax, attack, attack2, attack3, defend, defend2, defend3, evade };
+  }
+
+  /** Rebuild legacy character stats after loading equipment and magic containers. */
   recalculateBaseStats(): void {
     const magicInventory = this.getMagicInventoryForRecalc();
     const goodsManager = this.getGoodsManagerForRecalc();
@@ -115,45 +165,8 @@ export abstract class Character extends CharacterCombat {
     const savedThew = this.thew;
     const savedMana = this.mana;
 
-    // Base from level config
-    let lifeMax = detail.lifeMax || (detail as { life?: number }).life || 0;
-    let thewMax = detail.thewMax;
-    let manaMax = detail.manaMax;
-    let attack = detail.attack;
-    let defend = detail.defend;
-    let evade = detail.evade;
-    let attack2 = detail.attack2 || 0;
-    let defend2 = detail.defend2 || 0;
-    let attack3 = detail.attack3 || 0;
-    let defend3 = detail.defend3 || 0;
-
-    // Add magic stat bonuses
-    for (const info of magicInventory.getAllMagicInfos()) {
-      if (!info.magic) continue;
-      lifeMax += info.magic.lifeMax || 0;
-      thewMax += info.magic.thewMax || 0;
-      manaMax += info.magic.manaMax || 0;
-      attack += info.magic.attack || 0;
-      defend += info.magic.defend || 0;
-      evade += info.magic.evade || 0;
-      attack2 += info.magic.attack2 || 0;
-      defend2 += info.magic.defend2 || 0;
-      attack3 += info.magic.attack3 || 0;
-      defend3 += info.magic.defend3 || 0;
-    }
-
-    // Add equipment stat bonuses
-    const eq = goodsManager.sumEquipStats();
-    lifeMax += eq.lifeMax;
-    thewMax += eq.thewMax;
-    manaMax += eq.manaMax;
-    attack += eq.attack;
-    defend += eq.defend;
-    evade += eq.evade;
-    attack2 += eq.attack2;
-    defend2 += eq.defend2;
-    attack3 += eq.attack3;
-    defend3 += eq.defend3;
+    const { lifeMax, thewMax, manaMax, attack, attack2, attack3, defend, defend2, defend3, evade } =
+      this.calculateBaseStats(detail);
 
     this.lifeMax = lifeMax;
     this.thewMax = thewMax;

@@ -204,6 +204,7 @@ export interface UIPlayerState {
   readonly level: number;
   readonly exp: number;
   readonly levelUpExp: number;
+  readonly levelStartExp?: number;
   readonly life: number;
   readonly lifeMax: number;
   readonly thew: number;
@@ -249,7 +250,7 @@ export interface UIGoodsState {
 
 export interface UIMagicData {
   /** Optional for older UI adapters; current bridges supply the source-aware growth state. */
-  readonly growthState?: import('../magic/magic-growth-state').MagicGrowthState;
+  readonly growthState?: import("../magic/magic-growth-state").MagicGrowthState;
   readonly fileName: string;
   readonly name: string;
   readonly intro: string;

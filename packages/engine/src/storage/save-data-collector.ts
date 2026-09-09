@@ -19,7 +19,9 @@ import type {
 
 export class SaveDataCollector {
   static collectPlayerData(player: Player): PlayerSaveData {
+    const growth = player.growth.save();
     const base = extractFlatDataFromCharacter(player, true);
+    if (growth) base.growth = growth;
     base.dir = player.currentDirection;
     return base as unknown as PlayerSaveData;
   }

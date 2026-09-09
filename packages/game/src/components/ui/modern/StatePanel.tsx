@@ -7,7 +7,15 @@ import { useMemo } from "react";
 import { HiOutlineXMark } from "react-icons/hi2";
 import { useAsfImage } from "../classic/hooks";
 import type { PlayerStats } from "../classic/StateGui";
-import { borderRadius, glassEffect, iconStyle, modernColors, spacing, transitions, typography } from "./theme";
+import {
+  borderRadius,
+  glassEffect,
+  iconStyle,
+  modernColors,
+  spacing,
+  transitions,
+  typography,
+} from "./theme";
 
 interface StatePanelProps {
   isVisible: boolean;
@@ -300,7 +308,9 @@ export const StatePanel: React.FC<StatePanelProps> = ({
   );
 
   // 经验进度
-  const expPercent = stats.levelUpExp > 0 ? (stats.exp / stats.levelUpExp) * 100 : 0;
+  const levelExp = Math.max(0, stats.exp - (stats.levelStartExp ?? 0));
+  const levelCost = Math.max(0, stats.levelUpExp - (stats.levelStartExp ?? 0));
+  const expPercent = levelCost > 0 ? Math.min(100, (levelExp / levelCost) * 100) : 100;
 
   // 格式化攻击力
   const attackBonus = (stats.attack2 || 0) + (stats.attack3 || 0);
@@ -457,7 +467,9 @@ export const StatePanel: React.FC<StatePanelProps> = ({
                 fontFamily: "monospace",
               }}
             >
-              {stats.exp} / {stats.levelUpExp}
+              {stats.levelUpExp <= 0
+                ? "满级"
+                : `${levelExp.toLocaleString()} / ${levelCost.toLocaleString()}`}
             </span>
           </div>
           <div

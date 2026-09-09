@@ -14,6 +14,7 @@ export interface PlayerStats {
   level: number;
   exp: number;
   levelUpExp: number;
+  levelStartExp?: number;
   life: number;
   lifeMax: number;
   thew: number;
@@ -180,7 +181,9 @@ export const StateGui: React.FC<StateGuiProps> = ({
       <div style={getTextStyle(config.exp)}>{stats.exp}</div>
 
       {/* 升级经验 */}
-      <div style={getTextStyle(config.levelUp)}>{stats.levelUpExp}</div>
+      <div style={getTextStyle(config.levelUp)}>
+        {stats.levelUpExp <= 0 ? "满级" : stats.levelUpExp}
+      </div>
 
       {/* 生命 */}
       <div style={getTextStyle(config.life)}>

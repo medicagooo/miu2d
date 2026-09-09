@@ -3,6 +3,7 @@
  * LevelListPanel + CreateLevelConfigModal
  */
 
+import { getPlayerGrowthProfile, PLAYER_MAX_LEVEL } from "@miu2d/types";
 import { trpc } from "@miu2d/shared";
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -69,13 +70,13 @@ function CreateLevelConfigModal({
 
       {/* 内容区 */}
       <div className="space-y-3">
-        <p className="text-sm text-[#858585]">点击下方按钮进入编辑器，手动配置等级属性。</p>
+        <p className="text-sm text-[#858585]">玩家查看成长公式预览；NPC可手动配置等级属性。</p>
         <button
           type="button"
           onClick={handleManualCreate}
           className="w-full px-4 py-2.5 text-sm bg-[#0e639c] hover:bg-[#1177bb] text-white rounded-lg transition-colors flex items-center justify-center gap-2"
         >
-          <span>开始创建</span>
+          <span>{userType === "player" ? "查看玩家成长" : "开始创建"}</span>
           <span>→</span>
         </button>
       </div>
@@ -168,7 +169,10 @@ export function LevelListPanel({ basePath }: { basePath: string }) {
                   </span>
                 </div>
                 <div className="text-xs text-[#858585] truncate">
-                  {level.key} · {level.maxLevel}级
+                  {level.key} ·{" "}
+                  {level.userType === "player" && getPlayerGrowthProfile(currentGame?.slug ?? "")
+                    ? `${PLAYER_MAX_LEVEL}级 · 函数成长`
+                    : `${level.maxLevel}级`}
                 </div>
               </div>
             </NavLink>

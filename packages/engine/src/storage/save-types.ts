@@ -1,3 +1,4 @@
+import type { PlayerGrowthSave } from "@miu2d/types";
 /**
  * Storage - 存档数据结构与序列化工具
  *
@@ -83,6 +84,8 @@ export interface TimerData {
  * 单一类型定义，消除 PlayerSaveData 与 NpcSaveItem 的字段重复
  */
 export interface CharacterSaveBase {
+  /** Player-only function version and permanent residuals; absent on legacy/NPC saves. */
+  growth?: PlayerGrowthSave;
   // === 基本信息 ===
   name: string;
   npcIni: string;
@@ -424,6 +427,8 @@ export interface PartnerRegistryItem {
  * key 格式：API 注册角色用 "idx:N"，临时伙伴用 "name:xxx"
  */
 export interface CharacterProfile {
+  /** Legacy partner progress kept separate once this actor has formula-driven player progress. */
+  partner?: PlayerSaveData;
   /** 角色属性快照（兼容 Player 与 NPC 共享字段） */
   player: PlayerSaveData | null;
   magicContainer: MagicContainerSave;

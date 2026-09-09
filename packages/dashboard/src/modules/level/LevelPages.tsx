@@ -6,6 +6,8 @@
 import { trpc, useToast } from "@miu2d/shared";
 import type { LevelConfig, LevelDetail, LevelUserType } from "@miu2d/types";
 import { createDefaultLevelConfigLevels, createDefaultLevelDetail } from "@miu2d/types";
+import { getPlayerGrowthProfile } from "@miu2d/types";
+import { PlayerGrowthPreview } from "./PlayerGrowthPreview";
 import { NumberInput } from "@miu2d/ui";
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -356,22 +358,7 @@ export function LevelDetailPage() {
     setFormData((prev) => {
       const levels = [...(prev.levels || [])];
       const nextLevel = levels.length + 1;
-      const lastLevel = levels[levels.length - 1];
-      // 基于最后一级创建新等级，属性稍微增加
-      const newLevel: LevelDetail = lastLevel
-        ? {
-            ...lastLevel,
-            level: nextLevel,
-            levelUpExp: Math.floor((lastLevel.levelUpExp || 100) * 1.1),
-            lifeMax: Math.floor((lastLevel.lifeMax || 100) * 1.05),
-            thewMax: Math.floor((lastLevel.thewMax || 100) * 1.02),
-            manaMax: Math.floor((lastLevel.manaMax || 100) * 1.02),
-            attack: Math.floor((lastLevel.attack || 10) * 1.03),
-            defend: Math.floor((lastLevel.defend || 10) * 1.03),
-            evade: (lastLevel.evade || 0) + 1,
-            newMagic: "",
-          }
-        : createDefaultLevelDetail(nextLevel, prev.userType || "player");
+      const newLevel = createDefaultLevelDetail(nextLevel, prev.userType || "npc");
       levels.push(newLevel);
       return { ...prev, levels, maxLevel: nextLevel };
     });
@@ -411,6 +398,18 @@ export function LevelDetailPage() {
 
   const isPlayerConfig = formData.userType === "player";
   const levels = formData.levels || [];
+  if (
+    (isPlayerConfig || (isNew && userTypeParam === "player")) &&
+    getPlayerGrowthProfile(gameSlug ?? "")
+  ) {
+    return (
+      <PlayerGrowthPreview
+        gameSlug={gameSlug!}
+        initialDifficulty={formData.key?.toLowerCase().includes("hard") ? "hard" : "easy"}
+        key={levelConfigId}
+      />
+    );
+  }
 
   return (
     <div className="h-full flex flex-col overflow-hidden">

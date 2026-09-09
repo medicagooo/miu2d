@@ -1,0 +1,33 @@
+{
+  "acceptance": [
+    "36条属性曲线满级105%且1至1000非递减",
+    "升级/脚本/读档/切难度/切角色一致；1000级不再获得角色经验",
+    "旧/新存档重复加载无漂移，伙伴隔离",
+    "检查通过，Bugbot问题修复，远端main SHA核验"
+  ],
+  "status": "active",
+  "constraints": [
+    "不直接操作数据库、不部署、不手动触发CI",
+    "保留旧接口和等级表供伙伴及旧客户端使用",
+    "main起点干净且与origin/main一致685c782ca94e5e29254e1db922ce0e741da61204"
+  ],
+  "requirements": [
+    "三个游戏×两种难度采用已确认V2连续公式，原1级保留，原80/60级属性ceil(原版×1.05)",
+    "经验使用已审阅V2 k/q/r函数，1000级封顶，武功经验继续",
+    "后台玩家不再逐行编辑属性，共享公式预览1至1000级；NPC添加使用默认函数",
+    "玩家和伙伴共享旧表但玩家成长单独计算，伙伴/NPC维持旧路径",
+    "旧存档保留等级、本级进度与永久加成，版本化迁移避免反复换算",
+    "测试/本地构建/Bugbot审查修复后提交并普通push origin/main",
+    "曾任主角的角色保存独立player/partner成长进度，共享背包武功，防止伙伴旧等级表覆盖玩家1000级进度"
+  ],
+  "integration": "unmerged",
+  "purpose": "玩家V2函数成长、1000级上限及后台公式预览",
+  "evidence": [
+    ".branch-records/0909-player-growth-functions/implementation.md",
+    ".branch-records/0909-player-growth-functions/original-levels.json",
+    "packages/types/src/player-growth-parameters.ts",
+    "34 targeted tests passed; types/web compilation and production Vite/PWA build passed",
+    "Bugbot P2 fixed and regression-tested; full engine 793 passed, 7 existing/environment failures plus one import-failed suite"
+  ],
+  "next": "Commit these verified changes and registry, execute push-main-1, verify origin refs/heads/main equals local HEAD; no deployment claim"
+}

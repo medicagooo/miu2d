@@ -23,6 +23,7 @@ import {
   loadMagicsFromJSON,
   loadPlayerFromJSON,
 } from "./loader-data-helpers";
+import { toLegacyPartnerProgress } from "./partner-growth";
 import { SaveDataCollector } from "./save-data-collector";
 import type { GoodsItemData, MagicItemData, PlayerSaveData } from "./save-types";
 
@@ -161,7 +162,8 @@ export class CharacterProfileLoader {
     // 这样后续 PlayerChange 走 loadProfileToPlayer 能拿到完整身份。
     const base = extractFlatDataFromCharacter(npc, true);
     base.dir = npc.currentDirection;
-    profile.player = base as unknown as PlayerSaveData;
+    if (profile.player?.growth) profile.partner = base as unknown as PlayerSaveData;
+    else profile.player = base as unknown as PlayerSaveData;
 
     profile.magicContainer = npc.magicInventory
       ? SaveDataCollector.collectMagicContainer(npc.magicInventory)
@@ -224,9 +226,18 @@ export class CharacterProfileLoader {
   /** 从 profile 恢复伙伴；若 profile 不存在则回退到 API 初始化 */
   async loadProfileToNpc(npc: Npc): Promise<void> {
     const key = this.resolveNpcKey(npc.name);
-    const profile = this.store.get(key);
-
+    const savedProfile = this.store.get(key);
     npc.initPartnerContainers();
+    const profile = savedProfile
+      ? {
+          ...savedProfile,
+          player:
+            savedProfile.partner ??
+            (savedProfile.player
+              ? toLegacyPartnerProgress(savedProfile.player, npc.levelManager)
+              : null),
+        }
+      : undefined;
 
     if (profile?.player) {
       const filtered = this.filterProfileForNpcApply(
