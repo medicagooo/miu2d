@@ -97,8 +97,12 @@ export class SpecialSpriteFactory {
     destination: Vector2,
     destroyOnEnd: boolean
   ): void {
-    const sprite = MagicSprite.createMoving(userId, magic, origin, destination, destroyOnEnd);
-    this.deps.callbacks.addMagicSprite(sprite);
+    // Only the audited player overlay supplies bursts; NPC/companion calls remain one shot.
+    for (let i = 0; i < (magic.playerShape?.burstCount ?? 1); i++) {
+      const sprite = MagicSprite.createMoving(userId, magic, origin, destination, destroyOnEnd);
+      if (i === 0) this.deps.callbacks.addMagicSprite(sprite);
+      else this.deps.callbacks.addWorkItem(i * 120, sprite);
+    }
   }
 
   /** Kind19 武功 - 持续留痕 */

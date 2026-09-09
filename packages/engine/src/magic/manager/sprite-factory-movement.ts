@@ -138,7 +138,7 @@ export class MovementSpriteFactory {
         origin,
         dir,
         destroyOnEnd,
-        { applyOffset: false }
+        { applyOffset: false, speedRatio: magic.playerShape?.travelScale ?? 1 }
       );
       this.callbacks.addMagicSprite(sprite);
     }
@@ -310,8 +310,16 @@ export class MovementSpriteFactory {
         origin,
         dir,
         destroyOnEnd,
-        { applyOffset: true }
+        { applyOffset: true, speedRatio: magic.playerShape?.travelScale ?? 1 }
       );
+      // Match flight scaling at the initial one-tile spiral offset as well.
+      const scale = magic.playerShape?.travelScale ?? 1;
+      if (scale !== 1) {
+        sprite.positionInWorld = {
+          x: origin.x + (sprite.positionInWorld.x - origin.x) * scale,
+          y: origin.y + (sprite.positionInWorld.y - origin.y) * scale,
+        };
+      }
       this.callbacks.addWorkItem(delay, sprite);
     }
   }

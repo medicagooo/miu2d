@@ -69,8 +69,12 @@ export class SpriteFactory {
     destination: Vector2,
     destroyOnEnd: boolean
   ): void {
-    const sprite = MagicSprite.createMoving(userId, magic, origin, destination, destroyOnEnd);
-    this.callbacks.addMagicSprite(sprite);
+    // Only the audited player overlay supplies bursts; NPC/companion calls remain one shot.
+    for (let i = 0; i < (magic.playerShape?.burstCount ?? 1); i++) {
+      const sprite = MagicSprite.createMoving(userId, magic, origin, destination, destroyOnEnd);
+      if (i === 0) this.callbacks.addMagicSprite(sprite);
+      else this.callbacks.addWorkItem(i * 120, sprite);
+    }
   }
 
   addLineMoveMagicSprite(

@@ -3,7 +3,7 @@
     "0908-workers-game-tabs/merge-main-header-1",
     "0908-workers-game-tabs/push-main-header-1",
     "0909-transparent-magic-icons/push-main-1",
-    "0909-npc-player-growth/push-main-1"
+    "0909-npc-shape-growth/push-main-1"
   ],
   "timezone": "Asia/Singapore",
   "format": 1,
@@ -15,7 +15,8 @@
     "0908-integrate-local-commits",
     "0908-workers-game-tabs",
     "0909-player-level-repair",
-    "0909-npc-player-growth"
+    "0909-npc-player-growth",
+    "0909-npc-shape-growth"
   ],
   "records": [
     ".branch-records/0908-magic-learning-dedup/state.json",
@@ -31,7 +32,8 @@
     ".branch-records/0909-landing-hero-only/state.json",
     ".branch-records/0909-player-magic-policy/state.json",
     ".branch-records/0909-player-level-repair/state.json",
-    ".branch-records/0909-npc-player-growth/state.json"
+    ".branch-records/0909-npc-player-growth/state.json",
+    ".branch-records/0909-npc-shape-growth/state.json"
   ],
   "changes": [
     {
@@ -207,6 +209,15 @@
       "status": "implemented",
       "request": ".branch-records/0909-npc-player-growth/events.jsonl#execute-1",
       "evidence": ".branch-records/0909-npc-player-growth/state.json",
+      "implementationDate": "2026-09-09"
+    },
+    {
+      "id": "0909-npc-shape-growth",
+      "date": "2026-09-09",
+      "businessChange": "85条NPC玩家武功改为1/4/7/10四档形态成长：区域扩大、扇墙增至9、单发追踪增至4连发、圆环螺旋等时扩散1.6倍。15条控制维持单次原时长，新增伤害按最终倍率折算、耗蓝按当前倍率平方根增长。替代原固定1级形态；NPC/伙伴/存档及基础攻击排除保留。",
+      "status": "implemented",
+      "request": ".branch-records/0909-npc-shape-growth/events.jsonl#execute-1",
+      "evidence": ".branch-records/0909-npc-shape-growth/state.json",
       "implementationDate": "2026-09-09"
     }
   ]

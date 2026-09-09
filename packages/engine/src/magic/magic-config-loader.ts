@@ -570,8 +570,8 @@ export function getMagicAtLevel(baseMagic: MagicData, level: number): MagicData 
     ...baseMagic,
     ...levelData,
     currentLevel: effectiveLevel,
-    // Player growth overlays keep NPC projectile counts/control at their level-one baseline.
-    effectLevel: baseMagic.fixedEffectLevel ?? effectiveLevel,
+    // Player-only shape tiers are independent of experience level and control duration.
+    effectLevel: levelData.playerShape?.effectLevel ?? effectiveLevel,
     levels: baseMagic.levels,
   };
 

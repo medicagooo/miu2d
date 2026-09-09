@@ -1,7 +1,6 @@
 /** Player inventory overlay only. Never called by NPC/companion inventory readers.
  * NPC source tables stay empty; this builds an independent, source-guarded ten-level Map.
- * fixedEffectLevel is consumed by getMagicAtLevel so projectile counts and control durations
- * retain their level-one behavior instead of multiplying together with damage growth.
+ * Shape tiers and balance rules: .branch-records/0909-npc-shape-growth/implementation.md.
  */
 import { canPlayerAddMagic } from "../../data/player-magic-catalog";
 import type { MagicData } from "../../magic/magic-data";
@@ -61,13 +60,45 @@ export function applyNpcPlayerProgression(magic: MagicData, gameSlug: string): M
   const profile = NPC_GROWTH_PROFILES[entry.profile];
   const levels = new Map<number, Partial<MagicData>>();
   for (let i = 0; i < 10; i++) {
+    const tier = Math.floor(i / 3);
+    const shape = entry.shape;
+    const width = 3 + tier * 2;
+    const finalMultiplicity =
+      shape === "square" || shape === "triangle"
+        ? 9
+        : shape === "line"
+          ? 7
+          : shape === "single" || shape === "tracking"
+            ? 4
+            : shape === "circle" || shape === "spiral"
+              ? 1.6
+              : 3;
+    const multiplicity =
+      shape === "square" || shape === "triangle"
+        ? (width / 3) ** 2
+        : shape === "line"
+          ? 1 + tier * 2
+          : shape === "single" || shape === "tracking"
+            ? tier + 1
+            : shape === "circle" || shape === "spiral"
+              ? 1 + tier * 0.2
+              : width / 3;
     levels.set(i + 1, {
+      playerShape: {
+        effectLevel: shape === "wall" ? tier + 1 : shape === "line" ? 1 + tier * 2 : 1 + tier * 3,
+        burstCount: shape === "single" || shape === "tracking" ? tier + 1 : 1,
+        travelScale: shape === "circle" || shape === "spiral" ? 1 + tier * 0.2 : 1,
+      },
+      // Original implicit level-one freeze/poison/petrify duration is two seconds.
+      ...(magic.specialKind >= 1 && magic.specialKind <= 3
+        ? { specialKindMilliSeconds: magic.specialKindMilliSeconds || 2000 }
+        : {}),
       // Keep the zero/nonzero Effect damage formula and the original first-level costs.
       effect: magic.effect,
-      effectExt: magic.effectExt + profile.bonus[i],
-      manaCost: magic.manaCost + profile.mana[i],
+      effectExt: magic.effectExt + profile.bonus[i] / finalMultiplicity,
+      manaCost: magic.manaCost + Math.ceil(profile.mana[i] * Math.sqrt(multiplicity)),
       levelupExp: profile.exp[i],
     });
   }
-  return { ...magic, maxLevel: 10, fixedEffectLevel: 1, levels };
+  return { ...magic, maxLevel: 10, levels };
 }

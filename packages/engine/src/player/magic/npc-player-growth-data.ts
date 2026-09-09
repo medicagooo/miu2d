@@ -12,6 +12,17 @@ export interface NpcPlayerGrowthEntry {
   game: string;
   key: string;
   profile: NpcGrowthProfile;
+  shape:
+    | "single"
+    | "tracking"
+    | "sector"
+    | "wall"
+    | "line"
+    | "circle"
+    | "spiral"
+    | "square"
+    | "rectangle"
+    | "triangle";
   source: Partial<MagicData>;
 }
 
@@ -20,6 +31,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic-冰刀攻击.ini",
     profile: "single",
+    shape: "single",
     source: {
       effect: 0,
       effect2: 0,
@@ -54,6 +66,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic-土系攻击2.ini",
     profile: "area",
+    shape: "spiral",
     source: {
       effect: 0,
       effect2: 0,
@@ -88,6 +101,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic-孟知秋攻击.ini",
     profile: "area",
+    shape: "rectangle",
     source: {
       effect: 0,
       effect2: 0,
@@ -122,6 +136,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic-小符咒攻击.ini",
     profile: "area",
+    shape: "sector",
     source: {
       effect: 0,
       effect2: 0,
@@ -156,6 +171,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic-悲天悯人咒.ini",
     profile: "area",
+    shape: "triangle",
     source: {
       effect: 0,
       effect2: 0,
@@ -190,6 +206,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic-推山填海.ini",
     profile: "strongControl",
+    shape: "sector",
     source: {
       effect: 1000,
       effect2: 0,
@@ -224,6 +241,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic-月眉儿攻击.ini",
     profile: "area",
+    shape: "square",
     source: {
       effect: 0,
       effect2: 0,
@@ -258,6 +276,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic-柳叶飞刀.ini",
     profile: "single",
+    shape: "single",
     source: {
       effect: 0,
       effect2: 0,
@@ -292,6 +311,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic-毒液.ini",
     profile: "area",
+    shape: "sector",
     source: {
       effect: 0,
       effect2: 0,
@@ -326,6 +346,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic-毒液2.ini",
     profile: "area",
+    shape: "sector",
     source: {
       effect: 0,
       effect2: 0,
@@ -360,6 +381,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic-毒烟攻击.ini",
     profile: "single",
+    shape: "single",
     source: {
       effect: 0,
       effect2: 0,
@@ -394,6 +416,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic-水系攻击1.ini",
     profile: "single",
+    shape: "single",
     source: {
       effect: 0,
       effect2: 0,
@@ -428,6 +451,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic-水系攻击2.ini",
     profile: "single",
+    shape: "single",
     source: {
       effect: 0,
       effect2: 0,
@@ -462,6 +486,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic-沙暴攻击.ini",
     profile: "area",
+    shape: "line",
     source: {
       effect: 0,
       effect2: 0,
@@ -496,6 +521,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic-火系攻击2.ini",
     profile: "area",
+    shape: "square",
     source: {
       effect: 0,
       effect2: 0,
@@ -530,6 +556,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic-火系攻击3.ini",
     profile: "area",
+    shape: "sector",
     source: {
       effect: 0,
       effect2: 0,
@@ -564,6 +591,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic-百剑诀.ini",
     profile: "control",
+    shape: "rectangle",
     source: {
       effect: 0,
       effect2: 0,
@@ -598,6 +626,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic-符咒攻击.ini",
     profile: "area",
+    shape: "sector",
     source: {
       effect: 0,
       effect2: 0,
@@ -632,6 +661,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic-紫轩攻击.ini",
     profile: "single",
+    shape: "single",
     source: {
       effect: 0,
       effect2: 0,
@@ -666,6 +696,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic-纳兰潜凛攻击.ini",
     profile: "area",
+    shape: "circle",
     source: {
       effect: 0,
       effect2: 0,
@@ -700,6 +731,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic-花瓣攻击.ini",
     profile: "area",
+    shape: "circle",
     source: {
       effect: 0,
       effect2: 0,
@@ -734,6 +766,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic-蔷薇攻击.ini",
     profile: "tracking",
+    shape: "tracking",
     source: {
       effect: 0,
       effect2: 0,
@@ -768,6 +801,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic-金刚电闪.ini",
     profile: "area",
+    shape: "sector",
     source: {
       effect: 0,
       effect2: 0,
@@ -802,6 +836,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic-金针攻击.ini",
     profile: "area",
+    shape: "wall",
     source: {
       effect: 0,
       effect2: 0,
@@ -836,6 +871,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic-金钱镖.ini",
     profile: "area",
+    shape: "sector",
     source: {
       effect: 0,
       effect2: 0,
@@ -870,6 +906,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic023_雨后彩虹.ini",
     profile: "area",
+    shape: "wall",
     source: {
       effect: 0,
       effect2: 0,
@@ -904,6 +941,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic026_龙象九重.ini",
     profile: "control",
+    shape: "wall",
     source: {
       effect: 0,
       effect2: 0,
@@ -938,6 +976,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic027_幻音玄剑.ini",
     profile: "area",
+    shape: "wall",
     source: {
       effect: 0,
       effect2: 0,
@@ -972,6 +1011,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic028_慈航普度.ini",
     profile: "area",
+    shape: "rectangle",
     source: {
       effect: 0,
       effect2: 0,
@@ -1006,6 +1046,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic029_风卷残雪.ini",
     profile: "control",
+    shape: "single",
     source: {
       effect: 0,
       effect2: 0,
@@ -1040,6 +1081,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic030_饿虎扑食.ini",
     profile: "single",
+    shape: "single",
     source: {
       effect: 0,
       effect2: 0,
@@ -1074,6 +1116,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic031_野马分鬃.ini",
     profile: "single",
+    shape: "single",
     source: {
       effect: 0,
       effect2: 0,
@@ -1108,6 +1151,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic032_幻魔雪刀.ini",
     profile: "area",
+    shape: "sector",
     source: {
       effect: 0,
       effect2: 0,
@@ -1142,6 +1186,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic033_紫霞神功.ini",
     profile: "control",
+    shape: "circle",
     source: {
       effect: 0,
       effect2: 0,
@@ -1176,6 +1221,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic034_含元掌.ini",
     profile: "area",
+    shape: "sector",
     source: {
       effect: 0,
       effect2: 0,
@@ -1210,6 +1256,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic035_观音散雪.ini",
     profile: "control",
+    shape: "sector",
     source: {
       effect: 0,
       effect2: 0,
@@ -1244,6 +1291,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic036_金乌刀法.ini",
     profile: "single",
+    shape: "single",
     source: {
       effect: 0,
       effect2: 0,
@@ -1278,6 +1326,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic037_劈波裂浪.ini",
     profile: "single",
+    shape: "single",
     source: {
       effect: 0,
       effect2: 0,
@@ -1312,6 +1361,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic038_破石鞭法.ini",
     profile: "control",
+    shape: "circle",
     source: {
       effect: 0,
       effect2: 0,
@@ -1346,6 +1396,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic039_残阳如血.ini",
     profile: "area",
+    shape: "wall",
     source: {
       effect: 0,
       effect2: 0,
@@ -1380,6 +1431,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic040_血影怒雷.ini",
     profile: "control",
+    shape: "circle",
     source: {
       effect: 0,
       effect2: 0,
@@ -1414,6 +1466,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic041_倒转乾坤.ini",
     profile: "area",
+    shape: "wall",
     source: {
       effect: 0,
       effect2: 0,
@@ -1448,6 +1501,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic042_天外神音.ini",
     profile: "area",
+    shape: "rectangle",
     source: {
       effect: 0,
       effect2: 0,
@@ -1482,6 +1536,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic043_风云突起1.ini",
     profile: "control",
+    shape: "single",
     source: {
       effect: 0,
       effect2: 0,
@@ -1516,6 +1571,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic043_风云突起2.ini",
     profile: "single",
+    shape: "single",
     source: {
       effect: 0,
       effect2: 0,
@@ -1550,6 +1606,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic043_风云突起3.ini",
     profile: "control",
+    shape: "single",
     source: {
       effect: 0,
       effect2: 0,
@@ -1584,6 +1641,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic044_威震五岳.ini",
     profile: "single",
+    shape: "single",
     source: {
       effect: 0,
       effect2: 0,
@@ -1618,6 +1676,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic045_摘花满天.ini",
     profile: "area",
+    shape: "sector",
     source: {
       effect: 0,
       effect2: 0,
@@ -1652,6 +1711,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic046_投石惊浪.ini",
     profile: "area",
+    shape: "sector",
     source: {
       effect: 0,
       effect2: 0,
@@ -1686,6 +1746,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic047_蟒蛇出洞.ini",
     profile: "area",
+    shape: "sector",
     source: {
       effect: 0,
       effect2: 0,
@@ -1720,6 +1781,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic048_毒蛇吐芯.ini",
     profile: "control",
+    shape: "single",
     source: {
       effect: 0,
       effect2: 0,
@@ -1754,6 +1816,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic049_快风残雨.ini",
     profile: "area",
+    shape: "sector",
     source: {
       effect: 0,
       effect2: 0,
@@ -1788,6 +1851,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic049_疾风骤雨.ini",
     profile: "area",
+    shape: "sector",
     source: {
       effect: 0,
       effect2: 0,
@@ -1822,6 +1886,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic050_追魂索命.ini",
     profile: "single",
+    shape: "single",
     source: {
       effect: 0,
       effect2: 0,
@@ -1856,6 +1921,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic051_疾风骤雨.ini",
     profile: "single",
+    shape: "single",
     source: {
       effect: 0,
       effect2: 0,
@@ -1890,6 +1956,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic052_推山填海.ini",
     profile: "control",
+    shape: "single",
     source: {
       effect: 0,
       effect2: 0,
@@ -1924,6 +1991,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic053_黑龙探海.ini",
     profile: "control",
+    shape: "wall",
     source: {
       effect: 0,
       effect2: 0,
@@ -1958,6 +2026,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic054_狂风逐日.ini",
     profile: "area",
+    shape: "wall",
     source: {
       effect: 0,
       effect2: 0,
@@ -1992,6 +2061,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic055_噬天灭地.ini",
     profile: "area",
+    shape: "wall",
     source: {
       effect: 0,
       effect2: 0,
@@ -2026,6 +2096,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "sword1",
     key: "magic061_莫须有.ini",
     profile: "area",
+    shape: "sector",
     source: {
       effect: 0,
       effect2: 0,
@@ -2060,6 +2131,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "demo",
     key: "magic-冰刀攻击.ini",
     profile: "single",
+    shape: "single",
     source: {
       effect: 0,
       effect2: 0,
@@ -2094,6 +2166,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "demo",
     key: "magic-土系攻击2.ini",
     profile: "area",
+    shape: "spiral",
     source: {
       effect: 0,
       effect2: 0,
@@ -2128,6 +2201,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "demo",
     key: "magic-孟知秋攻击.ini",
     profile: "area",
+    shape: "rectangle",
     source: {
       effect: 0,
       effect2: 0,
@@ -2162,6 +2236,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "demo",
     key: "magic-小符咒攻击.ini",
     profile: "area",
+    shape: "sector",
     source: {
       effect: 0,
       effect2: 0,
@@ -2196,6 +2271,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "demo",
     key: "magic-悲天悯人咒.ini",
     profile: "area",
+    shape: "triangle",
     source: {
       effect: 0,
       effect2: 0,
@@ -2230,6 +2306,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "demo",
     key: "magic-推山填海.ini",
     profile: "strongControl",
+    shape: "sector",
     source: {
       effect: 1000,
       effect2: 0,
@@ -2264,6 +2341,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "demo",
     key: "magic-月眉儿攻击.ini",
     profile: "area",
+    shape: "square",
     source: {
       effect: 0,
       effect2: 0,
@@ -2298,6 +2376,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "demo",
     key: "magic-柳叶飞刀.ini",
     profile: "single",
+    shape: "single",
     source: {
       effect: 0,
       effect2: 0,
@@ -2332,6 +2411,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "demo",
     key: "magic-毒液.ini",
     profile: "area",
+    shape: "sector",
     source: {
       effect: 0,
       effect2: 0,
@@ -2366,6 +2446,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "demo",
     key: "magic-毒液2.ini",
     profile: "area",
+    shape: "sector",
     source: {
       effect: 0,
       effect2: 0,
@@ -2400,6 +2481,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "demo",
     key: "magic-毒烟攻击.ini",
     profile: "single",
+    shape: "single",
     source: {
       effect: 0,
       effect2: 0,
@@ -2434,6 +2516,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "demo",
     key: "magic-水系攻击1.ini",
     profile: "single",
+    shape: "single",
     source: {
       effect: 0,
       effect2: 0,
@@ -2468,6 +2551,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "demo",
     key: "magic-水系攻击2.ini",
     profile: "single",
+    shape: "single",
     source: {
       effect: 0,
       effect2: 0,
@@ -2502,6 +2586,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "demo",
     key: "magic-沙暴攻击.ini",
     profile: "area",
+    shape: "line",
     source: {
       effect: 0,
       effect2: 0,
@@ -2536,6 +2621,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "demo",
     key: "magic-火系攻击2.ini",
     profile: "area",
+    shape: "square",
     source: {
       effect: 0,
       effect2: 0,
@@ -2570,6 +2656,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "demo",
     key: "magic-火系攻击3.ini",
     profile: "area",
+    shape: "sector",
     source: {
       effect: 0,
       effect2: 0,
@@ -2604,6 +2691,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "demo",
     key: "magic-百剑诀.ini",
     profile: "control",
+    shape: "rectangle",
     source: {
       effect: 0,
       effect2: 0,
@@ -2638,6 +2726,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "demo",
     key: "magic-符咒攻击.ini",
     profile: "area",
+    shape: "sector",
     source: {
       effect: 0,
       effect2: 0,
@@ -2672,6 +2761,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "demo",
     key: "magic-紫轩攻击.ini",
     profile: "single",
+    shape: "single",
     source: {
       effect: 0,
       effect2: 0,
@@ -2706,6 +2796,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "demo",
     key: "magic-纳兰潜凛攻击.ini",
     profile: "area",
+    shape: "circle",
     source: {
       effect: 0,
       effect2: 0,
@@ -2740,6 +2831,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "demo",
     key: "magic-花瓣攻击.ini",
     profile: "area",
+    shape: "circle",
     source: {
       effect: 0,
       effect2: 0,
@@ -2774,6 +2866,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "demo",
     key: "magic-蔷薇攻击.ini",
     profile: "tracking",
+    shape: "tracking",
     source: {
       effect: 0,
       effect2: 0,
@@ -2808,6 +2901,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "demo",
     key: "magic-金刚电闪.ini",
     profile: "area",
+    shape: "sector",
     source: {
       effect: 0,
       effect2: 0,
@@ -2842,6 +2936,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "demo",
     key: "magic-金针攻击.ini",
     profile: "area",
+    shape: "wall",
     source: {
       effect: 0,
       effect2: 0,
@@ -2876,6 +2971,7 @@ export const NPC_PLAYER_GROWTH: readonly NpcPlayerGrowthEntry[] = [
     game: "demo",
     key: "magic-金钱镖.ini",
     profile: "area",
+    shape: "sector",
     source: {
       effect: 0,
       effect2: 0,
