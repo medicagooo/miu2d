@@ -4,6 +4,7 @@
  */
 
 import type { MagicItemInfo } from "@miu2d/engine/magic";
+import { getMagicGrowthState, magicGrowthLabel } from '@miu2d/engine/magic/magic-growth-state';
 import { MAGIC_LIST_CONFIG } from "@miu2d/engine/player/magic/magic-list-config";
 import type React from "react";
 import { useCallback, useMemo, useState } from "react";
@@ -181,14 +182,17 @@ const MagicDisplay: React.FC<MagicDisplayProps> = ({
 
   const name = displayMagic.name;
   const level = magicInfo?.level ?? (magic as XiuLianMagic | null)?.level ?? 0;
-  const maxLevel = 10;
+  const maxLevel = magicInfo?.magic?.maxLevel ?? magic?.maxLevel ?? 10;
   const currentLevelExp = magicInfo?.exp ?? magic?.exp ?? 0;
   const levelUpExp = magicInfo?.magic?.levelupExp ?? magic?.levelUpExp ?? 100;
   const manaCost = magicInfo?.magic?.manaCost ?? 0;
   const intro = magicInfo?.magic?.intro ?? magic?.intro ?? "";
   const expProgress = levelUpExp > 0 ? (currentLevelExp / levelUpExp) * 100 : 0;
-  // 是否可升级（有等级数据）
-  const canUpgrade = !!(magicInfo?.magic?.levels && magicInfo.magic.levels.size > 0);
+  // Direct inventory and legacy UI bridge props both carry player-effective progression.
+  const growthState = magicInfo?.magic
+    ? getMagicGrowthState(magicInfo.magic, level)
+    : magic?.growthState ?? (levelUpExp > 0 ? 'trainable' : 'unconfigured');
+  const canUpgrade = growthState === 'trainable';
 
   // 八角形裁剪路径
   const octagonClip =
@@ -288,7 +292,7 @@ const MagicDisplay: React.FC<MagicDisplayProps> = ({
               </span>
             ) : (
               <span style={{ fontSize: typography.fontSize.xs, color: modernColors.text.muted }}>
-                （不可升级）
+                （{magicGrowthLabel(growthState)}）
               </span>
             )}
           </div>

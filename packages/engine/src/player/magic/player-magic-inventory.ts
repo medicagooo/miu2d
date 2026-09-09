@@ -96,7 +96,8 @@ export class PlayerMagicInventory {
     const magic = getMagic(fileName);
     if (!magic || !this.usePlayerProgression) return magic;
     const normalize = (key: string) => key.trim().replaceAll("\\", "/").split("/").at(-1)?.toLowerCase();
-    const source = getMagicsData()?.player.find(entry => normalize(entry.key) === normalize(magic.fileName));
+    const data = getMagicsData();
+    const source = data && [...data.player, ...data.npc].find(entry => normalize(entry.key) === normalize(magic.fileName));
     return repairPlayerMagicProgression(magic, { gameSlug: getGameSlug(), userType: source?.userType });
   }
 

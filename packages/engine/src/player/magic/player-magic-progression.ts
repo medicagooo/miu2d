@@ -7,6 +7,7 @@
  */
 import type { MagicData } from "../../magic/types";
 import { MagicMoveKind, MagicSpecialKind } from "../../magic/types";
+import { applyNpcPlayerProgression } from "./npc-player-progression";
 
 type ProgressionContext = { gameSlug: string; userType?: string | null };
 type CurveRepair = { keys: readonly string[]; before: readonly number[]; after: readonly number[] };
@@ -64,6 +65,8 @@ export function repairPlayerMagicProgression(
   magic: MagicData,
   context: ProgressionContext
 ): MagicData {
+  // Ownership describes the imported record; inventory opt-in describes the actual caster.
+  if (context.userType === "npc") return applyNpcPlayerProgression(magic, context.gameSlug);
   if (context.userType !== "player" || !["sword1", "demo"].includes(context.gameSlug)) return magic;
   const key = magic.fileName.trim().replaceAll("\\", "/").split("/").at(-1)?.toLowerCase() ?? "";
   const levels = magic.levels;

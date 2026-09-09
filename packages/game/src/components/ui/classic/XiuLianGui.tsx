@@ -22,6 +22,8 @@ import { useXiuLianGuiConfig } from "./useUISettings";
 
 // 修炼中的武功数据 - 兼容旧接口
 export interface XiuLianMagic {
+  growthState?: import('@miu2d/engine/magic/magic-growth-state').MagicGrowthState;
+  maxLevel?: number;
   id: string;
   name: string;
   iconPath?: string;

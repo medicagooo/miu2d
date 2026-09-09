@@ -99,6 +99,9 @@ export interface MagicData {
   levelupExp: number; // 升级所需经验
   currentLevel: number; // 当前等级
   effectLevel: number; // 效果等级
+  /** Player-only NPC growth can pin projectile/control strength while currentLevel rises.
+   * Set by npc-player-progression; absent for source/NPC/legacy configurations. */
+  fixedEffectLevel?: number;
   maxLevel: number; // 最大等级
 
   // 冷却

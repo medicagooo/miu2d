@@ -1,0 +1,33 @@
+{
+  "purpose": "三个游戏排除基础攻击/物品暗器；为其他NPC武功提供玩家专用1—10级成长",
+  "requirements": [
+    "执行本轮已给方案；范围扩展至三个游戏，替代此前仅原userType=player限制",
+    "核查基础攻击及暗器2/毒液等边界项，按精确游戏与key排除；保留柳叶飞刀及有独立形态的攻击",
+    "剩余NPC无等级武功补1—10级，仅玩家启用，1级基线保留，弹幕及控制级别固定，不污染NPC/伙伴",
+    "学习与全部存档/变身/重载路径一致；已有排除武功不删除；已正常成长和上一轮修复保留",
+    "界面区分可修炼、已满级、无成长配置；完成Bugbot审查修复与普通push main"
+  ],
+  "constraints": [
+    "不写数据库、不创建本地数据库、不直接部署、不手动操作CI",
+    "新设计逐技能明确记录数值与参照，不声称恢复原版；保留原Effect=0攻击公式",
+    "旧存档等级/经验/冷却保留；源作者新等级表优先"
+  ],
+  "acceptance": [
+    "三个游戏基础攻击不再新增，NPC继续使用",
+    "所有纳入成长的NPC技能玩家可通过累计经验升至10级，伤害/耗蓝与形态验证",
+    "Bugbot问题修复；测试/类型/生产构建通过；origin/main及Workers Builds对应该任务提交"
+  ],
+  "status": "active",
+  "integration": "unmerged",
+  "evidence": [
+    "起点main=origin/main=3a012ba7e116e6daca2d170149abc8bf6e461d6c；工作树干净",
+    ".branch-records/0909-npc-player-growth/implementation.md",
+    ".branch-records/0909-npc-player-growth/skill-audit.json",
+    "公开API候选核验：sword1 60 + demo 25；sword2的8条NPC均为本批基础攻击；实际排除记录15/10/9",
+    "125项测试（6文件）通过：真实API转换/85条成长1→10/攻击基线50,500,2000/存档变身/旧修复/目录及排序",
+    "TypeScript tsc -b通过；完整站点及VITE_DEMO_ONLY=true两种Vite/PWA生产构建通过；既有bundle/wasmoon/Browserslist警告",
+    "Bugbot审查本轮全部未提交内容，未发现可确认的新增缺陷；未修改文件",
+    "新模块Biome检查通过；git diff --check通过"
+  ],
+  "next": "执行push-main-1，fetch核验origin/main，检查Cloudflare Workers Builds和对应部署版本"
+}

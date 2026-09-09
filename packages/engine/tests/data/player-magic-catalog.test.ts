@@ -7,9 +7,9 @@ import { buildPlayerMagicCatalog, canPlayerAddMagic } from "../../src/data/playe
 import { describe, expect, it } from "vitest";
 
 describe("player magic catalog", () => {
-  const basicAttacks = ["弓箭", "蜂王毒刺", "两格长枪", "强盗飞刀", "刀", "飞刀", "蝙蝠", "长剑"];
+  const basicAttacks = ["弓箭", "蜂王毒刺", "两格长枪", "强盗飞刀", "刀", "飞刀", "蝙蝠", "长剑", "暗器2", "棍棒", "拳脚", "火箭", "冰弓箭"];
 
-  it.each(["sword1", "demo"])("excludes exact basic attacks in %s regardless of ownership", (slug) => {
+  it.each(["sword1", "demo", "sword2"])("excludes exact basic attacks in %s regardless of ownership", (slug) => {
     const entries = [...basicAttacks.map((name) => ({ key: `magic-${name}.ini` })),
       { key: "player-magic-长剑.ini" }];
     expect(buildPlayerMagicCatalog({ player: entries, npc: entries }, slug)).toEqual([]);
@@ -21,11 +21,11 @@ describe("player magic catalog", () => {
   });
 
   it("limits numbered archery exclusions to sword1 and preserves other/legacy games", () => {
-    for (const key of ["player-magic1-长剑.ini", "magic060_射箭.ini", "magic062_弓箭.ini"]) {
+    for (const key of ["player-magic1-长剑.ini", "magic060_射箭.ini", "magic062_弓箭.ini", "magic057_梅花镖.ini", "magic058_袖箭.ini"]) {
       expect(canPlayerAddMagic(key, "sword1")).toBe(false);
       expect(canPlayerAddMagic(key, "demo")).toBe(true);
     }
-    for (const slug of ["sword2", "unknown", undefined]) {
+    for (const slug of ["unknown", undefined]) {
       expect(canPlayerAddMagic("magic-长剑.ini", slug)).toBe(true);
       expect(canPlayerAddMagic("player-magic-长剑.ini", slug)).toBe(true);
     }

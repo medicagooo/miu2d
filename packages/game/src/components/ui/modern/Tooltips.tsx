@@ -4,6 +4,7 @@
  */
 
 import type { UIGoodData, UIMagicData } from "@miu2d/engine/gui/ui-types";
+import { magicGrowthLabel } from '@miu2d/engine/magic/magic-growth-state';
 import type React from "react";
 import { useLayoutEffect, useMemo, useRef, useState } from "react";
 import { HiOutlineArchiveBox, HiOutlineCurrencyYen } from "react-icons/hi2";
@@ -307,7 +308,7 @@ export const MagicTooltip: React.FC<MagicTooltipProps> = ({ isVisible, magic, po
           <div style={{ fontSize: typography.fontSize.xs, color: modernColors.text.muted }}>
             {magic.levelUpExp > 0
               ? `第 ${magic.level} / ${magic.maxLevel} 层`
-              : `第 ${magic.level} 层（不可升级）`}
+              : `第 ${magic.level} 层（${magicGrowthLabel(magic.growthState ?? 'unconfigured')}）`}
           </div>
         </div>
       </div>

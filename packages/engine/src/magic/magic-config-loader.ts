@@ -570,7 +570,8 @@ export function getMagicAtLevel(baseMagic: MagicData, level: number): MagicData 
     ...baseMagic,
     ...levelData,
     currentLevel: effectiveLevel,
-    effectLevel: effectiveLevel,
+    // Player growth overlays keep NPC projectile counts/control at their level-one baseline.
+    effectLevel: baseMagic.fixedEffectLevel ?? effectiveLevel,
     levels: baseMagic.levels,
   };
 

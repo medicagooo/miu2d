@@ -3,7 +3,7 @@
     "0908-workers-game-tabs/merge-main-header-1",
     "0908-workers-game-tabs/push-main-header-1",
     "0909-transparent-magic-icons/push-main-1",
-    "0909-player-level-repair/push-main-1"
+    "0909-npc-player-growth/push-main-1"
   ],
   "timezone": "Asia/Singapore",
   "format": 1,
@@ -14,7 +14,8 @@
     "0908-remove-local-recovery",
     "0908-integrate-local-commits",
     "0908-workers-game-tabs",
-    "0909-player-level-repair"
+    "0909-player-level-repair",
+    "0909-npc-player-growth"
   ],
   "records": [
     ".branch-records/0908-magic-learning-dedup/state.json",
@@ -29,7 +30,8 @@
     ".branch-records/0909-transparent-magic-icons/state.json",
     ".branch-records/0909-landing-hero-only/state.json",
     ".branch-records/0909-player-magic-policy/state.json",
-    ".branch-records/0909-player-level-repair/state.json"
+    ".branch-records/0909-player-level-repair/state.json",
+    ".branch-records/0909-npc-player-growth/state.json"
   ],
   "changes": [
     {
@@ -196,6 +198,15 @@
       "status": "implemented",
       "request": ".branch-records/0909-player-level-repair/events.jsonl#execute-1",
       "evidence": ".branch-records/0909-player-level-repair/state.json",
+      "implementationDate": "2026-09-09"
+    },
+    {
+      "id": "0909-npc-player-growth",
+      "date": "2026-09-09",
+      "businessChange": "三游戏玩家学习排除基础攻击/物品暗器共15/10/9条（新剑侠/月影/剑侠2）；新剑侠60条、月影25条原NPC武功新增玩家专用1—10级成长，保留NPC原行为、存档及1级弹幕/控制强度；界面区分可修炼、满级、无成长配置。",
+      "status": "implemented",
+      "request": ".branch-records/0909-npc-player-growth/events.jsonl#execute-1",
+      "evidence": ".branch-records/0909-npc-player-growth/state.json",
       "implementationDate": "2026-09-09"
     }
   ]

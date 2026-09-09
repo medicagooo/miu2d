@@ -35,17 +35,26 @@ const EXCLUDED_BASIC_ATTACKS = new Set([
   "magic-蝙蝠.ini",
   "magic-长剑.ini",
   "player-magic-长剑.ini",
+  "magic-暗器2.ini",
+  "magic-棍棒.ini",
+  "magic-拳脚.ini",
+  "magic-火箭.ini",
+  "magic-冰弓箭.ini",
 ]);
 
 /** Restrict new player learning only; omitted slug preserves the legacy catalog contract. */
 export function canPlayerAddMagic(key: string, gameSlug?: string): boolean {
   const fileName = normalizeMagicKey(key).split("/").at(-1) ?? "";
   if (!fileName || !isMagicRecord(key)) return false;
-  if (gameSlug !== "sword1" && gameSlug !== "demo") return true;
+  if (!["sword1", "demo", "sword2"].includes(gameSlug ?? "")) return true;
   if (EXCLUDED_BASIC_ATTACKS.has(fileName)) return false;
   return (
     gameSlug !== "sword1" ||
-    !["player-magic1-长剑.ini", "magic060_射箭.ini", "magic062_弓箭.ini"].includes(fileName)
+    ![
+      "player-magic1-长剑.ini", "magic060_射箭.ini", "magic062_弓箭.ini",
+      // Item projectiles retain their goods use and old saves, but are not learnable arts.
+      "magic057_梅花镖.ini", "magic058_袖箭.ini",
+    ].includes(fileName)
   );
 }
 

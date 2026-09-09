@@ -7,6 +7,7 @@
 
 import { logger } from "@miu2d/engine/core/logger";
 import type { UIGoodData } from "@miu2d/engine/gui/ui-types";
+import { getMagicGrowthState } from '@miu2d/engine/magic/magic-growth-state';
 import type { Npc } from "@miu2d/engine/npc/npc";
 import { EquipPosition, GoodKind } from "@miu2d/engine/player/goods/good";
 import type React from "react";
@@ -807,6 +808,7 @@ export const ModernGameUIWrapper: React.FC<ModernGameUIWrapperProps> = ({
               maxLevel: magicTooltip.magicInfo.magic.maxLevel ?? 10,
               currentLevelExp: magicTooltip.magicInfo.exp,
               levelUpExp: magicTooltip.magicInfo.magic.levelupExp ?? 0,
+              growthState: getMagicGrowthState(magicTooltip.magicInfo.magic, magicTooltip.magicInfo.level),
               manaCost: magicTooltip.magicInfo.magic.manaCost ?? 0,
             }}
             position={magicTooltip.position}

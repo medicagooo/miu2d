@@ -28,6 +28,7 @@ import {
 } from "../events/game-events";
 import type { MemoListManager } from "../gui/memo-list-manager";
 import type { MagicItemInfo } from "../magic/types";
+import { getMagicGrowthState } from '../magic/magic-growth-state';
 import {
   EQUIP_SLOT_COUNT,
   type GoodsItemInfo,
@@ -99,6 +100,7 @@ function convertMagicInfoToSlot(info: MagicItemInfo | null, index: number): UIMa
       maxLevel: magic.maxLevel || 10,
       currentLevelExp: info.exp,
       levelUpExp: magic.levelupExp ?? 0,
+      growthState: getMagicGrowthState(magic, info.level),
       manaCost: magic.manaCost,
     },
   };

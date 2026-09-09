@@ -248,6 +248,8 @@ export interface UIGoodsState {
 // ============= 武功系统 =============
 
 export interface UIMagicData {
+  /** Optional for older UI adapters; current bridges supply the source-aware growth state. */
+  readonly growthState?: import('../magic/magic-growth-state').MagicGrowthState;
   readonly fileName: string;
   readonly name: string;
   readonly intro: string;

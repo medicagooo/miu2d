@@ -437,6 +437,8 @@ export const ModernGameUI: React.FC<ModernGameUIProps> = ({
                   level: magicState.xiuLianMagic.magic.level ?? 0,
                   exp: magicState.xiuLianMagic.magic.currentLevelExp ?? 0,
                   levelUpExp: magicState.xiuLianMagic.magic.levelUpExp ?? 0,
+                  growthState: magicState.xiuLianMagic.magic.growthState,
+                  maxLevel: magicState.xiuLianMagic.magic.maxLevel,
                   intro: magicState.xiuLianMagic.magic.intro ?? "",
                 } satisfies XiuLianMagic)
               : null
