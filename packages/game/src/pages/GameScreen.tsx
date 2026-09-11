@@ -214,7 +214,7 @@ export default function GameScreen() {
   // ===== 离开游戏时恢复默认 favicon、manifest 和标题 =====
   useEffect(() => {
     return () => {
-      document.title = "Miu2D Engine";
+      document.title = "Swords of Legends";
       // 恢复 favicon
       document.querySelectorAll<HTMLLinkElement>("link[rel~='icon']").forEach((el) => el.remove());
       const link = document.createElement("link");

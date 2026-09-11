@@ -4,7 +4,8 @@
     "0908-workers-game-tabs/push-main-header-1",
     "0909-transparent-magic-icons/push-main-1",
     "0909-npc-shape-growth/push-main-1",
-    "0909-player-growth-functions/push-main-1"
+    "0909-player-growth-functions/push-main-1",
+    "0912-game-debug-tools/push-main-1"
   ],
   "timezone": "Asia/Singapore",
   "format": 1,
@@ -36,7 +37,8 @@
     ".branch-records/0909-player-level-repair/state.json",
     ".branch-records/0909-npc-player-growth/state.json",
     ".branch-records/0909-npc-shape-growth/state.json",
-    ".branch-records/0909-player-growth-functions/state.json"
+    ".branch-records/0909-player-growth-functions/state.json",
+    ".branch-records/0912-game-debug-tools/state.json"
   ],
   "changes": [
     {
@@ -231,6 +233,15 @@
       "date": "2026-09-09",
       "request": ".branch-records/0909-player-growth-functions/events.jsonl#execute-1",
       "implementationDate": "2026-09-09"
+    },
+    {
+      "id": "0912-game-debug-tools",
+      "date": "2026-09-12",
+      "businessChange": "默认及分享标题改Swords of Legends，具体游戏名/水印保留；物体页按全场景快照串行交互，停止仅取消后续项，切图/失效跳过或停止；NPC添加扩展到当前游戏配置库，按名称/标识搜索并支持批量生成，资源/旧接口兼容。已实现并本地验证，远端发布待核验。",
+      "status": "complete",
+      "request": "0912-game-debug-tools/request-execute",
+      "evidence": ".branch-records/0912-game-debug-tools/state.json",
+      "implementedAt": "2026-09-12"
     }
   ]
 }

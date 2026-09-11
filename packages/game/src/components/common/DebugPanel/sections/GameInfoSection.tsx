@@ -579,6 +579,7 @@ const ObjRow: React.FC<{
 
 /** 场景条目类型 */
 interface SceneEntry {
+  key?: string;
   name: string;
   kind: number;
   data: Record<string, unknown>;
@@ -594,6 +595,7 @@ export const EntityDetailModal: React.FC<{
   onKillNpc?: (npcId: string) => void;
   onInteractWithObj?: (objId: string) => Promise<void>;
   onGetSceneNpcEntries?: () => Promise<SceneEntry[]>;
+  onInteractAllObjs?: (signal: AbortSignal, onProgress: (done: number, total: number) => void) => Promise<void>;
   onGetSceneObjEntries?: () => Promise<SceneEntry[]>;
   onAddNpcFromEntry?: (data: Record<string, unknown>) => Promise<void>;
   onAddObjFromEntry?: (data: Record<string, unknown>) => Promise<void>;
@@ -601,7 +603,7 @@ export const EntityDetailModal: React.FC<{
   onDebugTriggerTrap?: (trapIndex: number) => boolean;
   onLoadTrapScript?: (scriptName: string) => Promise<string[]>;
   onIsScriptRunning?: () => boolean;
-}> = ({ visible, onClose, onGetNpcDetails, onGetObjDetails, onTalkToNpc, onKillNpc, onInteractWithObj, onGetSceneNpcEntries, onGetSceneObjEntries, onAddNpcFromEntry, onAddObjFromEntry, onGetBaseTrapEntries, onDebugTriggerTrap, onLoadTrapScript, onIsScriptRunning }) => {
+}> = ({ visible, onClose, onGetNpcDetails, onGetObjDetails, onTalkToNpc, onKillNpc, onInteractWithObj, onInteractAllObjs, onGetSceneNpcEntries, onGetSceneObjEntries, onAddNpcFromEntry, onAddObjFromEntry, onGetBaseTrapEntries, onDebugTriggerTrap, onLoadTrapScript, onIsScriptRunning }) => {
   // 刷新数据
   const refresh = useCallback(() => {
     if (onGetNpcDetails) setNpcs(onGetNpcDetails());
@@ -628,6 +630,7 @@ export const EntityDetailModal: React.FC<{
   const addPanelRef = useRef<HTMLDivElement>(null);
   const addSearchRef = useRef<HTMLInputElement>(null);
   const batchInputRef = useRef<HTMLInputElement>(null);
+  const entriesRequest = useRef(0);
 
   // 数据
   const [npcs, setNpcs] = useState<NpcDetailInfo[]>([]);
@@ -635,6 +638,36 @@ export const EntityDetailModal: React.FC<{
   const [baseTraps, setBaseTraps] = useState<Record<number, string>>({});
   const [trapScripts, setTrapScripts] = useState<Record<string, string[]>>({});
   const [scriptRunning, setScriptRunning] = useState(false);
+  const batchAbort = useRef<AbortController | null>(null);
+  const [interactionProgress, setInteractionProgress] = useState<string | null>(null);
+  const [actionError, setActionError] = useState("");
+
+  useEffect(() => {
+    if (!visible) {
+      batchAbort.current?.abort();
+      setShowAddPanel(false);
+    }
+    return () => { batchAbort.current?.abort(); entriesRequest.current++; };
+  }, [visible]);
+
+  const handleInteractAll = async () => {
+    if (!onInteractAllObjs || batchAbort.current || onIsScriptRunning?.()) return;
+    const controller = new AbortController();
+    batchAbort.current = controller;
+    setActionError("");
+    setInteractionProgress("准备中…");
+    try {
+      await onInteractAllObjs(controller.signal, (done, total) => {
+        setInteractionProgress(`${done}/${total}`);
+      });
+    } catch (error) {
+      setActionError(error instanceof Error ? error.message : "批量交互失败，已停止");
+    } finally {
+      batchAbort.current = null;
+      setInteractionProgress(null);
+      refresh();
+    }
+  };
 
   // 轮询刷新 — 仅在数据真正变化时才 setState，避免虚拟滚动行重渲染
   const prevNpcsRef = useRef<NpcDetailInfo[]>([]);
@@ -713,6 +746,10 @@ export const EntityDetailModal: React.FC<{
 
   // 切 tab 时重置展开和滚动
   const switchTab = useCallback((t: "npc" | "obj" | "trap") => {
+    batchAbort.current?.abort();
+    entriesRequest.current++;
+    setSceneEntries([]);
+    setBatchIndex(null);
     setTab(t);
     setExpanded(null);
     setSearch("");
@@ -723,21 +760,27 @@ export const EntityDetailModal: React.FC<{
 
   // 加载场景条目
   const loadSceneEntries = useCallback(async () => {
+    const request = ++entriesRequest.current;
     setEntriesLoading(true);
+    setSceneEntries([]);
+    setActionError("");
     try {
       const loader = tab === "npc" ? onGetSceneNpcEntries : onGetSceneObjEntries;
       if (loader) {
         const entries = await loader();
-        setSceneEntries(entries);
+        if (request === entriesRequest.current) setSceneEntries(entries);
       }
+    } catch (error) {
+      if (request === entriesRequest.current) setActionError(error instanceof Error ? error.message : "加载失败");
     } finally {
-      setEntriesLoading(false);
+      if (request === entriesRequest.current) setEntriesLoading(false);
     }
   }, [tab, onGetSceneNpcEntries, onGetSceneObjEntries]);
 
   // 打开/关闭添加面板
   const toggleAddPanel = useCallback(() => {
     if (showAddPanel) {
+      entriesRequest.current++;
       setShowAddPanel(false);
     } else {
       setShowAddPanel(true);
@@ -751,7 +794,7 @@ export const EntityDetailModal: React.FC<{
   const filteredSceneEntries = useMemo(() => {
     if (!addSearch) return sceneEntries;
     const q = addSearch.toLowerCase();
-    return sceneEntries.filter((e) => e.name.toLowerCase().includes(q));
+    return sceneEntries.filter((e) => e.name.toLowerCase().includes(q) || e.key?.toLowerCase().includes(q));
   }, [sceneEntries, addSearch]);
 
   // 添加条目
@@ -768,8 +811,12 @@ export const EntityDetailModal: React.FC<{
       return;
     }
 
-    await adder(data);
-    refresh();
+    try {
+      await adder(data);
+      refresh();
+    } catch (error) {
+      setActionError(error instanceof Error ? error.message : "添加失败");
+    }
   }, [tab, onAddNpcFromEntry, onAddObjFromEntry, refresh, filteredSceneEntries]);
 
   // 确认批量添加
@@ -781,15 +828,20 @@ export const EntityDetailModal: React.FC<{
     if (!entry) return;
 
     const count = Math.max(1, Math.min(5000, parseInt(batchCount, 10) || 1));
-    for (let i = 0; i < count; i++) {
-      await adder(entry.data);
-      // 每 100 个让出主线程，避免 UI 卡顿
-      if (i % 100 === 99) {
-        await new Promise((r) => setTimeout(r, 0));
+    let added = 0;
+    try {
+      for (; added < count; added++) {
+        await adder(entry.data);
+        if (added % 100 === 99) {
+          await new Promise((r) => setTimeout(r, 0));
+        }
       }
+    } catch (error) {
+      setActionError(`已添加 ${added}/${count}，已停止：${error instanceof Error ? error.message : "添加失败"}`);
+    } finally {
+      refresh();
+      setBatchIndex(null);
     }
-    refresh();
-    setBatchIndex(null);
   }, [batchIndex, batchCount, tab, onAddNpcFromEntry, onAddObjFromEntry, refresh, filteredSceneEntries]);
 
   // 点击外部关闭添加面板
@@ -797,6 +849,7 @@ export const EntityDetailModal: React.FC<{
     if (!showAddPanel) return;
     const handler = (e: MouseEvent) => {
       if (addPanelRef.current && !addPanelRef.current.contains(e.target as Node)) {
+        entriesRequest.current++;
         setShowAddPanel(false);
       }
     };
@@ -979,6 +1032,23 @@ export const EntityDetailModal: React.FC<{
             <span className="text-white/30 ml-auto text-[10px]">
               {items.length === totalItems ? `共 ${totalItems}` : `${items.length}/${totalItems}`}
             </span>
+            {tab === "obj" && onInteractAllObjs && (
+              <>
+                <button
+                  onClick={handleInteractAll}
+                  disabled={scriptRunning || interactionProgress !== null || !objs.some((obj) => obj.scriptFile && !obj.isRemoved)}
+                  title="依次交互当前场景所有可交互物体，不受筛选影响"
+                  className="px-1.5 py-0.5 text-[10px] rounded border border-[#4ade80]/40 text-[#4ade80] disabled:opacity-40"
+                >
+                  {interactionProgress === null ? "交互全部" : `交互中 ${interactionProgress}`}
+                </button>
+                {interactionProgress !== null && (
+                  <button onClick={() => { batchAbort.current?.abort(); setInteractionProgress("停止中…"); }}
+                    title="取消后续交互，当前脚本继续执行"
+                    className="text-[10px] text-[#f48771]">停止</button>
+                )}
+              </>
+            )}
             <div className="relative ml-1" ref={addPanelRef}>
               <button
                 onClick={toggleAddPanel}
@@ -993,8 +1063,8 @@ export const EntityDetailModal: React.FC<{
                       ref={addSearchRef}
                       type="text"
                       value={addSearch}
-                      onChange={(e) => setAddSearch(e.target.value)}
-                      placeholder="搜索..."
+                      onChange={(e) => { setAddSearch(e.target.value); setBatchIndex(null); }}
+                      placeholder={tab === "npc" ? "搜索当前游戏全部 NPC 名称或标识..." : "搜索..."}
                       className="w-full px-2 py-0.5 text-[10px] bg-white/10 text-white/90 border border-white/20
                         rounded outline-none focus:border-[#007fd4] placeholder:text-white/30"
                     />
@@ -1010,8 +1080,9 @@ export const EntityDetailModal: React.FC<{
                           key={i}
                           className="flex items-center gap-2 px-3 py-1.5 hover:bg-white/10 border-b border-white/5 text-[10px]"
                         >
-                          <span className="text-[#9cdcfe] truncate flex-1" title={entry.name}>
+                          <span className="text-[#9cdcfe] truncate flex-1" title={entry.key ? `${entry.name} · ${entry.key}` : entry.name}>
                             {entry.name || "(无名)"}
+                            {entry.key && <span className="block text-white/40 truncate">{entry.key}</span>}
                           </span>
                           <span className="text-[#dcdcaa] shrink-0">
                             {tab === "npc"
@@ -1063,6 +1134,7 @@ export const EntityDetailModal: React.FC<{
         </div>
       )}
 
+      {actionError && <div role="alert" className="px-4 py-1 text-xs text-[#f48771]">{actionError}</div>}
       {/* 表头 */}
       {tab === "npc" ? <NpcTableHeader scrollbarWidth={scrollbarWidth} /> : tab === "obj" ? <ObjTableHeader scrollbarWidth={scrollbarWidth} /> : null}
 
@@ -1147,16 +1219,19 @@ export const EntityDetailModal: React.FC<{
                       onTalkToNpc={onTalkToNpc}
                       onKillNpc={onKillNpc}
                       onRefresh={refresh}
-                      scriptRunning={scriptRunning}
+                      scriptRunning={scriptRunning || interactionProgress !== null}
                     />
                   ) : (
                     <ObjRow
                       obj={item as ObjDetailInfo}
                       isExpanded={isExpanded}
                       onClick={() => setExpanded(isExpanded ? null : item.id)}
-                      onInteractWithObj={onInteractWithObj}
+                      onInteractWithObj={async (id) => {
+                        try { await onInteractWithObj?.(id); }
+                        catch (error) { setActionError(error instanceof Error ? error.message : "交互失败"); }
+                      }}
                       onRefresh={refresh}
-                      scriptRunning={scriptRunning}
+                      scriptRunning={scriptRunning || interactionProgress !== null}
                     />
                   )}
                 </div>

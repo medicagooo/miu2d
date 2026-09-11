@@ -1,0 +1,28 @@
+{
+  "purpose": "游戏标题、批量物体交互、全游戏NPC添加",
+  "requirements": [
+    "默认及分享标题Swords of Legends，保留具体游戏名与水印",
+    "当前场景所有可交互物体逐个执行，支持进度和停止后续项目",
+    "当前游戏全部NPC按名称/标识搜索添加，保留批量添加"
+  ],
+  "constraints": [
+    "不跨游戏",
+    "不部署、不创建本地数据库",
+    "保留旧场景添加接口"
+  ],
+  "acceptance": [
+    "队列等待脚本，失效对象跳过，切图停止",
+    "NPC跨场景配置可添加",
+    "类型检查、相关测试、构建、Bugbot审查并修复"
+  ],
+  "status": "complete",
+  "integration": "unknown",
+  "evidence": [
+    "packages/engine/src/debug/debug-manager.ts",
+    "packages/game/src/components/common/DebugPanel/sections/GameInfoSection.tsx",
+    "packages/engine/tests/debug/interaction-batch.test.ts",
+    "packages/engine/tests/debug/debug-catalog-interaction.test.ts",
+    ".branch-records/0912-game-debug-tools/verification.json"
+  ],
+  "next": "推送前验证本次提交及远端起点，推送 origin/main 后核对远端SHA与CI状态；此记录不把计划推送当作成功证据"
+}

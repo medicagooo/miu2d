@@ -22,6 +22,8 @@ import type { Difficulty } from "../character/level/difficulty";
 import { getGameSlug, getMagicsData, loadSceneNpcEntries, loadSceneObjEntries } from "../data/game-data-api";
 import { buildPlayerMagicCatalog } from "../data/player-magic-catalog";
 import { parseNpcData } from "../npc/npc-persistence";
+import { getAllNpcConfigKeys, getNpcConfigFromCache } from "../npc/npc-config-cache";
+import { runInteractionBatch } from "./interaction-batch";
 import type { GuiManager } from "../gui/gui-manager";
 import type { MagicItemInfo } from "../magic";
 import type { NpcManager } from "../npc";
@@ -516,7 +518,7 @@ export class DebugManager {
 
   /** 脚本是否正在执行中（含陷阱脚本） */
   isScriptRunning(): boolean {
-    return this.scriptExecutor?.isRunning() ?? false;
+    return this.interactionPending || (this.scriptExecutor?.isRunning() ?? false);
   }
 
   /** 加载陷阱脚本内容（返回每行文本） */
@@ -788,38 +790,70 @@ export class DebugManager {
   /**
    * 与物体交互（复用 Obj.startInteract 流程）
    */
-  async interactWithObj(objId: string): Promise<void> {
+  private interactionPending = false;
+
+  async interactWithObj(objId: string, shouldStop: () => boolean = () => false): Promise<void> {
+    if (this.interactionPending || this.isScriptRunning()) throw new Error("脚本正在执行，请稍后重试");
+    const engine = this.engine;
+    const map = engine.getCurrentMapName();
     const obj = this.objManager.getObjById(objId);
-    if (!obj) {
-      this.showMessage("物体不存在");
-      return;
+    if (!obj?.canInteract() || shouldStop()) return;
+    this.interactionPending = true;
+    try {
+      const path = resolveScriptPath(engine.getScriptBasePath(), obj.scriptFile);
+      if (!await loadScript(path)) throw new Error(`无法加载脚本: ${obj.scriptFile}`);
+      // Loading yields: recheck cancellation, scene identity and executor before any side effects.
+      if (shouldStop() || this.engine !== engine || engine.getCurrentMapName() !== map
+        || this.objManager.getObjById(objId) !== obj || !obj.canInteract()) return;
+      if (this.scriptExecutor?.isRunning()) throw new Error("其他脚本已开始，批量交互已停止");
+      const player = this.player;
+      if (obj.hasSound && engine.audio) engine.audio.playSound(obj.getSoundFile());
+      engine.interactionManager.markObjInteracted(obj.id);
+      const pos = obj.positionInWorld;
+      player.setDirectionFromDelta(pos.x - player.pixelPosition.x, pos.y - player.pixelPosition.y);
+      player.stopMovement();
+      // Await the actual script, unlike Obj.startInteract's filename-only return contract.
+      await engine.runScript(path, { type: "obj", id: obj.id });
+    } finally {
+      this.interactionPending = false;
     }
-    if (!obj.canInteract()) {
-      this.showMessage(`${obj.objName} 不可交互`);
-      return;
-    }
+  }
+  /** Snapshot the whole scene, independent of UI filters. Identity checks reject reloaded objects. */
+  async interactWithAllObjs(signal: AbortSignal, onProgress: (done: number, total: number) => void): Promise<void> {
+    const map = this.engine.getCurrentMapName();
+    const targets = this.getAllObjDetails()
+      .map((item) => this.objManager.getObjById(item.id))
+      .filter((obj) => obj != null)
+      .filter((obj) => obj.canInteract());
+    await runInteractionBatch(targets, {
+      signal,
+      shouldStop: () => this.engine.getCurrentMapName() !== map,
+      isRunning: () => this.isScriptRunning(),
+      canInteract: (obj) => this.objManager.getObjById(obj.id) === obj && obj.canInteract(),
+      interact: (obj) => this.interactWithObj(obj.id, () => signal.aborted || this.engine.getCurrentMapName() !== map),
+      onProgress,
+    });
+  }
 
-    const player = this.player;
+  /** Current-game config catalog; old scene-entry API stays available to existing callers. */
+  async getNpcCatalogEntries(): Promise<{ name: string; key: string; kind: number; data: Record<string, unknown> }[]> {
+    return getAllNpcConfigKeys().flatMap((key) => {
+      const config = getNpcConfigFromCache(key);
+      return config ? [{ key, name: config.name, kind: config.kind, data: { npcConfigKey: key } }] : [];
+    });
+  }
 
-    // 播放物体音效
-    if (obj.hasSound && this.engine.audio) {
-      this.engine.audio.playSound(obj.getSoundFile());
-    }
-
-    // 标记已交互
-    this.engine.interactionManager.markObjInteracted(obj.id);
-
-    // 面向物体
-    const objPixelPos = obj.positionInWorld;
-    const dx = objPixelPos.x - player.pixelPosition.x;
-    const dy = objPixelPos.y - player.pixelPosition.y;
-    player.setDirectionFromDelta(dx, dy);
-
-    // 停止玩家移动
-    player.stopMovement();
-
-    // 执行物体脚本
-    obj.startInteract(false);
+  async addNpcFromCatalogEntry(data: Record<string, unknown>): Promise<void> {
+    const key = String(data.npcConfigKey ?? "");
+    const config = getNpcConfigFromCache(key);
+    if (!config) throw new Error(`NPC 配置不存在: ${key}`);
+    const tile = this.player.tilePosition;
+    // Clone nested stats/resources so spawned instances cannot mutate the shared catalog.
+    const spawnConfig = structuredClone(config);
+    // Inline resources are indexed by catalog key, even without a separate npcIni resource.
+    spawnConfig.npcIni ||= key;
+    const npc = await this.npcManager.addNpcWithConfig(spawnConfig, tile.x, tile.y);
+    this.showMessage(`已添加 NPC: ${npc.name}`);
   }
 
   /**

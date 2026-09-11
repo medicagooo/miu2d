@@ -1,0 +1,38 @@
+{
+  "at": "2026-09-12T00:15:21+08:00",
+  "base": "909f945897c5de9b1cfeea7b9fcfba259e9fa0d4",
+  "worktree": "D:/proj/miu2d",
+  "branch": "main",
+  "implementation": "complete",
+  "publication": "pending push; no manual deployment",
+  "review": [
+    "Bugbot P1 load race: in-flight reservation and post-load cancellation/scene/identity/busy checks",
+    "Bugbot P2 inline resources: cloned config defaults npcIni to catalog key",
+    "Bugbot P2 stale picker requests: generation invalidated on tab/close/reload"
+  ],
+  "checks": [
+    "node node_modules/typescript/bin/tsc -b packages/game: passed",
+    "node ../../node_modules/typescript/bin/tsc -b (packages/web): passed",
+    "demo Vite production build: passed",
+    "vitest tests/debug: 9 passed",
+    "git diff --check: passed"
+  ],
+  "fullEngineSuite": {
+    "details": [
+      "timer-manager: inactive timer expectation",
+      "magic/effects/common: 5 old mock failures missing isInGodMode",
+      "doudizhu/ai-player: hardcoded /tmp path unavailable on Windows",
+      "npc-queries: missing npc-spatial-grid import"
+    ],
+    "baselineEvidence": "Corresponding pre-existing tests and implementation paths have no diff from base SHA; failures do not involve debug changes",
+    "failed": 7,
+    "passed": 802,
+    "failedSuites": 4
+  },
+  "environment": "Used installed Node tool entrypoints; added ignored shared/node_modules/@miu2d/server junction for existing type import. No dependency versions changed.",
+  "limitations": [
+    "No live gameplay browser acceptance in this turn",
+    "Global NPC templates retain their original script requirements; cross-map story compatibility is not guaranteed",
+    "Stop cancels remaining queue; active script completes normally"
+  ]
+}
