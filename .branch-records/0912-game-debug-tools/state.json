@@ -3,7 +3,8 @@
   "requirements": [
     "默认及分享标题Swords of Legends，保留具体游戏名与水印",
     "当前场景所有可交互物体逐个执行，支持进度和停止后续项目",
-    "当前游戏全部NPC按名称/标识搜索添加，保留批量添加"
+    "当前游戏全部NPC按名称/标识搜索添加，保留批量添加",
+    "减少逐个物体间脚本网络等待；有界并发预取，保留脚本串行执行、剧情等待与取消保护"
   ],
   "constraints": [
     "不跨游戏",
@@ -22,7 +23,8 @@
     "packages/game/src/components/common/DebugPanel/sections/GameInfoSection.tsx",
     "packages/engine/tests/debug/interaction-batch.test.ts",
     "packages/engine/tests/debug/debug-catalog-interaction.test.ts",
-    ".branch-records/0912-game-debug-tools/verification.json"
+    ".branch-records/0912-game-debug-tools/verification.json",
+    ".branch-records/0912-game-debug-tools/speed-verification.json"
   ],
-  "next": "推送前验证本次提交及远端起点，推送 origin/main 后核对远端SHA与CI状态；此记录不把计划推送当作成功证据"
+  "next": "将包含push-main-2预声明的本次提交普通推送至origin/main，核验远端SHA；不把本记录当作发布成功证据"
 }

@@ -1,5 +1,64 @@
 import { describe, expect, it, vi } from "vitest";
-import { runInteractionBatch } from "../../src/debug/interaction-batch";
+import { prefetchInteractionScripts, runInteractionBatch } from "../../src/debug/interaction-batch";
+
+describe("interaction script prefetch", () => {
+  it("overlaps cold reads with execution: 12 one-second reads take 2s instead of 12s", async () => {
+    vi.useFakeTimers();
+    try {
+      const paths = Array.from({ length: 12 }, (_, i) => `script${i}`);
+      const cache = new Map<string, Promise<void>>();
+      let active = 0;
+      let maxActive = 0;
+      const load = vi.fn((path: string) => {
+        let value = cache.get(path);
+        if (!value) {
+          active++;
+          maxActive = Math.max(maxActive, active);
+          value = new Promise<void>((resolve) => setTimeout(() => { active--; resolve(); }, 1000));
+          cache.set(path, value);
+        }
+        return value;
+      });
+      const started = Date.now();
+      const warmup = prefetchInteractionScripts(paths, load, () => false);
+      const executed: string[] = [];
+      const batch = runInteractionBatch(paths, {
+        signal: new AbortController().signal, shouldStop: () => false,
+        isRunning: () => false, canInteract: () => true,
+        interact: async (path) => { await load(path); executed.push(path); },
+        onProgress: () => {},
+      });
+      expect(maxActive).toBe(6);
+      expect(executed).toEqual([]);
+      await vi.advanceTimersByTimeAsync(1000);
+      expect(executed).toEqual(paths.slice(0, 6));
+      await vi.advanceTimersByTimeAsync(1000);
+      await Promise.all([warmup, batch]);
+      expect(executed).toEqual(paths);
+      expect(Date.now() - started).toBe(2000);
+      expect(cache.size).toBe(12);
+      expect(maxActive).toBe(6);
+    } finally { vi.useRealTimers(); }
+  });
+
+  it("deduplicates URLs and stops scheduling when cancelled", async () => {
+    let stop = false;
+    const release: Array<() => void> = [];
+    const load = vi.fn(() => new Promise<void>((resolve) => release.push(resolve)));
+    const warmup = prefetchInteractionScripts(["a", "a", "b", "c", "d", "e", "f", "g"], load, () => stop);
+    expect(load).toHaveBeenCalledTimes(6);
+    stop = true;
+    for (const resolve of release) resolve();
+    await warmup;
+    expect(load).toHaveBeenCalledTimes(6);
+  });
+
+  it("handles speculative failures without preventing later interactive error reporting", async () => {
+    const load = vi.fn(async () => { throw new Error("not found"); });
+    await expect(prefetchInteractionScripts(["a", "a", "b"], load, () => false)).resolves.toBeUndefined();
+    expect(load).toHaveBeenCalledTimes(2);
+  });
+});
 
 describe("debug interaction batch", () => {
   const setup = () => ({

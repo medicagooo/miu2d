@@ -1,0 +1,29 @@
+{
+  "at": "2026-09-12T14:10:16+08:00",
+  "base": "ee79132b2e8e98a2856794afd002ec6afafc829d",
+  "implementation": "bounded parallel script prefetch with serial execution",
+  "checks": [
+    "12 debug regression tests passed",
+    "game TypeScript build passed",
+    "demo Vite production build passed",
+    "diff whitespace validation passed"
+  ],
+  "benchmark": {
+    "prefetchMs": 2000,
+    "note": "Does not measure live gameplay or promise a real-world 6x speedup",
+    "scenario": "12 distinct scripts, 1000ms cold loading each",
+    "type": "deterministic fake-timer simulation",
+    "maxPrefetchConcurrency": 6,
+    "serialMs": 12000
+  },
+  "evidence": [
+    "Screenshot scripts in common folder have no Sleep instruction; sampled cold reads approximately 0.8-1.3s",
+    "Existing resource cache deduplicates foreground/prefetch requests",
+    "Tests preserve order, cancellation, unique URLs and error handling"
+  ],
+  "limits": [
+    "Dialogue/choice/story waits unchanged",
+    "No live deployment in this turn",
+    "Existing full-suite failures recorded in verification.json remain outside this performance change"
+  ]
+}

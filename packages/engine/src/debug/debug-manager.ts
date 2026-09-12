@@ -23,7 +23,7 @@ import { getGameSlug, getMagicsData, loadSceneNpcEntries, loadSceneObjEntries } 
 import { buildPlayerMagicCatalog } from "../data/player-magic-catalog";
 import { parseNpcData } from "../npc/npc-persistence";
 import { getAllNpcConfigKeys, getNpcConfigFromCache } from "../npc/npc-config-cache";
-import { runInteractionBatch } from "./interaction-batch";
+import { prefetchInteractionScripts, runInteractionBatch } from "./interaction-batch";
 import type { GuiManager } from "../gui/gui-manager";
 import type { MagicItemInfo } from "../magic";
 import type { NpcManager } from "../npc";
@@ -820,19 +820,30 @@ export class DebugManager {
   }
   /** Snapshot the whole scene, independent of UI filters. Identity checks reject reloaded objects. */
   async interactWithAllObjs(signal: AbortSignal, onProgress: (done: number, total: number) => void): Promise<void> {
-    const map = this.engine.getCurrentMapName();
-    const targets = this.getAllObjDetails()
-      .map((item) => this.objManager.getObjById(item.id))
-      .filter((obj) => obj != null)
-      .filter((obj) => obj.canInteract());
-    await runInteractionBatch(targets, {
-      signal,
-      shouldStop: () => this.engine.getCurrentMapName() !== map,
-      isRunning: () => this.isScriptRunning(),
-      canInteract: (obj) => this.objManager.getObjById(obj.id) === obj && obj.canInteract(),
-      interact: (obj) => this.interactWithObj(obj.id, () => signal.aborted || this.engine.getCurrentMapName() !== map),
-      onProgress,
-    });
+    const engine = this.engine;
+    const map = engine.getCurrentMapName();
+    const targets = this.objManager.getAllObjs().filter((obj) => obj.canInteract());
+    let finished = false;
+    const shouldStop = () => finished || signal.aborted || this.engine !== engine || engine.getCurrentMapName() !== map;
+    // Cache deduplicates foreground + prefetch reads. Never wait for the entire scene to load
+    // before executing the first object; later script loads overlap earlier interactions.
+    void prefetchInteractionScripts(
+      targets.map((obj) => resolveScriptPath(engine.getScriptBasePath(), obj.scriptFile)),
+      loadScript,
+      shouldStop,
+    ).catch((error) => logger.warn("[DebugManager] Script prefetch stopped", error));
+    try {
+      await runInteractionBatch(targets, {
+        signal,
+        shouldStop,
+        isRunning: () => this.isScriptRunning(),
+        canInteract: (obj) => this.objManager.getObjById(obj.id) === obj && obj.canInteract(),
+        interact: (obj) => this.interactWithObj(obj.id, shouldStop),
+        onProgress,
+      });
+    } finally {
+      finished = true;
+    }
   }
 
   /** Current-game config catalog; old scene-entry API stays available to existing callers. */

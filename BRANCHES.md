@@ -5,7 +5,7 @@
     "0909-transparent-magic-icons/push-main-1",
     "0909-npc-shape-growth/push-main-1",
     "0909-player-growth-functions/push-main-1",
-    "0912-game-debug-tools/push-main-1"
+    "0912-game-debug-tools/push-main-2"
   ],
   "timezone": "Asia/Singapore",
   "format": 1,
@@ -237,9 +237,18 @@
     {
       "id": "0912-game-debug-tools",
       "date": "2026-09-12",
-      "businessChange": "默认及分享标题改Swords of Legends，具体游戏名/水印保留；物体页按全场景快照串行交互，停止仅取消后续项，切图/失效跳过或停止；NPC添加扩展到当前游戏配置库，按名称/标识搜索并支持批量生成，资源/旧接口兼容。已实现并本地验证，远端发布待核验。",
+      "businessChange": "默认及分享标题改Swords of Legends，具体游戏名/水印保留；物体页按全场景快照串行交互，停止仅取消后续项，切图/失效跳过或停止；NPC添加扩展到当前游戏配置库，按名称/标识搜索并支持批量生成，资源/旧接口兼容。已实现并本地验证，已于 main ee79132 核验远端一致；自动部署任务跳过。",
       "status": "complete",
       "request": "0912-game-debug-tools/request-execute",
+      "evidence": ".branch-records/0912-game-debug-tools/state.json",
+      "implementedAt": "2026-09-12"
+    },
+    {
+      "id": "0912-game-debug-prefetch",
+      "date": "2026-09-12",
+      "businessChange": "批量交互脚本改为最多6路去重预加载，与串行执行重叠，减少物体间冷加载停顿；首个物体不等待整批加载，停止/切图后不再调度预取。奖励、删除对象和剧情等待顺序保留；12份1秒脚本模拟由12秒降至2秒，非线上实测。",
+      "status": "complete",
+      "request": "0912-game-debug-tools/request-speed",
       "evidence": ".branch-records/0912-game-debug-tools/state.json",
       "implementedAt": "2026-09-12"
     }
