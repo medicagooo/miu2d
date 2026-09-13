@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { isSaveData, LOCAL_SAVE_FORMAT, MAX_SAVE_BYTES } from "@miu2d/types";
+import { useEffect, useRef, useState } from "react";
 import type { WebSaveLoadPanelProps } from "./WebSaveLoadPanel";
 
 /** Demo-only file saves use the same engine snapshot callbacks as cloud saves.
@@ -11,18 +12,31 @@ export function LocalSaveLoadPanel({
   onCollectSaveData,
   onLoadSaveData,
   onClose,
-}: WebSaveLoadPanelProps) {
+  visible,
+  active = true,
+}: WebSaveLoadPanelProps & { active?: boolean }) {
   const [message, setMessage] = useState("");
   const [busy, setBusy] = useState(false);
+  const valid = useRef(true);
+  const generation = useRef(0);
+  useEffect(() => {
+    valid.current = visible && active;
+    generation.current += 1;
+    return () => {
+      valid.current = false;
+      generation.current += 1;
+    };
+  }, [visible, active]);
   function download() {
     try {
       const snapshot = onCollectSaveData();
       if (!snapshot) throw new Error("当前无法保存，请稍后重试");
-      const url = URL.createObjectURL(
-        new Blob([JSON.stringify({ format: "miu2d-local-v1", gameSlug, data: snapshot.data })], {
-          type: "application/json",
-        })
+      const blob = new Blob(
+        [JSON.stringify({ format: LOCAL_SAVE_FORMAT, gameSlug, data: snapshot.data })],
+        { type: "application/json" }
       );
+      if (blob.size > MAX_SAVE_BYTES) throw new Error("存档文件过大");
+      const url = URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.href = url;
       link.download = `${gameSlug}-${Date.now()}.json`;
@@ -34,23 +48,17 @@ export function LocalSaveLoadPanel({
     }
   }
   async function load(file: File) {
+    const epoch = generation.current;
     setBusy(true);
     setMessage("");
     try {
-      if (file.size > 20 * 1024 * 1024) throw new Error("存档文件过大");
+      if (file.size > MAX_SAVE_BYTES) throw new Error("存档文件过大");
       const saved = JSON.parse(await file.text());
-      if (saved?.format !== "miu2d-local-v1" || saved.gameSlug !== gameSlug)
+      if (!valid.current || epoch !== generation.current) return;
+      if (saved?.format !== LOCAL_SAVE_FORMAT || saved.gameSlug !== gameSlug)
         throw new Error("请选择当前游戏导出的存档");
       const data = saved.data;
-      if (
-        !data ||
-        typeof data !== "object" ||
-        !Number.isFinite(data.version) ||
-        !data.player ||
-        !data.state ||
-        !data.snapshot
-      )
-        throw new Error("存档格式无效");
+      if (!isSaveData(data)) throw new Error("存档格式无效");
       if (!(await onLoadSaveData(data))) throw new Error("读档失败，请检查存档文件");
       onClose();
     } catch (error) {
@@ -61,8 +69,8 @@ export function LocalSaveLoadPanel({
   }
   return (
     <div className="p-6 space-y-5 text-white/80 text-sm">
-      <p>存档保存在你下载的文件中，可在这里导入继续游戏。</p>
-      {saveBlockedReason && <p role="status">{saveBlockedReason}</p>}
+      <p>本地存档无需登录。请保留下载的文件，以便下次导入。</p>
+      {saveBlockedReason && <output>{saveBlockedReason}</output>}
       {canSave && (
         <button
           type="button"
@@ -70,13 +78,14 @@ export function LocalSaveLoadPanel({
           onClick={download}
           className="px-4 py-2 rounded bg-blue-500/60 disabled:opacity-40"
         >
-          导出本地存档
+          保存到本地
         </button>
       )}
       <label className="block">
         导入本地存档
         <input
           type="file"
+          aria-label="导入本地存档"
           accept=".json,application/json"
           disabled={busy || !!saveBlockedReason}
           className="block mt-3 max-w-full"
@@ -87,8 +96,8 @@ export function LocalSaveLoadPanel({
           }}
         />
       </label>
-      {busy && <p role="status">正在读档…</p>}
-      {message && <p role="status">{message}</p>}
+      {busy && <output>正在读档…</output>}
+      {message && <output>{message}</output>}
     </div>
   );
 }

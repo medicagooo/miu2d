@@ -1,13 +1,18 @@
 /**
  * Public demo deployment: GameScreen/engine keep their same-origin /game URLs.
  * Only the three landing games can read the original public API/resources.
- * No database, account cookies, cloud saves or administrative writes are proxied.
+ * Cloud player accounts/saves are handled locally via D1/R2, never proxied.
+ * No database, account cookies or administrative writes are sent upstream.
  * The full backend remains available through worker.ts and the Node entrypoint.
  */
+import { cloudSaveApi } from "./cloud-save/api";
+
 export default {
-  async fetch(request: Request, env: Pick<Env, "ASSETS">): Promise<Response> {
+  async fetch(request: Request, env: CloudSaveEnv): Promise<Response> {
     const url = new URL(request.url);
     const path = url.pathname;
+    if (path.startsWith("/cloud-save/v1/")) return cloudSaveApi(request, env);
+    if (path.startsWith("/cloud-save/")) return Response.json({ error: "Not found" }, { status: 404 });
     if (request.method !== "GET" && request.method !== "HEAD") {
       return Response.json({ error: "Public games support read requests only" }, {
         status: 405, headers: { Allow: "GET, HEAD", "Cache-Control": "no-store" },

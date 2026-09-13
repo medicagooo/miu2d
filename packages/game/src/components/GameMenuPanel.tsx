@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import { HiOutlineXMark } from "react-icons/hi2";
 import { SettingsPanel, type SettingsPanelProps } from "./common/SidePanel";
 import { WebSaveLoadPanel } from "./WebSaveLoadPanel";
-import { LocalSaveLoadPanel } from "./LocalSaveLoadPanel";
+import { DemoSaveLoadPanel } from "./DemoSaveLoadPanel";
 
 export type MenuTab = "save" | "settings";
 
@@ -41,9 +41,10 @@ const TABS: { key: MenuTab; label: string }[] = [
   { key: "save", label: "存档" },
   { key: "settings", label: "设置" },
 ];
-// Keep the original cloud panel for full deployments; demo saves stay on-device.
+// The public deployment has independent D1 player accounts plus local file saves.
+// Full deployments continue using their existing tRPC accounts/save contracts.
 const SaveLoadPanel =
-  import.meta.env.VITE_DEMO_ONLY === "true" ? LocalSaveLoadPanel : WebSaveLoadPanel;
+  import.meta.env.VITE_DEMO_ONLY === "true" ? DemoSaveLoadPanel : WebSaveLoadPanel;
 
 export function GameMenuPanel({
   visible,

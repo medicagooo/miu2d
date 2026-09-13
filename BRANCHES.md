@@ -6,7 +6,7 @@
     "0909-npc-shape-growth/push-main-1",
     "0909-player-growth-functions/push-main-1",
     "0912-game-debug-tools/push-main-2",
-    "0913-cloud-saves/create-worktree-1"
+    "0913-cloud-saves/push-main-1"
   ],
   "timezone": "Asia/Singapore",
   "format": 1,
@@ -258,10 +258,11 @@
     {
       "date": "2026-09-13",
       "request": "0913-cloud-saves/request-implement",
-      "businessChange": "公开游戏版拟增加独立D1账号与R2私有云存档，保留免登录本地文件导入导出，部署自动准备存储及表结构；替代旧公开模式仅本地存档限制",
-      "status": "planned",
+      "businessChange": "公开游戏版新增独立D1玩家账号/会话与R2私有云存档，面板按钮选择本地或云端；支持命名保存/覆盖/加载/删除、用户与游戏隔离和版本冲突保护，保留免登录20MiB本地JSON兼容；部署入口自动准备资源与表结构，云端部署未验证",
+      "status": "complete",
       "evidence": ".branch-records/0913-cloud-saves/state.json",
-      "id": "0913-cloud-saves"
+      "id": "0913-cloud-saves",
+      "implementedAt": "2026-09-13"
     }
   ]
 }

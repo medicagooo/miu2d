@@ -25,7 +25,10 @@
     "types:workers": "node scripts/generate-worker-types.mjs",
     "test:workers": "pnpm --filter @miu2d/server exec tsx --test src/runtime/context.test.ts && wrangler deploy --dry-run --outdir .wrangler/dry-run && node scripts/verify-worker-runtime.mjs",
     "build:demo": "node scripts/build-demo.mjs",
-    "deploy:demo": "wrangler deploy --config wrangler.demo.jsonc",
+    "deploy:demo": "node scripts/deploy-demo.mjs",
+    "types:demo": "wrangler types cloud-save-configuration.d.ts --config wrangler.demo.jsonc --env-interface CloudSaveEnv --include-runtime false",
+    "test:cloud-saves": "pnpm --filter @miu2d/server exec tsx --test src/cloud-save/api.test.ts",
+    "test:cloud-saves:ui": "pnpm --filter @miu2d/server exec tsx --tsconfig ../game/tsconfig.json ../game/tests/cloud-save-ui.test.ts",
     "test:demo": "wrangler deploy --config wrangler.demo.jsonc --dry-run --outdir .wrangler/demo-dry-run && node scripts/verify-demo-runtime.mjs"
   },
   "devDependencies": {

@@ -15,5 +15,5 @@
     "erasableSyntaxOnly": false,
     "jsx": "react-jsx"
   },
-  "include": ["src", "../../worker-configuration.d.ts"]
+  "include": ["src", "../../worker-configuration.d.ts", "../../cloud-save-configuration.d.ts"]
 }

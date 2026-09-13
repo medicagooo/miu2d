@@ -22,7 +22,24 @@
   ],
   "status": "active",
   "purpose": "Cloudflare player accounts and local/cloud save selection",
-  "next": "Implement in isolated worktree",
-  "evidence": [],
-  "integration": "unmerged"
+  "next": "Execute predeclared normal push to origin main; verify remote SHA and automatic CI. Cloud deployment/service acceptance remains separately authorized.",
+  "evidence": [
+    ".branch-records/0913-cloud-saves/requirements.md",
+    "packages/server/src/cloud-save/api.ts",
+    "packages/server/src/cloud-save/schema.json",
+    "packages/game/src/components/DemoSaveLoadPanel.tsx",
+    "packages/server/src/cloud-save/api.test.ts",
+    "packages/game/tests/cloud-save-ui.test.ts",
+    "scripts/deploy-demo.mjs"
+  ],
+  "integration": "unmerged",
+  "verification": [
+    "API suites pass with Map binding fakes; no local database",
+    "DOM regressions pass, including repeated mode changes and engine load serialization",
+    "Public demo build and dry Worker/runtime tests pass",
+    "Full backend build and test:workers pass without database",
+    "Server TypeScript and frontend TypeScript through the supported demo build, plus changed-source Biome checks, pass",
+    "Independent bug review repaired and rechecked request lifecycle races; dedicated Bugbot tool unavailable"
+  ],
+  "implementedAt": "2026-09-13"
 }
