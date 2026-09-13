@@ -1,0 +1,28 @@
+{
+  "acceptance": [
+    "Local save round trip",
+    "Account and game isolation",
+    "Cloud create/load/overwrite/delete and stale revision conflict",
+    "Failure preserves previous save",
+    "Build, tests and independent bug review"
+  ],
+  "constraints": [
+    "Preserve existing quick-interaction work in original worktree",
+    "No local database creation",
+    "No cloud administration or deployment before exact scoped confirmation",
+    "Independent accounts; no sharing, automatic sync or email recovery in this iteration",
+    "Preserve full backend compatibility"
+  ],
+  "requirements": [
+    "Anonymous local JSON import/export remains compatible",
+    "Email/password player accounts and sessions in D1; private save payloads in R2",
+    "Named cloud saves with ownership, game isolation and version conflict checks",
+    "Repeatable deployment provisioning and schema initialization",
+    "Review and repair bugs then push only task changes to origin main"
+  ],
+  "status": "active",
+  "purpose": "Cloudflare player accounts and local/cloud save selection",
+  "next": "Implement in isolated worktree",
+  "evidence": [],
+  "integration": "unmerged"
+}

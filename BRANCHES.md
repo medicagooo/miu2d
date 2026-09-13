@@ -5,7 +5,8 @@
     "0909-transparent-magic-icons/push-main-1",
     "0909-npc-shape-growth/push-main-1",
     "0909-player-growth-functions/push-main-1",
-    "0912-game-debug-tools/push-main-2"
+    "0912-game-debug-tools/push-main-2",
+    "0913-cloud-saves/create-worktree-1"
   ],
   "timezone": "Asia/Singapore",
   "format": 1,
@@ -19,7 +20,8 @@
     "0909-player-level-repair",
     "0909-npc-player-growth",
     "0909-npc-shape-growth",
-    "0909-player-growth-functions"
+    "0909-player-growth-functions",
+    "0913-cloud-saves"
   ],
   "records": [
     ".branch-records/0908-magic-learning-dedup/state.json",
@@ -38,7 +40,8 @@
     ".branch-records/0909-npc-player-growth/state.json",
     ".branch-records/0909-npc-shape-growth/state.json",
     ".branch-records/0909-player-growth-functions/state.json",
-    ".branch-records/0912-game-debug-tools/state.json"
+    ".branch-records/0912-game-debug-tools/state.json",
+    ".branch-records/0913-cloud-saves/state.json"
   ],
   "changes": [
     {
@@ -251,6 +254,14 @@
       "request": "0912-game-debug-tools/request-speed",
       "evidence": ".branch-records/0912-game-debug-tools/state.json",
       "implementedAt": "2026-09-12"
+    },
+    {
+      "date": "2026-09-13",
+      "request": "0913-cloud-saves/request-implement",
+      "businessChange": "公开游戏版拟增加独立D1账号与R2私有云存档，保留免登录本地文件导入导出，部署自动准备存储及表结构；替代旧公开模式仅本地存档限制",
+      "status": "planned",
+      "evidence": ".branch-records/0913-cloud-saves/state.json",
+      "id": "0913-cloud-saves"
     }
   ]
 }
